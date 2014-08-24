@@ -19,8 +19,9 @@ public class BarbeiroController {
 	}
 	
 	public boolean inserir(Barbeiro barbeiro) throws SQLException {
-		if (barbeiro == null) 
+		if (barbeiro == null) { 
 			return false;
+		}
 			
 		BarbeiroDAO.getInstance().incluir(barbeiro);
 		return true;
