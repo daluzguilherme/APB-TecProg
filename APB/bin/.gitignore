@@ -1,1 +1,5 @@
-/control/
+/view/
+/dao/
+/exception/
+/model/
+/testes/
