@@ -1,3 +1,9 @@
+/**
+ * ReciboController
+ * This class searches all services from a barber to generate a receipt
+ * to a barber.
+ */
+
 package control;
 
 import java.sql.ResultSet;

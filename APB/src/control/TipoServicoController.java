@@ -1,3 +1,10 @@
+/**
+ * TipoServicoController
+ * This class provides methods to manage the different kinds of services
+ * such as insert a new type of service, alter a service's name, exclude
+ * a type of service and display types of services.
+ */
+
 package control;
 
 import java.sql.ResultSet;

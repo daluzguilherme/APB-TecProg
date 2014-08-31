@@ -1,3 +1,8 @@
+/**
+ * BarbeiroController
+ * This class inserts, alter, excludes, searches and shows a barber's name.
+ */
+
 package control;
 
 import java.sql.ResultSet;

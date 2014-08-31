@@ -1,3 +1,9 @@
+/**
+ * RelatorioController
+ * This class manages the services making insertions, exclusions and 
+ * exhibitions of services.
+ */
+
 package control;
 
 import java.sql.ResultSet;
