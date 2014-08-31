@@ -1,3 +1,7 @@
+/**
+ * RelatorioDAO.java
+ *This class manages the DAO functions of a report.
+ */
 package dao;
 
 import java.sql.Connection;
@@ -9,16 +13,21 @@ import model.Relatorio;
 
 public class RelatorioDAO {
 
+	/* Instance to the singleton. */
 	private static RelatorioDAO instance;
 	
-	private RelatorioDAO(){}
+	private RelatorioDAO(){
+		/* Blank constructor. */
+	}
 
+	/* Singleton implementation. */
 	public static RelatorioDAO getInstance() {
 		if (instance == null)
 			instance = new RelatorioDAO();
 		return instance;
 	}
 
+	/* Search by date */
 	public ResultSet pesquisarPorData(Relatorio relatorio)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
@@ -28,6 +37,8 @@ public class RelatorioDAO {
 		
 		return rs;
 	}
+	
+	/* Search by date and barber */
 	public ResultSet pesquisarPorDataEBarbeiro(Relatorio relatorio)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
@@ -38,6 +49,8 @@ public class RelatorioDAO {
 		
 		return rs;
 	}
+	
+	/* Search by date and service*/
 	public ResultSet pesquisarPorDataEServico(Relatorio relatorio)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
@@ -49,6 +62,8 @@ public class RelatorioDAO {
 		return rs;
 	
 	}
+	
+	/* Search by barber*/
 	public ResultSet pesquisarPorBarbeiro(Relatorio relatorio)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
@@ -58,6 +73,8 @@ public class RelatorioDAO {
 		
 		return rs;
 	}
+	
+	/* Search by barber and service*/
 	public ResultSet pesquisarPorBarbeiroEServico(Relatorio relatorio)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
@@ -67,6 +84,8 @@ public class RelatorioDAO {
 		
 		return rs;
 	}
+	
+	/* Search by service*/
 	public ResultSet pesquisarPorServico(Relatorio relatorio)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
@@ -76,6 +95,8 @@ public class RelatorioDAO {
 		
 		return rs;
 	}
+	
+	/* Search by date, barber and service*/
 	public ResultSet pesquisarPorDataBarbeiroEServico(Relatorio relatorio)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
