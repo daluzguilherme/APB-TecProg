@@ -1,3 +1,7 @@
+/**
+ * ReciboDAO.java
+ *This class manages the DAO functions of a receipt.
+ */
 package dao;
 
 import java.sql.Connection;
@@ -7,16 +11,22 @@ import java.sql.SQLException;
 
 public class ReciboDAO {
 	
+	/* Instance to the singleton. */
 	private static ReciboDAO instance;
 	
-	private ReciboDAO(){}
+	private ReciboDAO(){
+		
+		/* Blank constructor. */
+	}
 	
+	/* Singleton implementation. */
 	public static ReciboDAO getInstance(){
 		if(instance == null)
 			instance = new ReciboDAO();
 		return instance;
 	}
 	
+	/* Shows the services Barber*/
 	public ResultSet pesquisarServicosDoBarbeiro(String barbeiro, String dataInicial, String dataFinal) throws SQLException{
 		
 		Connection connection = FactoryConnection.getInstance().getConnection();
@@ -28,6 +38,7 @@ public class ReciboDAO {
 		return rs;
 	}
 	
+	/* This updates a database.*/
 	public void updateQuery(String message) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement preparedStatement = connection
