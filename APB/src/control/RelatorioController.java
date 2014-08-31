@@ -1,3 +1,9 @@
+/**
+ * RelatorioController
+ * This class provides methods to generate different kinds of reports to
+ * the barbershop owner.
+ */
+
 package control;
 
 import java.sql.ResultSet;
@@ -13,37 +19,37 @@ private static RelatorioController instance;
 
 	public RelatorioController() {}
 	
-	/* Search a report by date. */
+	/* Makes a search by date. */
 	public ResultSet pesquisarPorData(Relatorio relatorio) throws SQLException {
 		return RelatorioDAO.getInstance().pesquisarPorData(relatorio);
 	}
 	
-	/* Search a report by date and a specific barber. */
+	/* Makes a search by date and a specific barber. */
 	public ResultSet pesquisarPorDataEBarbeiro(Relatorio relatorio) throws SQLException {	
 		return RelatorioDAO.getInstance().pesquisarPorDataEBarbeiro(relatorio);
 	}
 	
-	/* Search a report by date and service. */
+	/* Makes a search by date and service. */
 	public ResultSet pesquisarPorDataEServico(Relatorio relatorio) throws SQLException {	
 		return RelatorioDAO.getInstance().pesquisarPorDataEServico(relatorio);
 	}
 	
-	/* Search a report by barber. */
+	/* Makes a search by barber. */
 	public ResultSet pesquisarPorBarbeiro(Relatorio relatorio) throws SQLException {	
 		return RelatorioDAO.getInstance().pesquisarPorBarbeiro(relatorio);
 	}
 	
-	/* Search a report by barber and service. */
+	/* Makes a search by barber and service. */
 	public ResultSet pesquisarPorBarbeiroEServico(Relatorio relatorio) throws SQLException {	
 		return RelatorioDAO.getInstance().pesquisarPorBarbeiroEServico(relatorio);
 	}
 	
-	/* Search a report by service. */
+	/* Makes a search by service. */
 	public ResultSet pesquisarPorServico(Relatorio relatorio) throws SQLException {	
 		return RelatorioDAO.getInstance().pesquisarPorServico(relatorio);
 	}
 	
-	/* Search a report by date, barber and service. */
+	/* Makes a search by date, barber and service. */
 	public ResultSet pesquisarPorDataBarbeiroEServico(Relatorio relatorio) throws SQLException {		
 		return RelatorioDAO.getInstance().pesquisarPorDataBarbeiroEServico(relatorio);
 	}

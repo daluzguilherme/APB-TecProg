@@ -1,3 +1,9 @@
+/**
+ * AgendaController
+ * This class adds new contacts, modifies the contacts previously created,
+ * searches contacts and shows contacts.
+ */
+
 package control;
 
 import java.sql.ResultSet;
