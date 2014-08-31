@@ -11,6 +11,7 @@ public class ReciboController {
 	
 	public ReciboController(){}
 	
+	/* Returns an instance of a receipt. */
 	public static ReciboController getInstance(){
 		if(instance == null){
 			instance = new ReciboController();
@@ -18,6 +19,7 @@ public class ReciboController {
 		return instance;
 	}
 	
+	/* Search a barber's service between two dates. */ 
 	public ResultSet pesquisarServicosDoBarbeiro(String barbeiro, String dataInicial, String dataFinal) throws SQLException{
 		
 		return ReciboDAO.getInstance().pesquisarServicosDoBarbeiro(barbeiro, dataInicial, dataFinal);
