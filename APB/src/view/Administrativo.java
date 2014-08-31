@@ -1,3 +1,10 @@
+/**
+ * Administrativo
+ * This class provides a GUI to access management functions
+ * of the programm.
+ */
+
+
 package view;
 
 import java.awt.EventQueue;
@@ -20,9 +27,7 @@ public class Administrativo extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -37,9 +42,7 @@ public class Administrativo extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	/* Create the frame. */
 	public Administrativo() {
 		setTitle("APB");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,6 +61,8 @@ public class Administrativo extends JFrame {
 		panel.setLayout(null);
 
 		JButton btnBarbeiro = new JButton("Barbeiro");
+		
+		/* Add a listener to the button Barbeiro making it clickable. */
 		btnBarbeiro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -71,6 +76,8 @@ public class Administrativo extends JFrame {
 		panel.add(btnBarbeiro);
 
 		JButton btnTipoServico = new JButton("Tipo de Servi\u00E7o");
+		
+		/* Add a listener to the button Tipo de Serviço making it clickable. */
 		btnTipoServico.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -83,6 +90,8 @@ public class Administrativo extends JFrame {
 		panel.add(btnTipoServico);
 		
 		JButton btnAgenda = new JButton("Agenda");
+		
+		/* Add a listener to the button Agenda making it clickable. */
 		btnAgenda.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -96,6 +105,8 @@ public class Administrativo extends JFrame {
 		panel.add(btnAgenda);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		
+		/* Add a listener to the button Voltar making it clickable. */
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -108,6 +119,8 @@ public class Administrativo extends JFrame {
 		panel.add(btnVoltar);
 		
 		JButton btnRecibo = new JButton("Recibo");
+		
+		/* Add a listener to the button Recibo making it clickable. */
 		btnRecibo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
