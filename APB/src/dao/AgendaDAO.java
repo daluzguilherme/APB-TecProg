@@ -1,3 +1,7 @@
+/**
+ * AgendaDAO.java
+ *This class manages the DAO functions of an address book.
+ */
 package dao;
 
 import java.sql.Connection;
@@ -10,17 +14,22 @@ import dao.FactoryConnection;
 
 public class AgendaDAO {
 
+	/* Instance to the singleton. */
 	private static AgendaDAO instance;
 
 	private AgendaDAO() {
+		
+		/* Blank constructor. */
 	}
 
+	/* Singleton implementation. */
 	public static AgendaDAO getInstance() {
 		if (instance == null)
 			instance = new AgendaDAO();
 		return instance;
 	}
 
+	/* Include new address book in the database. */
 	public boolean incluir(Agenda agenda) throws SQLException {
 		if (agenda == null)
 			return false;
@@ -32,6 +41,7 @@ public class AgendaDAO {
 		return true;
 	}
 
+	/* This updates an address book on the database. */
 	public boolean alterar(String nome, Agenda agenda_alterado, Agenda agenda) throws SQLException {	
 		if(agenda == null || agenda_alterado == null)
 			return false;
@@ -46,6 +56,7 @@ public class AgendaDAO {
 		return true;
 	}
 
+	/* This removes an address book from the database. */
 	public boolean excluir(Agenda contato) throws SQLException {
 		if(contato ==  null)
 			return false;
@@ -55,6 +66,7 @@ public class AgendaDAO {
 		return true;
 	}
 
+	/* This updates a query. */
 	public void updateQuery(String message) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement preparedStatement = connection.prepareStatement(message);
@@ -63,6 +75,7 @@ public class AgendaDAO {
 		connection.close();
 	}
 	
+	/* Shows registered contacts in address book*/
 	public ResultSet mostrarContatosCadastrados(Agenda contato) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		ResultSet rs = connection.createStatement().executeQuery(
@@ -71,6 +84,7 @@ public class AgendaDAO {
 		return rs;
 	}
 	
+	/* Search by name */
 	public ResultSet pesquisarPorNome(Agenda contato) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		java.sql.PreparedStatement pst = connection.prepareStatement("SELECT * FROM agenda WHERE "
@@ -80,6 +94,7 @@ public class AgendaDAO {
 		return rs;
 	}
 	
+	/* search by phone number */
 	public ResultSet pesquisarPorTelefone(Agenda contato) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		java.sql.PreparedStatement pst = connection.prepareStatement("SELECT * FROM agenda WHERE "
