@@ -1,3 +1,7 @@
+/**
+ * ServicoPrestado
+ * This class refers to the services rendered on barber shop.
+ */
 package model;
 
 import java.util.Date;
@@ -8,11 +12,13 @@ import java.text.SimpleDateFormat;
 
 public class ServicoPrestado {
 
+	/* Specifying the attributes of the class Relatorio. */
 	private String nomeServico;
 	private String nomeBarbeiro;
 	private String preco;
 	private String data;
 
+	/* Error messages and alerts */
 	private final String NOME_INVALIDO = "Nome do Serviço Inválido";
 	private final String NOME_BRANCO = "Nome do Serviço em Branco";
 	private final String BARBEIRO_INVALIDO = "Nome do Barbeiro em Branco";
@@ -26,28 +32,37 @@ public class ServicoPrestado {
 
 	}
 
+	/* Constructor method of the class ServicoPrestado.*/
 	public ServicoPrestado(String nomeServico, String preco, String nomeBarbeiro) {
 		this.nomeServico = nomeServico;
 		this.preco = preco;
 		this.nomeBarbeiro = nomeBarbeiro;
 	}
 
+	/* This method gets a service name.*/
 	public String getNomeServico() {
 		return nomeServico;
 	}
 
+	/* This method gets a barber name.*/	
 	public String getNomeBarbeiro() {
 		return nomeBarbeiro;
 	}
-
+	
+	/* This method gets a price of service provided.*/
 	public String getPreco() {
 		return preco;
 	}
 
+	/* This method gets a date. */
 	public String getData() {
 		return data;
 	}
 
+	/*
+	 * This method modifies the service name field.
+	 * And ServicoException it ensures that every parameter passed is valid.
+	 * */
 	public void setNomeServico(String nomeServico) throws ServicoException {
 		if (nomeServico == null)
 			throw new NullPointerException(NOME_BRANCO);
@@ -59,6 +74,10 @@ public class ServicoPrestado {
 			throw new ServicoException(NOME_INVALIDO);
 	}
 
+	/*
+	 * This method modifies the barber name field.
+	 * And ServicoException it ensures that every parameter passed is valid.
+	 * */
 	public void setNomeBarbeiro(String nomeBarbeiro) throws ServicoException {
 		if (nomeBarbeiro == null)
 			throw new NullPointerException(BARBEIRO_BRANCO);
@@ -70,6 +89,7 @@ public class ServicoPrestado {
 			throw new ServicoException(BARBEIRO_INVALIDO);
 	}
 
+	/* This method modifies the price field to a valid price.*/
 	public void setPreco(String preco) throws ServicoException {
 		if (preco == null)
 			throw new NullPointerException(PRECO_BRANCO);
@@ -81,6 +101,7 @@ public class ServicoPrestado {
 			throw new ServicoException(PRECO_INVALIDO);
 	}
 
+	/* Method modifies the date field to a valid date. */
 	public void setData(String data) throws ServicoException, ParseException {
 
 		if (data == null)
@@ -104,6 +125,7 @@ public class ServicoPrestado {
 			throw new ServicoException(DATA_INVALIDA);
 	}
 
+	/*This method converts the date to ABNT */
 	public String ConverterDataParaABNT(String data) throws ParseException {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
