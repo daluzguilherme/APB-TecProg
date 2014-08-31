@@ -1,16 +1,22 @@
+/**
+ * Barbeiro
+ * This class gets and sets the attributes barbers working in the barber shop.
+ */
 package model;
 
 import exception.BarbeiroException;
 
 public class Barbeiro {
 
+	/* Specifying the attributes of the class Barbeiro. */
 	private String nome;
 	private String cpf;
 	private String rg;
 	private String telefone;
 	private String cadeira;
 	private static String tempNome;
-
+	
+	/* Error messages and alerts */
 	private final String NOME_INVALIDO = "Nome Inválido";
 	private final String NOME_BRANCO = "Nome em Branco";
 	private final String CPF_INVALIDO = "CPF Inválido";
@@ -24,6 +30,10 @@ public class Barbeiro {
 
 	public Barbeiro() {}
 
+	/*
+	 *  Constructor method of the class Barbeiro. 
+	 *  Has messages that alert the users if there are blank fields.
+	 * */ 
 	public Barbeiro(String nome, String cpf, String rg, String telefone,
 			String cadeira) throws BarbeiroException {
 		this.nome = nome;
@@ -48,26 +58,35 @@ public class Barbeiro {
 			throw new IllegalArgumentException(CADEIRA_BRANCO);
 	}
 
+	/* This method gets a name. */
 	public String getNome() {
 		return nome;
 	}
 
+	/* This method gets a CPF. */
 	public String getCpf() {
 		return cpf;
 	}
 
+	/* This method gets a RG. */
 	public String getRg() {
 		return rg;
 	}
 
+	/* This method gets a phone number. */
 	public String getTelefone() {
 		return telefone;
 	}
 
+	/* This method gets a chair. */
 	public String getCadeira() {
 		return cadeira;
 	}
 
+	/*
+	 * This method modifies the name field.
+	 * And BarbeiroException it ensures that every parameter passed is valid.
+	 * */
 	public void setNome(String nome) throws BarbeiroException {
 		if (nome == null)
 			throw new NullPointerException(NOME_BRANCO);
@@ -79,8 +98,12 @@ public class Barbeiro {
 			throw new BarbeiroException(NOME_INVALIDO);
 	}
 
+	/*
+	 * This method modifies the CPF field.
+	 * And BarbeiroException it ensures that every parameter passed is valid.
+	 */
 	public void setCpf(String cpf) throws BarbeiroException {
-		// Exemplo CPF válido: 493.751.185-84
+
 		try {
 			if (cpf == null)
 				throw new NullPointerException(CPF_BRANCO);
@@ -98,6 +121,10 @@ public class Barbeiro {
 		}
 	}
 
+	/*
+	 * This method modifies the RG field.
+	 * And BarbeiroException it ensures that every parameter passed is valid.
+	 */
 	public void setRg(String rg) throws BarbeiroException {
 		if (rg == null)
 			throw new NullPointerException(RG_BRANCO);
@@ -112,6 +139,7 @@ public class Barbeiro {
 	}
 
 	
+	/* This method modifies the phone number field to a valid phone number. */
 	public void setTelefone(String telefone) throws BarbeiroException {
 		if (telefone == null)
 			throw new NullPointerException(TELEFONE_BRANCO);
@@ -136,14 +164,17 @@ public class Barbeiro {
 			throw new BarbeiroException(CADEIRA_INVALIDA);
 	}
 	
+	/* This method modifies the field name to a temporary variable. */
 	public static String getTempNome() {
 		return tempNome;
 	}
 
+	/* This method modifies the temporary name field. */
 	public static void setTempNome(String tempNome) {
 		Barbeiro.tempNome = tempNome;
 	}
 
+	/* This method validates CPF number */
 	private boolean validarCpf(String cpf) {
 		int d1, d2;
 		int digito1, digito2, resto;
