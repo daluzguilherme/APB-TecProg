@@ -10,6 +10,7 @@ public class ServicoPrestadoController {
 
 	private ServicoPrestadoController() {}
 	
+	/* Gets an instance of ServicoPrestadoController. */
 	public static ServicoPrestadoController getInstance() {
 		if (instance == null)
 			instance = new ServicoPrestadoController();
@@ -18,6 +19,7 @@ public class ServicoPrestadoController {
 
 	private static ServicoPrestadoController instance;
 
+	/* Inserts a service in the database. */
 	public boolean inserir(ServicoPrestado servico) throws SQLException {
 		if (servico != null) {
 			ServicoPrestadoDAO.getInstance().incluir(servico);
@@ -27,6 +29,7 @@ public class ServicoPrestadoController {
 		return false;
 	}
 
+	/* Excludes a service from the database. */
 	public boolean excluir(ServicoPrestado servico) throws SQLException {
 		if (servico !=  null) {
 			ServicoPrestadoDAO.getInstance().excluir(servico);
@@ -36,6 +39,7 @@ public class ServicoPrestadoController {
 		return false;	
 	}
 	
+	/* Shows all services registered. */
 	public ResultSet mostrarServicosPrestadosCadastrados(ServicoPrestado servico) throws SQLException {
 		return ServicoPrestadoDAO.getInstance().mostrarServicosPrestadosCadastrados(servico);
 	}
