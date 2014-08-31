@@ -10,7 +10,7 @@ import exception.BarbeiroException;
 
 public class Agenda {
 
-	//Especificando os atributos da classe Agenda.
+	/*Specifying the attributes of the class Agenda.*/
 	private String nome;
 	private String telefone;
 	private String descricao;
@@ -25,7 +25,7 @@ public class Agenda {
 
 	}
 
-	// Constructor method of the class Agenda.
+	/* Constructor method of the class Agenda.*/
 	public Agenda(String nome, String telefone, String descricao) {
 		this.nome = nome;
 		this.telefone = telefone;
