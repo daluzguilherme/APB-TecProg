@@ -1,3 +1,7 @@
+/**
+ * BarbeiroDAO.java
+ * This class manages the DAO functions of a barber.
+ */
 package dao;
 
 import java.sql.Connection;
@@ -9,17 +13,22 @@ import model.Barbeiro;
 
 public class BarbeiroDAO {
 
+	/* Instance to the singleton. */
 	private static BarbeiroDAO instance;
 
 	private BarbeiroDAO() {
+		
+		/* Blank constructor. */
 	}
 
+	/* Singleton implementation. */
 	public static BarbeiroDAO getInstance() {
 		if (instance == null)
 			instance = new BarbeiroDAO();
 		return instance;
 	}
 
+	/* Include new barber in the database. */
 	public boolean incluir(Barbeiro barbeiro) throws SQLException {
 		if (barbeiro == null)
 			return false;
@@ -34,6 +43,7 @@ public class BarbeiroDAO {
 		return true;
 	}
 
+	/* This updates a barber on the database. */
 	public boolean alterar(String nome, Barbeiro barbeiro_alterado, Barbeiro barbeiro) throws SQLException {
 		if (barbeiro_alterado == null || barbeiro == null)
 			return false;
@@ -49,6 +59,7 @@ public class BarbeiroDAO {
 		return true;
 	}
 
+	/* This removes a barber from the database. */
 	public boolean excluir(Barbeiro barbeiro) throws SQLException {
 		if (barbeiro == null)
 			return false;
@@ -58,6 +69,8 @@ public class BarbeiroDAO {
 		return true;
 	}
 
+	
+	/*  This searches for all barbers from the database. */
 	public ResultSet pesquisar() throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM barbeiro;");
@@ -66,6 +79,7 @@ public class BarbeiroDAO {
 		return rs;
 	}
 
+	/* This updates a query. */
 	public void updateQuery(String message) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement preparedStatement = connection.prepareStatement(message);
@@ -74,6 +88,7 @@ public class BarbeiroDAO {
 		connection.close();
 	}
 	
+	/* Show registered barbers */
 	public ResultSet mostrarBarbeirosCadastrados(Barbeiro barbeiro) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		ResultSet rs = connection.createStatement().executeQuery(
@@ -82,6 +97,7 @@ public class BarbeiroDAO {
 		return rs;
 	}
 	
+	/* Search by name */
 	public ResultSet pesquisarPorNome(Barbeiro barbeiro) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM barbeiro WHERE nome = '" 
