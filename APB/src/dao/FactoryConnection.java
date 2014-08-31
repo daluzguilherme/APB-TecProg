@@ -1,3 +1,7 @@
+/**
+ *FactoryConnection 
+ *Makes the connection with the database server.
+ */
 package dao;
 
 import java.sql.Connection;
@@ -12,17 +16,22 @@ public class FactoryConnection {
 	private String user = "root";
 	private String password = "root";
 	
+	/* Instance for the singleton */
 	private static FactoryConnection instance;
 		
-	private FactoryConnection(){}
+	private FactoryConnection () {
+		
+		/* Blank constructor. */
+	}
 	
+	/* Singleton implementation. */
 	public static FactoryConnection getInstance(){
 		if(instance == null)
 			instance = new FactoryConnection();
 		return instance;
 	}
 			
-		
+	/*  This generates the connection with the database server. */
 	public Connection getConnection() throws SQLException{
 		Connection connection = null;
 		connection = DriverManager.getConnection(local, user, password);
