@@ -1,33 +1,46 @@
+/**
+ * TipoServico
+ * This class refers to the services type on barber shop.
+ */
 package model;
 
 import exception.ServicoException;
 
 public class TipoServico {
 
+	/* Specifying the attributes of the class TipoServico. */
 	private String nomeTipoServico;
 	private String preco;
 	private static String tempNome;
 
-	private final static String NOME_BRANCO = "Nome do Serviço em Branco";
-	private final String PRECO_INVALIDO = "Preço Inválido";
-	private final String PRECO_BRANCO = "Preço em Branco";
+	/* Error messages and alerts */
+	private final static String NOME_BRANCO = "Nome do Serviï¿½o em Branco";
+	private final String PRECO_INVALIDO = "Preï¿½o Invï¿½lido";
+	private final String PRECO_BRANCO = "Preï¿½o em Branco";
 
 	
 	public TipoServico(){
 	}
 	
+	/* This method gets a service type name.*/
 	public String getNomeTipoServico() {
 		return nomeTipoServico;
 	}
 
+	/* This method gets a price of service provided.*/
 	public String getPreco() {
 		return preco;
 	}
 	
+	/* This method modifies the field name to a temporary variable. */
 	public static String getTempNome() {
 		return tempNome;
 	}
 
+	/*
+	 * This method modifies the service type name field.
+	 * And ServicoException it ensures that every parameter passed is valid.
+	 * */
 	public void setNomeTipoServico(String nomeTipoServico) throws ServicoException {
 		if (nomeTipoServico == null)
 			throw new NullPointerException(NOME_BRANCO);
@@ -37,6 +50,7 @@ public class TipoServico {
 			this.nomeTipoServico = nomeTipoServico;
 	}
 
+	/* This method modifies the price field to a valid price.*/
 	public void setPreco(String preco) throws ServicoException {
 		if (preco == null)
 			throw new NullPointerException(PRECO_INVALIDO);
@@ -45,9 +59,10 @@ public class TipoServico {
 		else if (preco.matches("[\\d]{1,3},[\\d]{1,2}"))
 			this.preco = preco;
 		else
-			throw new IllegalArgumentException("Preço deve ser no formato: **,** ");
+			throw new IllegalArgumentException("Preï¿½o deve ser no formato: **,** ");
 	}
 
+	/* This method modifies the temporary name field to a valid temporary name. */
 	public static void setTempNome(String tempNome) throws ServicoException {
 		if (tempNome == null)
 			throw new NullPointerException(NOME_BRANCO);
