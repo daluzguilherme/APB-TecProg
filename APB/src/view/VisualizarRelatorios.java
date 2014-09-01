@@ -1,3 +1,8 @@
+/**
+ * VisualizarRelatorio
+ * This class provides a GUI to see some types of reports.
+ */
+
 package view;
 
 import java.awt.EventQueue;
@@ -51,6 +56,7 @@ public class VisualizarRelatorios extends JFrame {
 
 	DecimalFormat decimal = new DecimalFormat("##0.00");
 
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -64,6 +70,7 @@ public class VisualizarRelatorios extends JFrame {
 		});
 	}
 
+	/* Public method to create the frame. */
 	public VisualizarRelatorios() throws SQLException, RelatorioException,
 			NullPointerException, ParseException {
 		setTitle("Relat\u00F3rios");
@@ -78,6 +85,7 @@ public class VisualizarRelatorios extends JFrame {
 		scrollPane.setBounds(10, 10, 660, 486);
 		contentPane.add(scrollPane);
 
+		/* Create a table with the services, quantity done and values involved. */
 		final DefaultTableModel modelo = new DefaultTableModel(null,
 				new String[] { "Nome do Serviço", "Quantidade", "Valor total",
 						"Valor recebido" }) {
@@ -99,6 +107,9 @@ public class VisualizarRelatorios extends JFrame {
 		RelatorioController relatorioController = RelatorioController
 				.getInstance();
 
+		/*
+		 * Populate the table according to the report type of search selected.
+		 */
 		Relatorio relatorio = new Relatorio();
 
 		if (PesquisarRelatorio.tipoBusca == 1) {
@@ -137,7 +148,7 @@ public class VisualizarRelatorios extends JFrame {
 				dados[3] = Double.toString(valorTotalASerPAgo)
 						.replace(".", ",")
 						.valueOf(decimal.format(valorTotalASerPAgo));
-				
+
 				total = total + valorTotalDoServico;
 				total2 = total2 + valorTotalASerPAgo;
 				modelo.addRow(dados);
@@ -187,10 +198,10 @@ public class VisualizarRelatorios extends JFrame {
 						.valueOf(decimal.format(valorTotalASerPAgo));
 
 				modelo.addRow(dados);
-				
+
 				total = total + valorTotalDoServico;
 				total2 = total2 + valorTotalASerPAgo;
-				
+
 				numeroTotalDeServicos = 0;
 				valorTotalASerPAgo = 0;
 				valorTotalDoServico = 0;
@@ -237,10 +248,10 @@ public class VisualizarRelatorios extends JFrame {
 						.valueOf(decimal.format(valorTotalASerPAgo));
 
 				modelo.addRow(dados);
-				
+
 				total = total + valorTotalDoServico;
 				total2 = total2 + valorTotalASerPAgo;
-				
+
 				numeroTotalDeServicos = 0;
 				valorTotalASerPAgo = 0;
 				valorTotalDoServico = 0;
@@ -271,7 +282,7 @@ public class VisualizarRelatorios extends JFrame {
 						numero = rs.getString("preco").replace(",", ".");
 						double valor = Double.parseDouble(numero);
 						valorTotalDoServico = valorTotalDoServico + valor;
-						
+
 						numeroTotalDeServicos++;
 					}
 				}
@@ -291,7 +302,7 @@ public class VisualizarRelatorios extends JFrame {
 
 				total = total + valorTotalDoServico;
 				total2 = total2 + valorTotalASerPAgo;
-				
+
 				numeroTotalDeServicos = 0;
 				valorTotalASerPAgo = 0;
 				valorTotalDoServico = 0;
@@ -339,7 +350,7 @@ public class VisualizarRelatorios extends JFrame {
 
 				total = total + valorTotalDoServico;
 				total2 = total2 + valorTotalASerPAgo;
-				
+
 				numeroTotalDeServicos = 0;
 				valorTotalASerPAgo = 0;
 				valorTotalDoServico = 0;
@@ -389,7 +400,7 @@ public class VisualizarRelatorios extends JFrame {
 
 				total = total + valorTotalDoServico;
 				total2 = total2 + valorTotalASerPAgo;
-				
+
 				numeroTotalDeServicos = 0;
 				valorTotalASerPAgo = 0;
 				valorTotalDoServico = 0;
@@ -437,12 +448,18 @@ public class VisualizarRelatorios extends JFrame {
 
 				total = total + valorTotalDoServico;
 				total2 = total2 + valorTotalASerPAgo;
-				
+
 				numeroTotalDeServicos = 0;
 				valorTotalASerPAgo = 0;
 				valorTotalDoServico = 0;
 			}
 		}
+
+		/*
+		 * Add a mouse clicked event. When the Pesquisar Button is clicked, it
+		 * goes to a new window, which is PesquisarRelatorio, and dispose this
+		 * one that is not needed.
+		 */
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -461,6 +478,10 @@ public class VisualizarRelatorios extends JFrame {
 		btnPesquisar.setBounds(680, 13, 94, 62);
 		contentPane.add(btnPesquisar);
 
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is MenuPrincipal.
+		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -490,11 +511,15 @@ public class VisualizarRelatorios extends JFrame {
 		lblValor.setBounds(476, 4, 174, 14);
 		panel.add(lblValor);
 
+		/* Creates the graphical panel. */
 		final JPanel painelGrafico = new JPanel();
 		painelGrafico.setBounds(10, 10, 660, 486);
 		contentPane.add(painelGrafico);
 		painelGrafico.setVisible(true);
 
+		/*
+		 * If any type of search is selected, it will create a graphic.
+		 */
 		if (PesquisarRelatorio.tipoBusca != 0) {
 			try {
 				CategoryDataset cds;
@@ -525,6 +550,10 @@ public class VisualizarRelatorios extends JFrame {
 
 		}
 
+		/*
+		 * Add a mouse clicked event. When the Grafico Button is clicked, it
+		 * will set visible or hide the graphic of the search.
+		 */
 		JButton btnGrafico = new JButton("Gr\u00E1fico");
 		btnGrafico.addMouseListener(new MouseAdapter() {
 			@Override
@@ -540,7 +569,10 @@ public class VisualizarRelatorios extends JFrame {
 		});
 		btnGrafico.setBounds(680, 159, 94, 62);
 		contentPane.add(btnGrafico);
-
+		/*
+		 * Add a mouse clicked event. When the Tabela Button is clicked, it will
+		 * set visible or hide the table content of the search.
+		 */
 		JButton btnTabela = new JButton("Tabela");
 		btnTabela.addMouseListener(new MouseAdapter() {
 			@Override
@@ -551,16 +583,17 @@ public class VisualizarRelatorios extends JFrame {
 		});
 		btnTabela.setBounds(680, 86, 94, 62);
 		contentPane.add(btnTabela);
-		
+
 		JPanel painelTotalPago = new JPanel();
 		painelTotalPago.setBounds(10, 509, 660, 22);
 		contentPane.add(painelTotalPago);
 		painelTotalPago.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("Valor total a ser pago para o barbeiro:");
+
+		JLabel lblNewLabel = new JLabel(
+				"Valor total a ser pago para o barbeiro:");
 		lblNewLabel.setBounds(6, 4, 235, 14);
 		painelTotalPago.add(lblNewLabel);
-		
+
 		JLabel lblvalorTotalDoBarbeiro = new JLabel("R$ "
 				+ String.valueOf(decimal.format(total2)));
 		lblvalorTotalDoBarbeiro.setVerticalAlignment(SwingConstants.BOTTOM);
@@ -569,6 +602,17 @@ public class VisualizarRelatorios extends JFrame {
 		painelTotalPago.add(lblvalorTotalDoBarbeiro);
 	}
 
+	/**
+	 * A private method to create a Jfreechart dataset of Relatorio which is
+	 * used to create the graphic image.
+	 * 
+	 * @return dataset The return is a Category Dataset with all the information
+	 *         needed to create the graphic image.
+	 * @throws SQLException
+	 * @throws RelatorioException
+	 * @throws NullPointerException
+	 * @throws ParseException
+	 */
 	private CategoryDataset createDatasetRelatorio() throws SQLException,
 			RelatorioException, NullPointerException, ParseException {
 
@@ -654,7 +698,14 @@ public class VisualizarRelatorios extends JFrame {
 
 		return dataset;
 	}
-
+	
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
 	private static void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
