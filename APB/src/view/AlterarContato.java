@@ -86,7 +86,7 @@ public class AlterarContato extends JFrame {
 		contentPane.add(lblDescricao);
 
 		/*
-		 * Getting an instance of a Contato to be populated with a query from
+		 * Getting an instance of a Agenda to be populated with a query from
 		 * database.
 		 */
 		try {

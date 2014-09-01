@@ -1,3 +1,9 @@
+/**
+ * AlterarTipoServico
+ * This class provides a GUI to change the chosen 
+ * type of service information.
+ */
+
 package view;
 
 import java.awt.EventQueue;
@@ -27,6 +33,7 @@ public class AlterarTipoServico extends JFrame {
 	private JTextField textFieldPreco;
 	private String nome;
 
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -40,6 +47,7 @@ public class AlterarTipoServico extends JFrame {
 		});
 	}
 
+	/* Public method to create the frame. */
 	public AlterarTipoServico() {
 		setTitle("Alterar Tipo Servico");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,12 +75,17 @@ public class AlterarTipoServico extends JFrame {
 		labelCadeira.setBounds(21, 45, 61, 14);
 		contentPane.add(labelCadeira);
 
+		/*
+		 * Getting an instance of a TipoServico to be populated with a query
+		 * from database.
+		 */
 		try {
 			TipoServico tiposervico = new TipoServico();
-			TipoServicoController servicoController = TipoServicoController.getInstance();
+			TipoServicoController servicoController = TipoServicoController
+					.getInstance();
 			tiposervico.setNomeTipoServico(TipoServico.getTempNome());
 			ResultSet rs = servicoController.pesquisarPorNome(tiposervico);
-			
+
 			while (rs.next()) {
 				textFieldNome.setText(rs.getString("nome"));
 				textFieldPreco.setText(rs.getString("preco"));
@@ -84,6 +97,11 @@ public class AlterarTipoServico extends JFrame {
 			mostrarMensagemDeErro(e.getMessage());
 		}
 
+		/*
+		 * Add an action performed event. When the Salvar Button is clicked, it
+		 * takes the strings from the text fields and saves them in in the
+		 * database.
+		 */
 		JButton buttonSalvar = new JButton("Salvar");
 		buttonSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -91,9 +109,10 @@ public class AlterarTipoServico extends JFrame {
 					TipoServico tipoServico = new TipoServico();
 					tipoServico.setNomeTipoServico(textFieldNome.getText());
 					tipoServico.setPreco(textFieldPreco.getText());
-					
-					TipoServicoController tipoServicoController = TipoServicoController.getInstance();
-					tipoServicoController.alterar(nome,tipoServico);
+
+					TipoServicoController tipoServicoController = TipoServicoController
+							.getInstance();
+					tipoServicoController.alterar(nome, tipoServico);
 
 					JOptionPane.showMessageDialog(null, "Tipo de Serviço "
 							+ textFieldNome.getText()
@@ -113,6 +132,10 @@ public class AlterarTipoServico extends JFrame {
 		buttonSalvar.setBounds(10, 86, 124, 23);
 		contentPane.add(buttonSalvar);
 
+		/*
+		 * Add an action performed event. When the Limpar Button is clicked, it
+		 * clears the fields.
+		 */
 		JButton buttonLimpar = new JButton("Limpar Campos");
 		buttonLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -123,6 +146,10 @@ public class AlterarTipoServico extends JFrame {
 		buttonLimpar.setBounds(282, 86, 128, 23);
 		contentPane.add(buttonLimpar);
 
+		/*
+		 * Add an action performed event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is CadastrarTipoServico.
+		 */
 		JButton buttonVoltar = new JButton("Voltar");
 		buttonVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -135,8 +162,14 @@ public class AlterarTipoServico extends JFrame {
 		buttonVoltar.setBounds(144, 86, 128, 23);
 		contentPane.add(buttonVoltar);
 	}
-	
 
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
 	private void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
