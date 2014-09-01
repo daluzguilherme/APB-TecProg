@@ -1,3 +1,9 @@
+/**
+ * AlterarBarbeiro
+ * This class provides a GUI to access address book of possible barbers 
+ * interested in working in the barber shop.
+ */
+
 package view;
 
 import java.awt.EventQueue;
@@ -31,6 +37,7 @@ public class AlterarBarbeiro extends JFrame {
 	private String nome;
 	private JTextField textFieldCpf;
 
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -44,8 +51,8 @@ public class AlterarBarbeiro extends JFrame {
 		});
 	}
 
-	public AlterarBarbeiro()  {
-		
+	/* Public method to create the frame. */
+	public AlterarBarbeiro() {
 
 		setTitle("Alterar Barbeiro");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,11 +70,11 @@ public class AlterarBarbeiro extends JFrame {
 		JLabel labelNome = new JLabel("Nome:");
 		labelNome.setBounds(21, 14, 46, 14);
 		contentPane.add(labelNome);
-		
+
 		JLabel lblCpf = new JLabel("CPF:");
 		lblCpf.setBounds(21, 43, 31, 14);
 		contentPane.add(lblCpf);
-		
+
 		textFieldCpf = new JTextField();
 		textFieldCpf.setBounds(92, 40, 354, 20);
 		contentPane.add(textFieldCpf);
@@ -81,7 +88,7 @@ public class AlterarBarbeiro extends JFrame {
 		JLabel labelRg = new JLabel("RG:");
 		labelRg.setBounds(21, 77, 46, 14);
 		contentPane.add(labelRg);
-		
+
 		textFieldTelefone = new JTextField();
 		textFieldTelefone.setColumns(10);
 		textFieldTelefone.setBounds(92, 102, 354, 20);
@@ -100,13 +107,18 @@ public class AlterarBarbeiro extends JFrame {
 		labelCadeira.setBounds(21, 139, 61, 14);
 		contentPane.add(labelCadeira);
 
+		/*
+		 * Getting an instance of a Barbeiro to populate with
+		 * a query from database.
+		 */
 		try {
 			Barbeiro barbeiro = new Barbeiro();
-			BarbeiroController barbeiroController = BarbeiroController.getInstance();
+			BarbeiroController barbeiroController = BarbeiroController
+					.getInstance();
 			barbeiro.setNome(Barbeiro.getTempNome());
-			
+
 			ResultSet rs = barbeiroController.pesquisarPorNome(barbeiro);
-			
+
 			while (rs.next()) {
 				textFieldNome.setText(rs.getString("nome"));
 				textFieldCpf.setText(rs.getString("cpf"));
@@ -121,6 +133,11 @@ public class AlterarBarbeiro extends JFrame {
 			mostrarMensagemDeErro(e.getMessage());
 		}
 
+		/*
+		 * Add an action performed event. When the Salvar Button is
+		 * clicked, it takes the strings from the text fields and saves
+		 * them in in the database.
+		 */
 		JButton buttonSalvar = new JButton("Salvar");
 		buttonSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -154,7 +171,11 @@ public class AlterarBarbeiro extends JFrame {
 		});
 		buttonSalvar.setBounds(10, 196, 125, 23);
 		contentPane.add(buttonSalvar);
-
+		
+		/*
+		 * Add an action performed event. When the Limpar Button is
+		 * clicked, it clears the fields.
+		 */
 		JButton buttonLimpar = new JButton("Limpar Campos");
 		buttonLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -166,7 +187,11 @@ public class AlterarBarbeiro extends JFrame {
 		});
 		buttonLimpar.setBounds(308, 196, 138, 23);
 		contentPane.add(buttonLimpar);
-
+		
+		/*
+		 * Add an action performed event. When the Voltar Button is
+		 * clicked, it returns the the previous window, which is CadastrarBarbeiro.
+		 */
 		JButton buttonVoltar = new JButton("Voltar");
 		buttonVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -178,10 +203,14 @@ public class AlterarBarbeiro extends JFrame {
 		});
 		buttonVoltar.setBounds(158, 196, 125, 23);
 		contentPane.add(buttonVoltar);
-		
-		
-	}
 
+	}
+	
+	/**
+	 * This method shows an error message.
+	 * @param informacao A String type variable that contains the error
+	 * message to be shown to the user.
+	 */
 	private void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Aten��o",
 				JOptionPane.INFORMATION_MESSAGE);
