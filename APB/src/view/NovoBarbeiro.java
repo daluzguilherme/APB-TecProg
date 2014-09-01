@@ -1,3 +1,8 @@
+/**
+ * NovoBarbeiro
+ * This class provides a GUI to save a new barber in the database.
+ */
+
 package view;
 
 import java.awt.EventQueue;
@@ -34,6 +39,7 @@ public class NovoBarbeiro extends JFrame {
 	private JLabel lblCadeira;
 	private JButton botaoVoltar;
 
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -48,10 +54,14 @@ public class NovoBarbeiro extends JFrame {
 		});
 	}
 
+	/* Public method to create the frame. */
 	public NovoBarbeiro() throws ParseException {
 		inicializarComponentes();
 	}
 
+	/**
+	 * This void method starts all the components.
+	 */
 	public void inicializarComponentes() throws ParseException {
 		setTitle("Cadastrar Barbeiro");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,12 +71,9 @@ public class NovoBarbeiro extends JFrame {
 		setContentPane(contentPane);
 		getContentPane().setLayout(null);
 		contentPane.setLayout(null);
-		
 
-	
 		MaskFormatter mascraFormatTel = new MaskFormatter("(##)####-####");
 		MaskFormatter mascraFormatCpf = new MaskFormatter("###.###.###-##");
-	
 
 		textFieldNome = new JTextField();
 		textFieldNome.setBounds(92, 11, 354, 20);
@@ -107,10 +114,12 @@ public class NovoBarbeiro extends JFrame {
 		lblCadeira = new JLabel("Cadeira:");
 		lblCadeira.setBounds(21, 136, 61, 14);
 		contentPane.add(lblCadeira);
-		
 
-	
-
+		/*
+		 * Add a mouse clicked event. When the Salvar Button is clicked, it
+		 * takes the strings in all fields and creates a new entry in the
+		 * database.
+		 */
 		botaoSalvar = new JButton("Salvar");
 		botaoSalvar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -123,7 +132,8 @@ public class NovoBarbeiro extends JFrame {
 					barbeiro.setTelefone(textFieldTelefone.getText());
 					barbeiro.setCadeira(textFieldCadeira.getText());
 
-					BarbeiroController barbeiroController = BarbeiroController.getInstance();
+					BarbeiroController barbeiroController = BarbeiroController
+							.getInstance();
 					barbeiroController.inserir(barbeiro);
 
 					JOptionPane.showMessageDialog(null, "Barbeiro "
@@ -150,6 +160,10 @@ public class NovoBarbeiro extends JFrame {
 		botaoSalvar.setBounds(10, 177, 125, 23);
 		contentPane.add(botaoSalvar);
 
+		/*
+		 * Add a mouse clicked event. When the LimparCampos Button is clicked,
+		 * it clears all the text fields.
+		 */
 		botaoLimparCampos = new JButton("Limpar Campos");
 		botaoLimparCampos.addMouseListener(new MouseAdapter() {
 			@Override
@@ -164,6 +178,10 @@ public class NovoBarbeiro extends JFrame {
 		botaoLimparCampos.setBounds(308, 177, 138, 23);
 		contentPane.add(botaoLimparCampos);
 
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is CadastrarBarbeiro.
+		 */
 		botaoVoltar = new JButton("Voltar");
 		botaoVoltar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -179,6 +197,13 @@ public class NovoBarbeiro extends JFrame {
 
 	}
 
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
 	private void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
