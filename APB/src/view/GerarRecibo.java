@@ -1,3 +1,9 @@
+/**
+ * GerarRecibo
+ * This class provides a GUI to generate a receipt of all 
+ * the services done by a barber in the current day of work.
+ */
+
 package view;
 
 import java.awt.EventQueue;
