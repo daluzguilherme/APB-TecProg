@@ -1,3 +1,9 @@
+/**
+ * CadastrarServicoPrestado
+ * This class provides a GUI to save informations 
+ * of a service that a barber did.
+ */
+
 package view;
 
 import java.awt.EventQueue;
@@ -28,9 +34,7 @@ public class CadastrarTipoServico extends JFrame {
 	private JPanel contentPane;
 	private static String nomeTemp;
 
-	/**
-	 * Launch the application.
-	 */
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -44,9 +48,7 @@ public class CadastrarTipoServico extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	/* Public method to create the frame. */
 	public CadastrarTipoServico() {
 		setTitle("Tipo de Servi\u00E7o");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,14 +61,22 @@ public class CadastrarTipoServico extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 360, 240);
 		contentPane.add(scrollPane);
-
+		
+		/* Creating a table to show the type of services informations. */
 		final DefaultTableModel modelo = new DefaultTableModel(null,
 				new String[] { "Serviço", "Valor" });
 		final JTable table = new JTable(modelo);
+		
+		/*
+		 * Getting an instance of a service type to populate the table with
+		 * the its informations.
+		 */
 		try {
-			TipoServicoController servicoController = TipoServicoController.getInstance();
-			TipoServico servico= new TipoServico();
-			ResultSet rs = servicoController.mostrarTipoServicoCadastrados(servico);
+			TipoServicoController servicoController = TipoServicoController
+					.getInstance();
+			TipoServico servico = new TipoServico();
+			ResultSet rs = servicoController
+					.mostrarTipoServicoCadastrados(servico);
 			while (rs.next()) {
 				String[] dados = new String[5];
 				dados[0] = rs.getString("nome");
@@ -78,7 +88,12 @@ public class CadastrarTipoServico extends JFrame {
 		}
 
 		scrollPane.setViewportView(table);
-
+		
+		/*
+		 * Add a mouse clicked event. When the Novo Button is clicked, it goes
+		 * to a new window, which is NovoTipoServico, and dispose this one
+		 * that is not needed.
+		 */
 		JButton btnNovo = new JButton("Novo");
 		btnNovo.addMouseListener(new MouseAdapter() {
 			@Override
@@ -94,12 +109,19 @@ public class CadastrarTipoServico extends JFrame {
 		btnNovo.setBounds(380, 24, 94, 23);
 		contentPane.add(btnNovo);
 
+		/*
+		 * Add a mouse clicked event. When the Alterar Button is clicked, it goes
+		 * to a new window, which is AlterarTipoServico, and dispose this one
+		 * that is not needed. A temporary value of the TipoServico model class 
+		 * is set here to be used in the new window displayed.
+		 */
 		JButton btnAlterar = new JButton("Alterar");
 		btnAlterar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					TipoServico.setTempNome(modelo.getValueAt(table.getSelectedRow(), 0).toString());
+					TipoServico.setTempNome(modelo.getValueAt(
+							table.getSelectedRow(), 0).toString());
 					AlterarTipoServico frame = new AlterarTipoServico();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
@@ -113,15 +135,21 @@ public class CadastrarTipoServico extends JFrame {
 		});
 		btnAlterar.setBounds(380, 58, 94, 23);
 		contentPane.add(btnAlterar);
-
+		
+		/*
+		 * Add a mouse clicked event. When the Remover Button is clicked, it
+		 * access the database and remove the type of service that is selected
+		 * in the table.
+		 */
 		JButton btnRemover = new JButton("Remover");
 		btnRemover.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String nome = (String) table.getValueAt(table.getSelectedRow(),	0);
+				String nome = (String) table.getValueAt(table.getSelectedRow(),
+						0);
 				TipoServico tipoServico = new TipoServico();
-				
-				try {	
+
+				try {
 					tipoServico.setNomeTipoServico(nome);
 				} catch (ServicoException e1) {
 					e1.printStackTrace();
@@ -131,13 +159,14 @@ public class CadastrarTipoServico extends JFrame {
 						"Remover " + nome + " da lista?");
 
 				if (confirmacao == JOptionPane.YES_OPTION) {
-					TipoServicoController tipoServicoController = TipoServicoController.getInstance();
+					TipoServicoController tipoServicoController = TipoServicoController
+							.getInstance();
 					try {
 						tipoServicoController.excluir(tipoServico);
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
-					
+
 					dispose();
 					CadastrarTipoServico frame = new CadastrarTipoServico();
 					frame.setVisible(true);
@@ -148,7 +177,11 @@ public class CadastrarTipoServico extends JFrame {
 		});
 		btnRemover.setBounds(380, 92, 94, 23);
 		contentPane.add(btnRemover);
-
+		
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is Administrativo.
+		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setBounds(380, 228, 94, 23);
 		btnVoltar.addActionListener(new ActionListener() {
@@ -166,6 +199,13 @@ public class CadastrarTipoServico extends JFrame {
 		return nomeTemp;
 	}
 
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
 	private void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
