@@ -3,6 +3,7 @@
  * This class provides a GUI to save a new contact 
  * information in the address book.
  */
+
 package view;
 
 import java.awt.EventQueue;

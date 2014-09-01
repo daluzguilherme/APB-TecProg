@@ -1,3 +1,9 @@
+/**
+ * NovoServicoPrestado
+ * This class provides a GUI to save a 
+ * new service finished by a barber.
+ */
+
 package view;
 
 import java.awt.EventQueue;
@@ -37,6 +43,7 @@ public class NovoServicoPrestado extends JFrame {
 	private JPanel contentPane;
 	private JTextField textValor;
 
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -51,6 +58,7 @@ public class NovoServicoPrestado extends JFrame {
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
+	/* Public method to create the frame. */
 	public NovoServicoPrestado() {
 		setTitle("Criar nova presta\u00E7\u00E3o de servi\u00E7o");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -77,12 +85,21 @@ public class NovoServicoPrestado extends JFrame {
 		textValor.setBounds(129, 84, 114, 20);
 		contentPane.add(textValor);
 
+		/* Create a combo box to put all the barber's name. */
 		final JComboBox comboBoxBarbeiro = new JComboBox();
 		comboBoxBarbeiro.setModel(new DefaultComboBoxModel(
 				new String[] { "Selecione um barbeiro" }));
 		comboBoxBarbeiro.setBounds(129, 53, 289, 20);
 		contentPane.add(comboBoxBarbeiro);
 
+		/*
+		 * Some refactoring is needed here. Accessing the database direct from a
+		 * view class.
+		 */
+
+		/*
+		 * Getting the price value from the database to fill a text field.
+		 */
 		final JComboBox comboBoxServico = new JComboBox();
 		comboBoxServico.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
@@ -106,6 +123,12 @@ public class NovoServicoPrestado extends JFrame {
 			}
 
 		});
+
+		/*
+		 * Populating the combo box Barbeiro with all the barber's names and
+		 * chair. Populating the combo box Servico with the type of the service
+		 * done by the barber to the client.
+		 */
 		comboBoxServico.setModel(new DefaultComboBoxModel(
 				new String[] { "Selecione um tipo de servi\u00E7o" }));
 		comboBoxServico.setMaximumRowCount(4);
@@ -137,6 +160,11 @@ public class NovoServicoPrestado extends JFrame {
 			mostrarMensagemDeErro(e.getMessage());
 		}
 
+		/*
+		 * Add a mouse clicked event. When the Salvar Button is clicked, it
+		 * takes the strings in all fields and creates a new entry in the
+		 * database.
+		 */
 		JButton botaoSalvar = new JButton("Salvar");
 		botaoSalvar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -192,6 +220,10 @@ public class NovoServicoPrestado extends JFrame {
 		botaoSalvar.setBounds(27, 129, 89, 23);
 		contentPane.add(botaoSalvar);
 
+		/*
+		 * Add a mouse clicked event. When the LimparCampos Button is clicked,
+		 * it clears all the text fields.
+		 */
 		JButton botaoLimparCampos = new JButton("Limpar Campos");
 		botaoLimparCampos.addMouseListener(new MouseAdapter() {
 			@Override
@@ -204,6 +236,10 @@ public class NovoServicoPrestado extends JFrame {
 		botaoLimparCampos.setBounds(152, 129, 148, 23);
 		contentPane.add(botaoLimparCampos);
 
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is CadastrarBarbeiro.
+		 */
 		JButton botaoVoltar = new JButton("Voltar");
 		botaoVoltar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -218,6 +254,13 @@ public class NovoServicoPrestado extends JFrame {
 		contentPane.add(botaoVoltar);
 	}
 
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
 	private void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
