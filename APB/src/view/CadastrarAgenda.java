@@ -1,3 +1,9 @@
+/**
+ * CadastrarAgenda
+ * This class provides a GUI to save a contact of a 
+ * barber in the address book.
+ */
+
 package view;
 
 import javax.swing.JFrame;
@@ -24,6 +30,7 @@ public class CadastrarAgenda extends JFrame {
 
 	private JPanel contentPane;
 
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -37,6 +44,7 @@ public class CadastrarAgenda extends JFrame {
 		});
 	}
 
+	/* Public method to create the frame. */
 	public CadastrarAgenda() {
 		setTitle("Agenda de Contatos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,6 +58,9 @@ public class CadastrarAgenda extends JFrame {
 		scrollPane.setBounds(10, 21, 435, 401);
 		contentPane.add(scrollPane);
 
+		/*
+		 * Creating a table to show the address book information.
+		 */
 		final DefaultTableModel modelo = new DefaultTableModel(null,
 				new String[] { "Nome", "Telefone", "Descri\u00E7\u00E3o" }) {
 			boolean[] columnEditables = new boolean[] { false, false, false };
@@ -58,13 +69,17 @@ public class CadastrarAgenda extends JFrame {
 				return columnEditables[column];
 			}
 		};
-		
+
 		final JTable table = new JTable(modelo);
 		table.getColumnModel().getColumn(0).setResizable(false);
 		table.getColumnModel().getColumn(1).setResizable(false);
 		table.getColumnModel().getColumn(2).setResizable(false);
 		scrollPane.setViewportView(table);
 
+		/*
+		 * Getting an instance of a Agenda to populate the table with the
+		 * address book informations.
+		 */
 		try {
 			AgendaController agendaController = AgendaController.getInstance();
 			Agenda contato = new Agenda();
@@ -82,6 +97,10 @@ public class CadastrarAgenda extends JFrame {
 
 		scrollPane.setViewportView(table);
 
+		/*
+		 * Add a mouse clicked event. When the Novo Button is clicked, it
+		 * creates a new window, which is NovoContato.
+		 */
 		JButton btnNovo = new JButton("Novo");
 		btnNovo.addMouseListener(new MouseAdapter() {
 			@Override
@@ -95,12 +114,16 @@ public class CadastrarAgenda extends JFrame {
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				
+
 			}
 		});
 		btnNovo.setBounds(455, 24, 94, 23);
 		contentPane.add(btnNovo);
 
+		/*
+		 * Add a mouse clicked event. When the Pesquisar Button is clicked, it
+		 * creates a new window, which is PesquisarContato.
+		 */
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -114,6 +137,10 @@ public class CadastrarAgenda extends JFrame {
 		btnPesquisar.setBounds(455, 58, 94, 23);
 		contentPane.add(btnPesquisar);
 
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is Administrativo.
+		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -128,6 +155,13 @@ public class CadastrarAgenda extends JFrame {
 		contentPane.add(btnVoltar);
 	}
 
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
 	private void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
