@@ -1,7 +1,7 @@
 /**
  * AlterarBarbeiro
- * This class provides a GUI to access address book of possible barbers 
- * interested in working in the barber shop.
+ * This class provides a GUI to change the chosen 
+ * barber information.
  */
 
 package view;
