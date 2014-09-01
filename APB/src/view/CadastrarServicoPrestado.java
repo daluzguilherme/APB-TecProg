@@ -1,3 +1,9 @@
+/**
+ * CadastrarServicoPrestado
+ * This class provides a GUI to save informations 
+ * of a service that a barber did.
+ */
+
 package view;
 
 import java.awt.EventQueue;
@@ -28,6 +34,7 @@ public class CadastrarServicoPrestado extends JFrame {
 
 	private JPanel contentPane;
 
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,6 +48,7 @@ public class CadastrarServicoPrestado extends JFrame {
 		});
 	}
 
+	/* Public method to create the frame. */
 	public CadastrarServicoPrestado() {
 		setTitle("Servi\u00E7os Prestados");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,14 +62,23 @@ public class CadastrarServicoPrestado extends JFrame {
 		scrollPane.setBounds(10, 11, 360, 240);
 		contentPane.add(scrollPane);
 
+		/*
+		 * Creating a table to show the services informations.
+		 */
 		final DefaultTableModel modelo = new DefaultTableModel(null,
 				new String[] { "Serviço", "Realizado por", "Valor", "Data" });
 		final JTable table = new JTable(modelo);
 
+		/*
+		 * Getting an instance of a finished service to populate the table with
+		 * the its informations.
+		 */
 		try {
-			ServicoPrestadoController servicoController = ServicoPrestadoController.getInstance();
+			ServicoPrestadoController servicoController = ServicoPrestadoController
+					.getInstance();
 			ServicoPrestado servico = new ServicoPrestado();
-			ResultSet rs = servicoController.mostrarServicosPrestadosCadastrados(servico);
+			ResultSet rs = servicoController
+					.mostrarServicosPrestadosCadastrados(servico);
 			while (rs.next()) {
 				String[] dados = new String[4];
 				dados[0] = rs.getString("nome");
@@ -78,6 +95,11 @@ public class CadastrarServicoPrestado extends JFrame {
 
 		scrollPane.setViewportView(table);
 
+		/*
+		 * Add a mouse clicked event. When the Novo Button is clicked, it goes
+		 * to a new window, which is NovoServicoPrestado, and dispose this one
+		 * that is not needed.
+		 */
 		JButton btnNovo = new JButton("Novo");
 		btnNovo.addMouseListener(new MouseAdapter() {
 			@Override
@@ -91,6 +113,11 @@ public class CadastrarServicoPrestado extends JFrame {
 		btnNovo.setBounds(380, 24, 94, 23);
 		contentPane.add(btnNovo);
 
+		/*
+		 * Add a mouse clicked event. When the Pesquisar Button is clicked, it
+		 * goes to a new window, which is PesquisarServicoPrestado, and dispose
+		 * this one that is not needed.
+		 */
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -104,6 +131,11 @@ public class CadastrarServicoPrestado extends JFrame {
 		btnPesquisar.setBounds(380, 58, 94, 23);
 		contentPane.add(btnPesquisar);
 
+		/*
+		 * Add an action performed event. When the Remover Button is clicked, it
+		 * access the database and remove the finished service that is selected
+		 * in the table.
+		 */
 		JButton btnRemover = new JButton("Remover");
 		btnRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -150,6 +182,10 @@ public class CadastrarServicoPrestado extends JFrame {
 		btnRemover.setBounds(380, 92, 94, 23);
 		contentPane.add(btnRemover);
 
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is MenuPrincipal.
+		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -164,6 +200,13 @@ public class CadastrarServicoPrestado extends JFrame {
 		contentPane.add(btnVoltar);
 	}
 
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
 	private void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
