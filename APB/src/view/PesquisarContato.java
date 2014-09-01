@@ -1,3 +1,8 @@
+/**
+ * PesquisarContato
+ * This class provides a GUI to search all the information 
+ * about an entry in the address book contact.
+ */
 package view;
 
 import java.awt.EventQueue;
@@ -30,6 +35,7 @@ public class PesquisarContato extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -43,10 +49,14 @@ public class PesquisarContato extends JFrame {
 		});
 	}
 
+	/* Public method to create the frame. */
 	public PesquisarContato() {
 		inicializarComponentes();
 	}
 
+	/**
+	 * This void method starts all the components.
+	 */
 	public void inicializarComponentes() {
 		setTitle("Pesquisar Contato");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,6 +70,7 @@ public class PesquisarContato extends JFrame {
 		scrollPane.setBounds(10, 11, 414, 115);
 		contentPane.add(scrollPane);
 
+		/* Creating a table to show the contacts informations. */
 		final DefaultTableModel modelo = new DefaultTableModel(null,
 				new String[] { "Nome", "Telefone", "Descrição" });
 		final JTable table = new JTable(modelo);
@@ -78,16 +89,20 @@ public class PesquisarContato extends JFrame {
 		lblPesquisar.setBounds(20, 137, 66, 14);
 		contentPane.add(lblPesquisar);
 
+		/*
+		 * Add a mouse clicked event. When the PesquisarNome Button is clicked,
+		 * it searches the contact by its name.
+		 */
 		JButton btnPesquisarNome = new JButton("Pesquisar Nome");
 		btnPesquisarNome.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
-					
-					for (int i = 0; i< modelo.getRowCount(); i++){
+
+					for (int i = 0; i < modelo.getRowCount(); i++) {
 						modelo.removeRow(i);
 					}
-					
+
 					Agenda contato = new Agenda();
 					AgendaController agendaController = AgendaController
 							.getInstance();
@@ -111,17 +126,21 @@ public class PesquisarContato extends JFrame {
 		btnPesquisarNome.setBounds(82, 168, 160, 23);
 		contentPane.add(btnPesquisarNome);
 
+		/*
+		 * Add a mouse clicked event. When the PesquisarTelefone Button is
+		 * clicked, it searches the contact by its telephone number.
+		 */
 		JButton btnPesquisarTelefone = new JButton("Pesquisar Telefone");
 		btnPesquisarTelefone.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 
 				try {
-					
-					for (int i = 0; i< modelo.getRowCount(); i++){
+
+					for (int i = 0; i < modelo.getRowCount(); i++) {
 						modelo.removeRow(i);
 					}
-					
+
 					Agenda contato = new Agenda();
 					AgendaController agendaController = AgendaController
 							.getInstance();
@@ -134,9 +153,9 @@ public class PesquisarContato extends JFrame {
 						dados[0] = rs.getString("nome");
 						dados[1] = rs.getString("telefone");
 						dados[2] = rs.getString("descricao");
-						
+
 						modelo.addRow(dados);
-						
+
 						table.updateUI();
 					}
 				} catch (SQLException e) {
@@ -149,6 +168,11 @@ public class PesquisarContato extends JFrame {
 		btnPesquisarTelefone.setBounds(264, 168, 160, 23);
 		contentPane.add(btnPesquisarTelefone);
 
+		/*
+		 * Add a mouse clicked event. When the Alterar Button is clicked, it
+		 * goes to a new window, which is AlterarContato, and dispose this one
+		 * that is not needed.
+		 */
 		JButton btnAlterar = new JButton("Alterar");
 		btnAlterar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -169,6 +193,10 @@ public class PesquisarContato extends JFrame {
 		btnAlterar.setBounds(98, 228, 89, 23);
 		contentPane.add(btnAlterar);
 
+		/*
+		 * Add a mouse clicked event. When the Romover Button is clicked, it
+		 * removes the selected entry in the database. 
+		 */
 		JButton btnRemover = new JButton("Remover");
 		btnRemover.addMouseListener(new MouseAdapter() {
 			@Override
@@ -208,6 +236,10 @@ public class PesquisarContato extends JFrame {
 		btnRemover.setBounds(216, 228, 89, 23);
 		contentPane.add(btnRemover);
 
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is CadastrarAgenda.
+		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -222,6 +254,13 @@ public class PesquisarContato extends JFrame {
 		contentPane.add(btnVoltar);
 	}
 
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
 	private void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Aten��o",
 				JOptionPane.INFORMATION_MESSAGE);
