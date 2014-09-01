@@ -1,3 +1,8 @@
+/**
+ * NovoContato
+ * This class provides a GUI to save a new contact 
+ * information in the address book.
+ */
 package view;
 
 import java.awt.EventQueue;
@@ -29,6 +34,7 @@ public class NovoContato extends JFrame {
 	private JTextField textFieldTelefone;
 	private JTextField textFieldDescricao;
 
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -42,10 +48,14 @@ public class NovoContato extends JFrame {
 		});
 	}
 
+	/* Public method to create the frame. */
 	public NovoContato() throws ParseException {
 		inicializarComponentes();
 	}
 
+	/**
+	 * This void method starts all the components.
+	 */
 	public void inicializarComponentes() throws ParseException {
 		setTitle("Novo Contato");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,6 +66,11 @@ public class NovoContato extends JFrame {
 		contentPane.setLayout(null);
 		MaskFormatter mascraFormatTel = new MaskFormatter("(##)####-####");
 
+		/*
+		 * Add a mouse clicked event. When the Salvar Button is clicked, it
+		 * takes the strings in all fields and creates a new entry in the
+		 * database.
+		 */
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -66,22 +81,23 @@ public class NovoContato extends JFrame {
 					agenda.setTelefone(textFieldTelefone.getText());
 					agenda.setDescricao(textFieldDescricao.getText());
 
-					AgendaController agendaController = AgendaController.getInstance();
+					AgendaController agendaController = AgendaController
+							.getInstance();
 					agendaController.incluir(agenda);
 
 					JOptionPane.showMessageDialog(null, "Contato "
 							+ textFieldNome.getText()
 							+ " foi adicionado com sucesso");
-					
+
 					textFieldNome.setText("");
 					textFieldTelefone.setText("");
 					textFieldDescricao.setText("");
-					
+
 					dispose();
-					CadastrarAgenda frame =  new CadastrarAgenda();
+					CadastrarAgenda frame = new CadastrarAgenda();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
-					
+
 				} catch (SQLException e1) {
 					mostrarMensagemDeErro(e1.getMessage());
 				} catch (BarbeiroException e1) {
@@ -94,6 +110,10 @@ public class NovoContato extends JFrame {
 		btnSalvar.setBounds(26, 218, 109, 33);
 		contentPane.add(btnSalvar);
 
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is CadastrarBarbeiro.
+		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -108,6 +128,10 @@ public class NovoContato extends JFrame {
 		btnVoltar.setBounds(166, 218, 100, 33);
 		contentPane.add(btnVoltar);
 
+		/*
+		 * Add a mouse clicked event. When the LimparCampos Button is clicked,
+		 * it clears all the text fields.
+		 */
 		JButton btnLimparCampos = new JButton("Limpar Campos");
 		btnLimparCampos.addMouseListener(new MouseAdapter() {
 			@Override
@@ -148,7 +172,14 @@ public class NovoContato extends JFrame {
 		lblDescricao.setBounds(22, 117, 64, 14);
 		contentPane.add(lblDescricao);
 	}
-	
+
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
 	private void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
