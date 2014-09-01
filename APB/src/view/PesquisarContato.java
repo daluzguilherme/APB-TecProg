@@ -3,6 +3,7 @@
  * This class provides a GUI to search all the information 
  * about an entry in the address book contact.
  */
+
 package view;
 
 import java.awt.EventQueue;

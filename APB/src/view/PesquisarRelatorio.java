@@ -1,7 +1,11 @@
+/**
+ * PesquisarRelatorio
+ * This class provides a GUI to search all the information 
+ * about the reports.
+ */
 package view;
 
 import java.awt.Checkbox;
-import java.awt.Event;
 import java.awt.EventQueue;
 
 import javax.swing.JFormattedTextField;
@@ -41,9 +45,7 @@ public class PesquisarRelatorio extends JFrame {
 	public static String dataInicial = "dataInicial";
 	public static String dataFinal = "dataFinal";
 
-	/**
-	 * Launch the application.
-	 */
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -58,8 +60,9 @@ public class PesquisarRelatorio extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
-	 * @throws ParseException 
+	 * Public method to create the frame.
+	 * 
+	 * @throws ParseException
 	 */
 	public PesquisarRelatorio() throws ParseException {
 		setTitle("Tipo de Pesquisa do Relat\u00F3rio");
@@ -96,6 +99,10 @@ public class PesquisarRelatorio extends JFrame {
 		lblDataInicial.setBounds(10, 53, 86, 14);
 		panelData.add(lblDataInicial);
 
+		/*
+		 * When this check box is listed, it enable the text fields for the
+		 * initial date and final date type of search.
+		 */
 		final Checkbox checkPorData = new Checkbox("Ativar");
 		checkPorData.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -130,6 +137,10 @@ public class PesquisarRelatorio extends JFrame {
 		txtBarbeiro.setBounds(71, 23, 140, 20);
 		panelBarbeiro.add(txtBarbeiro);
 
+		/*
+		 * When this check box is listed, it enable the text field to search by
+		 * the barber's name.
+		 */
 		final Checkbox checkBarbeiro = new Checkbox("Ativar");
 		checkBarbeiro.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -161,6 +172,10 @@ public class PesquisarRelatorio extends JFrame {
 		txtServico.setBounds(71, 23, 140, 20);
 		panelServico.add(txtServico);
 
+		/*
+		 * When this check box is listed, it enable the text field to search by
+		 * the type of service.
+		 */
 		final Checkbox checkServico = new Checkbox("Ativar");
 		checkServico.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -176,6 +191,10 @@ public class PesquisarRelatorio extends JFrame {
 		checkServico.setBounds(6, 23, 59, 23);
 		panelServico.add(checkServico);
 
+		/*
+		 * Add a mouse clicked event. When the Concluir Button is clicked, it
+		 * searches the reports using the type of search wished.
+		 */
 		JButton btnConcluir = new JButton("Concluir");
 		btnConcluir.addMouseListener(new MouseAdapter() {
 			@Override
@@ -254,8 +273,8 @@ public class PesquisarRelatorio extends JFrame {
 						&& checkServico.getState() == false) {
 					JOptionPane.showMessageDialog(null,
 							"Selecione uma opção de busca");
-				} 
-				if (tipoBusca!=0){
+				}
+				if (tipoBusca != 0) {
 					try {
 						VisualizarRelatorios frame = new VisualizarRelatorios();
 						frame.setVisible(true);
@@ -278,6 +297,10 @@ public class PesquisarRelatorio extends JFrame {
 		btnConcluir.setBounds(241, 11, 105, 62);
 		contentPane.add(btnConcluir);
 
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is VisualizarRelatorios.
+		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -301,11 +324,14 @@ public class PesquisarRelatorio extends JFrame {
 		btnVoltar.setBounds(241, 228, 105, 23);
 		contentPane.add(btnVoltar);
 	}
-
-	public boolean action(Event evento, Object arg) {
-		return false;
-	}
-
+	
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
 	private static void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
