@@ -38,15 +38,21 @@ public class GerarRecibo extends JFrame {
 	private double total = 0;
 	private String numero;
 
+	/* Defining some static information to be shown in the receipt. */
 	private static String RAZAO_SOCIAL = "BARBEARIA DO ONOFRE LTDA - ME";
 	private static String RECIBO_PAGAMENTO = "RECIBO PAGAMENTO ALUGUEL BENS MÓVEIS";
 	private static String LINHA = "____________________________________________________________";
 	private static String LOCAL_E_DATA = "                    Brasília - DF  ____/____/________";
 
 	/**
-	 * Launch the application.
+	 * This method converts a date information to Brazilian ABNT format.
+	 * 
+	 * @param data
+	 *            This variable carries a date information to be formated.
+	 * @return databr This variable returns a date information in the Brazilian
+	 *         ABNT format.
+	 * @throws ParseException
 	 */
-
 	public String ConverterDataParaABNT(String data) throws ParseException {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -58,6 +64,16 @@ public class GerarRecibo extends JFrame {
 		return databr;
 	}
 
+	/**
+	 * This method converts a date information to Brazilian ABNT format without
+	 * bars.
+	 * 
+	 * @param data
+	 *            This variable carries a date information to be formated.
+	 * @return databr This variable returns a date information in the Brazilian
+	 *         ABNT format without bars.
+	 * @throws ParseException
+	 */
 	public String ConverterDataParaABNTSemBarra(String data)
 			throws ParseException {
 
@@ -70,6 +86,14 @@ public class GerarRecibo extends JFrame {
 		return databr;
 	}
 
+	/**
+	 * This method converts a date information to ISO format.
+	 * 
+	 * @param data
+	 *            This variable carries a date information to be formated.
+	 * @return databr This variable returns a date information in ISO format.
+	 * @throws ParseException
+	 */
 	private String ConverterDataParaISO(String data) throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date dataABNT = sdf.parse(data);
@@ -80,6 +104,7 @@ public class GerarRecibo extends JFrame {
 		return dataISO;
 	}
 
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -93,11 +118,7 @@ public class GerarRecibo extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 * 
-	 * @throws ParseException
-	 */
+	/* Public method to create the frame. */
 	public GerarRecibo() throws ParseException {
 		setTitle("Gerar Recibo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -107,12 +128,14 @@ public class GerarRecibo extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		/* Create a combo box to put barber informations. */
 		final JComboBox comboBoxBarbeiros = new JComboBox();
 		comboBoxBarbeiros.setModel(new DefaultComboBoxModel(
 				new String[] { "Selecione um barbeiro" }));
 		comboBoxBarbeiros.setBounds(10, 32, 304, 26);
 		contentPane.add(comboBoxBarbeiros);
 
+		/* Populating the combo box with the barber informations. */
 		try {
 			ResultSet rs = BarbeiroController.getInstance().pesquisar();
 			while (rs.next()) {
@@ -143,6 +166,11 @@ public class GerarRecibo extends JFrame {
 		lblDataFinal.setBounds(215, 89, 86, 14);
 		contentPane.add(lblDataFinal);
 
+		/*
+		 * Add a mouse clicked event. When the GerarRecibo Button is clicked, it
+		 * generates a receipt with all the services informations of the day of
+		 * that one barber chosen in the combo box.
+		 */
 		JButton btnGerarRecibo = new JButton("Gerar Recibo");
 		btnGerarRecibo.addMouseListener(new MouseAdapter() {
 			@Override
@@ -258,6 +286,10 @@ public class GerarRecibo extends JFrame {
 		btnGerarRecibo.setBounds(202, 175, 112, 35);
 		contentPane.add(btnGerarRecibo);
 
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is Administrativo.
+		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -272,6 +304,13 @@ public class GerarRecibo extends JFrame {
 		contentPane.add(btnVoltar);
 	}
 
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
 	private void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
