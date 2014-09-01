@@ -1,3 +1,9 @@
+/**
+ * NovoTiporServico
+ * This class provides a GUI to save a 
+ * new type of service offered by the barber shop.
+ */
+
 package view;
 
 import java.awt.EventQueue;
@@ -30,9 +36,7 @@ public class NovoTipoServico extends JFrame {
 	private JTextField textFieldServico;
 	private JTextField textFieldPreco;
 
-	/**
-	 * Launch the application.
-	 */
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -46,9 +50,7 @@ public class NovoTipoServico extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	/* Public method to create the frame. */
 	public NovoTipoServico() {
 		setTitle("Cadastar novo tipo de servi\u00E7o");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,6 +78,11 @@ public class NovoTipoServico extends JFrame {
 		lblPreco.setBounds(29, 65, 65, 17);
 		contentPane.add(lblPreco);
 		
+		/*
+		 * Add a mouse clicked event. When the Salvar Button is clicked, it
+		 * takes the strings in all fields and creates a new entry in the
+		 * database.
+		 */
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -109,6 +116,10 @@ public class NovoTipoServico extends JFrame {
 		btnSalvar.setBounds(29, 108, 89, 23);
 		contentPane.add(btnSalvar);
 
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is CadastrarBarbeiro.
+		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -122,6 +133,13 @@ public class NovoTipoServico extends JFrame {
 		contentPane.add(btnVoltar);
 	}
 
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
 	private void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
