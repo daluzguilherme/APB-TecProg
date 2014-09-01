@@ -208,8 +208,10 @@ public class AlterarBarbeiro extends JFrame {
 	
 	/**
 	 * This method shows an error message.
-	 * @param informacao A String type variable that contains the error
-	 * message to be shown to the user.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
 	 */
 	private void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Aten��o",

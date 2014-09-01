@@ -1,3 +1,9 @@
+/**
+ * AlterarContato
+ * This class provides a GUI to change information from the address 
+ * book of possible barbers interested in working in the barber shop.
+ */
+
 package view;
 
 import java.awt.EventQueue;
@@ -28,6 +34,7 @@ public class AlterarContato extends JFrame {
 	private JTextField textFieldDescricao;
 	private String nome;
 
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,6 +48,7 @@ public class AlterarContato extends JFrame {
 		});
 	}
 
+	/* Public method to create the frame. */
 	public AlterarContato() {
 		setTitle("Alterar Contato");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,7 +57,7 @@ public class AlterarContato extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		textFieldNome = new JTextField();
 		textFieldNome.setBounds(83, 22, 341, 20);
 		contentPane.add(textFieldNome);
@@ -76,13 +84,17 @@ public class AlterarContato extends JFrame {
 		JLabel lblDescricao = new JLabel("Descri\u00E7\u00E3o:");
 		lblDescricao.setBounds(10, 97, 63, 14);
 		contentPane.add(lblDescricao);
-		
+
+		/*
+		 * Getting an instance of a Contato to be populated with a query from
+		 * database.
+		 */
 		try {
 			Agenda contato = new Agenda();
 			AgendaController agendaController = AgendaController.getInstance();
 			contato.setNome(Agenda.getTempNome());
 			ResultSet rs = agendaController.pesquisarPorNome(contato);
-				
+
 			while (rs.next()) {
 				textFieldNome.setText(rs.getString("nome"));
 				textFieldTelefone.setText(rs.getString("telefone"));
@@ -95,6 +107,11 @@ public class AlterarContato extends JFrame {
 			mostrarMensagemDeErro(e.getMessage());
 		}
 
+		/*
+		 * Add an action performed event. When the SalvarAlteracao Button is
+		 * clicked, it takes the strings from the text fields and saves them in
+		 * in the database.
+		 */
 		JButton btnSalvarAlteracao = new JButton("Salvar Altera\u00E7\u00E3o");
 		btnSalvarAlteracao.addMouseListener(new MouseAdapter() {
 			@Override
@@ -105,7 +122,8 @@ public class AlterarContato extends JFrame {
 					agenda.setTelefone(textFieldTelefone.getText());
 					agenda.setDescricao(textFieldDescricao.getText());
 
-					AgendaController AgendaController = control.AgendaController.getInstance();
+					AgendaController AgendaController = control.AgendaController
+							.getInstance();
 					AgendaController.alterar(nome, agenda);
 
 					JOptionPane.showMessageDialog(null, "Agenda "
@@ -121,17 +139,21 @@ public class AlterarContato extends JFrame {
 				} catch (SQLException k) {
 					mostrarMensagemDeErro(k.getMessage());
 				}
-			}	
-			
+			}
+
 		});
 		btnSalvarAlteracao.setBounds(83, 136, 153, 31);
 		contentPane.add(btnSalvarAlteracao);
 
+		/*
+		 * Add an action performed event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is CadastrarAgenda.
+		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 				dispose();
 				CadastrarAgenda frame = new CadastrarAgenda();
 				frame.setVisible(true);
@@ -142,6 +164,13 @@ public class AlterarContato extends JFrame {
 		contentPane.add(btnVoltar);
 	}
 
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
 	private void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
