@@ -1,3 +1,9 @@
+/**
+ * PesquisarServicoPrestado
+ * This class provides a GUI to search all services
+ *  done by a certain barber.
+ */
+
 package view;
 
 import java.awt.EventQueue;
@@ -36,6 +42,7 @@ public class PesquisarServicoPrestado extends JFrame {
 	private Connection connection;
 	private static String tempNome;
 
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -49,10 +56,14 @@ public class PesquisarServicoPrestado extends JFrame {
 		});
 	}
 
+	/* Public method to create the frame. */
 	public PesquisarServicoPrestado() {
 		inicializarComponentes();
 	}
 
+	/**
+	 * This void method starts all the components.
+	 */
 	public void inicializarComponentes() {
 		setTitle("Pesquisar Servi\u00E7o");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,6 +91,10 @@ public class PesquisarServicoPrestado extends JFrame {
 		lblPesquisar.setBounds(20, 137, 66, 14);
 		contentPane.add(lblPesquisar);
 
+		/*
+		 * Add an action performed event. When the PesquisarServico Button is
+		 * clicked, it searches the services done by its name.
+		 */
 		JButton btnPesquisarServico = new JButton("Pesquisar Serviço");
 		btnPesquisarServico.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -87,17 +102,20 @@ public class PesquisarServicoPrestado extends JFrame {
 					ServicoPrestado servico = new ServicoPrestado();
 					servico.setNomeServico(textField.getText());
 
-					connection = FactoryConnection.getInstance().getConnection();
+					connection = FactoryConnection.getInstance()
+							.getConnection();
 					ResultSet rs = connection.createStatement().executeQuery(
 							"SELECT nome, preco, barbeiro, data FROM servicoprestado WHERE nome = '"
-									+ servico.getNomeServico() + "' ORDER BY data;");
+									+ servico.getNomeServico()
+									+ "' ORDER BY data;");
 
 					while (rs.next()) {
 						String[] dados = new String[4];
 						dados[0] = rs.getString("nome");
 						dados[1] = rs.getString("barbeiro");
 						dados[2] = rs.getString("preco");
-						dados[3] = servico.ConverterDataParaABNT(rs.getString("data"));
+						dados[3] = servico.ConverterDataParaABNT(rs
+								.getString("data"));
 						modelo.addRow(dados);
 					}
 				} catch (ServicoException e) {
@@ -113,6 +131,11 @@ public class PesquisarServicoPrestado extends JFrame {
 		btnPesquisarServico.setBounds(10, 168, 148, 23);
 		contentPane.add(btnPesquisarServico);
 
+		/*
+		 * Add a mouse clicked event. When the PesquisarBarbeiro Button is
+		 * clicked, it searches the services done by the name of the barber who
+		 * finished it.
+		 */
 		JButton btnPesquisarBarbeiro = new JButton("Pesquisar Barbeiro");
 		btnPesquisarBarbeiro.addMouseListener(new MouseAdapter() {
 			@Override
@@ -121,17 +144,20 @@ public class PesquisarServicoPrestado extends JFrame {
 					ServicoPrestado servico = new ServicoPrestado();
 					servico.setNomeBarbeiro(textField.getText());
 
-					connection = FactoryConnection.getInstance().getConnection();
+					connection = FactoryConnection.getInstance()
+							.getConnection();
 					ResultSet rs = connection.createStatement().executeQuery(
 							"SELECT nome, preco, barbeiro, data FROM servicoprestado WHERE barbeiro = '"
-									+ servico.getNomeBarbeiro() + "' ORDER BY data;");
+									+ servico.getNomeBarbeiro()
+									+ "' ORDER BY data;");
 
 					while (rs.next()) {
 						String[] dados = new String[4];
 						dados[0] = rs.getString("nome");
 						dados[1] = rs.getString("barbeiro");
 						dados[2] = rs.getString("preco");
-						dados[3] = servico.ConverterDataParaABNT(rs.getString("data"));
+						dados[3] = servico.ConverterDataParaABNT(rs
+								.getString("data"));
 						modelo.addRow(dados);
 					}
 				} catch (ServicoException e) {
@@ -147,15 +173,23 @@ public class PesquisarServicoPrestado extends JFrame {
 		btnPesquisarBarbeiro.setBounds(168, 168, 148, 23);
 		contentPane.add(btnPesquisarBarbeiro);
 
+		/*
+		 * Add a mouse clicked event. When the Romover Button is clicked, it
+		 * removes the selected entry in the database.
+		 */
 		JButton btnRemover = new JButton("Remover");
 		btnRemover.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
-					String nome = (String) table.getValueAt(table.getSelectedRow(), 0);
-					String barbeiro = (String) table.getValueAt(table.getSelectedRow(), 1);
-					String valor = (String) table.getValueAt(table.getSelectedRow(), 2);
-					String data = (String) table.getValueAt(table.getSelectedRow(), 3);
+					String nome = (String) table.getValueAt(
+							table.getSelectedRow(), 0);
+					String barbeiro = (String) table.getValueAt(
+							table.getSelectedRow(), 1);
+					String valor = (String) table.getValueAt(
+							table.getSelectedRow(), 2);
+					String data = (String) table.getValueAt(
+							table.getSelectedRow(), 3);
 					ServicoPrestado servico = new ServicoPrestado();
 					servico.setNomeServico(nome);
 					servico.setNomeBarbeiro(barbeiro);
@@ -166,7 +200,8 @@ public class PesquisarServicoPrestado extends JFrame {
 							"Remover " + nome + " da lista?");
 
 					if (confirmacao == JOptionPane.YES_OPTION) {
-						ServicoPrestadoController servicoController = ServicoPrestadoController.getInstance();
+						ServicoPrestadoController servicoController = ServicoPrestadoController
+								.getInstance();
 						servicoController.excluir(servico);
 
 						dispose();
@@ -189,6 +224,10 @@ public class PesquisarServicoPrestado extends JFrame {
 		btnRemover.setBounds(123, 228, 89, 23);
 		contentPane.add(btnRemover);
 
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is CadastrarServicoPrestado.
+		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -202,6 +241,10 @@ public class PesquisarServicoPrestado extends JFrame {
 		btnVoltar.setBounds(279, 228, 89, 23);
 		contentPane.add(btnVoltar);
 
+		/*
+		 * Add a mouse clicked event. When the PesquisarData Button is clicked,
+		 * it searches the services done by date wished.
+		 */
 		JButton btnPesquisarData = new JButton("Pesquisar Data");
 		btnPesquisarData.addMouseListener(new MouseAdapter() {
 			@Override
@@ -210,7 +253,8 @@ public class PesquisarServicoPrestado extends JFrame {
 					ServicoPrestado servico = new ServicoPrestado();
 					servico.setData(textField.getText());
 
-					connection = FactoryConnection.getInstance().getConnection();
+					connection = FactoryConnection.getInstance()
+							.getConnection();
 					ResultSet rs = connection.createStatement().executeQuery(
 							"Select nome, preco, barbeiro, data from servicoprestado where data = '"
 									+ servico.getData() + "' order by data;");
@@ -220,7 +264,8 @@ public class PesquisarServicoPrestado extends JFrame {
 						dados[0] = rs.getString("nome");
 						dados[1] = rs.getString("barbeiro");
 						dados[2] = rs.getString("preco");
-						dados[3] = servico.ConverterDataParaABNT(rs.getString("data"));
+						dados[3] = servico.ConverterDataParaABNT(rs
+								.getString("data"));
 						modelo.addRow(dados);
 					}
 				} catch (SQLException e) {
@@ -237,11 +282,23 @@ public class PesquisarServicoPrestado extends JFrame {
 		contentPane.add(btnPesquisarData);
 	}
 
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
 	private void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 
+	/**
+	 * This method return a temporary name.
+	 * 
+	 * @return tempNome A String type variable that contains a temporary name.
+	 */
 	public static String getTempNome() {
 		return tempNome;
 	}

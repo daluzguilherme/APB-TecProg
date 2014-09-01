@@ -3,6 +3,7 @@
  * This class provides a GUI to search all the information 
  * about the reports.
  */
+
 package view;
 
 import java.awt.Checkbox;
