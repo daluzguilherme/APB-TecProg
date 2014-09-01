@@ -1,3 +1,8 @@
+/**
+ * MenuPrincipal
+ * This class provides a GUI for the main menu of the application.
+ */
+
 package view;
 
 import java.awt.EventQueue;
@@ -24,9 +29,7 @@ public class MenuPrincipal extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
+	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -40,9 +43,7 @@ public class MenuPrincipal extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	/* Public method to create the frame. */
 	public MenuPrincipal() {
 		setTitle("APB");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,6 +62,11 @@ public class MenuPrincipal extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+		/*
+		 * Add an action performed event. When the Administrativo Button is clicked,
+		 * it goes to a new window, which is Administrativo, and dispose this one
+		 * that is not needed.
+		 */
 		JButton btnAdministrativo = new JButton("Administrativo");
 		btnAdministrativo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -73,6 +79,11 @@ public class MenuPrincipal extends JFrame {
 		btnAdministrativo.setBounds(10, 60, 157, 37);
 		panel.add(btnAdministrativo);
 		
+		/*
+		 * Add an action performed event. When the ServicosPrestados Button is clicked,
+		 * it goes to a new window, which is CadastrarServicoPrestado, and dispose this one
+		 * that is not needed.
+		 */
 		JButton btnServicosPrestados = new JButton("Servi\u00E7os Prestados");
 		btnServicosPrestados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -85,6 +96,11 @@ public class MenuPrincipal extends JFrame {
 		btnServicosPrestados.setBounds(179, 60, 157, 37);
 		panel.add(btnServicosPrestados);
 		
+		/*
+		 * Add a mouse clicked event. When the Relatorios Button is clicked,
+		 * it goes to a new window, which is VisualizarRelatorios, and dispose this one
+		 * that is not needed.
+		 */
 		JButton btnRelatorios = new JButton("Relat\u00F3rios");
 		btnRelatorios.addMouseListener(new MouseAdapter() {
 			@Override
@@ -110,6 +126,13 @@ public class MenuPrincipal extends JFrame {
 		panel.add(btnRelatorios);
 	}
 	
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
 	private void mostrarMensagemDeErro(String informacao) {
 		JOptionPane.showMessageDialog(null, informacao, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
