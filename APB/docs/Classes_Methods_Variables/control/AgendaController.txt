@@ -1,0 +1,68 @@
+/**
+ * AgendaController
+ * This class adds new contacts, modifies the contacts previously created,
+ * searches contacts and shows contacts.
+ */
+
+public class AgendaController {
+
+	private static AgendaController instance; // Variable instance the class.
+
+	private AgendaController() { // Constructor method of the class.
+	}
+
+	public boolean incluir(Agenda agenda) throws SQLException {
+	agenda: instance of an type of object Agenda. A better name would be adressbook.
+	
+	}
+
+	/* Alters a name into a given address book. */
+	public boolean alterar(String nome, Agenda agenda) throws SQLException {
+    
+    nome: this represents the contact's name. A better name would be name.
+    agenda: instance of an type of object Agenda. A better name would be adressbook.
+
+		Agenda agenda_alterado = agenda;
+		
+		agenda_alterado: receives an object from the altered agenda. A better
+		name for 'agenda_alterado' would be 'alteredAdressBook'.
+		
+	}
+
+	/* Excludes a contact from the address book. */
+	public boolean excluir(Agenda contato) throws SQLException {
+	
+	contato: A contact for an adress book. A better name for 'contato' would be
+	'contact'.
+	
+	}
+
+	/* Returns the instance of the address book. */
+	public static AgendaController getInstance() {
+		if (instance == null) 
+			instance = new AgendaController();
+		return instance;
+		
+		instance: checks if the instance  is null, if yes, instanciates it.  
+	}
+
+	/* Displays all contacts from the address book. */ 
+	public ResultSet mostrarContatosCadastrados(Agenda contato) throws SQLException {
+		contato: A contact for an adress book. A better name for 'contato' would
+		be 'contact'.
+		
+	}
+
+	/* Search a contact in the address book by name. */
+	public ResultSet pesquisarPorNome(Agenda contato) throws SQLException {
+		contato: A contact for an adress book. A better name for 'contato' would
+		be 'contact'.
+	}
+
+	/*  Search a contact in the address book by phone number. */
+	public ResultSet pesquisarPorTelefone(Agenda contato) throws SQLException {
+		contato: A contact for an adress book. A better name for 'contato' would
+		be 'contact'.
+	}
+
+}
