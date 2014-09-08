@@ -1,0 +1,45 @@
+* AgendaDAO.java
+ *This class manages the DAO functions of an address book.
+ */
+
+public class AgendaDAO {
+
+	/* Instance to the singleton.*/ 
+	private static AgendaDAO instance;
+
+	/* Empty constructor.*/
+	private AgendaDAO()
+	
+	/* Singleton implementation.*/
+	public static AgendaDAO getInstance() 
+
+	/* Include new address book in the database. */
+	public boolean incluir(Agenda agenda) throws SQLException {
+		Agenda agenda // The Agenda object that will be included in the database.
+
+	/*This updates an address book on the database. */
+	public boolean alterar(String nome, Agenda agenda_alterado, Agenda agenda) throws SQLException {	
+	    String nome // The nome attribute that represents the entry to be updated.
+		Agenda angenda_alterado // The Agenda object that represents the new entry, to replace the old one.
+		Agenda agenda // The Agenda object that represents the entry to be updated.
+		
+
+	/*This removes an address book from the database.*/
+	public boolean excluir(Agenda contato) throws SQLException {
+		Agenda contato // The contato object that will be removed from the database.
+
+	/*This updates a query.*/ 
+	public void updateQuery(String message) throws SQLException {
+	
+	
+	/*Shows registered contacts in address book
+	public ResultSet mostrarContatosCadastrados(Agenda contato) throws SQLException {
+	
+	/* Search by name */
+	public ResultSet pesquisarPorNome(Agenda contato) throws SQLException {
+	
+	/* search by phone number */
+	public ResultSet pesquisarPorTelefone(Agenda contato) throws SQLException {
+
+
+}
