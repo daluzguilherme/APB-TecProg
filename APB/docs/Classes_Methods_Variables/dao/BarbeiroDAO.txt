@@ -1,0 +1,40 @@
+/**
+ * BarbeiroDAO.java
+ * This class manages the DAO functions of a barber.
+ */
+
+public class BarbeiroDAO {
+
+	/* Instance to the singleton. */
+	private static BarbeiroDAO instance;
+
+	/* Empty constructor. */
+	private BarbeiroDAO() {
+	
+
+	/* Singleton implementation. */
+	public static BarbeiroDAO getInstance() {
+	
+	/* Include new barber in the database. */
+	public boolean incluir(Barbeiro barbeiro) throws SQLException {
+			Barbeiro barbeiro // The barbeiro object that will be included in the database.
+
+	/* This updates a barber on the database. */
+	public boolean alterar(String nome, Barbeiro barbeiro_alterado, Barbeiro barbeiro) throws SQLException {
+		
+	/* This removes a barber from the database. */
+	public boolean excluir(Barbeiro barbeiro) throws SQLException {
+		Barbeiro barbeiro // The barbeiro object that will be removed from the database
+
+	/*  This searches for all barbers from the database. */
+	public ResultSet pesquisar() throws SQLException {
+
+	/* This updates a query. */
+	public void updateQuery(String message) throws SQLException {
+	
+	/* Show registered barbers */
+	public ResultSet mostrarBarbeirosCadastrados(Barbeiro barbeiro) throws SQLException {
+		
+	/* Search by name */
+	public ResultSet pesquisarPorNome(Barbeiro barbeiro) throws SQLException {
+		
