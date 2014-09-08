@@ -1,0 +1,33 @@
+/**
+ * ReciboController
+ * This class searches all services from a barber to generate a receipt
+ * to a barber.
+ */
+
+public class ReciboController {
+
+	private static ReciboController instance; // Variable to instance the class.
+	
+	public ReciboController(){} // Constructor method of the class.
+	
+	/* Returns an instance of a receipt. */
+	public static ReciboController getInstance(){
+		if(instance == null){
+			instance = new ReciboController();
+		}
+		return instance;
+		
+		instance: checks if the instance  is null, if yes, instanciates it.
+		
+	}
+	
+	/* Search a barber's service between two dates. */ 
+	public ResultSet pesquisarServicosDoBarbeiro(String barbeiro, String dataInicial, String dataFinal) throws SQLException{
+	
+		barbeiro: instance of an type of object Barbeiro. A better name would be
+			'barber'.
+		dataInicial: service start date. A better name would be 'startDate'.
+		dataFinal: service final date. A better name would be 'finalDate'.
+	}
+	
+}

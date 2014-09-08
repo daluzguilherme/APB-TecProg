@@ -29,7 +29,8 @@ public class BarbeiroController {
 	/* Alters barber on the database. */
 	public boolean alterar(String nome, Barbeiro barbeiro) throws SQLException {
 		
-		nome: this represents the new barber's name. A better name would be 'newBarberName'.
+		nome: this represents the new barber's name. A better name would be
+			'newBarberName'.
     	barbeiro: instance of an type of object Barbeiro. A better name would be
     		barber.
 
