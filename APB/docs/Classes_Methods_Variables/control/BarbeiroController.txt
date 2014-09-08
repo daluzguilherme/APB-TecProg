@@ -1,0 +1,71 @@
+/**
+ * BarbeiroController
+ * This class inserts, alter, excludes, searches and shows a barber's name.
+ */
+
+public class BarbeiroController {
+
+	private static BarbeiroController instance; // Variable to instance the class.
+
+	private BarbeiroController() {} // Constructor method of the class.
+	
+	/* Returns an instance of a barber. */
+	public static BarbeiroController getInstance() {
+		if (instance == null)
+			instance = new BarbeiroController();
+		return instance;
+		
+		instance: checks if the instance  is null, if yes, instanciates it.
+	}
+	
+	/* Inserts a new barber on the database. */
+	public boolean inserir(Barbeiro barbeiro) throws SQLException {
+		
+		barbeiro: instance of an type of object Barbeiro. A better name would be
+			'barber'.
+
+	}
+
+	/* Alters barber on the database. */
+	public boolean alterar(String nome, Barbeiro barbeiro) throws SQLException {
+		
+		nome: this represents the new barber's name. A better name would be 'newBarberName'.
+    	barbeiro: instance of an type of object Barbeiro. A better name would be
+    		barber.
+
+		Barbeiro barbeiro_alterado = barbeiro;
+		
+			barbeiro_alterado: auxiliar variable for the altered barber. A better
+				would be 'alteredBarber'.
+	}
+
+	/* Excludes a barber from the database. */
+	public boolean excluir(Barbeiro barbeiro) throws SQLException {
+		
+		barbeiro: instance of an type of object Barbeiro. A better name would be
+			'barber'.
+		
+	}
+	
+	/* Search a barber name in the database. */
+	public ResultSet pesquisar() throws SQLException {
+		return BarbeiroDAO.getInstance().pesquisar();
+	}
+	
+	/* Displays registered barbers. */
+	public ResultSet mostrarBarbeirosCadastrados(Barbeiro barbeiro) throws SQLException {
+		
+		barbeiro: instance of an type of object Barbeiro. A better name would be
+			'barber'.
+			
+	}
+	
+	/* Search a barber by name. */
+	public ResultSet pesquisarPorNome(Barbeiro barbeiro) throws SQLException {
+		
+		barbeiro: instance of an type of object Barbeiro. A better name would be
+			'barber'.
+			
+	}
+
+}

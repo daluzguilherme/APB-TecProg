@@ -12,7 +12,8 @@ public class AgendaController {
 	}
 
 	public boolean incluir(Agenda agenda) throws SQLException {
-	agenda: instance of an type of object Agenda. A better name would be adressbook.
+	
+		agenda: instance of an type of object Agenda. A better name would be adressbook.
 	
 	}
 
@@ -24,7 +25,7 @@ public class AgendaController {
 
 		Agenda agenda_alterado = agenda;
 		
-		agenda_alterado: receives an object from the altered agenda. A better
+		agenda_alterado: auxiliar variable for the altered agenda. A better
 		name for 'agenda_alterado' would be 'alteredAdressBook'.
 		
 	}
@@ -32,7 +33,7 @@ public class AgendaController {
 	/* Excludes a contact from the address book. */
 	public boolean excluir(Agenda contato) throws SQLException {
 	
-	contato: A contact for an adress book. A better name for 'contato' would be
+		contato: A contact for an adress book. A better name for 'contato' would be
 	'contact'.
 	
 	}
@@ -48,6 +49,7 @@ public class AgendaController {
 
 	/* Displays all contacts from the address book. */ 
 	public ResultSet mostrarContatosCadastrados(Agenda contato) throws SQLException {
+		
 		contato: A contact for an adress book. A better name for 'contato' would
 		be 'contact'.
 		
@@ -55,12 +57,14 @@ public class AgendaController {
 
 	/* Search a contact in the address book by name. */
 	public ResultSet pesquisarPorNome(Agenda contato) throws SQLException {
+		
 		contato: A contact for an adress book. A better name for 'contato' would
 		be 'contact'.
 	}
 
 	/*  Search a contact in the address book by phone number. */
 	public ResultSet pesquisarPorTelefone(Agenda contato) throws SQLException {
+		
 		contato: A contact for an adress book. A better name for 'contato' would
 		be 'contact'.
 	}
