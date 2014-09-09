@@ -1,0 +1,22 @@
+/**
+ * ReciboDAO.java
+ *This class manages the DAO functions of a receipt.
+ */
+
+public class ReciboDAO {
+	
+	/* Instance to the singleton. */
+	private static ReciboDAO instance;
+	
+	/* Empty constructor. */
+	private ReciboDAO()
+	
+	/* Singleton implementation. */
+	public static ReciboDAO getInstance()
+	
+	/* Shows the services Barber*/
+	public ResultSet pesquisarServicosDoBarbeiro(String barbeiro, String dataInicial, String dataFinal) throws SQLException{
+	
+	/* This updates a database.*/
+	public void updateQuery(String message) throws SQLException {
+
