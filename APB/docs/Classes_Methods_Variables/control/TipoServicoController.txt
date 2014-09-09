@@ -1,0 +1,75 @@
+/**
+ * TipoServicoController
+ * This class provides methods to manage the different kinds of services
+ * such as insert a new type of service, alter a service's name, exclude
+ * a type of service and display types of services.
+ */
+
+package control;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import dao.TipoServicoDAO;
+import model.TipoServico;
+
+public class TipoServicoController {
+
+	private static TipoServicoController instance; // Variable to instance the class.
+
+	/* Inserts a new type of service in the database. */
+	public boolean inserir(TipoServico tipoServico) throws SQLException {
+		
+		tipoServico: instance of an type of object TipoServico. A better name
+			would be 'serviceType'.
+			
+	}
+
+	/* Alters the name of a type of service in the database. */
+	public boolean alterar(String nome,TipoServico tipoServico) throws SQLException {
+		
+		nome: this represents the new service's name. A better name would be
+			'serviceName'.
+    	tipoServico: instance of an type of object TipoServico. A better name
+    		would be 'serviceType'.
+	}
+
+	/* Excludes a type of service from the database. */
+	public boolean excluir(TipoServico tipoServico) throws SQLException {
+
+		tipoServico: instance of an type of object TipoServico. A better name
+			would be 'serviceType'.
+			
+	}
+
+	/* Constructor. */
+	private TipoServicoController() { // Constructor method of the class.
+	}
+
+	/* Gets and instance from TipoServicoController. */
+	public static TipoServicoController getInstance() {
+		if (instance == null)
+			instance = new TipoServicoController();
+		return instance;
+		
+		instance: checks if the instance  is null, if yes, instanciates it.
+		
+	}
+	
+	/* Shows all types of service registered in the database. */
+	public ResultSet mostrarTipoServicoCadastrados(TipoServico servico) throws SQLException {
+		
+		servico: instance of an type of object TipoServico. A better name
+			would be 'service'.
+			
+	}
+	
+	/* Search a service by name. */
+	public ResultSet pesquisarPorNome(TipoServico servico) throws SQLException {
+		
+		tipoServico: instance of an type of object TipoServico. A better name
+			would be 'service'.
+			
+	}
+
+}
