@@ -1,0 +1,47 @@
+/**
+ * RelatorioController
+ * This class manages the services making insertions, exclusions and 
+ * exhibitions of services.
+ */
+
+public class ServicoPrestadoController {
+
+	private ServicoPrestadoController() {} // Constructor method of the class.
+	
+	/* Gets an instance of ServicoPrestadoController. */
+	public static ServicoPrestadoController getInstance() {
+		if (instance == null)
+			instance = new ServicoPrestadoController();
+		return instance;
+		
+		instance: checks if the instance  is null, if yes, instanciates it.
+		
+	}
+
+	private static ServicoPrestadoController instance; // Variable to instance the class.
+
+	/* Inserts a service in the database. */
+	public boolean inserir(ServicoPrestado servico) throws SQLException {
+		
+		servico: instance of an type of object ServicoPrestado. A better name
+			would be 'service'.
+			
+	}
+
+	/* Excludes a service from the database. */
+	public boolean excluir(ServicoPrestado servico) throws SQLException {
+		
+		servico: instance of an type of object ServicoPrestado. A better name
+			would be 'service'.
+				
+	}
+	
+	/* Shows all services registered. */
+	public ResultSet mostrarServicosPrestadosCadastrados(ServicoPrestado servico) throws SQLException {
+		
+		servico: instance of an type of object ServicoPrestado. A better name
+			would be 'service'.
+	}
+
+	
+}
