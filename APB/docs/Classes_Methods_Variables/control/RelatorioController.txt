@@ -1,0 +1,79 @@
+/**
+ * RelatorioController
+ * This class provides methods to generate different kinds of reports to
+ * the barbershop owner.
+ */
+
+public class RelatorioController {
+	
+private static RelatorioController instance; // Variable to instance the class.
+
+	public RelatorioController() {} // Constructor method of the class.
+	
+	/* Makes a search by date. */
+	public ResultSet pesquisarPorData(Relatorio relatorio) throws SQLException {
+		
+		relatorio: instance of an type of object Relatorio. A better name would
+			be 'report'.
+			
+	}
+	
+	/* Makes a search by date and a specific barber. */
+	public ResultSet pesquisarPorDataEBarbeiro(Relatorio relatorio) throws SQLException {	
+		
+		relatorio: instance of an type of object Relatorio. A better name would
+			be 'report'.
+		
+	}
+	
+	/* Makes a search by date and service. */
+	public ResultSet pesquisarPorDataEServico(Relatorio relatorio) throws SQLException {	
+		
+		relatorio: instance of an type of object Relatorio. A better name would
+			be 'report'.
+		
+	}
+	
+	/* Makes a search by barber. */
+	public ResultSet pesquisarPorBarbeiro(Relatorio relatorio) throws SQLException {	
+		
+		relatorio: instance of an type of object Relatorio. A better name would
+			be 'report'.
+		
+	}
+	
+	/* Makes a search by barber and service. */
+	public ResultSet pesquisarPorBarbeiroEServico(Relatorio relatorio) throws SQLException {	
+		
+		relatorio: instance of an type of object Relatorio. A better name would
+			be 'report'.
+		
+	}
+	
+	/* Makes a search by service. */
+	public ResultSet pesquisarPorServico(Relatorio relatorio) throws SQLException {	
+		
+		relatorio: instance of an type of object Relatorio. A better name would
+			be 'report'.
+		
+	}
+	
+	/* Makes a search by date, barber and service. */
+	public ResultSet pesquisarPorDataBarbeiroEServico(Relatorio relatorio) throws SQLException {		
+		
+		relatorio: instance of an type of object Relatorio. A better name would
+			be 'report'. 
+		
+	}
+	
+	/* Gets an instance of RelatorioController. */
+	public static RelatorioController getInstance() {
+		if(instance == null)
+			instance = new RelatorioController();
+		return instance;
+		
+		instance: checks if the instance  is null, if yes, instanciates it.
+		
+	}
+
+}
