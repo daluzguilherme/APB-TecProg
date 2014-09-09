@@ -7,16 +7,15 @@ class FactoryConnection
 	private String user = "root" // User to access the database. 
 	private String password = "root" // Password to access the database. 
 	
-	FactoryConnection instance /** Object to represent the current instance, 
-	to implement singleton. */
+	/* Object to represent the current instance, to implement singleton. */
+	FactoryConnection instance 
 
-	// Blank constructor.
+	/* Blank constructor. */
 	private FactoryConnection
 
-	// Singleton implementation.
+	/* Singleton implementation. */
 	public static FactoryConnection getInstance
 
-	// Create and return the connection with the database server.
+	/* Create and return the connection with the database server. */
 	public Connection getConnection
-		Connection connection /** Will represent the current connection with the 
-		database. */
+		Connection connection // Will represent the current connection with the database. 
