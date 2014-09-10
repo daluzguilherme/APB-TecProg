@@ -1,0 +1,40 @@
+/**
+ * RelatorioDAO.java
+ *This class manages the DAO functions of a report.
+ */
+
+public class RelatorioDAO {
+
+	/* Instance to the singleton. */
+	private static RelatorioDAO instance;
+	
+	/* Empty constructor. */
+	private RelatorioDAO(){
+	
+	/* Singleton implementation. */
+	public static RelatorioDAO getInstance() {
+
+	/* Search by date */
+	public ResultSet pesquisarPorData(Relatorio relatorio) throws SQLException {
+	
+	
+	/* Search by date and barber */
+	public ResultSet pesquisarPorDataEBarbeiro(Relatorio relatorio) throws SQLException {
+	
+	/* Search by date and service*/
+	public ResultSet pesquisarPorDataEServico(Relatorio relatorio) throws SQLException {
+	
+	/* Search by barber*/
+	public ResultSet pesquisarPorBarbeiro(Relatorio relatorio) throws SQLException {
+		
+	
+	/* Search by barber and service*/
+	public ResultSet pesquisarPorBarbeiroEServico(Relatorio relatorio) throws SQLException {
+		
+	/* Search by service*/
+	public ResultSet pesquisarPorServico(Relatorio relatorio) throws SQLException {
+	
+	/* Search by date, barber and service*/
+	public ResultSet pesquisarPorDataBarbeiroEServico(Relatorio relatorio) throws SQLException {
+		
+
