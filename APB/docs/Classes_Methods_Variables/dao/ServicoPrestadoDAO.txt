@@ -1,0 +1,34 @@
+/**
+ * ServicoPrestadoDAO.java
+ *This class manages the DAO functions of services rendered.
+ */
+
+public class ServicoPrestadoDAO {
+	
+	/* Instance to the singleton. */
+	private static ServicoPrestadoDAO instance;
+
+	/* Empty constructor. */
+	private ServicoPrestadoDAO() {
+
+
+	/* Singleton implementation. */
+	public static ServicoPrestadoDAO getInstance() {
+	
+	/* Include new services rendered in the database. */
+	public boolean incluir(ServicoPrestado servico) throws SQLException {
+		ServicoPrestado servico // The servico object that will be included in the database.
+
+	/* This removes a service rendered from the database. */
+	public boolean excluir(ServicoPrestado servico) throws SQLException {
+		ServicoPrestado servico // The servico object that will be removed from the database
+
+	/*  This searches for services rendered from the database. */
+	private String pesquisar(ServicoPrestado servico) throws SQLException {
+	
+	/* This updates a query. */
+	private void updateQuery(String message) throws SQLException {
+	
+	/* Shows registered services rendered */
+	public ResultSet mostrarServicosPrestadosCadastrados(ServicoPrestado servico) throws SQLException {
+	
