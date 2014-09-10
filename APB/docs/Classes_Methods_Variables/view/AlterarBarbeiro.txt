@@ -1,0 +1,140 @@
+/**
+ * AlterarBarbeiro
+ * This class provides a GUI to change the chosen 
+ * barber information.
+ */
+
+@SuppressWarnings("serial")
+public class AlterarBarbeiro extends JFrame {
+
+	
+	private JPanel contentPane;
+	private JTextField textFieldNome;
+	private JTextField textFieldRg;
+	private JTextField textFieldTelefone;
+	private JTextField textFieldCadeira;
+	private String nome;
+	private JTextField textFieldCpf;
+
+	/* Public method to create the frame. */
+	public AlterarBarbeiro() {
+
+		textFieldNome = new JTextField();
+		
+			textFieldNome: Creates a text field to type the barber's name.
+				A better name would be 'textFieldBarberName'.
+
+		JLabel labelNome = new JLabel("Nome:");
+		
+			labelNome: Creates a label with the word 'Nome:'. A better name
+				would be 'labelBarberName'.
+
+		JLabel lblCpf = new JLabel("CPF:");
+		
+			lblCpf: Creates a label with the word 'CPF:'. A better name
+				would be 'labelBarberCPF'.
+
+		textFieldCpf = new JTextField();
+		
+			textFieldCpf: Creates a text field to type the barber's CPF.
+				A better name would be 'textFieldBarberCpf'.
+
+		textFieldRg = new JTextField();
+		
+			textFieldRg: Creates a text field to type the barber's ID card number.
+				A better name would be 'textFieldBarberIdNumber'.
+
+		JLabel labelRg = new JLabel("RG:");
+		
+			labelRg: Creates a label with the word 'RG:'. A better name
+				would be 'labelBarberIdNumber'.
+
+		textFieldTelefone = new JTextField();
+		
+			textFieldNome: Creates a text field to type the barber's Phone Number. 
+				A better name would be 'textFieldBarberPhone'.
+
+		JLabel labelTelefone = new JLabel("Telefone:");
+		
+			labelTelefone: Creates a label with the word 'Telefone:'. A better
+				name would be 'labelBarberPhone'.
+
+		textFieldCadeira = new JTextField();
+		
+			textFieldNome: Creates a text field to type the barber's chair number. 
+				A better name would be 'textFieldChairNumber'.
+
+		JLabel labelCadeira = new JLabel("Cadeira:");
+		
+			labelCadeira: Creates a label with the word 'Cadeira:'. A better
+			name would be 'labelBarberChair'.
+
+		/*
+		 * Getting an instance of a Barbeiro to populate with
+		 * a query from database.
+		 */
+		try {
+			Barbeiro barbeiro = new Barbeiro();
+			
+				barbeiro: instance of a type of object Barbeiro. A better name
+					would be 'barber'.
+
+			ResultSet rs = barbeiroController.pesquisarPorNome(barbeiro);
+
+				rs: instance of a type of object ResultSet, used to get information
+					from the database. A better name would be 'resultSet'.
+			
+			nome = textFieldCpf.getText();
+			
+				nome: gets the CPF from the text field textFieldCpf. A better
+					name would be 'barberCPF'.
+					
+		} catch (SQLException e) {
+			mostrarMensagemDeErro(e.getMessage());
+		} catch (BarbeiroException e) {
+			mostrarMensagemDeErro(e.getMessage());
+		}
+
+		/*
+		 * Add an action performed event. When the Salvar Button is
+		 * clicked, it takes the strings from the text fields and saves
+		 * them in in the database.
+		 */
+		JButton buttonSalvar = new JButton("Salvar");
+		
+			buttonSalvar: Creates a button called 'Salvar'. A better name would
+				be 'btnSave'.
+		
+		/*
+		 * Add an action performed event. When the Limpar Button is
+		 * clicked, it clears the fields.
+		 */
+		JButton buttonLimpar = new JButton("Limpar Campos");
+		
+			buttonLimpar: Creates a button called 'Limpar Campos'. A better name
+			would be 'btnClean'.
+		
+		/*
+		 * Add an action performed event. When the Voltar Button is
+		 * clicked, it returns the the previous window, which is CadastrarBarbeiro.
+		 */
+		JButton buttonVoltar = new JButton("Voltar");
+		
+			buttonVoltar: Creates a button called 'Voltar'. A better name would
+				be 'btnBack'.
+
+	}
+	
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
+	private void mostrarMensagemDeErro(String informacao) {
+		
+		informacao: information to be shown in the a message of error. A better
+			name would be 'description'.
+	}
+}

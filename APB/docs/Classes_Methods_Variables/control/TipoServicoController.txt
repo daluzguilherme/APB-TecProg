@@ -20,7 +20,7 @@ public class TipoServicoController {
 	/* Inserts a new type of service in the database. */
 	public boolean inserir(TipoServico tipoServico) throws SQLException {
 		
-		tipoServico: instance of an type of object TipoServico. A better name
+		tipoServico: instance of a type of object TipoServico. A better name
 			would be 'serviceType'.
 			
 	}
@@ -30,7 +30,7 @@ public class TipoServicoController {
 		
 		nome: this represents the new service's name. A better name would be
 			'serviceName'.
-    	tipoServico: instance of an type of object TipoServico. A better name
+    	tipoServico: instance of a type of object TipoServico. A better name
     		would be 'serviceType'.
 	}
 
