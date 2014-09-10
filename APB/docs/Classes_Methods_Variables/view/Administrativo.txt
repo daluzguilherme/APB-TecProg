@@ -1,0 +1,37 @@
+/**
+ * Administrativo
+ * This class provides a GUI to access management functions
+ * of the programm.
+ */
+
+@SuppressWarnings("serial")
+public class Administrativo extends JFrame {
+
+	private JPanel contentPane;
+
+		JButton btnBarbeiro = new JButton("Barbeiro");
+		
+			btnBarbeiro: Creates a button called 'Barbeiro'. A better name would
+				be 'btnBarber'.
+
+		JButton btnTipoServico = new JButton("Tipo de Servi\u00E7o");
+			
+			btnTipoServico: Creates a button called 'Tipo de Serviço'. A better
+				name would be 'btnServiceType'.
+		
+		JButton btnAgenda = new JButton("Agenda");
+		
+			btnAgenda: Creates a button called 'Agenda'. A better name would
+				be 'btnAdressBook'.
+		
+		JButton btnVoltar = new JButton("Voltar");
+		
+			btnVoltar: Creates a button called 'Voltar'. A better name would
+				be 'btnBack'.
+		
+		JButton btnRecibo = new JButton("Recibo");
+		
+			btnRecibo: Creates a button called 'Recibo'. A better name would
+				be 'btnReceipts'.
+
+}
