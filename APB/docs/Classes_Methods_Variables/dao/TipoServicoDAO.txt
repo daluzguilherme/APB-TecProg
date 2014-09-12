@@ -1,0 +1,41 @@
+/**
+ * TipoServicoDAO.java
+ *This class manages the DAO functions of services type.
+ */
+
+import model.TipoServico;
+
+public class TipoServicoDAO {
+
+	/* Instance to the singleton. */
+	private static TipoServicoDAO instance;
+
+
+	/* Empty constructor. */
+	private TipoServicoDAO() 
+
+	/* Singleton implementation. */
+	public static TipoServicoDAO getInstance() {
+	
+
+	/* Include new service type in the database. */
+	public boolean incluir(TipoServico tipoServico) throws SQLException {
+		TipoServico tipoServico // The tipoServico object that will be included in the database.
+
+	/* This updates a service type on the database. */
+	public boolean alterar(String nome,TipoServico tipoServico_alterado, TipoServico tipoServico) throws SQLException {
+
+	/* This removes a service type from the database. */
+	public boolean excluir(TipoServico tipoServico) throws SQLException {
+		TipoServico tipoServico // The tipoServico object that will be removed from the database
+
+	/* This updates a query. */
+	public void updateQuery(String message) throws SQLException {
+	
+	/* Shows registered services type */
+	public ResultSet mostrarTipoServicoCadastrados(TipoServico servico) throws SQLException {
+	
+	/* Search by name */
+	public ResultSet pesquisarPorNome(TipoServico servico) throws SQLException {
+	
+}
