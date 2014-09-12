@@ -1,0 +1,119 @@
+/**
+ * Relatorio
+ * This class refers to the profit report and barbers' productivity.
+ */
+
+public class Relatorio {
+
+	/*
+	 *These strings represents the attributes of a Relatorio. All validations are made
+ 	 *inside the setters methods.
+	 */
+	private String dataInicial;
+	private String dataFinal;
+	private String barbeiro;
+	private String tipoServico;
+
+	/* Error messages and alerts *//*Final strings with exception messages.*/
+	private final String DATA_FINAL_BRANCO = "Data final em Branco";
+	private final String DATA_INICIAL_BRANCO = "Data inicial em Branco";
+	private final String BARBEIRO_BRANCO = "Barbeiro em Branco";
+	private final String TIPO_SERVICO_BRANCO = "Tipo do Serviço em Branco";
+	
+	/* Constructor method of the class Relatorio.*/
+	public Relatorio(String dataInicial, String dataFinal, String barbeiro,
+			String tipoServico) 
+			
+		dataInicial: This represents the new date beginning of the new report .A better name for attribute 'dataInicial'could be: 'dateBegin'.
+		dataFinal: This represents the new date ending of the new report. A better name for attribute 'dataFinal' could be: 'dateEnd'.
+		barbeiro: This represents the new barber registered in the report . A better name for attribute 'barbeiro' could be: 'barberReport'. 
+		tipoServico: This represents the new type of service provided by the barber in the report. A better name for attribute 'tipoServico' could be: 'barberServiceType'.
+		
+	/* This is an empty Constructor method of the class Relatorio.*/					
+	public Relatorio() {
+	}
+
+	/*Getters.*/
+	
+	String getDataInicial() 
+	String getDataFinal() 
+	String getBarbeiro()
+	String getTipoServico() 
+	
+	/* This method modifies the starting date field to a valid starting date. */
+	public void setDataInicial(String dataInicial) throws RelatorioException,
+			NullPointerException, ParseException {
+		if (dataInicial == null)
+			throw new NullPointerException(DATA_INICIAL_BRANCO);
+		else if ("".equals(dataInicial))
+			throw new AssertionError(DATA_INICIAL_BRANCO);
+		else {
+
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date dataIso = sdf.parse(dataInicial);
+
+			SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+			String dataISO = sdf2.format(dataIso);
+
+			this.dataInicial = dataISO;
+		}
+
+	}
+
+	/* method modifies the end date field to a valid end date. */
+	public void setDataFinal(String dataFinal) throws RelatorioException, NullPointerException,
+			ParseException {
+		
+		if (dataFinal == null)
+			throw new NullPointerException(DATA_FINAL_BRANCO);
+		else if ("".equals(dataFinal))
+			throw new AssertionError(DATA_FINAL_BRANCO);
+		else {
+
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date dataIso = sdf.parse(dataFinal);
+
+			SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+			String dataISO = sdf2.format(dataIso);
+			
+			this.dataFinal = dataISO;
+		}
+	}
+
+	/*
+	 * This method modifies the barber field.
+	 * And RelatorioException it ensures that every parameter passed is valid.
+	 * */
+	public void setBarbeiro(String barbeiro) throws RelatorioException {
+		if (barbeiro == null)
+			throw new NullPointerException(BARBEIRO_BRANCO);
+		else if ("".equals(barbeiro))
+			throw new AssertionError(BARBEIRO_BRANCO);
+		else
+			this.barbeiro = barbeiro;
+	}
+
+	/* method modifies the service type field to a valid service type. */
+	public void setTipoServico(String tipoServico) throws RelatorioException {
+		if (tipoServico == null)
+			throw new NullPointerException(TIPO_SERVICO_BRANCO);
+		else if ("".equals(tipoServico))
+			throw new AssertionError(TIPO_SERVICO_BRANCO);
+		else
+			this.tipoServico = tipoServico;
+	}
+	
+	/*This method converts the date to ABNT */
+	public String ConverterDataParaABNT(String data) throws ParseException{
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date dataISO = sdf.parse(data);
+		
+		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+		String databr = sdf2.format(dataISO);
+		
+		return databr;
+	}
+	
+
+}
