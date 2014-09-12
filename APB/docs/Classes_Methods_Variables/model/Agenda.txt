@@ -21,25 +21,25 @@ public class Agenda {
 	String TELEFONE_BRANCO = "Telefone em Branco";
 
 	/* Constructor method of the class Agenda.*/
-	Agenda(String nome, String telefone, String descricao) 
+	public Agenda(String nome, String telefone, String descricao) 
 	
-		nome: Represents a name on the adress book. A better 'nome' could be: 'Name'.
+		nome: Represents a name on the adress book. A better name for attribute 'nome' could be: 'Name'.
 		
-		telefone: Represents the barber phone number on the adress book. A better 'telefone' could be:
+		telefone: Represents the barber phone number on the adress book. A better name for attribute 'telefone' could be:
 	'Phone Number'.
 		
 		descrição: Represents a space in the adress book where the owner of the barber shop makes your
-	notes. A better 'descrição' could be: 'Description'.
+	notes. A better name for attribute 'descrição' could be: 'Description'.
 		
 	/*Getters.*/
 	
-	String getNome
+	String getNome()
 	
-	String getTelefone
+	String getTelefone()
 	
-	String getDescricao
+	String getDescricao()
 	
-	String getTempNome //This method modifies the field name to a temporary variable.
+	String getTempNome() //This method modifies the field name to a temporary variable.
 		tempNome: Represents a temporary name. A better 'TempName' could be: 'Auxiliary Name'.
 	
 	/*
