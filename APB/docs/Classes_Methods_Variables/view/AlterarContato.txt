@@ -1,0 +1,108 @@
+/**
+ * AlterarContato
+ * This class provides a GUI to change information from the address 
+ * book of possible barbers interested in working in the barber shop.
+ */
+
+@SuppressWarnings("serial")
+public class AlterarContato extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textFieldNome;
+	private JTextField textFieldTelefone;
+	private JTextField textFieldDescricao;
+	private String nome;
+
+	/* Public method to create the frame. */
+	public AlterarContato() {
+
+		textFieldNome = new JTextField();
+		
+			textFieldNome: Creates a text field to type the contact's name.
+				A better name would be 'textFieldContactName'.
+
+		textFieldTelefone = new JTextField();
+		
+			textFieldTelefone: Creates a text field to type the contact's phone number.
+				A better name would be 'textFieldContactPhone'.
+
+		textFieldDescricao = new JTextField();
+		
+			textFieldDescricao: Creates a text field to type a contact's description.
+				A better name would be 'textFieldContactDescription'.
+
+		JLabel lblNome = new JLabel("Nome:");
+		
+			lbllNome: Creates a label with the word 'Nome:'. A better name
+				would be 'labelContactName'.
+
+		JLabel lblTelefone = new JLabel("Telefone:");
+		
+			lblTelefone: Creates a label with the word 'Telefone:'. A better
+			name would be 'labelContactPhone'.
+
+		JLabel lblDescricao = new JLabel("Descri\u00E7\u00E3o:");
+		
+			lblDescricao: Creates a label with the word 'Descrição:'. A better
+			name would be 'labelContactDescription'.
+
+		/*
+		 * Getting an instance of a Agenda to be populated with a query from
+		 * database.
+		 */
+		try {
+			Agenda contato = new Agenda();
+			
+				contato: instance of a type of object Contato. A better name
+					would be 'contact'.
+					
+			ResultSet rs = agendaController.pesquisarPorNome(contato);
+			
+				rs: instance of a type of object ResultSet, used to get
+					information from the database. A better name would be
+					'resultSet'.
+					
+			nome = textFieldNome.getText();
+			
+				nome: gets the contact name from the text field textFieldNome.
+					A better name would be 'contactName'.
+					
+		} catch (SQLException e) {
+			mostrarMensagemDeErro(e.getMessage());
+		} catch (BarbeiroException e) {
+			mostrarMensagemDeErro(e.getMessage());
+		}
+
+		/*
+		 * Add an action performed event. When the SalvarAlteracao Button is
+		 * clicked, it takes the strings from the text fields and saves them in
+		 * in the database.
+		 */
+		JButton btnSalvarAlteracao = new JButton("Salvar Altera\u00E7\u00E3o");
+		
+			btnSalvarAlteracao: Creates a button called 'Salvar Alteração'.
+				A better name would be 'buttonSaveChanges'.
+
+		/*
+		 * Add an action performed event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is CadastrarAgenda.
+		 */
+		JButton btnVoltar = new JButton("Voltar");
+		
+			btnVoltar: Creates a button called 'Voltar'. A better name would
+				be 'buttonBack'.
+	}
+
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
+	private void mostrarMensagemDeErro(String informacao) {
+		
+		informacao: information to be shown in the a message of error. A better
+			name would be 'description'.
+	}
+}
