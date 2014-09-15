@@ -1,0 +1,44 @@
+/**
+ * APB
+ * This class provides the first window 
+ * to be shown to the user.
+ */
+
+	/* Public method to create the frame. */
+	public APB() {
+
+		JLabel lblBemVindo = new JLabel("Bem Vindo");
+		
+			lblBemVindo: Creates a label with the word 'Bem Vindo'. A better
+				name would be 'labelWelcome'.
+
+		JLabel lblAPB = new JLabel("Automa\u00E7\u00E3o de Processos da Barbearia");
+		
+			lblAPB: Creates a label with the text 'Automação de Processos da
+				Barbearia'. A better name would be 'labelAPB'.
+
+		/*
+		 * Add an action performed event. When the Iniciar Button is clicked, it
+		 * takes the user to other window, which is MenuPrincipal.
+		 */
+		JButton btnIniciar = new JButton("Iniciar");
+		
+			btnIniciar: Creates a button called 'Iniciar'. A better name
+				would be 'buttonStart'.
+
+		/*
+		 * Add an action performed event. When the Fechar Button is clicked, it
+		 * closes the application.
+		 */
+		JButton btnFechar = new JButton("Fechar");
+		
+			btnFechar: Creates a button called 'Fechar'. A better name
+				would be 'buttonClose'.
+
+		JLabel lblIcone = new JLabel("");
+		
+			lblIcone: Creates a label with an Icon. A better name would be 
+				'labelAPB'.
+
+	}
+}
