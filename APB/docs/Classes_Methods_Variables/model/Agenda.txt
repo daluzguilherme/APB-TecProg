@@ -1,0 +1,71 @@
+* Agenda
+ * This class gets and sets the attributes of the address book of possible barbers 
+ * interested in working in the barber shop.
+ */
+
+public class Agenda {
+
+	/*
+	 *These strings represents the attributes of an Agenda. All validations are made
+ 	 *inside the setters methods.
+	 */
+	private String nome; 
+	private String telefone;
+	private String descricao;
+	private static String tempNome;
+
+	/*Final strings with exception messages.*/
+	String NOME_INVALIDO = "Nome Invalido";
+	String NOME_BRANCO = "Nome em Branco";
+	String TELEFONE_INVALIDO = "Telefone Invalido";
+	String TELEFONE_BRANCO = "Telefone em Branco";
+
+	/* Constructor method of the class Agenda.*/
+	Agenda(String nome, String telefone, String descricao) 
+	
+		nome: Represents a name on the adress book. A better 'nome' could be: 'Name'.
+		
+		telefone: Represents the barber phone number on the adress book. A better 'telefone' could be:
+	'Phone Number'.
+		
+		descrição: Represents a space in the adress book where the owner of the barber shop makes your
+	notes. A better 'descrição' could be: 'Description'.
+		
+	/*Getters.*/
+	
+	String getNome
+	
+	String getTelefone
+	
+	String getDescricao
+	
+	String getTempNome //This method modifies the field name to a temporary variable.
+		tempNome: Represents a temporary name. A better 'TempName' could be: 'Auxiliary Name'.
+	
+	/*
+	 *This methods resets the name and validates it with a regex. If the parameter
+	 *doesn't fill the rules, is empty or null an exception is thrown.
+	 */
+	 
+	 void setNome(String nome) throws BarbeiroException
+	 	name // It represents the new barber name on the adress book.
+	 	
+	 /*
+	  *This methods resets the phone number, and validates it with a regex (numbers separated
+	  *by hyphens or only numbers). If the parameter doesn't fill the rules, is empty 
+	  *or null an exception is thrown.
+	  */
+	  
+	  void setTelefone(String telefone) throws BarbeiroException
+	  	telefone // It represents the new barber phone number on the adress book.
+	  	
+	 /*This methods resets a new description on the adress book. */
+	 
+	 void setDescricao(String descricao)
+	 	descricao // It represents the new description on the adress book.
+	 	
+	 
+	  /*This method modifies the temporary name field. */
+	  
+	  void setTempNome(String tempNome)
+	  	tempNome // It represents a temporary name on the adress book.
