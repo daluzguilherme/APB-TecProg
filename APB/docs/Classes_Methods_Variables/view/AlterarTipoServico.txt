@@ -1,0 +1,100 @@
+/**
+ * AlterarTipoServico
+ * This class provides a GUI to change the chosen 
+ * type of service information.
+ */
+
+@SuppressWarnings("serial")
+public class AlterarTipoServico extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textFieldNome;
+	private JTextField textFieldPreco;
+	private String nome;
+
+	/* Public method to create the frame. */
+	public AlterarTipoServico() {
+
+		textFieldNome = new JTextField();
+		
+			textFieldNome: Creates a text field to type the service's name.
+				A better name would be 'textFieldServiceName'.
+
+		JLabel labelNome = new JLabel("Tipo de servi\u00E7o:");
+		
+			labelNome: Creates a label with the word 'Nome:'. A better name
+				would be 'labelServiceName'.
+
+		textFieldPreco = new JTextField();
+		
+			textFieldPreco: Creates a text field to type the Service's price.
+				A better name would be 'textFieldPrice'.
+
+		JLabel labelCadeira = new JLabel("Pre\u00E7o:");
+		
+			labelCadeira: Creates a label with the word 'Preço:'. A better name
+				would be 'labelServicePrice'.
+
+		/*
+		 * Getting an instance of a TipoServico to be populated with a query
+		 * from database.
+		 */
+		try {
+			TipoServico tiposervico = new TipoServico();
+			
+				tiposervico: instance of a type of object TipoServico. A better
+				name would be 'serviceType'.
+					
+			nome = textFieldNome.getText();
+			
+				nome: gets the service name from the text field textFieldNome.
+					A better name would be 'serviceName'.
+					
+		} catch (SQLException e) {
+			mostrarMensagemDeErro(e.getMessage());
+		} catch (ServicoException e) {
+			mostrarMensagemDeErro(e.getMessage());
+		}
+
+		/*
+		 * Add an action performed event. When the Salvar Button is clicked, it
+		 * takes the strings from the text fields and saves them in in the
+		 * database.
+		 */
+		JButton buttonSalvar = new JButton("Salvar");
+		
+			buttonSalvar: Creates a button called 'Salvar'. A better name would
+				be 'buttonSave'.
+
+		/*
+		 * Add an action performed event. When the Limpar Button is clicked, it
+		 * clears the fields.
+		 */
+		JButton buttonLimpar = new JButton("Limpar Campos");
+		
+			buttonLimpar: Creates a button called 'Limpar Campos'. A better name
+			would be 'buttonClean'.
+
+		/*
+		 * Add an action performed event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is CadastrarTipoServico.
+		 */
+		JButton buttonVoltar = new JButton("Voltar");
+		
+			buttonVoltar: Creates a button called 'Voltar'. A better name would
+				be 'buttonBack'.
+	}
+
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
+	private void mostrarMensagemDeErro(String informacao) {
+		
+		informacao: information to be shown in the a message of error. A better
+			name would be 'description'.
+	}
+}
