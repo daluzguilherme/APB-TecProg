@@ -1,5 +1,5 @@
 /**
- * ServicoPrestadoDAO.java
+ * ProvidedServiceDAO.java
  *This class manages the DAO functions of services rendered.
  */
 package dao;
@@ -11,20 +11,20 @@ import java.sql.SQLException;
 
 import model.ServicoPrestado;
 
-public class ServicoPrestadoDAO {
+public class ProvidedServiceDAO {
 	
 	/* Instance to the singleton. */
-	private static ServicoPrestadoDAO instance;
+	private static ProvidedServiceDAO instance;
 
-	private ServicoPrestadoDAO() {
+	private ProvidedServiceDAO() {
 
 		/* Blank constructor. */
 	}
 
 	/* Singleton implementation. */
-	public static ServicoPrestadoDAO getInstance() {
+	public static ProvidedServiceDAO getInstance() {
 		if (instance == null)
-			instance = new ServicoPrestadoDAO();
+			instance = new ProvidedServiceDAO();
 		return instance;
 	}
 

@@ -9,17 +9,17 @@ import model.TipoServico;
 
 import org.junit.Test;
 
-import dao.TipoServicoDAO;
+import dao.ServiceTypeDAO;
 
 public class TipoServicoDAOTeste {
 
 	TipoServico tiposervico = new TipoServico();
 	TipoServico tiposervico2 = new TipoServico();
-	TipoServicoDAO servicoDAO = TipoServicoDAO.getInstance();
+	ServiceTypeDAO servicoDAO = ServiceTypeDAO.getInstance();
 	
 	@Test
 	public void getInstanceDeTipoServicoDAODeveRetonarInstanciaCorrente() {
-		assertEquals(TipoServicoDAO.getInstance(), servicoDAO);
+		assertEquals(ServiceTypeDAO.getInstance(), servicoDAO);
 	}
 
 	@Test

@@ -9,20 +9,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ReciboDAO {
+public class ReceiptDAO {
 	
 	/* Instance to the singleton. */
-	private static ReciboDAO instance;
+	private static ReceiptDAO instance;
 	
-	private ReciboDAO(){
+	private ReceiptDAO(){
 		
 		/* Blank constructor. */
 	}
 	
 	/* Singleton implementation. */
-	public static ReciboDAO getInstance(){
+	public static ReceiptDAO getInstance(){
 		if(instance == null)
-			instance = new ReciboDAO();
+			instance = new ReceiptDAO();
 		return instance;
 	}
 	

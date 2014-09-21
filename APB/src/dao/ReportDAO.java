@@ -11,19 +11,19 @@ import java.sql.SQLException;
 
 import model.Relatorio;
 
-public class RelatorioDAO {
+public class ReportDAO {
 
 	/* Instance to the singleton. */
-	private static RelatorioDAO instance;
+	private static ReportDAO instance;
 	
-	private RelatorioDAO(){
+	private ReportDAO(){
 		/* Blank constructor. */
 	}
 
 	/* Singleton implementation. */
-	public static RelatorioDAO getInstance() {
+	public static ReportDAO getInstance() {
 		if (instance == null)
-			instance = new RelatorioDAO();
+			instance = new ReportDAO();
 		return instance;
 	}
 

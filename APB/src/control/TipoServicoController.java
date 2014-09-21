@@ -10,7 +10,7 @@ package control;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dao.TipoServicoDAO;
+import dao.ServiceTypeDAO;
 import model.TipoServico;
 
 public class TipoServicoController {
@@ -22,7 +22,7 @@ public class TipoServicoController {
 		if (tipoServico == null) {
 			return false;
 		} else {
-			TipoServicoDAO.getInstance().incluir(tipoServico);
+			ServiceTypeDAO.getInstance().incluir(tipoServico);
 			return true;
 		}
 	}
@@ -33,7 +33,7 @@ public class TipoServicoController {
 			return false;
 		} else {
 			TipoServico tipoServico_alterado = tipoServico;
-			TipoServicoDAO.getInstance().alterar(nome,tipoServico_alterado, tipoServico);
+			ServiceTypeDAO.getInstance().alterar(nome,tipoServico_alterado, tipoServico);
 			return true;
 		}
 	}
@@ -44,7 +44,7 @@ public class TipoServicoController {
 		if (tipoServico == null) {
 			return false;
 		} else {
-			TipoServicoDAO.getInstance().excluir(tipoServico);
+			ServiceTypeDAO.getInstance().excluir(tipoServico);
 			return true;
 		}
 	}
@@ -62,12 +62,12 @@ public class TipoServicoController {
 	
 	/* Shows all types of service registered in the database. */
 	public ResultSet mostrarTipoServicoCadastrados(TipoServico servico) throws SQLException {
-		return TipoServicoDAO.getInstance().mostrarTipoServicoCadastrados(servico);
+		return ServiceTypeDAO.getInstance().mostrarTipoServicoCadastrados(servico);
 	}
 	
 	/* Search a service by name. */
 	public ResultSet pesquisarPorNome(TipoServico servico) throws SQLException {
-		return TipoServicoDAO.getInstance().pesquisarPorNome(servico);
+		return ServiceTypeDAO.getInstance().pesquisarPorNome(servico);
 	}
 
 }

@@ -9,7 +9,7 @@ package control;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dao.ServicoPrestadoDAO;
+import dao.ProvidedServiceDAO;
 import model.ServicoPrestado;
 
 public class ServicoPrestadoController {
@@ -28,7 +28,7 @@ public class ServicoPrestadoController {
 	/* Inserts a service in the database. */
 	public boolean inserir(ServicoPrestado servico) throws SQLException {
 		if (servico != null) {
-			ServicoPrestadoDAO.getInstance().incluir(servico);
+			ProvidedServiceDAO.getInstance().incluir(servico);
 			return true;
 		}
 		
@@ -38,7 +38,7 @@ public class ServicoPrestadoController {
 	/* Excludes a service from the database. */
 	public boolean excluir(ServicoPrestado servico) throws SQLException {
 		if (servico !=  null) {
-			ServicoPrestadoDAO.getInstance().excluir(servico);
+			ProvidedServiceDAO.getInstance().excluir(servico);
 			return true;
 
 		}
@@ -47,7 +47,7 @@ public class ServicoPrestadoController {
 	
 	/* Shows all services registered. */
 	public ResultSet mostrarServicosPrestadosCadastrados(ServicoPrestado servico) throws SQLException {
-		return ServicoPrestadoDAO.getInstance().mostrarServicosPrestadosCadastrados(servico);
+		return ProvidedServiceDAO.getInstance().mostrarServicosPrestadosCadastrados(servico);
 	}
 
 	

@@ -10,7 +10,7 @@ import model.ServicoPrestado;
 import org.junit.Before;
 import org.junit.Test;
 
-import dao.ServicoPrestadoDAO;
+import dao.ProvidedServiceDAO;
 import exception.ServicoException;
 
 public class ServicoPrestadoDAOTeste {
@@ -37,11 +37,11 @@ public class ServicoPrestadoDAOTeste {
 		}
 	}
 
-	ServicoPrestadoDAO servicoDAO = ServicoPrestadoDAO.getInstance();
+	ProvidedServiceDAO servicoDAO = ProvidedServiceDAO.getInstance();
 	
 	@Test
 	public void getInstanceDeServicoPrestadoDAODeveRetonarInstanciaCorrente() {
-		assertEquals(ServicoPrestadoDAO.getInstance(), servicoDAO);
+		assertEquals(ProvidedServiceDAO.getInstance(), servicoDAO);
 	}
 
 	@Test

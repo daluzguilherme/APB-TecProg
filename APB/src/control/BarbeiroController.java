@@ -8,7 +8,7 @@ package control;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dao.BarbeiroDAO;
+import dao.BarberDAO;
 import model.Barbeiro;
 
 public class BarbeiroController {
@@ -40,7 +40,7 @@ public class BarbeiroController {
 			return false;
 		}
 			
-		BarbeiroDAO.getInstance().incluir(barbeiro);
+		BarberDAO.getInstance().incluir(barbeiro);
 		return true;
 	}
 
@@ -57,7 +57,7 @@ public class BarbeiroController {
 			return false;
 
 		Barbeiro barbeiro_alterado = barbeiro;
-		BarbeiroDAO.getInstance().alterar(nome, barbeiro_alterado, barbeiro);
+		BarberDAO.getInstance().alterar(nome, barbeiro_alterado, barbeiro);
 		return true;
 	}
 
@@ -73,7 +73,7 @@ public class BarbeiroController {
 		if (barbeiro == null)
 			return false;
 		
-		BarbeiroDAO.getInstance().excluir(barbeiro);
+		BarberDAO.getInstance().excluir(barbeiro);
 		return true;
 	}
 	
@@ -83,7 +83,7 @@ public class BarbeiroController {
 	 * @throws SQLException If has some problem during the database deletion
 	 */
 	public ResultSet pesquisar() throws SQLException {
-		return BarbeiroDAO.getInstance().pesquisar();
+		return BarberDAO.getInstance().pesquisar();
 	}
 	
 	/**
@@ -92,7 +92,7 @@ public class BarbeiroController {
 	 * @throws SQLException If has some problem during the database deletion
 	 */
 	public ResultSet mostrarBarbeirosCadastrados(Barbeiro barbeiro) throws SQLException {
-		return BarbeiroDAO.getInstance().mostrarBarbeirosCadastrados(barbeiro);
+		return BarberDAO.getInstance().mostrarBarbeirosCadastrados(barbeiro);
 	}
 	
 	/* Search a barber by name. */
@@ -103,7 +103,7 @@ public class BarbeiroController {
 	 * @throws SQLException If has some problem during the database deletion
 	 */
 	public ResultSet pesquisarPorNome(Barbeiro barbeiro) throws SQLException {
-		return BarbeiroDAO.getInstance().pesquisarPorNome(barbeiro);
+		return BarberDAO.getInstance().pesquisarPorNome(barbeiro);
 	}
 
 }

@@ -9,17 +9,17 @@ import model.Agenda;
 
 import org.junit.Test;
 
-import dao.AgendaDAO;
+import dao.AddressBookDAO;
 
 public class AgendaDAOTeste {
 
 	Agenda contato = new Agenda();
 	Agenda contato2 = new Agenda();
-	AgendaDAO agendaDAO = AgendaDAO.getInstance();
+	AddressBookDAO agendaDAO = AddressBookDAO.getInstance();
 	
 	@Test
 	public void getInstanceDeAgendaDAODeveRetonarInstanciaCorrente() {
-		assertEquals(AgendaDAO.getInstance(), agendaDAO);
+		assertEquals(AddressBookDAO.getInstance(), agendaDAO);
 	}
 
 	@Test

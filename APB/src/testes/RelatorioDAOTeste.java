@@ -11,7 +11,7 @@ import model.Relatorio;
 import org.junit.Before;
 import org.junit.Test;
 
-import dao.RelatorioDAO;
+import dao.ReportDAO;
 
 import exception.RelatorioException;
 
@@ -34,14 +34,14 @@ public class RelatorioDAOTeste {
 
 	@Test
 	public void getInstanceDeRelatorioDAODeveRetonarInstanciaCorrente() {
-		RelatorioDAO relatorioDAO = RelatorioDAO.getInstance();
-		assertEquals(RelatorioDAO.getInstance(), relatorioDAO);
+		ReportDAO relatorioDAO = ReportDAO.getInstance();
+		assertEquals(ReportDAO.getInstance(), relatorioDAO);
 	}
 
 	@Test
 	public void procurarPorDataDeRelatorioDAODeveMostrarUmRelatorio() {
 		try {
-			RelatorioDAO relatorioDAO = RelatorioDAO.getInstance();
+			ReportDAO relatorioDAO = ReportDAO.getInstance();
 			ResultSet rs = relatorioDAO.pesquisarPorData(relatorio);
 			
 			while(rs.next()) {
@@ -57,7 +57,7 @@ public class RelatorioDAOTeste {
 	@Test
 	public void pesquisarPorDataEServicoDAODeveMostrarUmRelatorio() {
 		try {
-			RelatorioDAO relatorioDAO = RelatorioDAO.getInstance();
+			ReportDAO relatorioDAO = ReportDAO.getInstance();
 			ResultSet rs = relatorioDAO.pesquisarPorDataEServico(relatorio);
 			
 			while (rs.next()) {
@@ -73,7 +73,7 @@ public class RelatorioDAOTeste {
 	@Test
 	public void pesquisarPorBArbeiroDAODeveMostrarUmRelatorio() {
 		try {
-			RelatorioDAO relatorioDAO = RelatorioDAO.getInstance();
+			ReportDAO relatorioDAO = ReportDAO.getInstance();
 			ResultSet rs = relatorioDAO.pesquisarPorBarbeiro(relatorio);
 			
 			while(rs.next()) {
@@ -89,7 +89,7 @@ public class RelatorioDAOTeste {
 	@Test
 	public void pesquisarPorBArbeiroEServicoDAODeveMostrarUmRelatorio() {
 		try {
-			RelatorioDAO relatorioDAO = RelatorioDAO.getInstance();
+			ReportDAO relatorioDAO = ReportDAO.getInstance();
 			ResultSet rs = relatorioDAO.pesquisarPorBarbeiroEServico(relatorio);
 			
 			while(rs.next()) {
@@ -105,7 +105,7 @@ public class RelatorioDAOTeste {
 	@Test
 	public void pesquisarPorServicoDAODeveMostrarUmRelatorio() {
 		try {
-			RelatorioDAO relatorioDAO = RelatorioDAO.getInstance();
+			ReportDAO relatorioDAO = ReportDAO.getInstance();
 			ResultSet rs = relatorioDAO.pesquisarPorServico(relatorio);
 			
 			while (rs.next()) {
@@ -121,7 +121,7 @@ public class RelatorioDAOTeste {
 	@Test
 	public void pesquisarPorDataEBArbeiroDAODeveMostrarUmRelatorio() {
 		try {
-			RelatorioDAO relatorioDAO = RelatorioDAO.getInstance();
+			ReportDAO relatorioDAO = ReportDAO.getInstance();
 			ResultSet rs = relatorioDAO.pesquisarPorDataEBarbeiro(relatorio);
 			
 			while (rs.next()) {
@@ -137,7 +137,7 @@ public class RelatorioDAOTeste {
 	@Test
 	public void pesquisarPorDataBarbeiroEServicoDAODeveMostrarUmRelatorio(){
 		try {
-			RelatorioDAO relatorioDAO = RelatorioDAO.getInstance();
+			ReportDAO relatorioDAO = ReportDAO.getInstance();
 			ResultSet rs = relatorioDAO.pesquisarPorDataBarbeiroEServico(relatorio);
 			
 			while (rs.next()) {

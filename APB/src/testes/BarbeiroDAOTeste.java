@@ -11,7 +11,7 @@ import model.Barbeiro;
 import org.junit.Before;
 import org.junit.Test;
 
-import dao.BarbeiroDAO;
+import dao.BarberDAO;
 import dao.FactoryConnection;
 import exception.BarbeiroException;
 
@@ -33,7 +33,7 @@ public class BarbeiroDAOTeste {
 			barbeiro2.setCpf("02919594150");
 			barbeiro2.setCadeira("5");
 			
-			BarbeiroDAO barbeiroDao = BarbeiroDAO.getInstance();
+			BarberDAO barbeiroDao = BarberDAO.getInstance();
 			barbeiroDao.incluir(barbeiro);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
@@ -44,11 +44,11 @@ public class BarbeiroDAOTeste {
 		}	
 	}
 
-	BarbeiroDAO barbeiroDAO = BarbeiroDAO.getInstance();
+	BarberDAO barbeiroDAO = BarberDAO.getInstance();
 	
 	@Test
 	public void getInstanceDeBarbeiroDAODeveRetonarInstanciaCorrente() {	
-		assertEquals(BarbeiroDAO.getInstance(), barbeiroDAO);
+		assertEquals(BarberDAO.getInstance(), barbeiroDAO);
 	}
 
 	@Test

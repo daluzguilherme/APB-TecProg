@@ -9,7 +9,7 @@ package control;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dao.ReciboDAO;
+import dao.ReceiptDAO;
 
 public class ReciboController {
 
@@ -42,7 +42,7 @@ public class ReciboController {
 	public ResultSet pesquisarServicosDoBarbeiro(String barbeiro,
 			String dataInicial, String dataFinal) throws SQLException{
 		
-		return ReciboDAO.getInstance().pesquisarServicosDoBarbeiro(barbeiro,
+		return ReceiptDAO.getInstance().pesquisarServicosDoBarbeiro(barbeiro,
 				dataInicial, dataFinal);
 		
 	}

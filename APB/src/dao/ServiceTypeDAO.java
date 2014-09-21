@@ -1,5 +1,5 @@
 /**
- * TipoServicoDAO.java
+ * ServiceTypeDAO.java
  *This class manages the DAO functions of services type.
  */
 package dao;
@@ -11,20 +11,20 @@ import java.sql.SQLException;
 
 import model.TipoServico;
 
-public class TipoServicoDAO {
+public class ServiceTypeDAO {
 
 	/* Instance to the singleton. */
-	private static TipoServicoDAO instance;
+	private static ServiceTypeDAO instance;
 
-	private TipoServicoDAO() {
+	private ServiceTypeDAO() {
 		
 		/* Blank constructor. */
 	}
 
 	/* Singleton implementation. */
-	public static TipoServicoDAO getInstance() {
+	public static ServiceTypeDAO getInstance() {
 		if (instance == null)
-			instance = new TipoServicoDAO();
+			instance = new ServiceTypeDAO();
 		return instance;
 	}
 

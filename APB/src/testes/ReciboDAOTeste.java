@@ -11,8 +11,8 @@ import model.Relatorio;
 import org.junit.Before;
 import org.junit.Test;
 
-import dao.AgendaDAO;
-import dao.ReciboDAO;
+import dao.AddressBookDAO;
+import dao.ReceiptDAO;
 import exception.ReciboException;
 import exception.RelatorioException;
 
@@ -35,14 +35,14 @@ public class ReciboDAOTeste {
 
 	@Test
 	public void getInstanceDeReciboDAODeveRetonarInstanciaCorrente() {
-		ReciboDAO reciboDAO = ReciboDAO.getInstance();
-		assertEquals(ReciboDAO.getInstance(), reciboDAO);
+		ReceiptDAO reciboDAO = ReceiptDAO.getInstance();
+		assertEquals(ReceiptDAO.getInstance(), reciboDAO);
 	}
 
 	@Test
 	public void pesquisarPorDataEBArbeiroDAODeveMostrarUmRecibo() {
 		try {
-			ReciboDAO reciboDAO = ReciboDAO.getInstance();
+			ReceiptDAO reciboDAO = ReceiptDAO.getInstance();
 			ResultSet rs = reciboDAO.pesquisarServicosDoBarbeiro(
 					relatorio.getBarbeiro(), relatorio.getDataInicial(),
 					relatorio.getDataFinal());

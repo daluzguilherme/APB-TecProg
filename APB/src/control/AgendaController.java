@@ -9,7 +9,7 @@ package control;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dao.AgendaDAO;
+import dao.AddressBookDAO;
 import model.Agenda;
 
 public class AgendaController {
@@ -29,7 +29,7 @@ public class AgendaController {
 	public boolean incluir(Agenda agenda) throws SQLException {
 		if (agenda == null) return false;
 
-		AgendaDAO.getInstance().incluir(agenda);
+		AddressBookDAO.getInstance().incluir(agenda);
 		return true;
 	}
 
@@ -45,7 +45,7 @@ public class AgendaController {
 		if (agenda == null) return false;
 
 		Agenda agenda_alterado = agenda;
-		AgendaDAO.getInstance().alterar(nome, agenda_alterado, agenda);
+		AddressBookDAO.getInstance().alterar(nome, agenda_alterado, agenda);
 		return true;
 	}
 
@@ -59,7 +59,7 @@ public class AgendaController {
 	public boolean excluir(Agenda contato) throws SQLException {
 		if (contato == null) return false;
 
-		AgendaDAO.getInstance().excluir(contato);
+		AddressBookDAO.getInstance().excluir(contato);
 		return true;
 	}
 
@@ -80,7 +80,7 @@ public class AgendaController {
 	 * @throws SQLException If has some problem during the database deletion
 	 */
 	public ResultSet mostrarContatosCadastrados(Agenda contato) throws SQLException {
-		return AgendaDAO.getInstance().mostrarContatosCadastrados(contato);
+		return AddressBookDAO.getInstance().mostrarContatosCadastrados(contato);
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class AgendaController {
 	 * @throws SQLException If has some problem during the database deletion
 	 */
 	public ResultSet pesquisarPorNome(Agenda contato) throws SQLException {
-		return AgendaDAO.getInstance().pesquisarPorNome(contato);
+		return AddressBookDAO.getInstance().pesquisarPorNome(contato);
 	}
 
 	/*  Search a contact in the address book by phone number. */
@@ -101,7 +101,7 @@ public class AgendaController {
 	 * @throws SQLException If has some problem during the database deletion
 	 */
 	public ResultSet pesquisarPorTelefone(Agenda contato) throws SQLException {
-		return AgendaDAO.getInstance().pesquisarPorTelefone(contato);
+		return AddressBookDAO.getInstance().pesquisarPorTelefone(contato);
 	}
 
 }

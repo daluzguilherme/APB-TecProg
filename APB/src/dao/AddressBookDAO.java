@@ -1,5 +1,5 @@
 /**
- * AgendaDAO.java
+ * AddressBookDAO.java
  *This class manages the DAO functions of an address book.
  */
 package dao;
@@ -12,15 +12,15 @@ import java.sql.SQLException;
 import model.Agenda;
 import dao.FactoryConnection;
 
-public class AgendaDAO {
+public class AddressBookDAO {
 
 	/* Instance to the singleton. */
-	private static AgendaDAO instance;
+	private static AddressBookDAO instance;
 
 	/**
 	 * Class Constructor.
 	 */
-	private AgendaDAO() {
+	private AddressBookDAO() {
 		
 		/* Blank constructor. */
 	}
@@ -28,54 +28,54 @@ public class AgendaDAO {
 	/**
 	 * Singleton implementation.
 	 * 
-	 * @return instance the active AgendaDAO instance, since it will be just one
+	 * @return instance the active AddressBookDAO instance, since it will be just one
 	 * 					at a time
 	 */
-	public static AgendaDAO getInstance() {
+	public static AddressBookDAO getInstance() {
 		if (instance == null)
-			instance = new AgendaDAO();
+			instance = new AddressBookDAO();
 		return instance;
 	}
 
 	/**
 	 * Include new address book in the database.
 	 * 
-	 * @param agenda an adress book to be included in the database.
+	 * @param addressBook an address book to be included in the database.
 	 * @return true if there was no error during the database insertion.
 	 * @throws SQLException If there was some problem during the database
 	 * 						deletion
 	 */
-	public boolean incluir(Agenda agenda) throws SQLException {
-		if (agenda == null)
+	public boolean incluir(Agenda addressBook) throws SQLException {
+		if (addressBook == null)
 			return false;
 		
 		this.updateQuery("INSERT INTO "
 				+ "agenda (nome, telefone, descricao) VALUES (" + "\""
-				+ agenda.getNome() + "\", " + "\"" + agenda.getTelefone()
-				+ "\", " + "\"" + agenda.getDescricao() + "\"); ");
+				+ addressBook.getNome() + "\", " + "\"" + addressBook.getTelefone()
+				+ "\", " + "\"" + addressBook.getDescricao() + "\"); ");
 		return true;
 	}
 
 	/**
 	 * This updates an address book on the database.
 	 * 
-	 * @param nome A name to modified in the adress book.
-	 * @param agenda_alterado A new instance of Agenda to be substituted.
-	 * @param agenda  An old instance of Agenda to be substituted.
+	 * @param nome A name to be modified in the address book.
+	 * @param alteredAddressBook A new instance of Agenda to be substituted.
+	 * @param addressBook  An old instance of Agenda to be substituted.
 	 * @return true if there was no error during the process of changing.
 	 * @return false if agenda or agenda_alterado is null. 
 	 * @throws SQLException If there was some problem during the database
 	 * 						deletion.
 	 */
-	public boolean alterar(String nome, Agenda agenda_alterado, Agenda agenda)
-			throws SQLException {	
-		if(agenda == null || agenda_alterado == null)
+	public boolean alterar(String nome, Agenda alteredAddressBook, 
+			Agenda addressBook) throws SQLException {	
+		if(addressBook == null || alteredAddressBook == null)
 			return false;
 		
 		this.updateQuery("UPDATE agenda SET " +
-				"nome = \"" + agenda_alterado.getNome() + "\", " +
-				"telefone = \"" + agenda_alterado.getTelefone() + "\", "+
-				"descricao = \"" + agenda_alterado.getDescricao() + "\""+
+				"nome = \"" + alteredAddressBook.getNome() + "\", " +
+				"telefone = \"" + alteredAddressBook.getTelefone() + "\", "+
+				"descricao = \"" + alteredAddressBook.getDescricao() + "\""+
 				" WHERE " +
 				" agenda.nome = \"" + nome + "\";");
 			
@@ -85,18 +85,18 @@ public class AgendaDAO {
 	/**
 	 * This removes an address book from the database.
 	 * 
-	 * @param contato A contact to be excluded from the database.
+	 * @param contact A contact to be excluded from the database.
 	 * @return false If contato given as parameter is null.
 	 * @return true If there was no error during the database operation.
 	 * @throws SQLException If there was some problem during the database
 	 * 						operation.
 	 */
-	public boolean excluir(Agenda contato) throws SQLException {
-		if(contato ==  null)
+	public boolean excluir(Agenda contact) throws SQLException {
+		if(contact ==  null)
 			return false;
 		
 		this.updateQuery("DELETE FROM agenda WHERE " + "agenda.telefone = \""
-				+ contato.getTelefone() + "\";");
+				+ contact.getTelefone() + "\";");
 		return true;
 	}
 
@@ -118,12 +118,12 @@ public class AgendaDAO {
 	/**
 	 * Shows registered contacts in address book.
 	 * 
-	 * @param contato an adress book to have its contacts shown.
-	 * @return rs a ResultSet with all elements of an adress book.
+	 * @param contact an address book to have its contacts shown.
+	 * @return rs a ResultSet with all elements of an address book.
 	 * @throws SQLException If there was some problem during the database
 	 * 						operation.
 	 */
-	public ResultSet mostrarContatosCadastrados(Agenda contato) throws SQLException {
+	public ResultSet mostrarContatosCadastrados(Agenda contact) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		ResultSet rs = connection.createStatement().executeQuery(
 				"Select * from agenda;");
@@ -134,15 +134,15 @@ public class AgendaDAO {
 	/**
 	 * Search a contact by name.
 	 * 
-	 * @param contato a contact to be searched.
+	 * @param contact a contact to be searched.
 	 * @return rs A ResultSet with all names matching the name searched.
 	 * @throws SQLException If there was some problem during the database
 	 * 						operation.
 	 */
-	public ResultSet pesquisarPorNome(Agenda contato) throws SQLException {
+	public ResultSet pesquisarPorNome(Agenda contact) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		java.sql.PreparedStatement pst = connection.prepareStatement("SELECT * FROM agenda WHERE "
-				+ "nome = '" + contato.getNome()+ "';");
+				+ "nome = '" + contact.getNome()+ "';");
 		ResultSet rs = pst.executeQuery();
 
 		return rs;
@@ -151,15 +151,15 @@ public class AgendaDAO {
 	/**
 	 * Search a contact by phone number.
 	 * 
-	 * @param contato a contact to be searched.
+	 * @param contact a contact to be searched.
 	 * @return rs A ResultSet with all phone numbers matching the name searched.
 	 * @throws SQLException If there was some problem during the database
 	 * 						operation.
 	 */
-	public ResultSet pesquisarPorTelefone(Agenda contato) throws SQLException {
+	public ResultSet pesquisarPorTelefone(Agenda contact) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		java.sql.PreparedStatement pst = connection.prepareStatement("SELECT * FROM agenda WHERE "
-				+ "telefone = '" + contato.getTelefone()+ "';");
+				+ "telefone = '" + contact.getTelefone()+ "';");
 		ResultSet rs = pst.executeQuery();
 
 		return rs;
