@@ -16,7 +16,11 @@ public class ServicoPrestadoController {
 
 	private ServicoPrestadoController() {}
 	
-	/* Gets an instance of ServicoPrestadoController. */
+	/**
+	 * Provides the singleton implementation
+	 * @return the active ServicoPrestadoController instance, since it will be just one at
+	 * time.
+	 */
 	public static ServicoPrestadoController getInstance() {
 		if (instance == null)
 			instance = new ServicoPrestadoController();
@@ -25,7 +29,13 @@ public class ServicoPrestadoController {
 
 	private static ServicoPrestadoController instance;
 
-	/* Inserts a service in the database. */
+	/**
+	 * Insert a service in the database.
+	 * @param servico instance of an type of object ServicoPrestado.
+	 * @throws SQLException If has some problem during the database insertion
+	 * @return true if no problems.
+	 * @return false if service is null.
+	 */
 	public boolean inserir(ServicoPrestado servico) throws SQLException {
 		if (servico != null) {
 			ProvidedServiceDAO.getInstance().incluir(servico);
@@ -35,7 +45,14 @@ public class ServicoPrestadoController {
 		return false;
 	}
 
-	/* Excludes a service from the database. */
+	/**
+	 * Removes a service in the database.
+	 * @param servico instance of an type of object ServicoPrestado.
+	 * @throws SQLException If has some problem during the database insertion
+	 * @return true if no problems.
+	 * @return false if service is null.
+	 */
+	
 	public boolean excluir(ServicoPrestado servico) throws SQLException {
 		if (servico !=  null) {
 			ProvidedServiceDAO.getInstance().excluir(servico);
@@ -45,7 +62,12 @@ public class ServicoPrestadoController {
 		return false;	
 	}
 	
-	/* Shows all services registered. */
+	/**
+	 * Displays all services registered in the database.
+	 * @param servico instance of an type of object ServicoPrestado.
+	 * @return Show the services registered in the database.
+	 * @throws SQLException If has some problem during the database deletion
+	 */
 	public ResultSet mostrarServicosPrestadosCadastrados(ServicoPrestado servico) throws SQLException {
 		return ProvidedServiceDAO.getInstance().mostrarServicosPrestadosCadastrados(servico);
 	}
