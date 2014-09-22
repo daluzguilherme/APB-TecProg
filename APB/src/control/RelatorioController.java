@@ -19,46 +19,80 @@ private static RelatorioController instance;
 
 	public RelatorioController() {}
 	
-	/* Makes a search by date. */
-	public ResultSet pesquisarPorData(Relatorio relatorio) throws SQLException {
-		return ReportDAO.getInstance().pesquisarPorData(relatorio);
-	}
-	
-	/* Makes a search by date and a specific barber. */
-	public ResultSet pesquisarPorDataEBarbeiro(Relatorio relatorio) throws SQLException {	
-		return ReportDAO.getInstance().pesquisarPorDataEBarbeiro(relatorio);
-	}
-	
-	/* Makes a search by date and service. */
-	public ResultSet pesquisarPorDataEServico(Relatorio relatorio) throws SQLException {	
-		return ReportDAO.getInstance().pesquisarPorDataEServico(relatorio);
-	}
-	
-	/* Makes a search by barber. */
-	public ResultSet pesquisarPorBarbeiro(Relatorio relatorio) throws SQLException {	
-		return ReportDAO.getInstance().pesquisarPorBarbeiro(relatorio);
-	}
-	
-	/* Makes a search by barber and service. */
-	public ResultSet pesquisarPorBarbeiroEServico(Relatorio relatorio) throws SQLException {	
-		return ReportDAO.getInstance().pesquisarPorBarbeiroEServico(relatorio);
-	}
-	
-	/* Makes a search by service. */
-	public ResultSet pesquisarPorServico(Relatorio relatorio) throws SQLException {	
-		return ReportDAO.getInstance().pesquisarPorServico(relatorio);
-	}
-	
-	/* Makes a search by date, barber and service. */
-	public ResultSet pesquisarPorDataBarbeiroEServico(Relatorio relatorio) throws SQLException {		
-		return ReportDAO.getInstance().pesquisarPorDataBarbeiroEServico(relatorio);
-	}
-	
-	/* Gets an instance of RelatorioController. */
+	/**
+	 * Provides the singleton implementation
+	 * @return the active RelatorioController instance, since it will be just one at
+	 * time.
+	 */
 	public static RelatorioController getInstance() {
 		if(instance == null)
 			instance = new RelatorioController();
 		return instance;
 	}
+	
+	/**
+	 * This method looks for a report by date.
+	 * @return Search a report by date  in the database.
+	 * @throws SQLException If has some problem with the database search.
+	 */
+	public ResultSet pesquisarPorData(Relatorio relatorio) throws SQLException {
+		return ReportDAO.getInstance().pesquisarPorData(relatorio);
+	}
+	
+	/**
+	 * This method looks for by date and a specific barber. 
+	 * @return Search  by date and a specific barber in the database.
+	 * @throws SQLException If has some problem with the database search.
+	 */
+	public ResultSet pesquisarPorDataEBarbeiro(Relatorio relatorio) throws SQLException {	
+		return ReportDAO.getInstance().pesquisarPorDataEBarbeiro(relatorio);
+	}
+	
+	/**
+	 * This method looks for by date and service. 
+	 * @return Search  by date and service in the database.
+	 * @throws SQLException If has some problem with the database search.
+	 */
+	public ResultSet pesquisarPorDataEServico(Relatorio relatorio) throws SQLException {	
+		return ReportDAO.getInstance().pesquisarPorDataEServico(relatorio);
+	}
+	
+	/**
+	 * This method looks for by barber. 
+	 * @return Search  by barber in the database.
+	 * @throws SQLException If has some problem with the database search.
+	 */
+	public ResultSet pesquisarPorBarbeiro(Relatorio relatorio) throws SQLException {	
+		return ReportDAO.getInstance().pesquisarPorBarbeiro(relatorio);
+	}
+		
+	/**
+	 * This method looks for by  barber and service. 
+	 * @return Search  by  barber and service in the database.
+	 * @throws SQLException If has some problem with the database search.
+	 */
+	public ResultSet pesquisarPorBarbeiroEServico(Relatorio relatorio) throws SQLException {	
+		return ReportDAO.getInstance().pesquisarPorBarbeiroEServico(relatorio);
+	}
+	
+	/**
+	 * This method looks for  a service. 
+	 * @return Search  by  service in the database.
+	 * @throws SQLException If has some problem with the database search.
+	 */
+	public ResultSet pesquisarPorServico(Relatorio relatorio) throws SQLException {	
+		return ReportDAO.getInstance().pesquisarPorServico(relatorio);
+	}
+	
+	/**
+	 * This method looks for by date, barber and service. 
+	 * @return Search  by date, barber and service in the database.
+	 * @throws SQLException If has some problem with the database search.
+	 */
+	
+	public ResultSet pesquisarPorDataBarbeiroEServico(Relatorio relatorio) throws SQLException {		
+		return ReportDAO.getInstance().pesquisarPorDataBarbeiroEServico(relatorio);
+	}
+	
 
 }
