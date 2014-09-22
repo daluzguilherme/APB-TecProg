@@ -16,7 +16,16 @@ public class AgendaController {
 
 	private static AgendaController instance;
 
-	private AgendaController() {
+	private AgendaController() {}
+	
+	/**
+	 * Provides the singleton implementation
+	 * @return the active AgendaController instance, since it will be just one
+	 * at time.
+	 */
+	public static AgendaController getInstance() {
+		if (instance == null) instance = new AgendaController();
+		return instance;
 	}
 
 	/**
@@ -64,16 +73,6 @@ public class AgendaController {
 	}
 
 	/**
-	 * Provides the singleton implementation
-	 * @return the active AgendaController instance, since it will be just one
-	 * at time.
-	 */
-	public static AgendaController getInstance() {
-		if (instance == null) instance = new AgendaController();
-		return instance;
-	}
-
-	/**
 	 * Displays all contacts from the address book.
 	 * @param contato specific person in the address book.
 	 * @return Show the contacts in the address book.
@@ -93,7 +92,6 @@ public class AgendaController {
 		return AddressBookDAO.getInstance().pesquisarPorNome(contato);
 	}
 
-	/*  Search a contact in the address book by phone number. */
 	/**
 	 * Search a contact in the address book by phone number.
 	 * @param contato specific person in the address book.
