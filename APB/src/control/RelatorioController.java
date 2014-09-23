@@ -21,77 +21,106 @@ private static RelatorioController instance;
 	
 	/**
 	 * Provides the singleton implementation
-	 * @return the active RelatorioController instance, since it will be just one at
-	 * time.
+	 * @return the active RelatorioController instance, since it will be just 
+	 * one at time.
 	 */
 	public static RelatorioController getInstance() {
-		if(instance == null)
+		if(instance == null){
 			instance = new RelatorioController();
+		}
 		return instance;
 	}
 	
 	/**
 	 * This method looks for a report by date.
-	 * @return Search a report by date  in the database.
+	 * @param report instance of an type of object Relatorio.
+	 * @return resultReport Search a report by date  in the database.
 	 * @throws SQLException If has some problem with the database search.
 	 */
-	public ResultSet pesquisarPorData(Relatorio relatorio) throws SQLException {
-		return ReportDAO.getInstance().pesquisarPorData(relatorio);
+	public ResultSet pesquisarPorData(Relatorio report) throws SQLException {
+		ResultSet resultReport = ReportDAO.getInstance()
+				.pesquisarPorData(report);
+		return resultReport;
 	}
 	
 	/**
-	 * This method looks for by date and a specific barber. 
-	 * @return Search  by date and a specific barber in the database.
+	 * This method looks for by date and a specific barber.
+	 * @param report instance of an type of object Relatorio. 
+	 * @return resultReport Search  by date and a specific barber in the
+	 *  database.
 	 * @throws SQLException If has some problem with the database search.
 	 */
-	public ResultSet pesquisarPorDataEBarbeiro(Relatorio relatorio) throws SQLException {	
-		return ReportDAO.getInstance().pesquisarPorDataEBarbeiro(relatorio);
+	public ResultSet pesquisarPorDataEBarbeiro(Relatorio report) 
+			throws SQLException {
+		ResultSet resultReport = ReportDAO.getInstance()
+				.pesquisarPorDataEBarbeiro(report);
+		return resultReport;
 	}
 	
 	/**
 	 * This method looks for by date and service. 
-	 * @return Search  by date and service in the database.
+	 * @param report instance of an type of object Relatorio.
+	 * @return resultReport Search  by date and service in the database.
 	 * @throws SQLException If has some problem with the database search.
 	 */
-	public ResultSet pesquisarPorDataEServico(Relatorio relatorio) throws SQLException {	
-		return ReportDAO.getInstance().pesquisarPorDataEServico(relatorio);
+	public ResultSet pesquisarPorDataEServico(Relatorio report)
+			throws SQLException {
+		ResultSet resultReport = ReportDAO.getInstance()
+				.pesquisarPorDataEServico(report);
+		return resultReport;
 	}
 	
 	/**
 	 * This method looks for by barber. 
-	 * @return Search  by barber in the database.
+	 * @param report instance of an type of object Relatorio.
+	 * @return resultReport Search  by barber in the database.
 	 * @throws SQLException If has some problem with the database search.
 	 */
-	public ResultSet pesquisarPorBarbeiro(Relatorio relatorio) throws SQLException {	
-		return ReportDAO.getInstance().pesquisarPorBarbeiro(relatorio);
+	public ResultSet pesquisarPorBarbeiro(Relatorio relatorio) 
+			throws SQLException {
+		ResultSet resultReport = ReportDAO.getInstance()
+				.pesquisarPorBarbeiro(relatorio);
+		return resultReport;
 	}
 		
 	/**
 	 * This method looks for by  barber and service. 
-	 * @return Search  by  barber and service in the database.
+	 * @param report instance of an type of object Relatorio.
+	 * @return resultReport Search  by  barber and service in the database.
 	 * @throws SQLException If has some problem with the database search.
 	 */
-	public ResultSet pesquisarPorBarbeiroEServico(Relatorio relatorio) throws SQLException {	
-		return ReportDAO.getInstance().pesquisarPorBarbeiroEServico(relatorio);
+	public ResultSet pesquisarPorBarbeiroEServico(Relatorio report)
+			throws SQLException {	
+		ResultSet resultReport = ReportDAO.getInstance()
+				.pesquisarPorBarbeiroEServico(report);
+		return resultReport;
 	}
 	
 	/**
 	 * This method looks for  a service. 
-	 * @return Search  by  service in the database.
+	 * @param report instance of an type of object Relatorio.
+	 * @return resultReport Search  by  service in the database.
 	 * @throws SQLException If has some problem with the database search.
 	 */
-	public ResultSet pesquisarPorServico(Relatorio relatorio) throws SQLException {	
-		return ReportDAO.getInstance().pesquisarPorServico(relatorio);
+	public ResultSet pesquisarPorServico(Relatorio report) 
+			throws SQLException {	
+		ResultSet resultReport = ReportDAO.getInstance()
+				.pesquisarPorServico(report);
+		return resultReport;
 	}
 	
 	/**
 	 * This method looks for by date, barber and service. 
-	 * @return Search  by date, barber and service in the database.
+	 * @param report instance of an type of object Relatorio.
+	 * @return  resultReport Search  by date, barber and service in the database.
 	 * @throws SQLException If has some problem with the database search.
 	 */
 	
-	public ResultSet pesquisarPorDataBarbeiroEServico(Relatorio relatorio) throws SQLException {		
-		return ReportDAO.getInstance().pesquisarPorDataBarbeiroEServico(relatorio);
+	public ResultSet pesquisarPorDataBarbeiroEServico(Relatorio report) 
+			throws SQLException {		
+		ResultSet resultReport = ReportDAO.getInstance()
+				.pesquisarPorDataBarbeiroEServico(report);
+		return resultReport;
 	}
 	
 
