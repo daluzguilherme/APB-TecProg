@@ -24,82 +24,104 @@ public class AgendaController {
 	 * at time.
 	 */
 	public static AgendaController getInstance() {
-		if (instance == null) instance = new AgendaController();
+		if (instance == null){
+			instance = new AgendaController();
+		}
 		return instance;
 	}
 
 	/**
 	 * Includes an Address book into the database.
-	 * @param agenda of the barber shop.
+	 * @param adressBook of the barber shop.
 	 * @throws SQLException If has some problem during the database insertion
 	 * @return true if no problems.
 	 * @return false if agenda is null.
 	 */
-	public boolean incluir(Agenda agenda) throws SQLException {
-		if (agenda == null) return false;
-
-		AddressBookDAO.getInstance().incluir(agenda);
-		return true;
+	public boolean incluir(Agenda adressBook) throws SQLException {
+		boolean result = false;
+		if (adressBook != null) {
+			AddressBookDAO.getInstance().incluir(adressBook);
+			result = true;
+		} else{
+			result = false;	
+		}
+		return result;
 	}
 
 	/**
 	 * Alters a name into a given address book.
 	 * @param nome of one person in the address book.
-	 * @param agenda of the barber shop.
+	 * @param adressbook of the barber shop.
 	 * @return false if agenda is null.
 	 * @return true if no problems.
 	 * @throws SQLException If has some problem during the database update
 	 */
-	public boolean alterar(String nome, Agenda agenda) throws SQLException {
-		if (agenda == null) return false;
-
-		Agenda agenda_alterado = agenda;
-		AddressBookDAO.getInstance().alterar(nome, agenda_alterado, agenda);
-		return true;
+	public boolean alterar(String nome, Agenda adressbook) throws SQLException {
+		boolean result = false;
+		if (adressbook != null) {
+			Agenda agenda_alterado = adressbook;
+			AddressBookDAO.getInstance()
+			.alterar(nome, agenda_alterado, adressbook);
+			result = true;
+		} else{
+			result = false;
+		}
+		return result;
 	}
 
 	/**
 	 * Excludes a contact from the address book.
-	 * @param contato specific person in the address book.
-	 * @return false if contato is null.
+	 * @param contact specific person in the address book.
+	 * @return false if contact is null.
 	 * @return true if no problems.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public boolean excluir(Agenda contato) throws SQLException {
-		if (contato == null) return false;
-
-		AddressBookDAO.getInstance().excluir(contato);
-		return true;
+	public boolean excluir(Agenda contact) throws SQLException {
+		boolean result = false;
+		if (contact != null) {
+			AddressBookDAO.getInstance().excluir(contact);
+			result = true;
+		} else {
+			result = false;
+		}
+		return result;
 	}
 
 	/**
 	 * Displays all contacts from the address book.
-	 * @param contato specific person in the address book.
+	 * @param contact specific person in the address book.
 	 * @return Show the contacts in the address book.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public ResultSet mostrarContatosCadastrados(Agenda contato) throws SQLException {
-		return AddressBookDAO.getInstance().mostrarContatosCadastrados(contato);
+	public ResultSet mostrarContatosCadastrados(Agenda contact)
+			throws SQLException {
+		ResultSet resultContact = AddressBookDAO.getInstance()
+				.mostrarContatosCadastrados(contact); 
+		return resultContact;
 	}
 
 	/**
 	 * Search a contact in the address book by name.
-	 * @param contato specific person in the address book.
+	 * @param contact specific person in the address book.
 	 * @return Search by name the contacts in the address book.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public ResultSet pesquisarPorNome(Agenda contato) throws SQLException {
-		return AddressBookDAO.getInstance().pesquisarPorNome(contato);
+	public ResultSet pesquisarPorNome(Agenda contact) throws SQLException {
+		ResultSet resultContact = AddressBookDAO.getInstance()
+				.pesquisarPorNome(contact);
+		return resultContact;
 	}
 
 	/**
 	 * Search a contact in the address book by phone number.
-	 * @param contato specific person in the address book.
+	 * @param contact specific person in the address book.
 	 * @return Search by phone number the contacts in the address book.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public ResultSet pesquisarPorTelefone(Agenda contato) throws SQLException {
-		return AddressBookDAO.getInstance().pesquisarPorTelefone(contato);
+	public ResultSet pesquisarPorTelefone(Agenda contact) throws SQLException {
+		ResultSet resultContact = AddressBookDAO.getInstance()
+				.pesquisarPorTelefone(contact);
+		return resultContact;
 	}
 
 }
