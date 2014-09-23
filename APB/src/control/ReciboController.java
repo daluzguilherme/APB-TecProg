@@ -31,20 +31,21 @@ public class ReciboController {
 	
 	/**
 	 * Search a barber's service between two dates.
-	 * @param  barbeiro one person who works in the barber shops.
-	 * @param dataInicial This represents the date beginning of the service of 
+	 * @param  barber one person who works in the barber shops.
+	 * @param startDate This represents the date beginning of the service of 
 	 *  the barber.
-	 * @param dataFinal This represents the date ending of the service of 
+	 * @param finalDate This represents the date ending of the service of 
 	 *  the barber.
-	 * @return Search a barber's service in the database.
+	 * @return  resultSearchServices search a barber's service in the database.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public ResultSet pesquisarServicosDoBarbeiro(String barbeiro,
-			String dataInicial, String dataFinal) throws SQLException{
-		
-		return ReceiptDAO.getInstance().pesquisarServicosDoBarbeiro(barbeiro,
-				dataInicial, dataFinal);
+	public ResultSet pesquisarServicosDoBarbeiro(String barber,
+			String startDate, String finalDate) throws SQLException{
+		ResultSet resultSearchServices = ReceiptDAO.getInstance()
+				.pesquisarServicosDoBarbeiro(barber,startDate, finalDate);
+		return  resultSearchServices;
 		
 	}
 	
 }
+
