@@ -5,15 +5,15 @@
 package exception;
 
 @SuppressWarnings("serial")
-public class AgendaException extends Exception {
+public class AddressBookException extends Exception {
 
 	/* Constructor creates a AgendaExcpetion without any argument. */
-	public AgendaException() {
+	public AddressBookException() {
 		super();
 	}
 
 	/* Constructor creates a AgendaExcpetion with a message. */
-	public AgendaException(String message) {
+	public AddressBookException(String message) {
 		super(message);
 	}
 

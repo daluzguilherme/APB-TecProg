@@ -6,9 +6,9 @@
 
 package model;
 
-import exception.BarbeiroException;
+import exception.BarberException;
 
-public class AdressBook {
+public class AddressBook {
 
 	/*Specifying the attributes of the class Agenda.*/
 	private String nome;
@@ -21,12 +21,12 @@ public class AdressBook {
 	private final String TELEFONE_INVALIDO = "Telefone Inv�lido";
 	private final String TELEFONE_BRANCO = "Telefone em Branco";
 
-	public AdressBook() {
+	public AddressBook() {
 
 	}
 
 	/* Constructor method of the class Agenda.*/
-	public AdressBook(String nome, String telefone, String descricao) {
+	public AddressBook(String nome, String telefone, String descricao) {
 		this.nome = nome;
 		this.telefone = telefone;
 		this.descricao = descricao;
@@ -59,28 +59,28 @@ public class AdressBook {
 	/**
 	 * This method modifies the name field.
 	 * @param nome A barber name.
-	 * @throws BarbeiroException It ensures that every parameter passed is valid.
+	 * @throws BarberException It ensures that every parameter passed is valid.
 	 */
-	public void setNome(String nome) throws BarbeiroException {
+	public void setNome(String nome) throws BarberException {
 		if ("".equals(nome))
-			throw new BarbeiroException(NOME_BRANCO);
+			throw new BarberException(NOME_BRANCO);
 		else if (nome.matches("^[[ ]|\\p{L}*]+$"))
 			this.nome = nome;
 		else
-			throw new BarbeiroException(NOME_INVALIDO);
+			throw new BarberException(NOME_INVALIDO);
 	}
 
 	/** This method modifies the phone number field to a valid phone number.
 	 * @param telefone A barber phone number.
-	 * @throws BarbeiroException It ensures that every parameter passed is valid.
+	 * @throws BarberException It ensures that every parameter passed is valid.
 	 */
-	public void setTelefone(String telefone) throws BarbeiroException {
+	public void setTelefone(String telefone) throws BarberException {
 		if ("".equals(telefone))
-			throw new BarbeiroException(TELEFONE_BRANCO);
+			throw new BarberException(TELEFONE_BRANCO);
 		else if (telefone.matches("(\\([\\d]{2,3}\\))?[ ]*[\\d]{4,4}[ ]*-[ ]*[\\d]{4,4}[ ]*$"))
 			this.telefone = telefone;
 		else
-			throw new BarbeiroException(TELEFONE_INVALIDO);
+			throw new BarberException(TELEFONE_INVALIDO);
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class AdressBook {
 	 * @param tempNome A temporary name. 
 	 */
 	public static void setTempNome(String tempNome) {
-		AdressBook.tempNome = tempNome;
+		AddressBook.tempNome = tempNome;
 	}
 
 }

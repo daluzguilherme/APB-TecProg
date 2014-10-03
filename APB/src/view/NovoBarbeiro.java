@@ -17,8 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 
 import model.Barber;
-import control.BarbeiroController;
-import exception.BarbeiroException;
+import control.BarberController;
+import exception.BarberException;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -132,7 +132,7 @@ public class NovoBarbeiro extends JFrame {
 					barbeiro.setTelefone(textFieldTelefone.getText());
 					barbeiro.setCadeira(textFieldCadeira.getText());
 
-					BarbeiroController barbeiroController = BarbeiroController
+					BarberController barbeiroController = BarberController
 							.getInstance();
 					barbeiroController.inserir(barbeiro);
 
@@ -144,7 +144,7 @@ public class NovoBarbeiro extends JFrame {
 					CadastrarBarbeiro frame = new CadastrarBarbeiro();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
-				} catch (BarbeiroException e) {
+				} catch (BarberException e) {
 					mostrarMensagemDeErro(e.getMessage());
 				} catch (SQLException e) {
 					mostrarMensagemDeErro(e.getMessage());

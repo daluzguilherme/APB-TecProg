@@ -13,21 +13,21 @@ import org.junit.Test;
 
 import dao.AddressBookDAO;
 import dao.ReceiptDAO;
-import exception.ReciboException;
-import exception.RelatorioException;
+import exception.ReceiptException;
+import exception.ReportException;
 
 public class ReciboDAOTeste {
 
 	Report relatorio = new Report();
 
 	@Before
-	public void setUp() throws ReciboException, ParseException {
+	public void setUp() throws ReceiptException, ParseException {
 		try {
 			relatorio.setBarbeiro("Fulano");
 			relatorio.setDataFinal("09/09/2013");
 			relatorio.setDataInicial("01/01/2013");
 
-		} catch (RelatorioException e) {
+		} catch (ReportException e) {
 			e.printStackTrace();
 		}
 

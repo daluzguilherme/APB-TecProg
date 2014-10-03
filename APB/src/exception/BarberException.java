@@ -5,15 +5,15 @@
 package exception;
 
 @SuppressWarnings("serial")
-public class BarbeiroException extends Exception {
+public class BarberException extends Exception {
 
 	/* Constructor creates a BarbeiroExcpetion without any argument. */
-	public BarbeiroException() {
+	public BarberException() {
 		super();
 	}
 
 	/* Constructor creates a BarbeiroExcpetion with a message. */
-	public BarbeiroException(String message) {
+	public BarberException(String message) {
 		super(message);
 	}
 

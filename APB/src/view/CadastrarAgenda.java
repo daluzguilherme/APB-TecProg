@@ -15,8 +15,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import model.AdressBook;
-import control.AgendaController;
+import model.AddressBook;
+import control.AddressBookController;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -81,8 +81,8 @@ public class CadastrarAgenda extends JFrame {
 		 * address book informations.
 		 */
 		try {
-			AgendaController agendaController = AgendaController.getInstance();
-			AdressBook contato = new AdressBook();
+			AddressBookController agendaController = AddressBookController.getInstance();
+			AddressBook contato = new AddressBook();
 			ResultSet rs = agendaController.mostrarContatosCadastrados(contato);
 			while (rs.next()) {
 				String[] dados = new String[3];

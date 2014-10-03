@@ -23,8 +23,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import model.Barber;
-import control.BarbeiroController;
-import exception.BarbeiroException;
+import control.BarberController;
+import exception.BarberException;
 
 @SuppressWarnings("serial")
 public class CadastrarBarbeiro extends JFrame {
@@ -79,7 +79,7 @@ public class CadastrarBarbeiro extends JFrame {
 		 * informations.
 		 */
 		try {
-			BarbeiroController barbeiroController = BarbeiroController
+			BarberController barbeiroController = BarberController
 					.getInstance();
 			Barber barbeiro = new Barber();
 			ResultSet rs = barbeiroController
@@ -165,7 +165,7 @@ public class CadastrarBarbeiro extends JFrame {
 							"Remover " + nome + " da lista?");
 
 					if (confirmacao == JOptionPane.YES_OPTION) {
-						BarbeiroController barbeiroController = BarbeiroController
+						BarberController barbeiroController = BarberController
 								.getInstance();
 						barbeiroController.excluir(barbeiro);
 
@@ -176,7 +176,7 @@ public class CadastrarBarbeiro extends JFrame {
 					}
 				} catch (ArrayIndexOutOfBoundsException e) {
 					mostrarMensagemDeErro("Selecione um Barbeiro para remover");
-				} catch (BarbeiroException e) {
+				} catch (BarberException e) {
 					mostrarMensagemDeErro(e.getMessage());
 				} catch (SQLException e) {
 					mostrarMensagemDeErro(e.getMessage());

@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import dao.BarberDAO;
 import dao.FactoryConnection;
-import exception.BarbeiroException;
+import exception.BarberException;
 
 public class BarbeiroDAOTeste {
 
@@ -37,7 +37,7 @@ public class BarbeiroDAOTeste {
 			barbeiroDao.incluir(barbeiro);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-		} catch (BarbeiroException e) {
+		} catch (BarberException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();

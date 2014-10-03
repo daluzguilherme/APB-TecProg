@@ -10,27 +10,27 @@ import model.ServiceType;
 import org.junit.Before;
 import org.junit.Test;
 
-import control.TipoServicoController;
-import exception.ServicoException;
+import control.ServiceTypeController;
+import exception.ServiceException;
 
 public class TipoServicoControllerTeste {
 
 	ServiceType servico = new ServiceType();
-	TipoServicoController servicoController = TipoServicoController.getInstance();
+	ServiceTypeController servicoController = ServiceTypeController.getInstance();
 	
 	@Before
 	public void setUp(){
 		try {
 			servico.setNomeTipoServico("Corte");
 			servico.setPreco("15,00");
-		} catch (ServicoException e) {
+		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Test
 	public void getInstanceDeTipoServicoControllerDeveRetornarInstanciaCorrente() {
-		assertEquals(TipoServicoController.getInstance(), servicoController);
+		assertEquals(ServiceTypeController.getInstance(), servicoController);
 	}
 
 	@Test

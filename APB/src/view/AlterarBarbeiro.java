@@ -16,8 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
-import control.BarbeiroController;
-import exception.BarbeiroException;
+import control.BarberController;
+import exception.BarberException;
 
 import model.Barber;
 
@@ -113,7 +113,7 @@ public class AlterarBarbeiro extends JFrame {
 		 */
 		try {
 			Barber barbeiro = new Barber();
-			BarbeiroController barbeiroController = BarbeiroController
+			BarberController barbeiroController = BarberController
 					.getInstance();
 			barbeiro.setNome(Barber.getTempNome());
 
@@ -129,7 +129,7 @@ public class AlterarBarbeiro extends JFrame {
 			nome = textFieldCpf.getText();
 		} catch (SQLException e) {
 			mostrarMensagemDeErro(e.getMessage());
-		} catch (BarbeiroException e) {
+		} catch (BarberException e) {
 			mostrarMensagemDeErro(e.getMessage());
 		}
 
@@ -149,7 +149,7 @@ public class AlterarBarbeiro extends JFrame {
 					barbeiro.setTelefone(textFieldTelefone.getText());
 					barbeiro.setCadeira(textFieldCadeira.getText());
 
-					BarbeiroController barbeiroController = BarbeiroController
+					BarberController barbeiroController = BarberController
 							.getInstance();
 					barbeiroController.alterar(nome, barbeiro);
 
@@ -162,7 +162,7 @@ public class AlterarBarbeiro extends JFrame {
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 
-				} catch (BarbeiroException e1) {
+				} catch (BarberException e1) {
 					mostrarMensagemDeErro(e1.getMessage());
 				} catch (SQLException k) {
 					mostrarMensagemDeErro(k.getMessage());

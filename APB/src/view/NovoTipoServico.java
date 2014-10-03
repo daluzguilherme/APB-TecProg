@@ -16,9 +16,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-import control.TipoServicoController;
+import control.ServiceTypeController;
 
-import exception.ServicoException;
+import exception.ServiceException;
 
 import model.ServiceType;
 
@@ -92,7 +92,7 @@ public class NovoTipoServico extends JFrame {
 					tipoServico.setNomeTipoServico(textFieldServico.getText());
 					tipoServico.setPreco(textFieldPreco.getText());
 
-					TipoServicoController tipoServicoController = TipoServicoController
+					ServiceTypeController tipoServicoController = ServiceTypeController
 							.getInstance();
 					tipoServicoController.inserir(tipoServico);
 
@@ -105,7 +105,7 @@ public class NovoTipoServico extends JFrame {
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 
-				} catch (ServicoException e) {
+				} catch (ServiceException e) {
 					mostrarMensagemDeErro(e.getMessage());
 				} catch (IllegalArgumentException e) {
 					mostrarMensagemDeErro(e.getMessage());

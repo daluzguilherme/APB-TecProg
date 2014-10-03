@@ -4,7 +4,7 @@
  */
 package model;
 
-import exception.BarbeiroException;
+import exception.BarberException;
 
 public class Barber {
 
@@ -35,7 +35,7 @@ public class Barber {
 	 *  Has messages that alert the users if there are blank fields.
 	 * */ 
 	public Barber(String nome, String cpf, String rg, String telefone,
-			String cadeira) throws BarbeiroException {
+			String cadeira) throws BarberException {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.rg = rg;
@@ -87,22 +87,22 @@ public class Barber {
 	 * This method modifies the name field.
 	 * And BarbeiroException it ensures that every parameter passed is valid.
 	 * */
-	public void setNome(String nome) throws BarbeiroException {
+	public void setNome(String nome) throws BarberException {
 		if (nome == null)
 			throw new NullPointerException(NOME_BRANCO);
 		else if ("".equals(nome))
-			throw new BarbeiroException(NOME_BRANCO);
+			throw new BarberException(NOME_BRANCO);
 		else if (nome.matches("^[[ ]|\\p{L}*]+$"))
 			this.nome= nome;
 		else
-			throw new BarbeiroException(NOME_INVALIDO);
+			throw new BarberException(NOME_INVALIDO);
 	}
 
 	/*
 	 * This method modifies the CPF field.
 	 * And BarbeiroException it ensures that every parameter passed is valid.
 	 */
-	public void setCpf(String cpf) throws BarbeiroException {
+	public void setCpf(String cpf) throws BarberException {
 
 		try {
 			if (cpf == null)
@@ -115,9 +115,9 @@ public class Barber {
 			if (this.validarCpf(cpf))
 				this.cpf = cpf;
 			else
-				throw new BarbeiroException(CPF_INVALIDO);
+				throw new BarberException(CPF_INVALIDO);
 		} catch (AssertionError e) {
-			throw new BarbeiroException(CPF_INVALIDO);
+			throw new BarberException(CPF_INVALIDO);
 		}
 	}
 
@@ -125,11 +125,11 @@ public class Barber {
 	 * This method modifies the RG field.
 	 * And BarbeiroException it ensures that every parameter passed is valid.
 	 */
-	public void setRg(String rg) throws BarbeiroException {
+	public void setRg(String rg) throws BarberException {
 		if (rg == null)
 			throw new NullPointerException(RG_BRANCO);
 		else if ("".equals(rg))
-			throw new BarbeiroException(RG_BRANCO);
+			throw new BarberException(RG_BRANCO);
 		else if (rg.matches("^[[ ]|\\p{L}*]+$"))
 			throw new AssertionError(RG_INVALIDO);
 		else if (rg.matches("^[0-9]*$"))
@@ -140,28 +140,28 @@ public class Barber {
 
 	
 	/* This method modifies the phone number field to a valid phone number. */
-	public void setTelefone(String telefone) throws BarbeiroException {
+	public void setTelefone(String telefone) throws BarberException {
 		if (telefone == null)
 			throw new NullPointerException(TELEFONE_BRANCO);
 		else if ("".equals(telefone))
-			throw new BarbeiroException(TELEFONE_BRANCO);
+			throw new BarberException(TELEFONE_BRANCO);
 		else if (telefone.matches("(\\([\\d]{2,3}\\))?[ ]*[\\d]{4,4}[ ]*-[ ]*[\\d]{4,4}[ ]*$"))
 			this.telefone = telefone;
 		else
 			throw new AssertionError(TELEFONE_INVALIDO);
 	}
 
-	public void setCadeira(String cadeira) throws BarbeiroException {
+	public void setCadeira(String cadeira) throws BarberException {
 		if (cadeira == null)
 			throw new NullPointerException(CADEIRA_BRANCO);
 		else if ("".equals(cadeira))
-			throw new BarbeiroException(CADEIRA_BRANCO);
+			throw new BarberException(CADEIRA_BRANCO);
 		else if ("0".equals(cadeira) || cadeira.matches("^[[ ]|\\p{L}*]+$"))
 			throw new AssertionError(CADEIRA_INVALIDA);
 		else if (cadeira.matches("^[0-9]{0,2}$"))
 			this.cadeira = cadeira;
 		else
-			throw new BarbeiroException(CADEIRA_INVALIDA);
+			throw new BarberException(CADEIRA_INVALIDA);
 	}
 	
 	/* This method modifies the field name to a temporary variable. */

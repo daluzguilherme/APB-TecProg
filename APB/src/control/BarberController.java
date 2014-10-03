@@ -11,20 +11,20 @@ import java.sql.SQLException;
 import dao.BarberDAO;
 import model.Barber;
 
-public class BarbeiroController {
+public class BarberController {
 
-	private static BarbeiroController instance;
+	private static BarberController instance;
 
-	private BarbeiroController() {}
+	private BarberController() {}
 	
 	/**
 	 * Provides the singleton implementation
 	 * @return the active BarbeiroController instance, since it will be just one
 	 * at time
 	 */
-	public static BarbeiroController getInstance() {
+	public static BarberController getInstance() {
 		if (instance == null){
-			instance = new BarbeiroController();
+			instance = new BarberController();
 		}
 		return instance;
 	}

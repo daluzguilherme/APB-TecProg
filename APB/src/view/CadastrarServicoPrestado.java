@@ -22,9 +22,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import control.ServicoPrestadoController;
+import control.ProvidedServiceController;
 import model.ProvidedService;
-import exception.ServicoException;
+import exception.ServiceException;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -74,7 +74,7 @@ public class CadastrarServicoPrestado extends JFrame {
 		 * the its informations.
 		 */
 		try {
-			ServicoPrestadoController servicoController = ServicoPrestadoController
+			ProvidedServiceController servicoController = ProvidedServiceController
 					.getInstance();
 			ProvidedService servico = new ProvidedService();
 			ResultSet rs = servicoController
@@ -158,7 +158,7 @@ public class CadastrarServicoPrestado extends JFrame {
 							"Remover " + nome + " da lista?");
 
 					if (confirmacao == JOptionPane.YES_OPTION) {
-						ServicoPrestadoController servicoController = ServicoPrestadoController
+						ProvidedServiceController servicoController = ProvidedServiceController
 								.getInstance();
 						servicoController.excluir(servico);
 
@@ -169,7 +169,7 @@ public class CadastrarServicoPrestado extends JFrame {
 					}
 				} catch (ArrayIndexOutOfBoundsException e) {
 					mostrarMensagemDeErro("Selecione um Serviço para remover");
-				} catch (ServicoException e) {
+				} catch (ServiceException e) {
 					mostrarMensagemDeErro(e.getMessage());
 				} catch (SQLException e) {
 					mostrarMensagemDeErro(e.getMessage());

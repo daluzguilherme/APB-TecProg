@@ -5,15 +5,15 @@
 package exception;
 
 @SuppressWarnings("serial")
-public class ServicoException extends Exception{
+public class ServiceException extends Exception{
 	
 	/* Constructor creates a ServicoExcpetion without any argument. */
-	public ServicoException() {
+	public ServiceException() {
 		super();
 	}
 
 	/* Constructor creates a ServicoExcpetion with a message. */
-	public ServicoException(String message) {
+	public ServiceException(String message) {
 		super(message);
 	}
 }

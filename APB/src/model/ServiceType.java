@@ -4,7 +4,7 @@
  */
 package model;
 
-import exception.ServicoException;
+import exception.ServiceException;
 
 public class ServiceType {
 
@@ -41,21 +41,21 @@ public class ServiceType {
 	 * This method modifies the service type name field.
 	 * And ServicoException it ensures that every parameter passed is valid.
 	 * */
-	public void setNomeTipoServico(String nomeTipoServico) throws ServicoException {
+	public void setNomeTipoServico(String nomeTipoServico) throws ServiceException {
 		if (nomeTipoServico == null)
 			throw new NullPointerException(NOME_BRANCO);
 		else if ("".equals(nomeTipoServico))
-			throw new ServicoException(NOME_BRANCO);
+			throw new ServiceException(NOME_BRANCO);
 		else
 			this.nomeTipoServico = nomeTipoServico;
 	}
 
 	/* This method modifies the price field to a valid price.*/
-	public void setPreco(String preco) throws ServicoException {
+	public void setPreco(String preco) throws ServiceException {
 		if (preco == null)
 			throw new NullPointerException(PRECO_INVALIDO);
 		else if ("".equals(preco))
-			throw new ServicoException(PRECO_BRANCO);
+			throw new ServiceException(PRECO_BRANCO);
 		else if (preco.matches("[\\d]{1,3},[\\d]{1,2}"))
 			this.preco = preco;
 		else
@@ -63,11 +63,11 @@ public class ServiceType {
 	}
 
 	/* This method modifies the temporary name field to a valid temporary name. */
-	public static void setTempNome(String tempNome) throws ServicoException {
+	public static void setTempNome(String tempNome) throws ServiceException {
 		if (tempNome == null)
 			throw new NullPointerException(NOME_BRANCO);
 		else if ("".equals(tempNome))
-			throw new ServicoException(NOME_BRANCO);
+			throw new ServiceException(NOME_BRANCO);
 		else
 			ServiceType.tempNome = tempNome;
 	}

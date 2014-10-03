@@ -18,9 +18,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 
-import control.AgendaController;
-import exception.BarbeiroException;
-import model.AdressBook;
+import control.AddressBookController;
+import exception.BarberException;
+import model.AddressBook;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
@@ -77,12 +77,12 @@ public class NovoContato extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					AdressBook agenda = new AdressBook();
+					AddressBook agenda = new AddressBook();
 					agenda.setNome(textFieldNome.getText());
 					agenda.setTelefone(textFieldTelefone.getText());
 					agenda.setDescricao(textFieldDescricao.getText());
 
-					AgendaController agendaController = AgendaController
+					AddressBookController agendaController = AddressBookController
 							.getInstance();
 					agendaController.incluir(agenda);
 
@@ -101,7 +101,7 @@ public class NovoContato extends JFrame {
 
 				} catch (SQLException e1) {
 					mostrarMensagemDeErro(e1.getMessage());
-				} catch (BarbeiroException e1) {
+				} catch (BarberException e1) {
 					mostrarMensagemDeErro(e1.getMessage());
 				}
 			}

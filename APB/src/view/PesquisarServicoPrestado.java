@@ -20,10 +20,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-import control.ServicoPrestadoController;
+import control.ProvidedServiceController;
 
 import dao.FactoryConnection;
-import exception.ServicoException;
+import exception.ServiceException;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -118,7 +118,7 @@ public class PesquisarServicoPrestado extends JFrame {
 								.getString("data"));
 						modelo.addRow(dados);
 					}
-				} catch (ServicoException e) {
+				} catch (ServiceException e) {
 					mostrarMensagemDeErro(e.getMessage());
 				} catch (SQLException e) {
 					mostrarMensagemDeErro(e.getMessage());
@@ -160,7 +160,7 @@ public class PesquisarServicoPrestado extends JFrame {
 								.getString("data"));
 						modelo.addRow(dados);
 					}
-				} catch (ServicoException e) {
+				} catch (ServiceException e) {
 					mostrarMensagemDeErro(e.getMessage());
 				} catch (SQLException e) {
 					mostrarMensagemDeErro(e.getMessage());
@@ -200,7 +200,7 @@ public class PesquisarServicoPrestado extends JFrame {
 							"Remover " + nome + " da lista?");
 
 					if (confirmacao == JOptionPane.YES_OPTION) {
-						ServicoPrestadoController servicoController = ServicoPrestadoController
+						ProvidedServiceController servicoController = ProvidedServiceController
 								.getInstance();
 						servicoController.excluir(servico);
 
@@ -211,7 +211,7 @@ public class PesquisarServicoPrestado extends JFrame {
 					}
 				} catch (ArrayIndexOutOfBoundsException e) {
 					mostrarMensagemDeErro("Selecione um Servi�o para remover");
-				} catch (ServicoException e) {
+				} catch (ServiceException e) {
 					mostrarMensagemDeErro(e.getMessage());
 				} catch (SQLException e) {
 					mostrarMensagemDeErro(e.getMessage());
@@ -272,7 +272,7 @@ public class PesquisarServicoPrestado extends JFrame {
 					mostrarMensagemDeErro(e.getMessage());
 				} catch (ParseException e) {
 					mostrarMensagemDeErro(e.getMessage());
-				} catch (ServicoException e) {
+				} catch (ServiceException e) {
 					mostrarMensagemDeErro(e.getMessage());
 				}
 

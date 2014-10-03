@@ -5,15 +5,15 @@
 package exception;
 
 @SuppressWarnings("serial")
-public class ReciboException extends Exception {
+public class ReceiptException extends Exception {
 
 	/* Constructor creates a ReciboExcpetion without any argument. */
-	public ReciboException() {
+	public ReceiptException() {
 		super();
 	}
 
 	/* Constructor creates a ReciboExcpetion with a message. */
-	public ReciboException(String message) {
+	public ReceiptException(String message) {
 		super(message);
 	}
 

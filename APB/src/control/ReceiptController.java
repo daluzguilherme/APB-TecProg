@@ -11,20 +11,20 @@ import java.sql.SQLException;
 
 import dao.ReceiptDAO;
 
-public class ReciboController {
+public class ReceiptController {
 
-	private static ReciboController instance;
+	private static ReceiptController instance;
 	
-	public ReciboController(){}
+	public ReceiptController(){}
 	
 	/**
 	 * Provides the singleton implementation
 	 * @return the active ReciboController instance, since it will be just one
 	 * at time
 	 */
-	public static ReciboController getInstance(){
+	public static ReceiptController getInstance(){
 		if(instance == null){
-			instance = new ReciboController();
+			instance = new ReceiptController();
 		}
 		return instance;
 	}

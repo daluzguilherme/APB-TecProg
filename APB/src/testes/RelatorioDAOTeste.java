@@ -13,14 +13,14 @@ import org.junit.Test;
 
 import dao.ReportDAO;
 
-import exception.RelatorioException;
+import exception.ReportException;
 
 public class RelatorioDAOTeste {
 
 	Report relatorio = new Report();
 
 	@Before
-	public void setUp() throws RelatorioException, ParseException {
+	public void setUp() throws ReportException, ParseException {
 		try {
 			relatorio.setBarbeiro("Luciano");
 			relatorio.setDataFinal("09/09/2013");

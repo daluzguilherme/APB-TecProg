@@ -5,15 +5,15 @@
 package exception;
 
 @SuppressWarnings("serial")
-public class RelatorioException extends Exception {
+public class ReportException extends Exception {
 
 	/* Constructor creates a RelatorioExcpetion without any argument. */
-	public RelatorioException() {
+	public ReportException() {
 		super();
 	}
 
 	/* Constructor creates a RelatorioExcpetion with a message. */
-	public RelatorioException(String message) {
+	public ReportException(String message) {
 		super(message);
 	}
 

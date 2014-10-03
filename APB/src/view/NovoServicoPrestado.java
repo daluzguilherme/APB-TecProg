@@ -19,8 +19,8 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import control.ServicoPrestadoController;
-import exception.ServicoException;
+import control.ProvidedServiceController;
+import exception.ServiceException;
 import model.ProvidedService;
 
 import java.sql.Connection;
@@ -195,7 +195,7 @@ public class NovoServicoPrestado extends JFrame {
 						servico_prestado.setPreco(textValor.getText());
 						servico_prestado.setData(data);
 
-						ServicoPrestadoController servicoController = ServicoPrestadoController
+						ProvidedServiceController servicoController = ProvidedServiceController
 								.getInstance();
 						servicoController.inserir(servico_prestado);
 
@@ -207,7 +207,7 @@ public class NovoServicoPrestado extends JFrame {
 
 						textValor.setText("");
 					}
-				} catch (ServicoException e) {
+				} catch (ServiceException e) {
 					mostrarMensagemDeErro(e.getMessage());
 				} catch (SQLException e) {
 					mostrarMensagemDeErro(e.getMessage());

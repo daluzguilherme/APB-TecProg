@@ -10,8 +10,8 @@ import model.Barber;
 import org.junit.Before;
 import org.junit.Test;
 
-import control.BarbeiroController;
-import exception.BarbeiroException;
+import control.BarberController;
+import exception.BarberException;
 
 public class BarbeiroControllerTeste {
 
@@ -27,16 +27,16 @@ public class BarbeiroControllerTeste {
 			barbeiro.setCadeira("5");
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-		} catch (BarbeiroException e) {
+		} catch (BarberException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	BarbeiroController barbeiroController = BarbeiroController.getInstance();
+	BarberController barbeiroController = BarberController.getInstance();
 
 	@Test
 	public void getInstanceDeBarbeiroControlerDeveRetonarInstanciaCorrente() {
-		assertEquals(BarbeiroController.getInstance(), barbeiroController);
+		assertEquals(BarberController.getInstance(), barbeiroController);
 	}
 
 	@Test

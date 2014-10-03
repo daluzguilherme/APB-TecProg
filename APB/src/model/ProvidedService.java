@@ -6,7 +6,7 @@ package model;
 
 import java.util.Date;
 
-import exception.ServicoException;
+import exception.ServiceException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -63,51 +63,51 @@ public class ProvidedService {
 	 * This method modifies the service name field.
 	 * And ServicoException it ensures that every parameter passed is valid.
 	 * */
-	public void setNomeServico(String nomeServico) throws ServicoException {
+	public void setNomeServico(String nomeServico) throws ServiceException {
 		if (nomeServico == null)
 			throw new NullPointerException(NOME_BRANCO);
 		else if ("".equals(nomeServico))
-			throw new ServicoException(NOME_BRANCO);
+			throw new ServiceException(NOME_BRANCO);
 		else if (nomeServico.matches("^[[ ]|\\p{L}*]+$")) 
 			this.nomeServico = nomeServico;
 		else
-			throw new ServicoException(NOME_INVALIDO);
+			throw new ServiceException(NOME_INVALIDO);
 	}
 
 	/*
 	 * This method modifies the barber name field.
 	 * And ServicoException it ensures that every parameter passed is valid.
 	 * */
-	public void setNomeBarbeiro(String nomeBarbeiro) throws ServicoException {
+	public void setNomeBarbeiro(String nomeBarbeiro) throws ServiceException {
 		if (nomeBarbeiro == null)
 			throw new NullPointerException(BARBEIRO_BRANCO);
 		else if ("".equals(nomeBarbeiro))
-			throw new ServicoException(BARBEIRO_BRANCO);
+			throw new ServiceException(BARBEIRO_BRANCO);
 		else if (nomeBarbeiro.matches("^[[ ]|\\p{L}*]+$"))
 			this.nomeBarbeiro = nomeBarbeiro;
 		else
-			throw new ServicoException(BARBEIRO_INVALIDO);
+			throw new ServiceException(BARBEIRO_INVALIDO);
 	}
 
 	/* This method modifies the price field to a valid price.*/
-	public void setPreco(String preco) throws ServicoException {
+	public void setPreco(String preco) throws ServiceException {
 		if (preco == null)
 			throw new NullPointerException(PRECO_BRANCO);
 		else if ("".equals(preco))
-			throw new ServicoException(PRECO_BRANCO);
+			throw new ServiceException(PRECO_BRANCO);
 		else if (preco.matches("[\\d]{1,3},[\\d]{1,2}"))
 			this.preco = preco;
 		else
-			throw new ServicoException(PRECO_INVALIDO);
+			throw new ServiceException(PRECO_INVALIDO);
 	}
 
 	/* Method modifies the date field to a valid date. */
-	public void setData(String data) throws ServicoException, ParseException {
+	public void setData(String data) throws ServiceException, ParseException {
 
 		if (data == null)
 			throw new NullPointerException(DATA_BRANCO);
 		else if ("".equals(data))
-			throw new ServicoException(DATA_BRANCO);
+			throw new ServiceException(DATA_BRANCO);
 		else if (data.matches("[\\d]{1,4}-[\\d]{1,2}-[\\d]{1,2}")){
 			this.data = data;
 		}
@@ -122,7 +122,7 @@ public class ProvidedService {
 			this.data = dataISO;
 		}
 		else
-			throw new ServicoException(DATA_INVALIDA);
+			throw new ServiceException(DATA_INVALIDA);
 	}
 
 	/*This method converts the date to ABNT */

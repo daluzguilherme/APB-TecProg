@@ -16,9 +16,9 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 
-import control.AgendaController;
-import exception.BarbeiroException;
-import model.AdressBook;
+import control.AddressBookController;
+import exception.BarberException;
+import model.AddressBook;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -90,9 +90,9 @@ public class AlterarContato extends JFrame {
 		 * database.
 		 */
 		try {
-			AdressBook contato = new AdressBook();
-			AgendaController agendaController = AgendaController.getInstance();
-			contato.setNome(AdressBook.getTempNome());
+			AddressBook contato = new AddressBook();
+			AddressBookController agendaController = AddressBookController.getInstance();
+			contato.setNome(AddressBook.getTempNome());
 			ResultSet rs = agendaController.pesquisarPorNome(contato);
 
 			while (rs.next()) {
@@ -103,7 +103,7 @@ public class AlterarContato extends JFrame {
 			nome = textFieldNome.getText();
 		} catch (SQLException e) {
 			mostrarMensagemDeErro(e.getMessage());
-		} catch (BarbeiroException e) {
+		} catch (BarberException e) {
 			mostrarMensagemDeErro(e.getMessage());
 		}
 
@@ -117,12 +117,12 @@ public class AlterarContato extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
-					AdressBook agenda = new AdressBook();
+					AddressBook agenda = new AddressBook();
 					agenda.setNome(textFieldNome.getText());
 					agenda.setTelefone(textFieldTelefone.getText());
 					agenda.setDescricao(textFieldDescricao.getText());
 
-					AgendaController AgendaController = control.AgendaController
+					AddressBookController AgendaController = control.AddressBookController
 							.getInstance();
 					AgendaController.alterar(nome, agenda);
 
@@ -134,7 +134,7 @@ public class AlterarContato extends JFrame {
 					CadastrarAgenda frame = new CadastrarAgenda();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
-				} catch (BarbeiroException e1) {
+				} catch (BarberException e1) {
 					mostrarMensagemDeErro(e1.getMessage());
 				} catch (SQLException k) {
 					mostrarMensagemDeErro(k.getMessage());

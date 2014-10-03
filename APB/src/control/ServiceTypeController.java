@@ -13,20 +13,20 @@ import java.sql.SQLException;
 import dao.ServiceTypeDAO;
 import model.ServiceType;
 
-public class TipoServicoController {
+public class ServiceTypeController {
 	
-	private TipoServicoController() {}
+	private ServiceTypeController() {}
 
-	private static TipoServicoController instance;
+	private static ServiceTypeController instance;
 	
 	/**
 	 * Provides the singleton implementation
 	 * @return the active TipoServicoPrestadoController instance, since it will be just one at
 	 * time.
 	 */
-	public static TipoServicoController getInstance() {
+	public static ServiceTypeController getInstance() {
 		if (instance == null)
-			instance = new TipoServicoController();
+			instance = new ServiceTypeController();
 		return instance;
 	}
 

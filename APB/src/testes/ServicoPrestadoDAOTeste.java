@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dao.ProvidedServiceDAO;
-import exception.ServicoException;
+import exception.ServiceException;
 
 public class ServicoPrestadoDAOTeste {
 
@@ -30,7 +30,7 @@ public class ServicoPrestadoDAOTeste {
 			servico2.setPreco("9,90");
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-		} catch (ServicoException e) {
+		} catch (ServiceException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
 			e.printStackTrace();

@@ -19,9 +19,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-import control.AgendaController;
-import exception.BarbeiroException;
-import model.AdressBook;
+import control.AddressBookController;
+import exception.BarberException;
+import model.AddressBook;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -104,8 +104,8 @@ public class PesquisarContato extends JFrame {
 						modelo.removeRow(i);
 					}
 
-					AdressBook contato = new AdressBook();
-					AgendaController agendaController = AgendaController
+					AddressBook contato = new AddressBook();
+					AddressBookController agendaController = AddressBookController
 							.getInstance();
 					contato.setNome(textField.getText());
 					ResultSet rs = agendaController.pesquisarPorNome(contato);
@@ -119,7 +119,7 @@ public class PesquisarContato extends JFrame {
 					}
 				} catch (SQLException e) {
 					mostrarMensagemDeErro(e.getMessage());
-				} catch (BarbeiroException e) {
+				} catch (BarberException e) {
 					mostrarMensagemDeErro(e.getMessage());
 				}
 			}
@@ -142,8 +142,8 @@ public class PesquisarContato extends JFrame {
 						modelo.removeRow(i);
 					}
 
-					AdressBook contato = new AdressBook();
-					AgendaController agendaController = AgendaController
+					AddressBook contato = new AddressBook();
+					AddressBookController agendaController = AddressBookController
 							.getInstance();
 					contato.setTelefone(textField.getText());
 					ResultSet rs = agendaController
@@ -161,7 +161,7 @@ public class PesquisarContato extends JFrame {
 					}
 				} catch (SQLException e) {
 					mostrarMensagemDeErro(e.getMessage());
-				} catch (BarbeiroException e) {
+				} catch (BarberException e) {
 					mostrarMensagemDeErro(e.getMessage());
 				}
 			}
@@ -179,7 +179,7 @@ public class PesquisarContato extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					AdressBook.setTempNome(modelo.getValueAt(
+					AddressBook.setTempNome(modelo.getValueAt(
 							table.getSelectedRow(), 0).toString());
 					dispose();
 					AlterarContato frame = new AlterarContato();
@@ -208,7 +208,7 @@ public class PesquisarContato extends JFrame {
 							table.getSelectedRow(), 0);
 					String telefone = (String) table.getValueAt(
 							table.getSelectedRow(), 1);
-					AdressBook agenda = new AdressBook();
+					AddressBook agenda = new AddressBook();
 					agenda.setNome(nome);
 					agenda.setTelefone(telefone);
 
@@ -216,7 +216,7 @@ public class PesquisarContato extends JFrame {
 							"Remover " + nome + " da lista?");
 
 					if (confirmacao == JOptionPane.YES_OPTION) {
-						AgendaController agendaController = AgendaController
+						AddressBookController agendaController = AddressBookController
 								.getInstance();
 						agendaController.excluir(agenda);
 
@@ -227,7 +227,7 @@ public class PesquisarContato extends JFrame {
 					}
 				} catch (ArrayIndexOutOfBoundsException e1) {
 					mostrarMensagemDeErro("Selecione um contato para remover");
-				} catch (BarbeiroException e1) {
+				} catch (BarberException e1) {
 					mostrarMensagemDeErro(e1.getMessage());
 				} catch (SQLException e1) {
 					mostrarMensagemDeErro(e1.getMessage());

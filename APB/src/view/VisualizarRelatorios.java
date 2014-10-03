@@ -17,7 +17,7 @@ import javax.swing.JButton;
 
 import model.Report;
 
-import control.RelatorioController;
+import control.ReportController;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -39,7 +39,7 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-import exception.RelatorioException;
+import exception.ReportException;
 
 @SuppressWarnings("serial")
 public class VisualizarRelatorios extends JFrame {
@@ -71,7 +71,7 @@ public class VisualizarRelatorios extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public VisualizarRelatorios() throws SQLException, RelatorioException,
+	public VisualizarRelatorios() throws SQLException, ReportException,
 			NullPointerException, ParseException {
 		setTitle("Relat\u00F3rios");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,7 +104,7 @@ public class VisualizarRelatorios extends JFrame {
 		table.getColumnModel().getColumn(3).setResizable(false);
 		scrollPane.setViewportView(table);
 
-		RelatorioController relatorioController = RelatorioController
+		ReportController relatorioController = ReportController
 				.getInstance();
 
 		/*
@@ -544,7 +544,7 @@ public class VisualizarRelatorios extends JFrame {
 
 			} catch (SQLException e) {
 				mostrarMensagemDeErro(e.getMessage());
-			} catch (RelatorioException e) {
+			} catch (ReportException e) {
 				mostrarMensagemDeErro(e.getMessage());
 			}
 
@@ -609,12 +609,12 @@ public class VisualizarRelatorios extends JFrame {
 	 * @return dataset The return is a Category Dataset with all the information
 	 *         needed to create the graphic image.
 	 * @throws SQLException
-	 * @throws RelatorioException
+	 * @throws ReportException
 	 * @throws NullPointerException
 	 * @throws ParseException
 	 */
 	private CategoryDataset createDatasetRelatorio() throws SQLException,
-			RelatorioException, NullPointerException, ParseException {
+			ReportException, NullPointerException, ParseException {
 
 		Report relatorio = new Report();
 		ResultSet rs = null;
@@ -623,14 +623,14 @@ public class VisualizarRelatorios extends JFrame {
 			if (PesquisarRelatorio.tipoBusca == 1) {
 				relatorio.setBarbeiro(PesquisarRelatorio.barbeiro);
 
-				rs = RelatorioController.getInstance().pesquisarPorBarbeiro(
+				rs = ReportController.getInstance().pesquisarPorBarbeiro(
 						relatorio);
 			}
 			if (PesquisarRelatorio.tipoBusca == 2) {
 				relatorio.setBarbeiro(PesquisarRelatorio.barbeiro);
 				relatorio.setTipoServico(PesquisarRelatorio.servico);
 
-				rs = RelatorioController.getInstance()
+				rs = ReportController.getInstance()
 						.pesquisarPorBarbeiroEServico(relatorio);
 			}
 			if (PesquisarRelatorio.tipoBusca == 3) {
@@ -638,7 +638,7 @@ public class VisualizarRelatorios extends JFrame {
 				relatorio.setDataFinal(PesquisarRelatorio.dataFinal);
 				relatorio.setDataInicial(PesquisarRelatorio.dataInicial);
 
-				rs = RelatorioController.getInstance()
+				rs = ReportController.getInstance()
 						.pesquisarPorDataEBarbeiro(relatorio);
 			}
 			if (PesquisarRelatorio.tipoBusca == 4) {
@@ -647,13 +647,13 @@ public class VisualizarRelatorios extends JFrame {
 				relatorio.setDataFinal(PesquisarRelatorio.dataFinal);
 				relatorio.setDataInicial(PesquisarRelatorio.dataInicial);
 
-				rs = RelatorioController.getInstance()
+				rs = ReportController.getInstance()
 						.pesquisarPorDataBarbeiroEServico(relatorio);
 			}
 			if (PesquisarRelatorio.tipoBusca == 5) {
 				relatorio.setTipoServico(PesquisarRelatorio.servico);
 
-				rs = RelatorioController.getInstance().pesquisarPorServico(
+				rs = ReportController.getInstance().pesquisarPorServico(
 						relatorio);
 			}
 			if (PesquisarRelatorio.tipoBusca == 6) {
@@ -661,14 +661,14 @@ public class VisualizarRelatorios extends JFrame {
 				relatorio.setDataFinal(PesquisarRelatorio.dataFinal);
 				relatorio.setDataInicial(PesquisarRelatorio.dataInicial);
 
-				rs = RelatorioController.getInstance()
+				rs = ReportController.getInstance()
 						.pesquisarPorDataEServico(relatorio);
 			}
 			if (PesquisarRelatorio.tipoBusca == 7) {
 				relatorio.setDataFinal(PesquisarRelatorio.dataFinal);
 				relatorio.setDataInicial(PesquisarRelatorio.dataInicial);
 
-				rs = RelatorioController.getInstance().pesquisarPorData(
+				rs = ReportController.getInstance().pesquisarPorData(
 						relatorio);
 			}
 		}

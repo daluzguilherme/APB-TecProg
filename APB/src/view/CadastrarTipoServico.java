@@ -17,9 +17,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 
-import control.TipoServicoController;
+import control.ServiceTypeController;
 import model.ServiceType;
-import exception.ServicoException;
+import exception.ServiceException;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -72,7 +72,7 @@ public class CadastrarTipoServico extends JFrame {
 		 * the its informations.
 		 */
 		try {
-			TipoServicoController servicoController = TipoServicoController
+			ServiceTypeController servicoController = ServiceTypeController
 					.getInstance();
 			ServiceType servico = new ServiceType();
 			ResultSet rs = servicoController
@@ -126,7 +126,7 @@ public class CadastrarTipoServico extends JFrame {
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 					dispose();
-				} catch (ServicoException e1) {
+				} catch (ServiceException e1) {
 					mostrarMensagemDeErro(e1.getMessage());
 				} catch (ArrayIndexOutOfBoundsException e1) {
 					mostrarMensagemDeErro("Selecione um Tipo de Serviço");
@@ -151,7 +151,7 @@ public class CadastrarTipoServico extends JFrame {
 
 				try {
 					tipoServico.setNomeTipoServico(nome);
-				} catch (ServicoException e1) {
+				} catch (ServiceException e1) {
 					e1.printStackTrace();
 				}
 
@@ -159,7 +159,7 @@ public class CadastrarTipoServico extends JFrame {
 						"Remover " + nome + " da lista?");
 
 				if (confirmacao == JOptionPane.YES_OPTION) {
-					TipoServicoController tipoServicoController = TipoServicoController
+					ServiceTypeController tipoServicoController = ServiceTypeController
 							.getInstance();
 					try {
 						tipoServicoController.excluir(tipoServico);

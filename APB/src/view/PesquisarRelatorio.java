@@ -25,7 +25,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 
-import exception.RelatorioException;
+import exception.ReportException;
 
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
@@ -206,7 +206,7 @@ public class PesquisarRelatorio extends JFrame {
 							"Digite o nome do barbeiro.");
 				} else if (txtServico.getText().equals("")) {
 					JOptionPane.showMessageDialog(null,
-							"Digite um tipo de serviço.");
+							"Digite um tipo de serviï¿½o.");
 				} else if (txtDataFinal.getText().equals("")) {
 					JOptionPane
 							.showMessageDialog(null, "Digite uma data final");
@@ -273,7 +273,7 @@ public class PesquisarRelatorio extends JFrame {
 						&& checkPorData.getState() == false
 						&& checkServico.getState() == false) {
 					JOptionPane.showMessageDialog(null,
-							"Selecione uma opção de busca");
+							"Selecione uma opï¿½ï¿½o de busca");
 				}
 				if (tipoBusca != 0) {
 					try {
@@ -283,7 +283,7 @@ public class PesquisarRelatorio extends JFrame {
 						dispose();
 					} catch (SQLException e) {
 						mostrarMensagemDeErro(e.getMessage());
-					} catch (RelatorioException e) {
+					} catch (ReportException e) {
 						mostrarMensagemDeErro(e.getMessage());
 					} catch (NullPointerException e) {
 						mostrarMensagemDeErro(e.getMessage());
@@ -313,7 +313,7 @@ public class PesquisarRelatorio extends JFrame {
 					dispose();
 				} catch (SQLException e1) {
 					mostrarMensagemDeErro(e1.getMessage());
-				} catch (RelatorioException e1) {
+				} catch (ReportException e1) {
 					mostrarMensagemDeErro(e1.getMessage());
 				} catch (NullPointerException e1) {
 					mostrarMensagemDeErro(e1.getMessage());
@@ -334,7 +334,7 @@ public class PesquisarRelatorio extends JFrame {
 	 *            shown to the user.
 	 */
 	private static void mostrarMensagemDeErro(String informacao) {
-		JOptionPane.showMessageDialog(null, informacao, "Atenção",
+		JOptionPane.showMessageDialog(null, informacao, "Atenï¿½ï¿½o",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 

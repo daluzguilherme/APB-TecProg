@@ -27,8 +27,8 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 
-import control.BarbeiroController;
-import control.ReciboController;
+import control.BarberController;
+import control.ReceiptController;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -143,7 +143,7 @@ public class GerarRecibo extends JFrame {
 
 		/* Populating the combo box with the barber informations. */
 		try {
-			ResultSet rs = BarbeiroController.getInstance().pesquisar();
+			ResultSet rs = BarberController.getInstance().pesquisar();
 			while (rs.next()) {
 				comboBoxBarbeiros.addItem(rs.getString("cadeira") + " - "
 						+ rs.getString("nome"));
@@ -181,7 +181,7 @@ public class GerarRecibo extends JFrame {
 		btnGerarRecibo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ReciboController reciboController = ReciboController
+				ReceiptController reciboController = ReceiptController
 						.getInstance();
 				try {
 					if (comboBoxBarbeiros.getSelectedIndex() != 0) {

@@ -8,7 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import exception.RelatorioException;
+import exception.ReportException;
 
 public class Report {
 
@@ -29,7 +29,7 @@ public class Report {
 	 *  Has messages that alert the users if there are blank fields.
 	 * */ 
 	public Report(String dataInicial, String dataFinal, String barbeiro,
-			String tipoServico) throws RelatorioException {
+			String tipoServico) throws ReportException {
 		
 		this.dataInicial = dataInicial;
 		this.dataFinal = dataFinal;
@@ -58,7 +58,7 @@ public class Report {
 	}
 	
 	/* This method modifies the starting date field to a valid starting date. */
-	public void setDataInicial(String dataInicial) throws RelatorioException,
+	public void setDataInicial(String dataInicial) throws ReportException,
 			NullPointerException, ParseException {
 		if (dataInicial == null)
 			throw new NullPointerException(DATA_INICIAL_BRANCO);
@@ -83,7 +83,7 @@ public class Report {
 	}
 
 	/* method modifies the end date field to a valid end date. */
-	public void setDataFinal(String dataFinal) throws RelatorioException, NullPointerException,
+	public void setDataFinal(String dataFinal) throws ReportException, NullPointerException,
 			ParseException {
 		
 		if (dataFinal == null)
@@ -112,7 +112,7 @@ public class Report {
 	 * This method modifies the barber field.
 	 * And RelatorioException it ensures that every parameter passed is valid.
 	 * */
-	public void setBarbeiro(String barbeiro) throws RelatorioException {
+	public void setBarbeiro(String barbeiro) throws ReportException {
 		if (barbeiro == null)
 			throw new NullPointerException(BARBEIRO_BRANCO);
 		else if ("".equals(barbeiro))
@@ -127,7 +127,7 @@ public class Report {
 	}
 
 	/* method modifies the service type field to a valid service type. */
-	public void setTipoServico(String tipoServico) throws RelatorioException {
+	public void setTipoServico(String tipoServico) throws ReportException {
 		if (tipoServico == null)
 			throw new NullPointerException(TIPO_SERVICO_BRANCO);
 		else if ("".equals(tipoServico))

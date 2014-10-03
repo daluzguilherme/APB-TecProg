@@ -12,22 +12,22 @@ import java.sql.SQLException;
 import dao.ProvidedServiceDAO;
 import model.ProvidedService;
 
-public class ServicoPrestadoController {
+public class ProvidedServiceController {
 
-	private ServicoPrestadoController() {}
+	private ProvidedServiceController() {}
 	
 	/**
 	 * Provides the singleton implementation
 	 * @return the active ServicoPrestadoController instance, since it will be just one at
 	 * time.
 	 */
-	public static ServicoPrestadoController getInstance() {
+	public static ProvidedServiceController getInstance() {
 		if (instance == null)
-			instance = new ServicoPrestadoController();
+			instance = new ProvidedServiceController();
 		return instance;
 	}
 
-	private static ServicoPrestadoController instance;
+	private static ProvidedServiceController instance;
 
 	/**
 	 * Insert a service in the database.

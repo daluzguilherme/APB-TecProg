@@ -5,17 +5,17 @@ import static org.junit.Assert.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.AdressBook;
+import model.AddressBook;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import control.AgendaController;
-import exception.BarbeiroException;
+import control.AddressBookController;
+import exception.BarberException;
 
 public class AgendaControllerTeste {
 
-	AdressBook contato = new AdressBook();
+	AddressBook contato = new AddressBook();
 
 	@Before
 	public void setUp() {
@@ -23,16 +23,16 @@ public class AgendaControllerTeste {
 			contato.setNome("Corte");
 			contato.setTelefone("3895-5698");
 			contato.setDescricao("AAA");
-		} catch (BarbeiroException e) {
+		} catch (BarberException e) {
 			e.printStackTrace();
 		}
 	}
 
-	AgendaController agendaController = AgendaController.getInstance();
+	AddressBookController agendaController = AddressBookController.getInstance();
 	
 	@Test
 	public void getInstanceDeAgendaControllerDeveRetornarInstanciaCorrente() {
-		assertEquals(AgendaController.getInstance(), agendaController);
+		assertEquals(AddressBookController.getInstance(), agendaController);
 	}
 
 	@Test

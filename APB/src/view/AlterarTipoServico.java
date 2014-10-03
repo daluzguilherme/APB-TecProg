@@ -16,8 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
-import control.TipoServicoController;
-import exception.ServicoException;
+import control.ServiceTypeController;
+import exception.ServiceException;
 import model.ServiceType;
 
 import java.awt.event.ActionListener;
@@ -81,7 +81,7 @@ public class AlterarTipoServico extends JFrame {
 		 */
 		try {
 			ServiceType tiposervico = new ServiceType();
-			TipoServicoController servicoController = TipoServicoController
+			ServiceTypeController servicoController = ServiceTypeController
 					.getInstance();
 			tiposervico.setNomeTipoServico(ServiceType.getTempNome());
 			ResultSet rs = servicoController.pesquisarPorNome(tiposervico);
@@ -93,7 +93,7 @@ public class AlterarTipoServico extends JFrame {
 			nome = textFieldNome.getText();
 		} catch (SQLException e) {
 			mostrarMensagemDeErro(e.getMessage());
-		} catch (ServicoException e) {
+		} catch (ServiceException e) {
 			mostrarMensagemDeErro(e.getMessage());
 		}
 
@@ -110,7 +110,7 @@ public class AlterarTipoServico extends JFrame {
 					tipoServico.setNomeTipoServico(textFieldNome.getText());
 					tipoServico.setPreco(textFieldPreco.getText());
 
-					TipoServicoController tipoServicoController = TipoServicoController
+					ServiceTypeController tipoServicoController = ServiceTypeController
 							.getInstance();
 					tipoServicoController.alterar(nome, tipoServico);
 
@@ -122,7 +122,7 @@ public class AlterarTipoServico extends JFrame {
 					CadastrarTipoServico frame = new CadastrarTipoServico();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
-				} catch (ServicoException e1) {
+				} catch (ServiceException e1) {
 					mostrarMensagemDeErro(e1.getMessage());
 				} catch (SQLException k) {
 					mostrarMensagemDeErro(k.getMessage());

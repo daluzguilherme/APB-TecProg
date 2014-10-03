@@ -13,20 +13,20 @@ import java.sql.SQLException;
 import dao.ReportDAO;
 import model.Report;
 
-public class RelatorioController {
+public class ReportController {
 	
-private static RelatorioController instance;
+private static ReportController instance;
 
-	public RelatorioController() {}
+	public ReportController() {}
 	
 	/**
 	 * Provides the singleton implementation
 	 * @return the active RelatorioController instance, since it will be just 
 	 * one at time.
 	 */
-	public static RelatorioController getInstance() {
+	public static ReportController getInstance() {
 		if(instance == null){
-			instance = new RelatorioController();
+			instance = new ReportController();
 		}
 		return instance;
 	}
