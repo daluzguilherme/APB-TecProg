@@ -18,7 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 
 import control.TipoServicoController;
-import model.TipoServico;
+import model.ServiceType;
 import exception.ServicoException;
 
 import java.awt.event.ActionListener;
@@ -74,7 +74,7 @@ public class CadastrarTipoServico extends JFrame {
 		try {
 			TipoServicoController servicoController = TipoServicoController
 					.getInstance();
-			TipoServico servico = new TipoServico();
+			ServiceType servico = new ServiceType();
 			ResultSet rs = servicoController
 					.mostrarTipoServicoCadastrados(servico);
 			while (rs.next()) {
@@ -120,7 +120,7 @@ public class CadastrarTipoServico extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					TipoServico.setTempNome(modelo.getValueAt(
+					ServiceType.setTempNome(modelo.getValueAt(
 							table.getSelectedRow(), 0).toString());
 					AlterarTipoServico frame = new AlterarTipoServico();
 					frame.setVisible(true);
@@ -147,7 +147,7 @@ public class CadastrarTipoServico extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				String nome = (String) table.getValueAt(table.getSelectedRow(),
 						0);
-				TipoServico tipoServico = new TipoServico();
+				ServiceType tipoServico = new ServiceType();
 
 				try {
 					tipoServico.setNomeTipoServico(nome);

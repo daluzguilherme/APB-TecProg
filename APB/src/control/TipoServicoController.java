@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import dao.ServiceTypeDAO;
-import model.TipoServico;
+import model.ServiceType;
 
 public class TipoServicoController {
 	
@@ -37,7 +37,7 @@ public class TipoServicoController {
 	 * @return true if no problems.
 	 * @return false if  type of service is null.
 	 */
-	public boolean inserir(TipoServico tipoServico) throws SQLException {
+	public boolean inserir(ServiceType tipoServico) throws SQLException {
 		if (tipoServico == null) {
 			return false;
 		} else {
@@ -54,11 +54,11 @@ public class TipoServicoController {
 	 * @return true if no problems.
 	 * @throws SQLException If has some problem during the database update
 	 */
-	public boolean alterar(String nome,TipoServico tipoServico) throws SQLException {
+	public boolean alterar(String nome,ServiceType tipoServico) throws SQLException {
 		if (tipoServico == null) {
 			return false;
 		} else {
-			TipoServico tipoServico_alterado = tipoServico;
+			ServiceType tipoServico_alterado = tipoServico;
 			ServiceTypeDAO.getInstance().alterar(nome,tipoServico_alterado, tipoServico);
 			return true;
 		}
@@ -72,7 +72,7 @@ public class TipoServicoController {
 	 * @return false if  type of service is null.
 	 */
 	
-	public boolean excluir(TipoServico tipoServico) throws SQLException {
+	public boolean excluir(ServiceType tipoServico) throws SQLException {
 
 		if (tipoServico == null) {
 			return false;
@@ -88,7 +88,7 @@ public class TipoServicoController {
 	 * @return Show all types of service registered in the database.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public ResultSet mostrarTipoServicoCadastrados(TipoServico servico) throws SQLException {
+	public ResultSet mostrarTipoServicoCadastrados(ServiceType servico) throws SQLException {
 		return ServiceTypeDAO.getInstance().mostrarTipoServicoCadastrados(servico);
 	}
 	
@@ -99,7 +99,7 @@ public class TipoServicoController {
 	 * @return Show a service by name in the database.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public ResultSet pesquisarPorNome(TipoServico servico) throws SQLException {
+	public ResultSet pesquisarPorNome(ServiceType servico) throws SQLException {
 		return ServiceTypeDAO.getInstance().pesquisarPorNome(servico);
 	}
 

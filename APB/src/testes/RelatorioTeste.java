@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import java.text.ParseException;
 
-import model.Relatorio;
+import model.Report;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,12 +13,12 @@ import exception.RelatorioException;
 
 public class RelatorioTeste {
 
-	Relatorio relatorio;
+	Report relatorio;
 
 	@Before
 	public void setUp() throws ParseException {
 		try {
-			relatorio = new Relatorio();
+			relatorio = new Report();
 
 			relatorio.setBarbeiro("Chico");
 			relatorio.setTipoServico("barba");
@@ -107,7 +107,7 @@ public class RelatorioTeste {
 	@Test (expected = IllegalArgumentException.class)
 	public void construtorDeRelatorioNaoPodePassarBarbeiroNulo() {
 		try {
-			new Relatorio ("2013-01-01", "2013-01-01", null, "barba");
+			new Report ("2013-01-01", "2013-01-01", null, "barba");
 		} catch(RelatorioException e){
 			e.printStackTrace();
 		}
@@ -116,7 +116,7 @@ public class RelatorioTeste {
 	@Test (expected = IllegalArgumentException.class)
 	public void construtorDeRelatorioNaoPodePassarDataFinalNula() {
 		try {
-			new Relatorio("2013-01-01", null, "Chico", "barba");
+			new Report("2013-01-01", null, "Chico", "barba");
 		} catch (RelatorioException e){
 			e.printStackTrace();
 		}
@@ -125,7 +125,7 @@ public class RelatorioTeste {
 	@Test (expected = IllegalArgumentException.class)
 	public void construtorDeRelatorioNaoPodePassarDataInicialNula() {
 		try {
-			new Relatorio (null, "2013-01-01", "Chico", "barba");
+			new Report (null, "2013-01-01", "Chico", "barba");
 		} catch (RelatorioException e){
 			e.printStackTrace();
 		}
@@ -134,7 +134,7 @@ public class RelatorioTeste {
 	@Test (expected = IllegalArgumentException.class)
 	public void construtorDeRelatorioNaoPodePassarTipoServicoNulo() {
 		try {
-			new Relatorio ("2013-01-01", "2013-01-01", "Chico", null);
+			new Report ("2013-01-01", "2013-01-01", "Chico", null);
 		} catch (RelatorioException e){
 			e.printStackTrace();
 		}
@@ -143,7 +143,7 @@ public class RelatorioTeste {
 	@Test 
 	public void construtorDeRelatorioPassandoTodosOsDadosCorretos() {
 		try {
-			new Relatorio ("2013-01-01", "2013-12-31", "Chico", "barba");
+			new Report ("2013-01-01", "2013-12-31", "Chico", "barba");
 			assertEquals(relatorio, relatorio);
 		} catch (RelatorioException e){
 			e.printStackTrace();

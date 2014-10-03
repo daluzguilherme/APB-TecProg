@@ -23,7 +23,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import control.ServicoPrestadoController;
-import model.ServicoPrestado;
+import model.ProvidedService;
 import exception.ServicoException;
 
 import java.awt.event.ActionListener;
@@ -76,7 +76,7 @@ public class CadastrarServicoPrestado extends JFrame {
 		try {
 			ServicoPrestadoController servicoController = ServicoPrestadoController
 					.getInstance();
-			ServicoPrestado servico = new ServicoPrestado();
+			ProvidedService servico = new ProvidedService();
 			ResultSet rs = servicoController
 					.mostrarServicosPrestadosCadastrados(servico);
 			while (rs.next()) {
@@ -148,7 +148,7 @@ public class CadastrarServicoPrestado extends JFrame {
 							table.getSelectedRow(), 2);
 					String data = (String) table.getValueAt(
 							table.getSelectedRow(), 3);
-					ServicoPrestado servico = new ServicoPrestado();
+					ProvidedService servico = new ProvidedService();
 					servico.setNomeServico(nome);
 					servico.setNomeBarbeiro(barbeiro);
 					servico.setPreco(valor);

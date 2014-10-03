@@ -8,7 +8,7 @@ package model;
 
 import exception.BarbeiroException;
 
-public class Agenda {
+public class AdressBook {
 
 	/*Specifying the attributes of the class Agenda.*/
 	private String nome;
@@ -21,12 +21,12 @@ public class Agenda {
 	private final String TELEFONE_INVALIDO = "Telefone Inv�lido";
 	private final String TELEFONE_BRANCO = "Telefone em Branco";
 
-	public Agenda() {
+	public AdressBook() {
 
 	}
 
 	/* Constructor method of the class Agenda.*/
-	public Agenda(String nome, String telefone, String descricao) {
+	public AdressBook(String nome, String telefone, String descricao) {
 		this.nome = nome;
 		this.telefone = telefone;
 		this.descricao = descricao;
@@ -105,7 +105,7 @@ public class Agenda {
 	 * @param tempNome A temporary name. 
 	 */
 	public static void setTempNome(String tempNome) {
-		Agenda.tempNome = tempNome;
+		AdressBook.tempNome = tempNome;
 	}
 
 }

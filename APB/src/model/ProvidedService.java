@@ -10,7 +10,7 @@ import exception.ServicoException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class ServicoPrestado {
+public class ProvidedService {
 
 	/* Specifying the attributes of the class Relatorio. */
 	private String nomeServico;
@@ -28,12 +28,12 @@ public class ServicoPrestado {
 	private final String DATA_BRANCO = "Data em Branco";
 	private final String DATA_INVALIDA = "Insira uma data válida";
 
-	public ServicoPrestado() {
+	public ProvidedService() {
 
 	}
 
 	/* Constructor method of the class ServicoPrestado.*/
-	public ServicoPrestado(String nomeServico, String preco, String nomeBarbeiro) {
+	public ProvidedService(String nomeServico, String preco, String nomeBarbeiro) {
 		this.nomeServico = nomeServico;
 		this.preco = preco;
 		this.nomeBarbeiro = nomeBarbeiro;

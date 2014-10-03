@@ -21,7 +21,7 @@ import javax.swing.JButton;
 
 import control.AgendaController;
 import exception.BarbeiroException;
-import model.Agenda;
+import model.AdressBook;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -104,7 +104,7 @@ public class PesquisarContato extends JFrame {
 						modelo.removeRow(i);
 					}
 
-					Agenda contato = new Agenda();
+					AdressBook contato = new AdressBook();
 					AgendaController agendaController = AgendaController
 							.getInstance();
 					contato.setNome(textField.getText());
@@ -142,7 +142,7 @@ public class PesquisarContato extends JFrame {
 						modelo.removeRow(i);
 					}
 
-					Agenda contato = new Agenda();
+					AdressBook contato = new AdressBook();
 					AgendaController agendaController = AgendaController
 							.getInstance();
 					contato.setTelefone(textField.getText());
@@ -179,7 +179,7 @@ public class PesquisarContato extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					Agenda.setTempNome(modelo.getValueAt(
+					AdressBook.setTempNome(modelo.getValueAt(
 							table.getSelectedRow(), 0).toString());
 					dispose();
 					AlterarContato frame = new AlterarContato();
@@ -208,7 +208,7 @@ public class PesquisarContato extends JFrame {
 							table.getSelectedRow(), 0);
 					String telefone = (String) table.getValueAt(
 							table.getSelectedRow(), 1);
-					Agenda agenda = new Agenda();
+					AdressBook agenda = new AdressBook();
 					agenda.setNome(nome);
 					agenda.setTelefone(telefone);
 

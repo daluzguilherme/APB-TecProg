@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import dao.ProvidedServiceDAO;
-import model.ServicoPrestado;
+import model.ProvidedService;
 
 public class ServicoPrestadoController {
 
@@ -36,7 +36,7 @@ public class ServicoPrestadoController {
 	 * @return true if no problems.
 	 * @return false if service is null.
 	 */
-	public boolean inserir(ServicoPrestado servico) throws SQLException {
+	public boolean inserir(ProvidedService servico) throws SQLException {
 		if (servico != null) {
 			ProvidedServiceDAO.getInstance().incluir(servico);
 			return true;
@@ -53,7 +53,7 @@ public class ServicoPrestadoController {
 	 * @return false if service is null.
 	 */
 	
-	public boolean excluir(ServicoPrestado servico) throws SQLException {
+	public boolean excluir(ProvidedService servico) throws SQLException {
 		if (servico !=  null) {
 			ProvidedServiceDAO.getInstance().excluir(servico);
 			return true;
@@ -68,7 +68,7 @@ public class ServicoPrestadoController {
 	 * @return Show the services registered in the database.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public ResultSet mostrarServicosPrestadosCadastrados(ServicoPrestado servico) throws SQLException {
+	public ResultSet mostrarServicosPrestadosCadastrados(ProvidedService servico) throws SQLException {
 		return ProvidedServiceDAO.getInstance().mostrarServicosPrestadosCadastrados(servico);
 	}
 

@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 
-import model.Relatorio;
+import model.Report;
 
 import control.RelatorioController;
 
@@ -110,7 +110,7 @@ public class VisualizarRelatorios extends JFrame {
 		/*
 		 * Populate the table according to the report type of search selected.
 		 */
-		Relatorio relatorio = new Relatorio();
+		Report relatorio = new Report();
 
 		if (PesquisarRelatorio.tipoBusca == 1) {
 
@@ -616,7 +616,7 @@ public class VisualizarRelatorios extends JFrame {
 	private CategoryDataset createDatasetRelatorio() throws SQLException,
 			RelatorioException, NullPointerException, ParseException {
 
-		Relatorio relatorio = new Relatorio();
+		Report relatorio = new Report();
 		ResultSet rs = null;
 
 		if (PesquisarRelatorio.tipoBusca != 0) {

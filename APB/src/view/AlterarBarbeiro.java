@@ -19,7 +19,7 @@ import javax.swing.JButton;
 import control.BarbeiroController;
 import exception.BarbeiroException;
 
-import model.Barbeiro;
+import model.Barber;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -112,10 +112,10 @@ public class AlterarBarbeiro extends JFrame {
 		 * a query from database.
 		 */
 		try {
-			Barbeiro barbeiro = new Barbeiro();
+			Barber barbeiro = new Barber();
 			BarbeiroController barbeiroController = BarbeiroController
 					.getInstance();
-			barbeiro.setNome(Barbeiro.getTempNome());
+			barbeiro.setNome(Barber.getTempNome());
 
 			ResultSet rs = barbeiroController.pesquisarPorNome(barbeiro);
 
@@ -142,7 +142,7 @@ public class AlterarBarbeiro extends JFrame {
 		buttonSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					Barbeiro barbeiro = new Barbeiro();
+					Barber barbeiro = new Barber();
 					barbeiro.setNome(textFieldNome.getText());
 					barbeiro.setCpf(textFieldCpf.getText());
 					barbeiro.setRg(textFieldRg.getText());

@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import dao.BarberDAO;
-import model.Barbeiro;
+import model.Barber;
 
 public class BarbeiroController {
 
@@ -35,7 +35,7 @@ public class BarbeiroController {
 	 * @throws SQLException If has some problem during the database insertion
 	 * @return result exception for barber.
 	 */
-	public boolean inserir(Barbeiro barber) throws SQLException {
+	public boolean inserir(Barber barber) throws SQLException {
 		boolean result = false;
 		if (barber != null) {
 			BarberDAO.getInstance().incluir(barber);
@@ -53,10 +53,10 @@ public class BarbeiroController {
 	 * @return result exception for barber.
 	 * @throws SQLException If has some problem during the database update
 	 */
-	public boolean alterar(String newBarberName, Barbeiro barber) throws SQLException {
+	public boolean alterar(String newBarberName, Barber barber) throws SQLException {
 		boolean result = false;
 		if (barber != null){
-			Barbeiro alteredBarber = barber;
+			Barber alteredBarber = barber;
 			BarberDAO.getInstance().alterar(newBarberName, alteredBarber, barber);
 			result =  true;
 		} else {
@@ -72,7 +72,7 @@ public class BarbeiroController {
 	 * @return result exception for barber.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public boolean excluir(Barbeiro barber) throws SQLException {
+	public boolean excluir(Barber barber) throws SQLException {
 		boolean result;
 		if (barber != null){
 			BarberDAO.getInstance().excluir(barber);
@@ -99,7 +99,7 @@ public class BarbeiroController {
 	 * @return  resultBarber show the registered barbers in the database.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public ResultSet mostrarBarbeirosCadastrados(Barbeiro barber) throws SQLException {
+	public ResultSet mostrarBarbeirosCadastrados(Barber barber) throws SQLException {
 		ResultSet resultBarber = BarberDAO.getInstance()
 				.mostrarBarbeirosCadastrados(barber);
 		return resultBarber;
@@ -111,7 +111,7 @@ public class BarbeiroController {
 	 * @return  resultBarber search by name the barber in the database.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public ResultSet pesquisarPorNome(Barbeiro barber) throws SQLException {
+	public ResultSet pesquisarPorNome(Barber barber) throws SQLException {
 		ResultSet resultBarber = BarberDAO.getInstance()
 				.pesquisarPorNome(barber);
 		return resultBarber;

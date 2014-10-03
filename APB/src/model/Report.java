@@ -10,7 +10,7 @@ import java.util.Date;
 
 import exception.RelatorioException;
 
-public class Relatorio {
+public class Report {
 
 	/* Specifying the attributes of the class Relatorio. */
 	private String dataInicial;
@@ -28,7 +28,7 @@ public class Relatorio {
 	 *  Constructor method of the class Relatorio. 
 	 *  Has messages that alert the users if there are blank fields.
 	 * */ 
-	public Relatorio(String dataInicial, String dataFinal, String barbeiro,
+	public Report(String dataInicial, String dataFinal, String barbeiro,
 			String tipoServico) throws RelatorioException {
 		
 		this.dataInicial = dataInicial;
@@ -49,7 +49,7 @@ public class Relatorio {
 			throw new IllegalArgumentException(TIPO_SERVICO_BRANCO);
 	}
 
-	public Relatorio() {
+	public Report() {
 	}
 
 	/* This method gets a starting date. */

@@ -20,7 +20,7 @@ import control.TipoServicoController;
 
 import exception.ServicoException;
 
-import model.TipoServico;
+import model.ServiceType;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -88,7 +88,7 @@ public class NovoTipoServico extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
-					TipoServico tipoServico = new TipoServico();
+					ServiceType tipoServico = new ServiceType();
 					tipoServico.setNomeTipoServico(textFieldServico.getText());
 					tipoServico.setPreco(textFieldPreco.getText());
 

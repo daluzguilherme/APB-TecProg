@@ -18,7 +18,7 @@ import javax.swing.JButton;
 
 import control.TipoServicoController;
 import exception.ServicoException;
-import model.TipoServico;
+import model.ServiceType;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -80,10 +80,10 @@ public class AlterarTipoServico extends JFrame {
 		 * from database.
 		 */
 		try {
-			TipoServico tiposervico = new TipoServico();
+			ServiceType tiposervico = new ServiceType();
 			TipoServicoController servicoController = TipoServicoController
 					.getInstance();
-			tiposervico.setNomeTipoServico(TipoServico.getTempNome());
+			tiposervico.setNomeTipoServico(ServiceType.getTempNome());
 			ResultSet rs = servicoController.pesquisarPorNome(tiposervico);
 
 			while (rs.next()) {
@@ -106,7 +106,7 @@ public class AlterarTipoServico extends JFrame {
 		buttonSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					TipoServico tipoServico = new TipoServico();
+					ServiceType tipoServico = new ServiceType();
 					tipoServico.setNomeTipoServico(textFieldNome.getText());
 					tipoServico.setPreco(textFieldPreco.getText());
 

@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import dao.AddressBookDAO;
-import model.Agenda;
+import model.AdressBook;
 
 public class AgendaController {
 
@@ -37,7 +37,7 @@ public class AgendaController {
 	 * @return true if no problems.
 	 * @return false if agenda is null.
 	 */
-	public boolean incluir(Agenda adressBook) throws SQLException {
+	public boolean incluir(AdressBook adressBook) throws SQLException {
 		boolean result = false;
 		if (adressBook != null) {
 			AddressBookDAO.getInstance().incluir(adressBook);
@@ -56,10 +56,10 @@ public class AgendaController {
 	 * @return true if no problems.
 	 * @throws SQLException If has some problem during the database update
 	 */
-	public boolean alterar(String nome, Agenda adressbook) throws SQLException {
+	public boolean alterar(String nome, AdressBook adressbook) throws SQLException {
 		boolean result = false;
 		if (adressbook != null) {
-			Agenda agenda_alterado = adressbook;
+			AdressBook agenda_alterado = adressbook;
 			AddressBookDAO.getInstance()
 			.alterar(nome, agenda_alterado, adressbook);
 			result = true;
@@ -76,7 +76,7 @@ public class AgendaController {
 	 * @return true if no problems.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public boolean excluir(Agenda contact) throws SQLException {
+	public boolean excluir(AdressBook contact) throws SQLException {
 		boolean result = false;
 		if (contact != null) {
 			AddressBookDAO.getInstance().excluir(contact);
@@ -93,7 +93,7 @@ public class AgendaController {
 	 * @return Show the contacts in the address book.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public ResultSet mostrarContatosCadastrados(Agenda contact)
+	public ResultSet mostrarContatosCadastrados(AdressBook contact)
 			throws SQLException {
 		ResultSet resultContact = AddressBookDAO.getInstance()
 				.mostrarContatosCadastrados(contact); 
@@ -106,7 +106,7 @@ public class AgendaController {
 	 * @return Search by name the contacts in the address book.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public ResultSet pesquisarPorNome(Agenda contact) throws SQLException {
+	public ResultSet pesquisarPorNome(AdressBook contact) throws SQLException {
 		ResultSet resultContact = AddressBookDAO.getInstance()
 				.pesquisarPorNome(contact);
 		return resultContact;
@@ -118,7 +118,7 @@ public class AgendaController {
 	 * @return Search by phone number the contacts in the address book.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public ResultSet pesquisarPorTelefone(Agenda contact) throws SQLException {
+	public ResultSet pesquisarPorTelefone(AdressBook contact) throws SQLException {
 		ResultSet resultContact = AddressBookDAO.getInstance()
 				.pesquisarPorTelefone(contact);
 		return resultContact;

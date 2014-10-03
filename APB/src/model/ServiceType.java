@@ -6,7 +6,7 @@ package model;
 
 import exception.ServicoException;
 
-public class TipoServico {
+public class ServiceType {
 
 	/* Specifying the attributes of the class TipoServico. */
 	private String nomeTipoServico;
@@ -19,7 +19,7 @@ public class TipoServico {
 	private final String PRECO_BRANCO = "Pre�o em Branco";
 
 	
-	public TipoServico(){
+	public ServiceType(){
 	}
 	
 	/* This method gets a service type name.*/
@@ -69,6 +69,6 @@ public class TipoServico {
 		else if ("".equals(tempNome))
 			throw new ServicoException(NOME_BRANCO);
 		else
-			TipoServico.tempNome = tempNome;
+			ServiceType.tempNome = tempNome;
 	}
 }

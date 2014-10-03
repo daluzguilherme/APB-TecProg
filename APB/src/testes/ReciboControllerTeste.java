@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-import model.Relatorio;
+import model.Report;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +17,7 @@ import exception.RelatorioException;
 
 public class ReciboControllerTeste {
 	
-	Relatorio relatorio = new Relatorio();
+	Report relatorio = new Report();
 	
 	@Before
 	public void setUp() throws ReciboException, ParseException {

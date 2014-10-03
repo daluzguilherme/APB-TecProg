@@ -22,7 +22,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import model.Barbeiro;
+import model.Barber;
 import control.BarbeiroController;
 import exception.BarbeiroException;
 
@@ -81,7 +81,7 @@ public class CadastrarBarbeiro extends JFrame {
 		try {
 			BarbeiroController barbeiroController = BarbeiroController
 					.getInstance();
-			Barbeiro barbeiro = new Barbeiro();
+			Barber barbeiro = new Barber();
 			ResultSet rs = barbeiroController
 					.mostrarBarbeirosCadastrados(barbeiro);
 			while (rs.next()) {
@@ -132,7 +132,7 @@ public class CadastrarBarbeiro extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					Barbeiro.setTempNome(modelo.getValueAt(
+					Barber.setTempNome(modelo.getValueAt(
 							table.getSelectedRow(), 0).toString());
 					AlterarBarbeiro frame = new AlterarBarbeiro();
 					frame.setVisible(true);
@@ -158,7 +158,7 @@ public class CadastrarBarbeiro extends JFrame {
 				try {
 					String nome = (String) table.getValueAt(
 							table.getSelectedRow(), 0);
-					Barbeiro barbeiro = new Barbeiro();
+					Barber barbeiro = new Barber();
 					barbeiro.setNome(nome);
 
 					int confirmacao = JOptionPane.showConfirmDialog(null,
@@ -212,7 +212,7 @@ public class CadastrarBarbeiro extends JFrame {
 	 *            shown to the user.
 	 */
 	private void mostrarMensagemDeErro(String informacao) {
-		JOptionPane.showMessageDialog(null, informacao, "Atenção",
+		JOptionPane.showMessageDialog(null, informacao, "Atenï¿½ï¿½o",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 

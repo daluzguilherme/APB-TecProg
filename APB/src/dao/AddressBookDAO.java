@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.Agenda;
+import model.AdressBook;
 import dao.FactoryConnection;
 
 public class AddressBookDAO {
@@ -45,7 +45,7 @@ public class AddressBookDAO {
 	 * @throws SQLException If there was some problem during the database
 	 * 						deletion
 	 */
-	public boolean incluir(Agenda addressBook) throws SQLException {
+	public boolean incluir(AdressBook addressBook) throws SQLException {
 		if (addressBook == null)
 			return false;
 		
@@ -67,8 +67,8 @@ public class AddressBookDAO {
 	 * @throws SQLException If there was some problem during the database
 	 * 						deletion.
 	 */
-	public boolean alterar(String nome, Agenda alteredAddressBook, 
-			Agenda addressBook) throws SQLException {	
+	public boolean alterar(String nome, AdressBook alteredAddressBook, 
+			AdressBook addressBook) throws SQLException {	
 		if(addressBook == null || alteredAddressBook == null)
 			return false;
 		
@@ -91,7 +91,7 @@ public class AddressBookDAO {
 	 * @throws SQLException If there was some problem during the database
 	 * 						operation.
 	 */
-	public boolean excluir(Agenda contact) throws SQLException {
+	public boolean excluir(AdressBook contact) throws SQLException {
 		if(contact ==  null)
 			return false;
 		
@@ -123,7 +123,7 @@ public class AddressBookDAO {
 	 * @throws SQLException If there was some problem during the database
 	 * 						operation.
 	 */
-	public ResultSet mostrarContatosCadastrados(Agenda contact) throws SQLException {
+	public ResultSet mostrarContatosCadastrados(AdressBook contact) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		ResultSet rs = connection.createStatement().executeQuery(
 				"Select * from agenda;");
@@ -139,7 +139,7 @@ public class AddressBookDAO {
 	 * @throws SQLException If there was some problem during the database
 	 * 						operation.
 	 */
-	public ResultSet pesquisarPorNome(Agenda contact) throws SQLException {
+	public ResultSet pesquisarPorNome(AdressBook contact) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		java.sql.PreparedStatement pst = connection.prepareStatement("SELECT * FROM agenda WHERE "
 				+ "nome = '" + contact.getNome()+ "';");
@@ -156,7 +156,7 @@ public class AddressBookDAO {
 	 * @throws SQLException If there was some problem during the database
 	 * 						operation.
 	 */
-	public ResultSet pesquisarPorTelefone(Agenda contact) throws SQLException {
+	public ResultSet pesquisarPorTelefone(AdressBook contact) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		java.sql.PreparedStatement pst = connection.prepareStatement("SELECT * FROM agenda WHERE "
 				+ "telefone = '" + contact.getTelefone()+ "';");

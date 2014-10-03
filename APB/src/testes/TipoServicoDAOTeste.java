@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.TipoServico;
+import model.ServiceType;
 
 import org.junit.Test;
 
@@ -13,8 +13,8 @@ import dao.ServiceTypeDAO;
 
 public class TipoServicoDAOTeste {
 
-	TipoServico tiposervico = new TipoServico();
-	TipoServico tiposervico2 = new TipoServico();
+	ServiceType tiposervico = new ServiceType();
+	ServiceType tiposervico2 = new ServiceType();
 	ServiceTypeDAO servicoDAO = ServiceTypeDAO.getInstance();
 	
 	@Test

@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-import model.ServicoPrestado;
+import model.ProvidedService;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,8 +15,8 @@ import exception.ServicoException;
 
 public class ServicoPrestadoDAOTeste {
 
-	ServicoPrestado servico = new ServicoPrestado();
-	ServicoPrestado servico2 = new ServicoPrestado();
+	ProvidedService servico = new ProvidedService();
+	ProvidedService servico2 = new ProvidedService();
 	@Before
 	public void setUp() {
 		try {

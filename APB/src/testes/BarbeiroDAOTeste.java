@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.Barbeiro;
+import model.Barber;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,8 +17,8 @@ import exception.BarbeiroException;
 
 public class BarbeiroDAOTeste {
 
-	Barbeiro barbeiro = new Barbeiro();
-	Barbeiro barbeiro2 = new Barbeiro();
+	Barber barbeiro = new Barber();
+	Barber barbeiro2 = new Barber();
 	@Before
 	public void setUp() {
 		try {

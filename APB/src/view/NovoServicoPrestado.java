@@ -21,7 +21,7 @@ import java.awt.event.MouseEvent;
 
 import control.ServicoPrestadoController;
 import exception.ServicoException;
-import model.ServicoPrestado;
+import model.ProvidedService;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -188,7 +188,7 @@ public class NovoServicoPrestado extends JFrame {
 						String[] barbeiro = comboBoxBarbeiro.getSelectedItem()
 								.toString().split(" - ");
 
-						ServicoPrestado servico_prestado = new ServicoPrestado();
+						ProvidedService servico_prestado = new ProvidedService();
 
 						servico_prestado.setNomeBarbeiro(barbeiro[1]);
 						servico_prestado.setNomeServico(nome[1]);

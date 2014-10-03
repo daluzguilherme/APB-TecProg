@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.ServicoPrestado;
+import model.ProvidedService;
 
 public class ProvidedServiceDAO {
 	
@@ -29,7 +29,7 @@ public class ProvidedServiceDAO {
 	}
 
 	/* Include new services rendered in the database. */
-	public boolean incluir(ServicoPrestado servico) throws SQLException {
+	public boolean incluir(ProvidedService servico) throws SQLException {
 		if (servico != null) {
 			this.updateQuery("INSERT INTO "
 					+ "servicoprestado (nome, preco, barbeiro, data) VALUES ("
@@ -44,7 +44,7 @@ public class ProvidedServiceDAO {
 	}
 
 	/* This removes a service rendered from the database. */
-	public boolean excluir(ServicoPrestado servico) throws SQLException {
+	public boolean excluir(ProvidedService servico) throws SQLException {
 		if (servico != null) {
 			this.updateQuery("DELETE FROM servicoprestado WHERE "
 				+ "servicoprestado.idservicoprestado = \"" + pesquisar(servico)+ "\";");
@@ -55,7 +55,7 @@ public class ProvidedServiceDAO {
 	}
 
 	/*  This searches for services rendered from the database. */
-	private String pesquisar(ServicoPrestado servico) throws SQLException {
+	private String pesquisar(ProvidedService servico) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement preparedStatement = connection
 				.prepareStatement("SELECT * FROM servicoprestado WHERE "
@@ -83,7 +83,7 @@ public class ProvidedServiceDAO {
 	}
 	
 	/* Shows registered services rendered */
-	public ResultSet mostrarServicosPrestadosCadastrados(ServicoPrestado servico) throws SQLException {
+	public ResultSet mostrarServicosPrestadosCadastrados(ProvidedService servico) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		ResultSet rs = connection.createStatement().executeQuery(
 						"SELECT nome, preco, barbeiro, data FROM servicoprestado ORDER BY data;");

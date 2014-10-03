@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.Barbeiro;
+import model.Barber;
 
 public class BarberDAO {
 
@@ -45,7 +45,7 @@ public class BarberDAO {
 	 * @throws SQLException If there was some problem during the database
 	 * 						deletion.
 	 */
-	public boolean incluir(Barbeiro barber) throws SQLException {
+	public boolean incluir(Barber barber) throws SQLException {
 		if (barber == null)
 			return false;
 		
@@ -70,7 +70,7 @@ public class BarberDAO {
 	 * @throws SQLException If there was some problem during the database
 	 * 						deletion.
 	 */
-	public boolean alterar(String name, Barbeiro alteredBarber, Barbeiro barber) throws SQLException {
+	public boolean alterar(String name, Barber alteredBarber, Barber barber) throws SQLException {
 		if (alteredBarber == null || barber == null)
 			return false;
 		
@@ -85,8 +85,16 @@ public class BarberDAO {
 		return true;
 	}
 
-	/* This removes a barber from the database. */
-	public boolean excluir(Barbeiro barber) throws SQLException {
+	/**
+	 * This removes a barber from the database
+	 * 
+	 * @param barber an old instance of Barber to be excluded
+	 * @return true if there was no error during the process of changing.
+	 * @return false if barber is null. 
+	 * @throws SQLException If there was some problem during the database
+	 * 						deletion.
+	 */
+	public boolean excluir(Barber barber) throws SQLException {
 		if (barber == null)
 			return false;
 		
@@ -95,8 +103,13 @@ public class BarberDAO {
 		return true;
 	}
 
-	
-	/*  This searches for all barbers from the database. */
+	/**
+	 * This searches for all barbers from the database.
+	 * 
+	 * @return rs a resultset with all the barbers in the list.
+	 * @throws SQLException If there was some problem during the database
+	 * 						deletion.
+	 */
 	public ResultSet pesquisar() throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM barbeiro;");
@@ -105,7 +118,13 @@ public class BarberDAO {
 		return rs;
 	}
 
-	/* This updates a query. */
+	/**
+	 * This updates a query.
+	 * 
+	 * @param message gives a message to update the query.
+	 * @throws SQLException If there was some problem during the database
+	 * 						operation.
+	 */
 	public void updateQuery(String message) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement preparedStatement = connection.prepareStatement(message);
@@ -114,8 +133,15 @@ public class BarberDAO {
 		connection.close();
 	}
 	
-	/* Show registered barbers */
-	public ResultSet mostrarBarbeirosCadastrados(Barbeiro barber) throws SQLException {
+	/**
+	 * Show registered barbers.
+	 * 
+	 * @param barber NOT USED
+	 * @return rs a ResultSet with all registered barbers.
+	 * @throws SQLException If there was some problem during the database
+	 * 						operation
+	 */
+	public ResultSet mostrarBarbeirosCadastrados(Barber barber) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		ResultSet rs = connection.createStatement().executeQuery(
 				"Select nome, cpf, rg, telefone, cadeira from barbeiro;");
@@ -123,8 +149,14 @@ public class BarberDAO {
 		return rs;
 	}
 	
-	/* Search by name */
-	public ResultSet pesquisarPorNome(Barbeiro barber) throws SQLException {
+	/**
+	 * Search a barber by name.
+	 * @param barber a barber to be  searched.
+	 * @return rs a ResultSet with the barber searched.
+	 * @throws SQLException If there was some problem during the database
+	 *     operation.
+	 */
+	public ResultSet pesquisarPorNome(Barber barber) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM barbeiro WHERE nome = '" 
 							+ barber.getNome() + "';");

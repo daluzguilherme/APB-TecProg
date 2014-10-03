@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 
 import dao.ReportDAO;
-import model.Relatorio;
+import model.Report;
 
 public class RelatorioController {
 	
@@ -37,7 +37,7 @@ private static RelatorioController instance;
 	 * @return resultReport Search a report by date  in the database.
 	 * @throws SQLException If has some problem with the database search.
 	 */
-	public ResultSet pesquisarPorData(Relatorio report) throws SQLException {
+	public ResultSet pesquisarPorData(Report report) throws SQLException {
 		ResultSet resultReport = ReportDAO.getInstance()
 				.pesquisarPorData(report);
 		return resultReport;
@@ -50,7 +50,7 @@ private static RelatorioController instance;
 	 *  database.
 	 * @throws SQLException If has some problem with the database search.
 	 */
-	public ResultSet pesquisarPorDataEBarbeiro(Relatorio report) 
+	public ResultSet pesquisarPorDataEBarbeiro(Report report) 
 			throws SQLException {
 		ResultSet resultReport = ReportDAO.getInstance()
 				.pesquisarPorDataEBarbeiro(report);
@@ -63,7 +63,7 @@ private static RelatorioController instance;
 	 * @return resultReport Search  by date and service in the database.
 	 * @throws SQLException If has some problem with the database search.
 	 */
-	public ResultSet pesquisarPorDataEServico(Relatorio report)
+	public ResultSet pesquisarPorDataEServico(Report report)
 			throws SQLException {
 		ResultSet resultReport = ReportDAO.getInstance()
 				.pesquisarPorDataEServico(report);
@@ -76,7 +76,7 @@ private static RelatorioController instance;
 	 * @return resultReport Search  by barber in the database.
 	 * @throws SQLException If has some problem with the database search.
 	 */
-	public ResultSet pesquisarPorBarbeiro(Relatorio relatorio) 
+	public ResultSet pesquisarPorBarbeiro(Report relatorio) 
 			throws SQLException {
 		ResultSet resultReport = ReportDAO.getInstance()
 				.pesquisarPorBarbeiro(relatorio);
@@ -89,7 +89,7 @@ private static RelatorioController instance;
 	 * @return resultReport Search  by  barber and service in the database.
 	 * @throws SQLException If has some problem with the database search.
 	 */
-	public ResultSet pesquisarPorBarbeiroEServico(Relatorio report)
+	public ResultSet pesquisarPorBarbeiroEServico(Report report)
 			throws SQLException {	
 		ResultSet resultReport = ReportDAO.getInstance()
 				.pesquisarPorBarbeiroEServico(report);
@@ -102,7 +102,7 @@ private static RelatorioController instance;
 	 * @return resultReport Search  by  service in the database.
 	 * @throws SQLException If has some problem with the database search.
 	 */
-	public ResultSet pesquisarPorServico(Relatorio report) 
+	public ResultSet pesquisarPorServico(Report report) 
 			throws SQLException {	
 		ResultSet resultReport = ReportDAO.getInstance()
 				.pesquisarPorServico(report);
@@ -116,7 +116,7 @@ private static RelatorioController instance;
 	 * @throws SQLException If has some problem with the database search.
 	 */
 	
-	public ResultSet pesquisarPorDataBarbeiroEServico(Relatorio report) 
+	public ResultSet pesquisarPorDataBarbeiroEServico(Report report) 
 			throws SQLException {		
 		ResultSet resultReport = ReportDAO.getInstance()
 				.pesquisarPorDataBarbeiroEServico(report);

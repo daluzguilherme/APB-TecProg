@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.TipoServico;
+import model.ServiceType;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import exception.ServicoException;
 
 public class TipoServicoControllerTeste {
 
-	TipoServico servico = new TipoServico();
+	ServiceType servico = new ServiceType();
 	TipoServicoController servicoController = TipoServicoController.getInstance();
 	
 	@Before

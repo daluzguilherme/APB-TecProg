@@ -5,8 +5,8 @@ import junit.framework.Assert;
 import junit.framework.AssertionFailedError;
 import exception.BarbeiroException;
 import exception.ServicoException;
-import model.Agenda;
-import model.Barbeiro;
+import model.AdressBook;
+import model.Barber;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,12 +14,12 @@ import org.junit.Test;
 
 public class BarbeiroTeste {
 
-	Barbeiro barbeiro;
+	Barber barbeiro;
 	
 	@Before
 	public void setUp() {
 		try {
-			barbeiro =  new Barbeiro();
+			barbeiro =  new Barber();
 			barbeiro.setNome("Alessandro");
 			barbeiro.setRg("418757896");
 			barbeiro.setTelefone("3389-9085");
@@ -85,7 +85,7 @@ public class BarbeiroTeste {
 	@Test (expected = IllegalArgumentException.class)
 	public void contrutorDeBarbeiroNaoPodePassarComNomeNulo() {
 		try {
-			new Barbeiro(null, "493.751.185-84", "2258256", "3389-9085", "10");
+			new Barber(null, "493.751.185-84", "2258256", "3389-9085", "10");
 		} catch (BarbeiroException e) {
 			e.printStackTrace();
 		}
@@ -95,7 +95,7 @@ public class BarbeiroTeste {
 	@Test (expected = IllegalArgumentException.class)
 	public void contrutorDeBarbeiroNaoPodePassarComCpfNulo() {
 		try {
-			new Barbeiro("Alessandro", null, "2258256", "3389-9085", "10");
+			new Barber("Alessandro", null, "2258256", "3389-9085", "10");
 		} catch (BarbeiroException e) {
 			e.printStackTrace();
 		}
@@ -105,7 +105,7 @@ public class BarbeiroTeste {
 	@Test (expected = IllegalArgumentException.class)
 	public void contrutorDeBarbeiroNaoPodePassarComRgNulo() {
 		try {
-			new Barbeiro("Alessandro", "493.751.185-84", null, "3389-9085", "10");
+			new Barber("Alessandro", "493.751.185-84", null, "3389-9085", "10");
 		} catch (BarbeiroException e) {
 			e.printStackTrace();
 		}
@@ -115,7 +115,7 @@ public class BarbeiroTeste {
 	@Test(expected = IllegalArgumentException.class)
 	public void contrutorDeBarbeiroNaoPodePassarComTelefoneNulo() {
 		try {
-			new Barbeiro("Alessandro", "493.751.185-84", "2258256", null, "10");
+			new Barber("Alessandro", "493.751.185-84", "2258256", null, "10");
 		} catch (BarbeiroException e) {
 			e.printStackTrace();
 		}
@@ -124,7 +124,7 @@ public class BarbeiroTeste {
 	@Test (expected = IllegalArgumentException.class)
 	public void contrutorDeBarbeiroNaoPodePassarComCadeiraNulo() {
 		try {
-			new Barbeiro("Alessandro", "493.751.185-84", "2258256", "3389-9085", null);
+			new Barber("Alessandro", "493.751.185-84", "2258256", "3389-9085", null);
 		} catch (BarbeiroException e) {
 			e.printStackTrace();
 		}
@@ -194,7 +194,7 @@ public class BarbeiroTeste {
 	
 	@Test
 	public void testeParaGetterDeTempNomeDeBarbeiro() {
-		assertEquals(null, Barbeiro.getTempNome());
+		assertEquals(null, Barber.getTempNome());
 	}
 	
 	@Test
@@ -274,20 +274,20 @@ public class BarbeiroTeste {
 	
 	@Test (expected = AssertionFailedError.class)
 	public void setterDeTempNomeNaoPodeSerNulo() throws ServicoException {
-		Barbeiro.setTempNome(null);
+		Barber.setTempNome(null);
 		Assert.fail("Deve lançar uma exceção");
 	}
 	
 	
 	@Test (expected = AssertionFailedError.class)
 	public void setterDeTempNomeNaoPodeSerEmBranco() {
-		Barbeiro.setTempNome("");
+		Barber.setTempNome("");
 		Assert.fail("Deve lançar uma exceção");
 	}
 	
 	@Test (expected = AssertionError.class)
 	public void tempNomeValido() throws BarbeiroException {
-		Barbeiro.setTempNome("João");
-		assertEquals("João", Agenda.getTempNome());
+		Barber.setTempNome("João");
+		assertEquals("João", AdressBook.getTempNome());
 	}
 }

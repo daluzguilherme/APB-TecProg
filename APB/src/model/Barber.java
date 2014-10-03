@@ -6,7 +6,7 @@ package model;
 
 import exception.BarbeiroException;
 
-public class Barbeiro {
+public class Barber {
 
 	/* Specifying the attributes of the class Barbeiro. */
 	private String nome;
@@ -28,13 +28,13 @@ public class Barbeiro {
 	private final String CADEIRA_INVALIDA = "Cadeira Inválida";
 	private final String CADEIRA_BRANCO = "Campo Cadeira em Branco";
 
-	public Barbeiro() {}
+	public Barber() {}
 
 	/*
 	 *  Constructor method of the class Barbeiro. 
 	 *  Has messages that alert the users if there are blank fields.
 	 * */ 
-	public Barbeiro(String nome, String cpf, String rg, String telefone,
+	public Barber(String nome, String cpf, String rg, String telefone,
 			String cadeira) throws BarbeiroException {
 		this.nome = nome;
 		this.cpf = cpf;
@@ -171,7 +171,7 @@ public class Barbeiro {
 
 	/* This method modifies the temporary name field. */
 	public static void setTempNome(String tempNome) {
-		Barbeiro.tempNome = tempNome;
+		Barber.tempNome = tempNome;
 	}
 
 	/* This method validates CPF number */

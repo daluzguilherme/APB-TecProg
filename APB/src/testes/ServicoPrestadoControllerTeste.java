@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-import model.ServicoPrestado;
+import model.ProvidedService;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import control.ServicoPrestadoController;
 import exception.ServicoException;
 
 public class ServicoPrestadoControllerTeste {
-	ServicoPrestado servico = new ServicoPrestado();
+	ProvidedService servico = new ProvidedService();
 	ServicoPrestadoController servicoController = ServicoPrestadoController.getInstance();
 
 	@Before

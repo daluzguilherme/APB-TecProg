@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.Relatorio;
+import model.Report;
 
 public class ReportDAO {
 
@@ -28,7 +28,7 @@ public class ReportDAO {
 	}
 
 	/* Search by date */
-	public ResultSet pesquisarPorData(Relatorio relatorio)
+	public ResultSet pesquisarPorData(Report relatorio)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE data BETWEEN '"
@@ -39,7 +39,7 @@ public class ReportDAO {
 	}
 	
 	/* Search by date and barber */
-	public ResultSet pesquisarPorDataEBarbeiro(Relatorio relatorio)
+	public ResultSet pesquisarPorDataEBarbeiro(Report relatorio)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE data BETWEEN '"
@@ -51,7 +51,7 @@ public class ReportDAO {
 	}
 	
 	/* Search by date and service*/
-	public ResultSet pesquisarPorDataEServico(Relatorio relatorio)
+	public ResultSet pesquisarPorDataEServico(Report relatorio)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE data BETWEEN '"
@@ -64,7 +64,7 @@ public class ReportDAO {
 	}
 	
 	/* Search by barber*/
-	public ResultSet pesquisarPorBarbeiro(Relatorio relatorio)
+	public ResultSet pesquisarPorBarbeiro(Report relatorio)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE barbeiro = '"
@@ -75,7 +75,7 @@ public class ReportDAO {
 	}
 	
 	/* Search by barber and service*/
-	public ResultSet pesquisarPorBarbeiroEServico(Relatorio relatorio)
+	public ResultSet pesquisarPorBarbeiroEServico(Report relatorio)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE barbeiro = '"
@@ -86,7 +86,7 @@ public class ReportDAO {
 	}
 	
 	/* Search by service*/
-	public ResultSet pesquisarPorServico(Relatorio relatorio)
+	public ResultSet pesquisarPorServico(Report relatorio)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE nome = '"
@@ -97,7 +97,7 @@ public class ReportDAO {
 	}
 	
 	/* Search by date, barber and service*/
-	public ResultSet pesquisarPorDataBarbeiroEServico(Relatorio relatorio)
+	public ResultSet pesquisarPorDataBarbeiroEServico(Report relatorio)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE data BETWEEN '"

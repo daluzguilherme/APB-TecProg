@@ -6,7 +6,7 @@ import java.text.ParseException;
 
 import junit.framework.Assert;
 import junit.framework.AssertionFailedError;
-import model.ServicoPrestado;
+import model.ProvidedService;
 
 import org.junit.Test;
 
@@ -15,11 +15,11 @@ import exception.ServicoException;
 
 public class ServicoPrestadoTeste {
 
-	ServicoPrestado servico = new ServicoPrestado();
+	ProvidedService servico = new ProvidedService();
 	
 	@Test
 	public void testeDeConstrutor(){
-		ServicoPrestado servico1 = new ServicoPrestado("Corte", "15,00","Claudio");
+		ProvidedService servico1 = new ProvidedService("Corte", "15,00","Claudio");
 		assertEquals("Corte", servico1.getNomeServico());
 		assertEquals("15,00", servico1.getPreco());
 		assertEquals("Claudio", servico1.getNomeBarbeiro());

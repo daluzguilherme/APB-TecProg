@@ -7,7 +7,7 @@
 package view;
 
 import java.awt.EventQueue;
-import model.ServicoPrestado;
+import model.ProvidedService;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -78,7 +78,7 @@ public class PesquisarServicoPrestado extends JFrame {
 		contentPane.add(scrollPane);
 
 		final DefaultTableModel modelo = new DefaultTableModel(null,
-				new String[] { "Serviço", "Realizado por", "Valor", "Data" });
+				new String[] { "Serviï¿½o", "Realizado por", "Valor", "Data" });
 		final JTable table = new JTable(modelo);
 		scrollPane.setViewportView(table);
 
@@ -95,11 +95,11 @@ public class PesquisarServicoPrestado extends JFrame {
 		 * Add an action performed event. When the PesquisarServico Button is
 		 * clicked, it searches the services done by its name.
 		 */
-		JButton btnPesquisarServico = new JButton("Pesquisar Serviço");
+		JButton btnPesquisarServico = new JButton("Pesquisar Serviï¿½o");
 		btnPesquisarServico.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					ServicoPrestado servico = new ServicoPrestado();
+					ProvidedService servico = new ProvidedService();
 					servico.setNomeServico(textField.getText());
 
 					connection = FactoryConnection.getInstance()
@@ -141,7 +141,7 @@ public class PesquisarServicoPrestado extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
-					ServicoPrestado servico = new ServicoPrestado();
+					ProvidedService servico = new ProvidedService();
 					servico.setNomeBarbeiro(textField.getText());
 
 					connection = FactoryConnection.getInstance()
@@ -190,7 +190,7 @@ public class PesquisarServicoPrestado extends JFrame {
 							table.getSelectedRow(), 2);
 					String data = (String) table.getValueAt(
 							table.getSelectedRow(), 3);
-					ServicoPrestado servico = new ServicoPrestado();
+					ProvidedService servico = new ProvidedService();
 					servico.setNomeServico(nome);
 					servico.setNomeBarbeiro(barbeiro);
 					servico.setPreco(valor);
@@ -210,7 +210,7 @@ public class PesquisarServicoPrestado extends JFrame {
 						frame.setLocationRelativeTo(null);
 					}
 				} catch (ArrayIndexOutOfBoundsException e) {
-					mostrarMensagemDeErro("Selecione um Serviço para remover");
+					mostrarMensagemDeErro("Selecione um Serviï¿½o para remover");
 				} catch (ServicoException e) {
 					mostrarMensagemDeErro(e.getMessage());
 				} catch (SQLException e) {
@@ -250,7 +250,7 @@ public class PesquisarServicoPrestado extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
-					ServicoPrestado servico = new ServicoPrestado();
+					ProvidedService servico = new ProvidedService();
 					servico.setData(textField.getText());
 
 					connection = FactoryConnection.getInstance()
@@ -290,7 +290,7 @@ public class PesquisarServicoPrestado extends JFrame {
 	 *            shown to the user.
 	 */
 	private void mostrarMensagemDeErro(String informacao) {
-		JOptionPane.showMessageDialog(null, informacao, "Atenção",
+		JOptionPane.showMessageDialog(null, informacao, "Atenï¿½ï¿½o",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 

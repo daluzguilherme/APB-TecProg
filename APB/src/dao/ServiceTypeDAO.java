@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.TipoServico;
+import model.ServiceType;
 
 public class ServiceTypeDAO {
 
@@ -29,7 +29,7 @@ public class ServiceTypeDAO {
 	}
 
 	/* Include new service type in the database. */
-	public boolean incluir(TipoServico tipoServico) throws SQLException {
+	public boolean incluir(ServiceType tipoServico) throws SQLException {
 		if (tipoServico == null)
 			return false;
 		
@@ -42,7 +42,7 @@ public class ServiceTypeDAO {
 	}
 
 	/* This updates a service type on the database. */
-	public boolean alterar(String nome,TipoServico tipoServico_alterado, TipoServico tipoServico) throws SQLException {
+	public boolean alterar(String nome,ServiceType tipoServico_alterado, ServiceType tipoServico) throws SQLException {
 		if (tipoServico_alterado == null || tipoServico == null) 
 			return false;
 		
@@ -55,7 +55,7 @@ public class ServiceTypeDAO {
 	}
 
 	/* This removes a service type from the database. */
-	public boolean excluir(TipoServico tipoServico) throws SQLException {
+	public boolean excluir(ServiceType tipoServico) throws SQLException {
 		if (tipoServico == null)
 			return false;
 		
@@ -74,7 +74,7 @@ public class ServiceTypeDAO {
 	}
 	
 	/* Shows registered services type */
-	public ResultSet mostrarTipoServicoCadastrados(TipoServico servico) throws SQLException {
+	public ResultSet mostrarTipoServicoCadastrados(ServiceType servico) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		ResultSet rs = connection.createStatement().executeQuery(
 				"SELECT * FROM tiposervico;");
@@ -83,7 +83,7 @@ public class ServiceTypeDAO {
 	}
 	
 	/* Search by name */
-	public ResultSet pesquisarPorNome(TipoServico servico) throws SQLException {
+	public ResultSet pesquisarPorNome(ServiceType servico) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		java.sql.PreparedStatement pst = connection.prepareStatement("SELECT * FROM tiposervico WHERE "
 				+ "nome = '" + servico.getNomeTipoServico() + "';");

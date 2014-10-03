@@ -2,7 +2,7 @@ package testes;
 
 import static org.junit.Assert.*;
 import junit.framework.Assert;
-import model.TipoServico;
+import model.ServiceType;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import exception.ServicoException;
 
 public class TipoServicoTeste {
 	
-	TipoServico  servico =  new TipoServico();
+	ServiceType  servico =  new ServiceType();
 	
 	@Before
 	public void setUp(){
@@ -66,31 +66,31 @@ public class TipoServicoTeste {
 	
 	@Test (expected = AssertionError.class)
 	public void getterDeTempNomeDeveRetornarValorPassado() throws ServicoException {
-		assertEquals("Corte", TipoServico.getTempNome());
+		assertEquals("Corte", ServiceType.getTempNome());
 	}
 	
 	@Test (expected = NullPointerException.class)
 	public void setterDeTempNomeNaoPodeSerNulo() throws ServicoException {
-		TipoServico.setTempNome(null);
+		ServiceType.setTempNome(null);
 		Assert.fail("Deve lançar exceção");
 	}
 	
 	
 	@Test (expected = ServicoException.class)
 	public void setterDeTempNomeNaoPodeSerEmBranco() throws ServicoException {
-		TipoServico.setTempNome("");
+		ServiceType.setTempNome("");
 		Assert.fail("Deve lançar exceção");
 	}
 	
 	@Test
 	public void tempNomeValido() {
 		try {
-			TipoServico.setTempNome("Barba");
+			ServiceType.setTempNome("Barba");
 		} catch (ServicoException e) {
 			e.printStackTrace();
 			Assert.fail("Não Deve lançar exceção");
 		}
-		assertEquals("Barba", TipoServico.getTempNome());
+		assertEquals("Barba", ServiceType.getTempNome());
 	}
 
 }

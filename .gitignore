@@ -1,4 +1,4 @@
-*.classpath
+**.classpath
 *.class
-/bin/
-/APB/bin/
+*/bin/*
+*/APB/bin/*

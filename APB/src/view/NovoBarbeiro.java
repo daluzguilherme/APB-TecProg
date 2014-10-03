@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
-import model.Barbeiro;
+import model.Barber;
 import control.BarbeiroController;
 import exception.BarbeiroException;
 
@@ -125,7 +125,7 @@ public class NovoBarbeiro extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent k) {
 				try {
-					Barbeiro barbeiro = new Barbeiro();
+					Barber barbeiro = new Barber();
 					barbeiro.setNome(textFieldNome.getText());
 					barbeiro.setCpf(textFieldCpf.getText());
 					barbeiro.setRg(textFieldRg.getText());
@@ -205,7 +205,7 @@ public class NovoBarbeiro extends JFrame {
 	 *            shown to the user.
 	 */
 	private void mostrarMensagemDeErro(String informacao) {
-		JOptionPane.showMessageDialog(null, informacao, "Atenção",
+		JOptionPane.showMessageDialog(null, informacao, "Atenï¿½ï¿½o",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 }

@@ -18,7 +18,7 @@ import javax.swing.JLabel;
 
 import control.AgendaController;
 import exception.BarbeiroException;
-import model.Agenda;
+import model.AdressBook;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -90,9 +90,9 @@ public class AlterarContato extends JFrame {
 		 * database.
 		 */
 		try {
-			Agenda contato = new Agenda();
+			AdressBook contato = new AdressBook();
 			AgendaController agendaController = AgendaController.getInstance();
-			contato.setNome(Agenda.getTempNome());
+			contato.setNome(AdressBook.getTempNome());
 			ResultSet rs = agendaController.pesquisarPorNome(contato);
 
 			while (rs.next()) {
@@ -117,7 +117,7 @@ public class AlterarContato extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
-					Agenda agenda = new Agenda();
+					AdressBook agenda = new AdressBook();
 					agenda.setNome(textFieldNome.getText());
 					agenda.setTelefone(textFieldTelefone.getText());
 					agenda.setDescricao(textFieldDescricao.getText());
@@ -172,7 +172,7 @@ public class AlterarContato extends JFrame {
 	 *            shown to the user.
 	 */
 	private void mostrarMensagemDeErro(String informacao) {
-		JOptionPane.showMessageDialog(null, informacao, "Atenção",
+		JOptionPane.showMessageDialog(null, informacao, "Atenï¿½ï¿½o",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 }
