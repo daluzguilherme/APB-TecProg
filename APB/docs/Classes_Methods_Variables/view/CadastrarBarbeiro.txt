@@ -1,0 +1,126 @@
+/**
+ * CadastrarBarbeiro
+ * This class provides a GUI to save informations 
+ * of a barber that is working in the barber shop.
+ */
+
+@SuppressWarnings("serial")
+public class CadastrarBarbeiro extends JFrame {
+	CadastrarBarbeiro: A better name for the class would be RegisterBarber.
+
+	private JPanel contentPane;
+
+	/**
+	 * This void method starts all the components.
+	 */
+	public void inicializarComponentes() {
+
+		contentPane = new JPanel();
+			contentPane: this is a private JPanel type object. The name is just fine.
+
+		JScrollPane scrollPane = new JScrollPane();
+			scrollPane: this is a JScrollPane type object. The name is just fine.
+
+		/*
+		 * Creating a table to show the barber informations.
+		 */
+		final DefaultTableModel modelo = new DefaultTableModel(null,
+				new String[] { "Nome", "CPF", "RG", "Telefone", "Cadeira" });
+			modelo: this is a final DefaultTableModel object type. A better name for this 
+				object would be tableModel.
+			obs.: the number of parameters are too high, we must refactor here.
+		
+		final JTable table = new JTable(modelo);
+			table: a final JTable object. The name is just fine.
+
+		/*
+		 * Getting an instance of a barber to populate the table with the its
+		 * informations.
+		 */
+			BarberController barbeiroController = BarberController
+					.getInstance();
+			barbeiroController: This is a BarbeiroController type object that gets an instance from the singleton.
+					A better name would be barberController.
+			
+			Barber barbeiro = new Barber();
+				barbeiro: A Barber type object. A better name would be barberInformation.
+			ResultSet rs = barbeiroController
+					.mostrarBarbeirosCadastrados(barbeiro);
+				rs: A ResultSet type object. It receives all the Barber information in the database.
+					A better name would be barberInformationResultSet.
+				
+				String[] dados = new String[5];
+					dados: A String vector that to populate with all the five cells of the table in the database.
+						A better name would be barberData.
+
+		/*
+		 * Add a mouse clicked event. When the Novo Button is clicked, it
+		 * creates a new window, which is NovoBarbeiro.
+		 */
+		JButton botaoNovo = new JButton("Novo");
+			botaoNovo: this is a button to add a new contact. A better name would be buttonRegisterNewBarber.
+				NovoBarbeiro frame;
+					frame = new NovoBarbeiro();
+						frame: this is the NovoBarbeiro window that will be set visible. A better name would be newBarberWindow. 
+
+		/*
+		 * Add a mouse clicked event. When the Alterar Button is clicked, it
+		 * goes to a new window, which is AlterarBArbeiro, and dispose this one
+		 * that is not needed.
+		 */
+		JButton botaoAlterar = new JButton("Alterar");
+			botaoAlterar: this is a button to modify an existing barber information. A better name would be buttonModifyBarber.
+					AlterarBarbeiro frame = new AlterarBarbeiro();
+						frame: this is the AlterarBarbeiro window that will be set visible. 
+							A better name would be newModifyBarberWindow. 
+
+		/*
+		 * Add a mouse clicked event. When the Remover Button is clicked, it
+		 * access the database and remove the barber that is selected in the
+		 * table.
+		 */
+		JButton botaoRemover = new JButton("Remover");
+			botaoRemover: this is a button to remove an existing barber information. A better name would be buttonRemoveBarber.
+
+					String nome = (String) table.getValueAt(
+							table.getSelectedRow(), 0);
+						nome: a String type variable that gets the selected name in the table to remove.
+							A better name would be barberNameToRemove.
+					Barber barbeiro = new Barber();
+						barbeiro: A Barber type object. A better name would be barberInformation.
+						obs.: this is a duplicate code, it must be removed.
+		
+					int confirmacao = JOptionPane.showConfirmDialog(null,
+							"Remover " + nome + " da lista?");
+						confirmacao: an int type variable that gets the result of the question.
+							A better name would be removeConfirmation.
+
+						BarberController barbeiroController = BarberController
+								.getInstance();
+							barbeiroController: This is a BarberController type object that gets an instance from the singleton.
+								A better name would be barberController.
+
+						CadastrarBarbeiro frame = new CadastrarBarbeiro();
+							frame: this is the CadastrarBarbeiro window that will be set visible. Its is going to update the window. 
+							A better name would be newModifyBarberWindow.
+
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is Administrativo.
+		 */
+		JButton botaoVoltar = new JButton("Voltar");
+			botaoVoltar: this is a button to return to the last window. A better name would be buttonReturn.
+				Administrativo frame = new Administrativo();
+					frame: this is the Administrativo window that will be set visible. A better name would be AdministrativeWindow. 
+
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
+	private void mostrarMensagemDeErro(String informacao) {
+	}
+		mostrarMensagemDeErro: this method will show a message error if it occurs. A better name would be showErrorMessage.
+}
