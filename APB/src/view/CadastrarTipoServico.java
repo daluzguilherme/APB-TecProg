@@ -1,7 +1,7 @@
 /**
- * CadastrarServicoPrestado
+ * CadastrarTipoServico
  * This class provides a GUI to save informations 
- * of a service that a barber did.
+ * of a type of the service.
  */
 
 package view;
