@@ -1,0 +1,150 @@
+﻿/**
+ * CadastrarServicoPrestado
+ * This class provides a GUI to save informations 
+ * of a service that a barber did.
+ */
+
+@SuppressWarnings("serial")
+public class CadastrarServicoPrestado extends JFrame {
+	CadastrarServicoPrestado: a better name for this class would be RegisterFinishedService
+
+	private JPanel contentPane;
+
+	/* Public method to create the frame. */
+	
+		contentPane = new JPanel();
+			contentPane: this is a private JPanel type object. The name is just fine.
+
+		/*
+		 * Creating a table to show the services informations.
+		 */
+		final DefaultTableModel modelo = new DefaultTableModel(null,
+				new String[] { "Serviço", "Realizado por", "Valor", "Data" });
+			modelo: this is a final DefaultTableModel object type. A better name for this 
+				object would be tableModel.
+		
+		final JTable table = new JTable(modelo);
+			table: a final JTable object. The name is just fine.
+
+
+		/*
+		 * Getting an instance of a finished service to populate the table with
+		 * the its informations.
+		 */
+
+			ServicoPrestadoController servicoController = ServicoPrestadoController
+					.getInstance();
+				servicoController: This is a ServicoPrestadoController type object that gets an instance from the singleton.
+					A better name would be finishedServiceController.
+
+			ServicoPrestado servico = new ServicoPrestado();
+				servico: A ServicoPrestado type object. A better name would be finishedServiceInformation.
+
+			ResultSet rs = servicoController
+					.mostrarServicosPrestadosCadastrados(servico);
+				rs: A ResultSet type object. It receives all the Finished Services information in the database.
+					A better name would be finishedServiceInformationResultSet.
+
+				String[] dados = new String[4];
+					dados: A String vector that to populate with all the four cells of the table in the database.
+						A better name would be finishedServiceData.
+
+		/*
+		 * Add a mouse clicked event. When the Novo Button is clicked, it goes
+		 * to a new window, which is NovoServicoPrestado, and dispose this one
+		 * that is not needed.
+		 */
+		JButton btnNovo = new JButton("Novo");
+			btnNovo: this is a button to add a new finished service. A better name would be buttonRegisterNewFinishedService.
+
+				NovoServicoPrestado frame = new NovoServicoPrestado();
+					frame: this is the NovoServicoPrestado window that will be set visible.
+						A better name would be newFinishedServiceWindow. 
+
+		/*
+		 * Add a mouse clicked event. When the Pesquisar Button is clicked, it
+		 * goes to a new window, which is PesquisarServicoPrestado, and dispose
+		 * this one that is not needed.
+		 */
+		JButton btnPesquisar = new JButton("Pesquisar");
+			btnPesquisar: this is a button to add to search for a finished service. 
+				A better name would be buttonSearchFinishedService.
+
+				PesquisarServicoPrestado frame = new PesquisarServicoPrestado();
+					frame: this is the PesquisarServicoPrestado window that will be set visible.
+						A better name would be newSearchFinishedServiceWindow. 
+
+
+		/*
+		 * Add an action performed event. When the Remover Button is clicked, it
+		 * access the database and remove the finished service that is selected
+		 * in the table.
+		 */
+		JButton btnRemover = new JButton("Remover");
+			btnRemover: this is a button to remove a finished service. 
+				A better name would be buttonRemoveFinishedService.
+
+					String nome = (String) table.getValueAt(
+							table.getSelectedRow(), 0);
+						nome: a String type variable. It stores the name of the finished service to create a new object.
+							A better name would be finishedServiceName.
+
+					String barbeiro = (String) table.getValueAt(
+							table.getSelectedRow(), 1);
+						barbeiro: a String type variable. It stores the name of the barber who
+								the finished service to create a new object.
+							A better name would be responsibleBarber.
+
+					String valor = (String) table.getValueAt(
+							table.getSelectedRow(), 2);
+
+						valor: a String type variable. It stores the value of the finished service to create a new object.
+							A better name would be finishedServiceValue.
+
+					String data = (String) table.getValueAt(
+							table.getSelectedRow(), 3);
+						data: a String type variable. It stores the date the service was finished to create a new object.
+							A better name would be finishedServiceDate.
+
+					ServicoPrestado servico = new ServicoPrestado();
+						servico: a ServicoPrestado type object. This will be passed to DAO class to remove the finished service.
+							A better name would be finishedServiceToBeRemoved.
+					
+					int confirmacao = JOptionPane.showConfirmDialog(null,
+							"Remover " + nome + " da lista?");
+						confirmacao: an interger type variable to store the confirmation of the question.
+							A better name would be removeConfirmation.
+
+						ServicoPrestadoController servicoController = ServicoPrestadoController
+								.getInstance();
+							servicoController: This is a ServicoPrestadoController type object that gets an instance from the singleton.
+								A better name would be finishedServiceController.
+							obs.: This is a duplicated code, it must be removed later.
+
+						CadastrarServicoPrestado frame = new CadastrarServicoPrestado();
+							frame: this is the CadastrarServicoPrestado window that will be reloaded.
+								A better name would be reloadRegisterFinishedServiceWindow. 
+
+							
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is MenuPrincipal.
+		 */
+		JButton btnVoltar = new JButton("Voltar");
+			btnVoltar: this is a button to return to the last window. A better name would be buttonReturn.
+				
+				MenuPrincipal frame = new MenuPrincipal();
+					frame: this is the Main Menu window that will be set visible. A better name would be newMainMenuWindow. 
+
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
+	private void mostrarMensagemDeErro(String informacao) {
+	}
+		mostrarMensagemDeErro: this method will show a message error if it occurs. A better name would be showErrorMessage.
+
+}

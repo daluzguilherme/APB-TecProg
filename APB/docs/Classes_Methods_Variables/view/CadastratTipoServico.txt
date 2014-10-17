@@ -1,0 +1,137 @@
+/**
+ * CadastrarTipoServico
+ * This class provides a GUI to save informations 
+ * of a type of the service.
+ */
+
+public class CadastrarTipoServico extends JFrame {
+	CadastrarTipoServico: a better name for this class would be RegisterServiceType
+
+	private JPanel contentPane;
+	private static String nomeTemp;
+		nomeTemp: this is a temporary name for the update function.
+			A better name would be temporaryServiceTypeName.
+		
+	/* Public method to create the frame. */
+		contentPane = new JPanel();
+			contentPane: this is a private JPanel type object. The name is just fine.
+
+		JScrollPane scrollPane = new JScrollPane();
+			scrollPane: this is a private JScrollPane type object. The name is just fine.
+		
+		/* Creating a table to show the type of services informations. */
+		final DefaultTableModel modelo = new DefaultTableModel(null,
+				new String[] { "Serviço", "Valor" });
+			modelo: this is a final DefaultTableModel object type. A better name for this 
+				object would be tableModel.
+		
+		final JTable table = new JTable(modelo);
+			table: a final JTable object. The name is just fine.
+
+		/*
+		 * Getting an instance of a service type to populate the table with
+		 * the its informations.
+		 */
+			TipoServicoController servicoController = TipoServicoController
+					.getInstance();
+				servicoController: This is a TipoServicoController type object that gets an instance from the singleton.
+					A better name would be ServiceTypeController.
+
+			TipoServico servico = new TipoServico();
+				servico: A TipoServico type object. A better name would be ServiceTypeInformation.
+
+			ResultSet rs = servicoController
+					.mostrarTipoServicoCadastrados(servico);
+				rs: A ResultSet type object. It receives all the Service types information in the database.
+					A better name would be serviceTypeInformationResultSet.
+
+				String[] dados = new String[5];
+					dados: A String vector that to populate with all the two cells of the table in the database.
+						A better name would be serviceTypeData.
+
+		/*
+		 * Add a mouse clicked event. When the Novo Button is clicked, it goes
+		 * to a new window, which is NovoTipoServico, and dispose this one
+		 * that is not needed.
+		 */
+		JButton btnNovo = new JButton("Novo");
+			btnNovo: this is a button to add a new service type. A better name would be buttonRegisterNewServiceType.
+
+				NovoTipoServico frame = new NovoTipoServico();
+					frame: this is the NovoTipoeServico window that will be set visible.
+						A better name would be newServiceTypeWindow. 
+
+		/*
+		 * Add a mouse clicked event. When the Alterar Button is clicked, it goes
+		 * to a new window, which is AlterarTipoServico, and dispose this one
+		 * that is not needed. A temporary value of the TipoServico model class 
+		 * is set here to be used in the new window displayed.
+		 */
+		JButton btnAlterar = new JButton("Alterar");
+			btnAlterar: this is a button to update a service type information. A better name would be buttonUpdateServiceType.
+
+					AlterarTipoServico frame = new AlterarTipoServico();
+						frame: this is the AlterarTipoServico window that will be set visible.
+							A better name would be newUpdateServiceTypeWindow. 
+
+		/*
+		 * Add a mouse clicked event. When the Remover Button is clicked, it
+		 * access the database and remove the type of service that is selected
+		 * in the table.
+		 */
+		JButton btnRemover = new JButton("Remover");
+			btnRemover: this is a button to remove a service type. 
+				A better name would be buttonRemoveServiceType.
+
+				String nome = (String) table.getValueAt(table.getSelectedRow(),
+						0);
+					nome: a String type variable. It stores the name of the service type to create a new object.
+							A better name would be serviceTypeName.
+					obs.: This is a little bit different, it does not need all the information to remove a service type,
+						but just it's name.
+
+				TipoServico tipoServico = new TipoServico();
+					tipoServico: a TipoServico type object. This will be passed to DAO class to remove the service type.
+						A better name would be serviceTypeToBeRemoved.
+
+				int confirmacao = JOptionPane.showConfirmDialog(null,
+						"Remover " + nome + " da lista?");
+					confirmacao: an interger type variable to store the confirmation of the question.
+							A better name would be removeConfirmation.
+
+					TipoServicoController tipoServicoController = TipoServicoController
+							.getInstance();
+						tipoServicoController: This is a TipoServicoController type object that gets an instance from the singleton.
+								A better name would be serviceTypeController.
+							obs.: This is a duplicated code, it must be removed later.
+
+					CadastrarTipoServico frame = new CadastrarTipoServico();
+						frame: this is the CadastrarTipoServico window that will be reloaded.														A better name would be reloadRegisterServiceTypeWindow. 
+
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is Administrativo.
+		 */
+		JButton btnVoltar = new JButton("Voltar");
+			btnVoltar: this is a button to return to the last window. A better name would be buttonReturn.
+
+				Administrativo frame = new Administrativo();
+					frame: this is the Administrative window that will be set visible. A better name would be newAdministrativeWindow. 
+
+	
+	public static String getNomeTemp() {
+	}
+		getNomeTemp: a static String to get a temporary type service name. A better name would be getTemporaryServiceTypeName.
+	
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
+	private void mostrarMensagemDeErro(String informacao) {
+	}
+		mostrarMensagemDeErro: this method will show a message error if it occurs. A better name would be showErrorMessage.
+
+}

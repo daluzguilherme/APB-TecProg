@@ -1,0 +1,92 @@
+/**
+ * CadastrarAgenda
+ * This class provides a GUI to save a contact of a 
+ * barber in the address book.
+ */
+
+
+@SuppressWarnings("serial")
+public class CadastrarAgenda extends JFrame {
+	CadastrarAgenda: A better name for the class would be RegisterAddressBook.
+
+	private JPanel contentPane;
+
+	/* Public method to create the frame. */
+	public CadastrarAgenda() {
+		
+		contentPane = new JPanel();
+			contentPane: this is a private JPanel type object. The name is just fine.	
+	
+		JScrollPane scrollPane = new JScrollPane();
+			ScrollPane: this is a JScrollPane type object. The name is just fine.
+
+		final DefaultTableModel modelo = new DefaultTableModel(null,
+				new String[] { "Nome", "Telefone", "Descri\u00E7\u00E3o" }) {
+			modelo: this is a final DefaultTableModel object type. A better name for this 
+				object would be tableModel.
+			obs.: the number of parameters are too high, we must refactor here. 
+
+				boolean[] columnEditables = new boolean[] { false, false, false };
+				columnEditables: An array of boolean variables. The name is just fine.
+
+		final JTable table = new JTable(modelo);
+			table: a final JTable object. The name is just fine.
+		
+		/*
+		 * Getting an instance of a Agenda to populate the table with the
+		 * address book informations.
+		 */
+			AddressBookController agendaController = AddressBookController.getInstance();
+				agendaController: This is an AddressBookController type object that gets an instance from the singleton.
+					A better name would be AddressController.
+
+			AddressBook contato = new AddressBook();
+				contato: An AddressBook type object. A better name would be addressBookContact.
+
+			ResultSet rs = agendaController.mostrarContatosCadastrados(contato);
+				rs: A ResultSet type object. It receives all the AdressBook contacts in the database.
+					A better name would be addressBookResultSet.
+
+				String[] dados = new String[3];
+					dados: A String vector that to populate with all the three cells of the table in the database.
+						A better name would be adressBookData.
+		
+		/*
+		 * Add a mouse clicked event. When the Novo Button is clicked, it
+		 * creates a new window, which is NovoContato.
+		 */
+		JButton btnNovo = new JButton("Novo");
+			btnNovo: this is a button to add a new contact. A better name would be buttonRegisterNewContact.
+				NovoContato frame;
+					frame = new NovoContato();
+						frame: this is the NovoContato window that will be set visible. A better name would be newContactWindow. 
+		
+		/*
+		 * Add a mouse clicked event. When the Pesquisar Button is clicked, it
+		 * creates a new window, which is PesquisarContato.
+		 */
+		JButton btnPesquisar = new JButton("Pesquisar");
+			btnPesquisar: this is a button to search an address book entry. A better name would be buttonSearchContact.
+				PesquisarContato frame = new PesquisarContato();
+					frame: this is the PesquisarContato window that will be set visible. A better name would be searchContactWindow. 
+
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is Administrativo.
+		 */
+		JButton btnVoltar = new JButton("Voltar");
+			btnVoltar: this is a button to return to the last window. A better name would be buttonReturn.
+				Administrativo frame = new Administrativo();
+					frame: this is the Administrativo window that will be set visible. A better name would be AdministrativeWindow. 
+
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
+	private void mostrarMensagemDeErro(String informacao) {
+	}
+		mostrarMensagemDeErro: this method will show a message error if it occurs. A better name would be showErrorMessage.
+}
