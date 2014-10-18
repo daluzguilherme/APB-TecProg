@@ -5,21 +5,21 @@ import static org.junit.Assert.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.TipoServico;
+import model.ServiceType;
 
 import org.junit.Test;
 
-import dao.TipoServicoDAO;
+import dao.ServiceTypeDAO;
 
 public class TipoServicoDAOTeste {
 
-	TipoServico tiposervico = new TipoServico();
-	TipoServico tiposervico2 = new TipoServico();
-	TipoServicoDAO servicoDAO = TipoServicoDAO.getInstance();
+	ServiceType tiposervico = new ServiceType();
+	ServiceType tiposervico2 = new ServiceType();
+	ServiceTypeDAO servicoDAO = ServiceTypeDAO.getInstance();
 	
 	@Test
 	public void getInstanceDeTipoServicoDAODeveRetonarInstanciaCorrente() {
-		assertEquals(TipoServicoDAO.getInstance(), servicoDAO);
+		assertEquals(ServiceTypeDAO.getInstance(), servicoDAO);
 	}
 
 	@Test

@@ -6,20 +6,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-import model.ServicoPrestado;
+import model.ProvidedService;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import control.ServicoPrestadoController;
-import exception.ServicoException;
+import control.ProvidedServiceController;
+import exception.ServiceException;
 
 public class ServicoPrestadoControllerTeste {
-	ServicoPrestado servico = new ServicoPrestado();
-	ServicoPrestadoController servicoController = ServicoPrestadoController.getInstance();
+	ProvidedService servico = new ProvidedService();
+	ProvidedServiceController servicoController = ProvidedServiceController.getInstance();
 
 	@Before
-	public void setUp() throws ServicoException, ParseException {
+	public void setUp() throws ServiceException, ParseException {
 		servico.setNomeServico("Corte");
 		servico.setNomeBarbeiro("Joao");
 		servico.setPreco("125,23");
@@ -29,7 +29,7 @@ public class ServicoPrestadoControllerTeste {
 	
 	@Test
 	public void getInstanceDeServicoPrestadoControllerDeveRetornarInstanciaCorrente() {
-		assertEquals(ServicoPrestadoController.getInstance(), servicoController);
+		assertEquals(ProvidedServiceController.getInstance(), servicoController);
 	}
 
 	@Test

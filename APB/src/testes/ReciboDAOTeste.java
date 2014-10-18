@@ -6,28 +6,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-import model.Relatorio;
+import model.Report;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import dao.AgendaDAO;
-import dao.ReciboDAO;
-import exception.ReciboException;
-import exception.RelatorioException;
+import dao.AddressBookDAO;
+import dao.ReceiptDAO;
+import exception.ReceiptException;
+import exception.ReportException;
 
 public class ReciboDAOTeste {
 
-	Relatorio relatorio = new Relatorio();
+	Report relatorio = new Report();
 
 	@Before
-	public void setUp() throws ReciboException, ParseException {
+	public void setUp() throws ReceiptException, ParseException {
 		try {
 			relatorio.setBarbeiro("Fulano");
 			relatorio.setDataFinal("09/09/2013");
 			relatorio.setDataInicial("01/01/2013");
 
-		} catch (RelatorioException e) {
+		} catch (ReportException e) {
 			e.printStackTrace();
 		}
 
@@ -35,14 +35,14 @@ public class ReciboDAOTeste {
 
 	@Test
 	public void getInstanceDeReciboDAODeveRetonarInstanciaCorrente() {
-		ReciboDAO reciboDAO = ReciboDAO.getInstance();
-		assertEquals(ReciboDAO.getInstance(), reciboDAO);
+		ReceiptDAO reciboDAO = ReceiptDAO.getInstance();
+		assertEquals(ReceiptDAO.getInstance(), reciboDAO);
 	}
 
 	@Test
 	public void pesquisarPorDataEBArbeiroDAODeveMostrarUmRecibo() {
 		try {
-			ReciboDAO reciboDAO = ReciboDAO.getInstance();
+			ReceiptDAO reciboDAO = ReceiptDAO.getInstance();
 			ResultSet rs = reciboDAO.pesquisarServicosDoBarbeiro(
 					relatorio.getBarbeiro(), relatorio.getDataInicial(),
 					relatorio.getDataFinal());

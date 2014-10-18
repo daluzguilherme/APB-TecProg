@@ -4,21 +4,21 @@ import static org.junit.Assert.*;
 
 import java.text.ParseException;
 
-import model.Relatorio;
+import model.Report;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import exception.RelatorioException;
+import exception.ReportException;
 
 public class RelatorioTeste {
 
-	Relatorio relatorio;
+	Report relatorio;
 
 	@Before
 	public void setUp() throws ParseException {
 		try {
-			relatorio = new Relatorio();
+			relatorio = new Report();
 
 			relatorio.setBarbeiro("Chico");
 			relatorio.setTipoServico("barba");
@@ -27,7 +27,7 @@ public class RelatorioTeste {
 
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-		} catch (RelatorioException e) {
+		} catch (ReportException e) {
 			e.printStackTrace();
 		}
 	}
@@ -36,7 +36,7 @@ public class RelatorioTeste {
 	public void dataInicialNaoPodeSerSettadaNula() throws NullPointerException, ParseException {
 		try {
 			relatorio.setDataInicial(null);
-		} catch (RelatorioException e){
+		} catch (ReportException e){
 			e.printStackTrace();
 		}
 	}
@@ -45,7 +45,7 @@ public class RelatorioTeste {
 	public void dataInicialNaoPodeSerSettadaEmBranco() throws NullPointerException, ParseException {
 		try {
 			relatorio.setDataInicial("");
-		} catch (RelatorioException e){
+		} catch (ReportException e){
 			e.printStackTrace();
 		}
 	}
@@ -54,7 +54,7 @@ public class RelatorioTeste {
 	public void dataFinalNaoPodeSerSettadaNula() throws NullPointerException, ParseException {
 		try {
 			relatorio.setDataFinal(null);
-		} catch (RelatorioException e){
+		} catch (ReportException e){
 			e.printStackTrace();
 		}
 	}
@@ -63,7 +63,7 @@ public class RelatorioTeste {
 	public void dataFinalNaoPodeSerSettaEmBranco() throws NullPointerException, ParseException {
 		try {
 			relatorio.setDataFinal("");
-		} catch (RelatorioException e){
+		} catch (ReportException e){
 			e.printStackTrace();
 		}
 	}
@@ -72,7 +72,7 @@ public class RelatorioTeste {
 	public void barbeiroNaoPodeSerSettadoNulo() {
 		try {
 			relatorio.setBarbeiro(null);
-		} catch (RelatorioException e){
+		} catch (ReportException e){
 			e.printStackTrace();
 		}
 	}
@@ -81,7 +81,7 @@ public class RelatorioTeste {
 	public void barbeiroNaoPodeSerSettoEmBranco() {
 		try {
 			relatorio.setBarbeiro("");
-		} catch (RelatorioException e){
+		} catch (ReportException e){
 			e.printStackTrace();
 		}
 	}
@@ -90,7 +90,7 @@ public class RelatorioTeste {
 	public void tipoDeServicoNaoPodeSerSettadoNulo() {
 		try {
 			relatorio.setTipoServico(null);
-		} catch (RelatorioException e){
+		} catch (ReportException e){
 			e.printStackTrace();
 		}
 	}
@@ -99,7 +99,7 @@ public class RelatorioTeste {
 	public void tipoDeServicoNaoPodeSerSettoEmBranco() {
 		try {
 			relatorio.setTipoServico("");
-		} catch (RelatorioException e){
+		} catch (ReportException e){
 			e.printStackTrace();
 		}
 	}
@@ -107,8 +107,8 @@ public class RelatorioTeste {
 	@Test (expected = IllegalArgumentException.class)
 	public void construtorDeRelatorioNaoPodePassarBarbeiroNulo() {
 		try {
-			new Relatorio ("2013-01-01", "2013-01-01", null, "barba");
-		} catch(RelatorioException e){
+			new Report ("2013-01-01", "2013-01-01", null, "barba");
+		} catch(ReportException e){
 			e.printStackTrace();
 		}
 	}
@@ -116,8 +116,8 @@ public class RelatorioTeste {
 	@Test (expected = IllegalArgumentException.class)
 	public void construtorDeRelatorioNaoPodePassarDataFinalNula() {
 		try {
-			new Relatorio("2013-01-01", null, "Chico", "barba");
-		} catch (RelatorioException e){
+			new Report("2013-01-01", null, "Chico", "barba");
+		} catch (ReportException e){
 			e.printStackTrace();
 		}
 	}
@@ -125,8 +125,8 @@ public class RelatorioTeste {
 	@Test (expected = IllegalArgumentException.class)
 	public void construtorDeRelatorioNaoPodePassarDataInicialNula() {
 		try {
-			new Relatorio (null, "2013-01-01", "Chico", "barba");
-		} catch (RelatorioException e){
+			new Report (null, "2013-01-01", "Chico", "barba");
+		} catch (ReportException e){
 			e.printStackTrace();
 		}
 	}
@@ -134,8 +134,8 @@ public class RelatorioTeste {
 	@Test (expected = IllegalArgumentException.class)
 	public void construtorDeRelatorioNaoPodePassarTipoServicoNulo() {
 		try {
-			new Relatorio ("2013-01-01", "2013-01-01", "Chico", null);
-		} catch (RelatorioException e){
+			new Report ("2013-01-01", "2013-01-01", "Chico", null);
+		} catch (ReportException e){
 			e.printStackTrace();
 		}
 	}
@@ -143,9 +143,9 @@ public class RelatorioTeste {
 	@Test 
 	public void construtorDeRelatorioPassandoTodosOsDadosCorretos() {
 		try {
-			new Relatorio ("2013-01-01", "2013-12-31", "Chico", "barba");
+			new Report ("2013-01-01", "2013-12-31", "Chico", "barba");
 			assertEquals(relatorio, relatorio);
-		} catch (RelatorioException e){
+		} catch (ReportException e){
 			e.printStackTrace();
 		}
 	}

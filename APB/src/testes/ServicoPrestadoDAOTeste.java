@@ -5,18 +5,18 @@ import static org.junit.Assert.*;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-import model.ServicoPrestado;
+import model.ProvidedService;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import dao.ServicoPrestadoDAO;
-import exception.ServicoException;
+import dao.ProvidedServiceDAO;
+import exception.ServiceException;
 
 public class ServicoPrestadoDAOTeste {
 
-	ServicoPrestado servico = new ServicoPrestado();
-	ServicoPrestado servico2 = new ServicoPrestado();
+	ProvidedService servico = new ProvidedService();
+	ProvidedService servico2 = new ProvidedService();
 	@Before
 	public void setUp() {
 		try {
@@ -30,18 +30,18 @@ public class ServicoPrestadoDAOTeste {
 			servico2.setPreco("9,90");
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-		} catch (ServicoException e) {
+		} catch (ServiceException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 	}
 
-	ServicoPrestadoDAO servicoDAO = ServicoPrestadoDAO.getInstance();
+	ProvidedServiceDAO servicoDAO = ProvidedServiceDAO.getInstance();
 	
 	@Test
 	public void getInstanceDeServicoPrestadoDAODeveRetonarInstanciaCorrente() {
-		assertEquals(ServicoPrestadoDAO.getInstance(), servicoDAO);
+		assertEquals(ProvidedServiceDAO.getInstance(), servicoDAO);
 	}
 
 	@Test

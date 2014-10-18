@@ -5,17 +5,17 @@ import static org.junit.Assert.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.Barbeiro;
+import model.Barber;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import control.BarbeiroController;
-import exception.BarbeiroException;
+import control.BarberController;
+import exception.BarberException;
 
 public class BarbeiroControllerTeste {
 
-	Barbeiro barbeiro = new Barbeiro();
+	Barber barbeiro = new Barber();
 
 	@Before
 	public void setUp() {
@@ -27,16 +27,16 @@ public class BarbeiroControllerTeste {
 			barbeiro.setCadeira("5");
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-		} catch (BarbeiroException e) {
+		} catch (BarberException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	BarbeiroController barbeiroController = BarbeiroController.getInstance();
+	BarberController barbeiroController = BarberController.getInstance();
 
 	@Test
 	public void getInstanceDeBarbeiroControlerDeveRetonarInstanciaCorrente() {
-		assertEquals(BarbeiroController.getInstance(), barbeiroController);
+		assertEquals(BarberController.getInstance(), barbeiroController);
 	}
 
 	@Test

@@ -66,13 +66,13 @@ public class APB extends JFrame {
 
 		/*
 		 * Add an action performed event. When the Iniciar Button is clicked, it
-		 * takes the user to other window, which is MenuPrincipal.
+		 * takes the user to other window, which is MainMenu.
 		 */
 		JButton btnIniciar = new JButton("Iniciar");
 		btnIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				MenuPrincipal frame = new MenuPrincipal();
+				MainMenu frame = new MainMenu();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}

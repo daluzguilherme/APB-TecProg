@@ -5,32 +5,32 @@ import static org.junit.Assert.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.TipoServico;
+import model.ServiceType;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import control.TipoServicoController;
-import exception.ServicoException;
+import control.ServiceTypeController;
+import exception.ServiceException;
 
 public class TipoServicoControllerTeste {
 
-	TipoServico servico = new TipoServico();
-	TipoServicoController servicoController = TipoServicoController.getInstance();
+	ServiceType servico = new ServiceType();
+	ServiceTypeController servicoController = ServiceTypeController.getInstance();
 	
 	@Before
 	public void setUp(){
 		try {
 			servico.setNomeTipoServico("Corte");
 			servico.setPreco("15,00");
-		} catch (ServicoException e) {
+		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Test
 	public void getInstanceDeTipoServicoControllerDeveRetornarInstanciaCorrente() {
-		assertEquals(TipoServicoController.getInstance(), servicoController);
+		assertEquals(ServiceTypeController.getInstance(), servicoController);
 	}
 
 	@Test

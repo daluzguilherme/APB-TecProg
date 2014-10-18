@@ -5,21 +5,21 @@ import static org.junit.Assert.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.Agenda;
+import model.AddressBook;
 
 import org.junit.Test;
 
-import dao.AgendaDAO;
+import dao.AddressBookDAO;
 
 public class AgendaDAOTeste {
 
-	Agenda contato = new Agenda();
-	Agenda contato2 = new Agenda();
-	AgendaDAO agendaDAO = AgendaDAO.getInstance();
+	AddressBook contato = new AddressBook();
+	AddressBook contato2 = new AddressBook();
+	AddressBookDAO agendaDAO = AddressBookDAO.getInstance();
 	
 	@Test
 	public void getInstanceDeAgendaDAODeveRetonarInstanciaCorrente() {
-		assertEquals(AgendaDAO.getInstance(), agendaDAO);
+		assertEquals(AddressBookDAO.getInstance(), agendaDAO);
 	}
 
 	@Test

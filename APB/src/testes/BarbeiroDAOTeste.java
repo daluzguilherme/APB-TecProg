@@ -6,19 +6,19 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import model.Barbeiro;
+import model.Barber;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import dao.BarbeiroDAO;
+import dao.BarberDAO;
 import dao.FactoryConnection;
-import exception.BarbeiroException;
+import exception.BarberException;
 
 public class BarbeiroDAOTeste {
 
-	Barbeiro barbeiro = new Barbeiro();
-	Barbeiro barbeiro2 = new Barbeiro();
+	Barber barbeiro = new Barber();
+	Barber barbeiro2 = new Barber();
 	@Before
 	public void setUp() {
 		try {
@@ -33,22 +33,22 @@ public class BarbeiroDAOTeste {
 			barbeiro2.setCpf("02919594150");
 			barbeiro2.setCadeira("5");
 			
-			BarbeiroDAO barbeiroDao = BarbeiroDAO.getInstance();
+			BarberDAO barbeiroDao = BarberDAO.getInstance();
 			barbeiroDao.incluir(barbeiro);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-		} catch (BarbeiroException e) {
+		} catch (BarberException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
 	}
 
-	BarbeiroDAO barbeiroDAO = BarbeiroDAO.getInstance();
+	BarberDAO barbeiroDAO = BarberDAO.getInstance();
 	
 	@Test
 	public void getInstanceDeBarbeiroDAODeveRetonarInstanciaCorrente() {	
-		assertEquals(BarbeiroDAO.getInstance(), barbeiroDAO);
+		assertEquals(BarberDAO.getInstance(), barbeiroDAO);
 	}
 
 	@Test

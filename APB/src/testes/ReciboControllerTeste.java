@@ -6,28 +6,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-import model.Relatorio;
+import model.Report;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import control.ReciboController;
-import exception.ReciboException;
-import exception.RelatorioException;
+import control.ReceiptController;
+import exception.ReceiptException;
+import exception.ReportException;
 
 public class ReciboControllerTeste {
 	
-	Relatorio relatorio = new Relatorio();
+	Report relatorio = new Report();
 	
 	@Before
-	public void setUp() throws ReciboException, ParseException {
+	public void setUp() throws ReceiptException, ParseException {
 		
 				try {
 					relatorio.setBarbeiro("Fulano");
 					relatorio.setDataFinal("09/09/2013");
 					relatorio.setDataInicial("01/01/2013");
 					
-				} catch (RelatorioException e) {
+				} catch (ReportException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -36,13 +36,13 @@ public class ReciboControllerTeste {
 	
 	@Test
 	public void getInstanceDeReciboDAODeveRetonarInstanciaCorrente() {
-		ReciboController reciboController = ReciboController.getInstance();
-		assertEquals(ReciboController.getInstance(), reciboController);
+		ReceiptController reciboController = ReceiptController.getInstance();
+		assertEquals(ReceiptController.getInstance(), reciboController);
 	}
 	
 	@Test
 	public void procurarPorDataEBarbeiroDeReciboControllerDeveMostrarUmRecibo() throws SQLException {
-		ReciboController reciboController = new ReciboController();
+		ReceiptController reciboController = new ReceiptController();
 		ResultSet rs = reciboController.pesquisarServicosDoBarbeiro(relatorio.getBarbeiro(), relatorio.getDataInicial(), relatorio.getDataFinal());
 		
 		while(rs.next());
