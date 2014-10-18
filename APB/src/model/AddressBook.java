@@ -11,25 +11,25 @@ import exception.BarberException;
 public class AddressBook {
 
 	/*Specifying the attributes of the class Agenda.*/
-	private String nome;
-	private String telefone;
-	private String descricao;
-	private static String tempNome;
+	private String name;
+	private String phoneNumber;
+	private String description;
+	private static String tempName;
 
-	private final String NOME_INVALIDO = "Nome Inv�lido";
-	private final String NOME_BRANCO = "Nome em Branco";
-	private final String TELEFONE_INVALIDO = "Telefone Inv�lido";
-	private final String TELEFONE_BRANCO = "Telefone em Branco";
+	private final String INVALID_NAME = "Nome Inv�lido";
+	private final String BLANK_NAME = "Nome em Branco";
+	private final String INVALID_PHONE_NUMBER = "Telefone Inv�lido";
+	private final String BLANK_PHONE_NUMBER = "Telefone em Branco";
 
 	public AddressBook() {
 
 	}
 
 	/* Constructor method of the class Agenda.*/
-	public AddressBook(String nome, String telefone, String descricao) {
-		this.nome = nome;
-		this.telefone = telefone;
-		this.descricao = descricao;
+	public AddressBook(String name, String phoneNumber, String description) {
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.description = description;
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class AddressBook {
 	 * @return The content in the name field.
 	 */
 	public String getNome() {
-		return nome;
+		return name;
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class AddressBook {
 	 * @return The content in the phoneNumber field.
 	 */
 	public String getTelefone() {
-		return telefone;
+		return phoneNumber;
 	}
 
 	/**
@@ -53,43 +53,43 @@ public class AddressBook {
 	 * @return The content in the description field.
 	 */
 	public String getDescricao() {
-		return descricao;
+		return description;
 	}
 
 	/**
 	 * This method modifies the name field.
-	 * @param nome A barber name.
+	 * @param name A barber name.
 	 * @throws BarberException It ensures that every parameter passed is valid.
 	 */
-	public void setNome(String nome) throws BarberException {
-		if ("".equals(nome))
-			throw new BarberException(NOME_BRANCO);
-		else if (nome.matches("^[[ ]|\\p{L}*]+$"))
-			this.nome = nome;
+	public void setNome(String name) throws BarberException {
+		if ("".equals(name))
+			throw new BarberException(BLANK_NAME);
+		else if (name.matches("^[[ ]|\\p{L}*]+$"))
+			this.name = name;
 		else
-			throw new BarberException(NOME_INVALIDO);
+			throw new BarberException(INVALID_NAME);
 	}
 
 	/** This method modifies the phone number field to a valid phone number.
-	 * @param telefone A barber phone number.
+	 * @param phoneNumber A barber phone number.
 	 * @throws BarberException It ensures that every parameter passed is valid.
 	 */
-	public void setTelefone(String telefone) throws BarberException {
-		if ("".equals(telefone))
-			throw new BarberException(TELEFONE_BRANCO);
-		else if (telefone.matches("(\\([\\d]{2,3}\\))?[ ]*[\\d]{4,4}[ ]*-[ ]*[\\d]{4,4}[ ]*$"))
-			this.telefone = telefone;
+	public void setTelefone(String phoneNumber) throws BarberException {
+		if ("".equals(phoneNumber))
+			throw new BarberException(BLANK_PHONE_NUMBER);
+		else if (phoneNumber.matches("(\\([\\d]{2,3}\\))?[ ]*[\\d]{4,4}[ ]*-[ ]*[\\d]{4,4}[ ]*$"))
+			this.phoneNumber = phoneNumber;
 		else
-			throw new BarberException(TELEFONE_INVALIDO);
+			throw new BarberException(INVALID_PHONE_NUMBER);
 	}
 
 	/**
 	 * This method modifies the description field.
-	 * @param descricao A field reserved for the owner of the barber shop put remarks that he
+	 * @param description A field reserved for the owner of the barber shop put remarks that he
 	 *  thinks is relevant .
 	 */
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDescricao(String description) {
+		this.description = description;
 	}
 
 	/**
@@ -97,15 +97,15 @@ public class AddressBook {
 	 * @return The content in the  temporary name field.
 	 */
 	public static String getTempNome() {
-		return tempNome;
+		return tempName;
 	}
 
 	/**
 	 * This method modifies the temporary name field.
-	 * @param tempNome A temporary name. 
+	 * @param tempName A temporary name. 
 	 */
-	public static void setTempNome(String tempNome) {
-		AddressBook.tempNome = tempNome;
+	public static void setTempNome(String tempName) {
+		AddressBook.tempName = tempName;
 	}
 
 }
