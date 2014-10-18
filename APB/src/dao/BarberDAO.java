@@ -27,12 +27,17 @@ public class BarberDAO {
 	/**
 	 * Singleton implementation
 	 * 
-	 * @return instance the active AddressBookDAO instance, since it will be just one
-	 * 					at a time
+	 * @return instance the active AddressBookDAO instance, since it will be
+	 * 		just one at a time
 	 */
 	public static BarberDAO getInstance() {
-		if (instance == null)
+		
+		if (instance == null) {
 			instance = new BarberDAO();
+		} else {
+			// Nothing to do.
+		}
+		
 		return instance;
 	}
 
@@ -46,8 +51,13 @@ public class BarberDAO {
 	 * 						deletion.
 	 */
 	public boolean incluir(Barber barber) throws SQLException {
-		if (barber == null)
+		
+		if (barber == null){
+			
 			return false;
+		} else {
+			//Nothing to do.
+		}
 		
 		this.updateQuery("INSERT INTO "
 				+ "barbeiro (nome, cpf, rg, telefone, cadeira) VALUES ("
@@ -71,8 +81,13 @@ public class BarberDAO {
 	 * 						deletion.
 	 */
 	public boolean alterar(String name, Barber alteredBarber, Barber barber) throws SQLException {
-		if (alteredBarber == null || barber == null)
+		
+		if (alteredBarber == null || barber == null) {
+			
 			return false;
+		} else {
+			// Nothing to do.
+		}
 		
 		this.updateQuery("UPDATE barbeiro SET nome = '"
 				+ alteredBarber.getNome() + "', " + "cpf = '"
@@ -95,11 +110,17 @@ public class BarberDAO {
 	 * 						deletion.
 	 */
 	public boolean excluir(Barber barber) throws SQLException {
-		if (barber == null)
+		
+		if (barber == null) {
+		
 			return false;
+		} else {
+			//Nothing to do
+		}
 		
 		this.updateQuery("DELETE FROM barbeiro WHERE "
 				+ "barbeiro.nome = \"" + barber.getNome() + "\";");
+		
 		return true;
 	}
 

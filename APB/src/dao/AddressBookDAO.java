@@ -28,12 +28,17 @@ public class AddressBookDAO {
 	/**
 	 * Singleton implementation.
 	 * 
-	 * @return instance the active AddressBookDAO instance, since it will be just one
-	 * 					at a time
+	 * @return instance the active AddressBookDAO instance, since it will be
+	 * 		just one	at a time
 	 */
 	public static AddressBookDAO getInstance() {
-		if (instance == null)
+		
+		if (instance == null) {
 			instance = new AddressBookDAO();
+		} else {
+			// Nothing to do.
+		}
+		
 		return instance;
 	}
 
@@ -46,13 +51,17 @@ public class AddressBookDAO {
 	 * 						deletion
 	 */
 	public boolean incluir(AddressBook addressBook) throws SQLException {
-		if (addressBook == null)
+		
+		if (addressBook == null) {
+		
 			return false;
+		}
 		
 		this.updateQuery("INSERT INTO "
 				+ "agenda (nome, telefone, descricao) VALUES (" + "\""
 				+ addressBook.getNome() + "\", " + "\"" + addressBook.getTelefone()
 				+ "\", " + "\"" + addressBook.getDescricao() + "\"); ");
+		
 		return true;
 	}
 
@@ -69,8 +78,13 @@ public class AddressBookDAO {
 	 */
 	public boolean alterar(String nome, AddressBook alteredAddressBook, 
 			AddressBook addressBook) throws SQLException {	
-		if(addressBook == null || alteredAddressBook == null)
+		
+		if(addressBook == null || alteredAddressBook == null) {
+			
 			return false;
+		} else {
+			// Nothing to do.
+		}
 		
 		this.updateQuery("UPDATE agenda SET " +
 				"nome = \"" + alteredAddressBook.getNome() + "\", " +
@@ -92,11 +106,16 @@ public class AddressBookDAO {
 	 * 						operation.
 	 */
 	public boolean excluir(AddressBook contact) throws SQLException {
-		if(contact ==  null)
+		if(contact ==  null) {
+		
 			return false;
+		} else {
+			//Nothing to do
+		}
 		
 		this.updateQuery("DELETE FROM agenda WHERE " + "agenda.telefone = \""
 				+ contact.getTelefone() + "\";");
+		
 		return true;
 	}
 
@@ -141,8 +160,8 @@ public class AddressBookDAO {
 	 */
 	public ResultSet pesquisarPorNome(AddressBook contact) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
-		java.sql.PreparedStatement pst = connection.prepareStatement("SELECT * FROM agenda WHERE "
-				+ "nome = '" + contact.getNome()+ "';");
+		java.sql.PreparedStatement pst = connection.prepareStatement("SELECT *" 
+				+ " FROM agenda WHERE " + "nome = '" + contact.getNome()+ "';");
 		ResultSet rs = pst.executeQuery();
 
 		return rs;
@@ -158,8 +177,9 @@ public class AddressBookDAO {
 	 */
 	public ResultSet pesquisarPorTelefone(AddressBook contact) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
-		java.sql.PreparedStatement pst = connection.prepareStatement("SELECT * FROM agenda WHERE "
-				+ "telefone = '" + contact.getTelefone()+ "';");
+		java.sql.PreparedStatement pst = connection.prepareStatement("SELECT *" 
+				+ " FROM agenda WHERE " + "telefone = '" + contact.getTelefone()
+					+ "';");
 		ResultSet rs = pst.executeQuery();
 
 		return rs;
