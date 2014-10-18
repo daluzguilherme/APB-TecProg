@@ -23,9 +23,11 @@ public class ReceiptController {
 	 * at time
 	 */
 	public static ReceiptController getInstance(){
+		
 		if(instance == null){
 			instance = new ReceiptController();
 		}
+		
 		return instance;
 	}
 	
@@ -41,11 +43,12 @@ public class ReceiptController {
 	 */
 	public ResultSet pesquisarServicosDoBarbeiro(String barber,
 			String startDate, String finalDate) throws SQLException{
+		
 		ResultSet resultSearchServices = ReceiptDAO.getInstance()
 				.pesquisarServicosDoBarbeiro(barber,startDate, finalDate);
+		
 		return  resultSearchServices;
 		
 	}
 	
 }
-

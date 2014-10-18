@@ -24,9 +24,11 @@ public class AddressBookController {
 	 * at time.
 	 */
 	public static AddressBookController getInstance() {
+		
 		if (instance == null){
 			instance = new AddressBookController();
 		}
+		
 		return instance;
 	}
 
@@ -38,13 +40,16 @@ public class AddressBookController {
 	 * @return false if agenda is null.
 	 */
 	public boolean incluir(AddressBook adressBook) throws SQLException {
+		
 		boolean result = false;
+		
 		if (adressBook != null) {
 			AddressBookDAO.getInstance().incluir(adressBook);
 			result = true;
 		} else{
 			result = false;	
 		}
+		
 		return result;
 	}
 
@@ -56,8 +61,11 @@ public class AddressBookController {
 	 * @return true if no problems.
 	 * @throws SQLException If has some problem during the database update
 	 */
-	public boolean alterar(String nome, AddressBook adressbook) throws SQLException {
+	public boolean alterar(String nome, AddressBook adressbook)
+			throws SQLException {
+		
 		boolean result = false;
+		
 		if (adressbook != null) {
 			AddressBook agenda_alterado = adressbook;
 			AddressBookDAO.getInstance()
@@ -66,6 +74,7 @@ public class AddressBookController {
 		} else{
 			result = false;
 		}
+		
 		return result;
 	}
 
@@ -77,13 +86,16 @@ public class AddressBookController {
 	 * @throws SQLException If has some problem during the database deletion
 	 */
 	public boolean excluir(AddressBook contact) throws SQLException {
+		
 		boolean result = false;
+		
 		if (contact != null) {
 			AddressBookDAO.getInstance().excluir(contact);
 			result = true;
 		} else {
 			result = false;
 		}
+		
 		return result;
 	}
 
@@ -95,8 +107,10 @@ public class AddressBookController {
 	 */
 	public ResultSet mostrarContatosCadastrados(AddressBook contact)
 			throws SQLException {
+		
 		ResultSet resultContact = AddressBookDAO.getInstance()
 				.mostrarContatosCadastrados(contact); 
+		
 		return resultContact;
 	}
 
@@ -107,8 +121,10 @@ public class AddressBookController {
 	 * @throws SQLException If has some problem during the database deletion
 	 */
 	public ResultSet pesquisarPorNome(AddressBook contact) throws SQLException {
+		
 		ResultSet resultContact = AddressBookDAO.getInstance()
 				.pesquisarPorNome(contact);
+		
 		return resultContact;
 	}
 
@@ -118,9 +134,12 @@ public class AddressBookController {
 	 * @return Search by phone number the contacts in the address book.
 	 * @throws SQLException If has some problem during the database deletion
 	 */
-	public ResultSet pesquisarPorTelefone(AddressBook contact) throws SQLException {
+	public ResultSet pesquisarPorTelefone(AddressBook contact) 
+			throws SQLException {
+		
 		ResultSet resultContact = AddressBookDAO.getInstance()
 				.pesquisarPorTelefone(contact);
+		
 		return resultContact;
 	}
 

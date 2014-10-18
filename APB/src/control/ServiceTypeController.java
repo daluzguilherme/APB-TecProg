@@ -25,8 +25,13 @@ public class ServiceTypeController {
 	 * time.
 	 */
 	public static ServiceTypeController getInstance() {
-		if (instance == null)
+		
+		if (instance == null) {
 			instance = new ServiceTypeController();
+		} else {
+			// Nothing to do.
+		}
+		
 		return instance;
 	}
 
@@ -38,10 +43,15 @@ public class ServiceTypeController {
 	 * @return false if  type of service is null.
 	 */
 	public boolean inserir(ServiceType tipoServico) throws SQLException {
+		
 		if (tipoServico == null) {
+			
 			return false;
+			
 		} else {
+			
 			ServiceTypeDAO.getInstance().incluir(tipoServico);
+			
 			return true;
 		}
 	}
@@ -54,12 +64,17 @@ public class ServiceTypeController {
 	 * @return true if no problems.
 	 * @throws SQLException If has some problem during the database update
 	 */
-	public boolean alterar(String nome,ServiceType tipoServico) throws SQLException {
+	public boolean alterar(String nome,ServiceType tipoServico)
+			throws SQLException {
+		
 		if (tipoServico == null) {
+			
 			return false;
 		} else {
 			ServiceType tipoServico_alterado = tipoServico;
-			ServiceTypeDAO.getInstance().alterar(nome,tipoServico_alterado, tipoServico);
+			ServiceTypeDAO.getInstance().alterar(nome,tipoServico_alterado,
+					tipoServico);
+			
 			return true;
 		}
 	}
@@ -75,9 +90,11 @@ public class ServiceTypeController {
 	public boolean excluir(ServiceType tipoServico) throws SQLException {
 
 		if (tipoServico == null) {
+			
 			return false;
 		} else {
 			ServiceTypeDAO.getInstance().excluir(tipoServico);
+			
 			return true;
 		}
 	}
@@ -89,10 +106,11 @@ public class ServiceTypeController {
 	 * @throws SQLException If has some problem during the database deletion
 	 */
 	public ResultSet mostrarTipoServicoCadastrados(ServiceType servico) throws SQLException {
+		
 		return ServiceTypeDAO.getInstance().mostrarTipoServicoCadastrados(servico);
+		
 	}
 	
-	/* Search a service by name. */
 	/**
 	 * Displays types of service by name in the database.
 	 * @param servico instance of an type of object TipoServico.
@@ -100,6 +118,7 @@ public class ServiceTypeController {
 	 * @throws SQLException If has some problem during the database deletion
 	 */
 	public ResultSet pesquisarPorNome(ServiceType servico) throws SQLException {
+		
 		return ServiceTypeDAO.getInstance().pesquisarPorNome(servico);
 	}
 

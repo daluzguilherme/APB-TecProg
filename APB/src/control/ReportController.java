@@ -25,9 +25,13 @@ private static ReportController instance;
 	 * one at time.
 	 */
 	public static ReportController getInstance() {
+		
 		if(instance == null){
 			instance = new ReportController();
+		} else {
+			// Nothing to do.
 		}
+		
 		return instance;
 	}
 	
@@ -38,9 +42,12 @@ private static ReportController instance;
 	 * @throws SQLException If has some problem with the database search.
 	 */
 	public ResultSet pesquisarPorData(Report report) throws SQLException {
+		
 		ResultSet resultReport = ReportDAO.getInstance()
 				.pesquisarPorData(report);
+		
 		return resultReport;
+		
 	}
 	
 	/**
@@ -52,9 +59,12 @@ private static ReportController instance;
 	 */
 	public ResultSet pesquisarPorDataEBarbeiro(Report report) 
 			throws SQLException {
+		
 		ResultSet resultReport = ReportDAO.getInstance()
 				.pesquisarPorDataEBarbeiro(report);
+		
 		return resultReport;
+		
 	}
 	
 	/**
@@ -65,9 +75,12 @@ private static ReportController instance;
 	 */
 	public ResultSet pesquisarPorDataEServico(Report report)
 			throws SQLException {
+		
 		ResultSet resultReport = ReportDAO.getInstance()
 				.pesquisarPorDataEServico(report);
+		
 		return resultReport;
+		
 	}
 	
 	/**
@@ -78,9 +91,12 @@ private static ReportController instance;
 	 */
 	public ResultSet pesquisarPorBarbeiro(Report relatorio) 
 			throws SQLException {
+		
 		ResultSet resultReport = ReportDAO.getInstance()
 				.pesquisarPorBarbeiro(relatorio);
+		
 		return resultReport;
+		
 	}
 		
 	/**
@@ -91,9 +107,12 @@ private static ReportController instance;
 	 */
 	public ResultSet pesquisarPorBarbeiroEServico(Report report)
 			throws SQLException {	
+		
 		ResultSet resultReport = ReportDAO.getInstance()
 				.pesquisarPorBarbeiroEServico(report);
+		
 		return resultReport;
+		
 	}
 	
 	/**
@@ -104,9 +123,12 @@ private static ReportController instance;
 	 */
 	public ResultSet pesquisarPorServico(Report report) 
 			throws SQLException {	
+		
 		ResultSet resultReport = ReportDAO.getInstance()
 				.pesquisarPorServico(report);
+		
 		return resultReport;
+		
 	}
 	
 	/**
@@ -118,10 +140,12 @@ private static ReportController instance;
 	
 	public ResultSet pesquisarPorDataBarbeiroEServico(Report report) 
 			throws SQLException {		
+		
 		ResultSet resultReport = ReportDAO.getInstance()
 				.pesquisarPorDataBarbeiroEServico(report);
+		
 		return resultReport;
+		
 	}
 	
-
 }
