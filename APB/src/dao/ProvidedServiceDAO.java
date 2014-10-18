@@ -21,14 +21,27 @@ public class ProvidedServiceDAO {
 		/* Blank constructor. */
 	}
 
-	/* Singleton implementation. */
+	/**
+	 * Singleton implementation
+	 * 
+	 * @return instance the active AddressBookDAO instance, since it will be just one
+	 * 					at a time
+	 */
 	public static ProvidedServiceDAO getInstance() {
 		if (instance == null)
 			instance = new ProvidedServiceDAO();
 		return instance;
 	}
 
-	/* Include new services rendered in the database. */
+	/**
+	 * This includes a service from the database.
+	 * 
+	 * @param servico a service to be included
+	 * @return true if the deletion was successfully performed.
+	 * @return false if there were some problem. 
+	 * @throws SQLException If there was some problem during the database
+	 * 		deletion.
+	 */
 	public boolean incluir(ProvidedService servico) throws SQLException {
 		if (servico != null) {
 			this.updateQuery("INSERT INTO "
@@ -43,7 +56,15 @@ public class ProvidedServiceDAO {
 		return false;
 	}
 
-	/* This removes a service rendered from the database. */
+	/**
+	 * This removes a service from the database.
+	 * 
+	 * @param servico a service to be deleted
+	 * @return true if the deletion was successfully performed.
+	 * @return false if there were some problem. 
+	 * @throws SQLException If there was some problem during the database
+	 * 		deletion.
+	 */
 	public boolean excluir(ProvidedService servico) throws SQLException {
 		if (servico != null) {
 			this.updateQuery("DELETE FROM servicoprestado WHERE "
@@ -54,7 +75,14 @@ public class ProvidedServiceDAO {
 		return false;
 	}
 
-	/*  This searches for services rendered from the database. */
+	/**
+	 * This searches for services from the database.
+	 * 
+	 * @param servico a service to be searched.
+	 * @return the id of the service searched
+	 * @throws SQLException If there was some problem during the database
+	 * 		deletion.
+	 */
 	private String pesquisar(ProvidedService servico) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement preparedStatement = connection
@@ -72,7 +100,13 @@ public class ProvidedServiceDAO {
 		return rs.getString("idservicoprestado");
 	}
 
-	/* This updates a query. */
+	/**
+	 * This updates a query.
+	 * 
+	 * @param message a message to be the Query
+	 * @throws SQLException If there was some problem during the database
+	 * 		deletion.
+	 */
 	private void updateQuery(String message) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement preparedStatement = connection
@@ -82,7 +116,14 @@ public class ProvidedServiceDAO {
 		connection.close();
 	}
 	
-	/* Shows registered services rendered */
+	/**
+	 * Shows registered services rendered
+	 * 
+	 * @param servico a service to be shown
+	 * @return rs a resultset with the results
+	 * @throws SQLException If there was some problem during the database
+	 * 		deletion.
+	 */
 	public ResultSet mostrarServicosPrestadosCadastrados(ProvidedService servico) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		ResultSet rs = connection.createStatement().executeQuery(
