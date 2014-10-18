@@ -28,35 +28,35 @@ public class ReportDAO {
 	}
 
 	/* Search by date */
-	public ResultSet pesquisarPorData(Report relatorio)
+	public ResultSet pesquisarPorData(Report report)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE data BETWEEN '"
-				+relatorio.getDataInicial()+"' AND '"+relatorio.getDataFinal()+"';");
+				+report.getDataInicial()+"' AND '"+report.getDataFinal()+"';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;
 	}
 	
 	/* Search by date and barber */
-	public ResultSet pesquisarPorDataEBarbeiro(Report relatorio)
+	public ResultSet pesquisarPorDataEBarbeiro(Report report)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE data BETWEEN '"
-				+relatorio.getDataInicial()+"' AND '"+relatorio.getDataFinal()+"' AND barbeiro = '"
-				+relatorio.getBarbeiro()+"';");
+				+report.getDataInicial()+"' AND '"+report.getDataFinal()+"' AND barbeiro = '"
+				+report.getBarbeiro()+"';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;
 	}
 	
 	/* Search by date and service*/
-	public ResultSet pesquisarPorDataEServico(Report relatorio)
+	public ResultSet pesquisarPorDataEServico(Report report)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE data BETWEEN '"
-				+relatorio.getDataInicial()+"' AND '"+relatorio.getDataFinal()+"' AND nome = '"
-				+relatorio.getTipoServico()+"';");
+				+report.getDataInicial()+"' AND '"+report.getDataFinal()+"' AND nome = '"
+				+report.getTipoServico()+"';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;
@@ -64,45 +64,45 @@ public class ReportDAO {
 	}
 	
 	/* Search by barber*/
-	public ResultSet pesquisarPorBarbeiro(Report relatorio)
+	public ResultSet pesquisarPorBarbeiro(Report report)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE barbeiro = '"
-				+relatorio.getBarbeiro()+"';");
+				+report.getBarbeiro()+"';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;
 	}
 	
 	/* Search by barber and service*/
-	public ResultSet pesquisarPorBarbeiroEServico(Report relatorio)
+	public ResultSet pesquisarPorBarbeiroEServico(Report report)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE barbeiro = '"
-				+relatorio.getBarbeiro()+"' AND nome = '"+relatorio.getTipoServico()+"';");
+				+report.getBarbeiro()+"' AND nome = '"+report.getTipoServico()+"';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;
 	}
 	
 	/* Search by service*/
-	public ResultSet pesquisarPorServico(Report relatorio)
+	public ResultSet pesquisarPorServico(Report report)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE nome = '"
-				+relatorio.getTipoServico()+"';");
+				+report.getTipoServico()+"';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;
 	}
 	
 	/* Search by date, barber and service*/
-	public ResultSet pesquisarPorDataBarbeiroEServico(Report relatorio)
+	public ResultSet pesquisarPorDataBarbeiroEServico(Report report)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE data BETWEEN '"
-				+relatorio.getDataInicial()+"' AND '"+relatorio.getDataFinal()+"' AND barbeiro = '"
-				+relatorio.getBarbeiro()+"' AND nome = '"+relatorio.getTipoServico()+"';");
+				+report.getDataInicial()+"' AND '"+report.getDataFinal()+"' AND barbeiro = '"
+				+report.getBarbeiro()+"' AND nome = '"+report.getTipoServico()+"';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;

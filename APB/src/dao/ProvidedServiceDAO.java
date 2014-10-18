@@ -36,20 +36,20 @@ public class ProvidedServiceDAO {
 	/**
 	 * This includes a service from the database.
 	 * 
-	 * @param servico a service to be included
+	 * @param service a service to be included
 	 * @return true if the deletion was successfully performed.
 	 * @return false if there were some problem. 
 	 * @throws SQLException If there was some problem during the database
 	 * 		deletion.
 	 */
-	public boolean incluir(ProvidedService servico) throws SQLException {
-		if (servico != null) {
+	public boolean incluir(ProvidedService service) throws SQLException {
+		if (service != null) {
 			this.updateQuery("INSERT INTO "
 					+ "servicoprestado (nome, preco, barbeiro, data) VALUES ("
-					+ "\"" + servico.getNomeServico() + "\", " + "\""
-					+ servico.getPreco() + "\", " + "\""
-					+ servico.getNomeBarbeiro() + "\", " + "\""
-					+ servico.getData() + "\"); ");
+					+ "\"" + service.getNomeServico() + "\", " + "\""
+					+ service.getPreco() + "\", " + "\""
+					+ service.getNomeBarbeiro() + "\", " + "\""
+					+ service.getData() + "\"); ");
 			return true;
 		}
 
@@ -59,16 +59,16 @@ public class ProvidedServiceDAO {
 	/**
 	 * This removes a service from the database.
 	 * 
-	 * @param servico a service to be deleted
+	 * @param service a service to be deleted
 	 * @return true if the deletion was successfully performed.
 	 * @return false if there were some problem. 
 	 * @throws SQLException If there was some problem during the database
 	 * 		deletion.
 	 */
-	public boolean excluir(ProvidedService servico) throws SQLException {
-		if (servico != null) {
+	public boolean excluir(ProvidedService service) throws SQLException {
+		if (service != null) {
 			this.updateQuery("DELETE FROM servicoprestado WHERE "
-				+ "servicoprestado.idservicoprestado = \"" + pesquisar(servico)+ "\";");
+				+ "servicoprestado.idservicoprestado = \"" + pesquisar(service)+ "\";");
 			return true;
 		}
 		
@@ -119,12 +119,12 @@ public class ProvidedServiceDAO {
 	/**
 	 * Shows registered services rendered
 	 * 
-	 * @param servico a service to be shown
+	 * @param service a service to be shown
 	 * @return rs a resultset with the results
 	 * @throws SQLException If there was some problem during the database
 	 * 		deletion.
 	 */
-	public ResultSet mostrarServicosPrestadosCadastrados(ProvidedService servico) throws SQLException {
+	public ResultSet mostrarServicosPrestadosCadastrados(ProvidedService service) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		ResultSet rs = connection.createStatement().executeQuery(
 						"SELECT nome, preco, barbeiro, data FROM servicoprestado ORDER BY data;");

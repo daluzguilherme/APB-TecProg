@@ -27,12 +27,12 @@ public class ReceiptDAO {
 	}
 	
 	/* Shows the services Barber*/
-	public ResultSet pesquisarServicosDoBarbeiro(String barbeiro, String dataInicial, String dataFinal) throws SQLException{
+	public ResultSet pesquisarServicosDoBarbeiro(String barber, String startDate, String endDate) throws SQLException{
 		
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE data BETWEEN '"
-				+dataInicial+"' AND '"+ dataFinal+"' AND barbeiro = '"
-				+barbeiro+"';");
+				+startDate+"' AND '"+ endDate+"' AND barbeiro = '"
+				+barber+"';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;

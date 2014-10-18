@@ -39,20 +39,20 @@ public class ServiceTypeDAO {
 	/**
 	 * Include new service type in the database.
 	 * 
-	 * @param tipoServico a new type of service to be created.
+	 * @param serviceType a new type of service to be created.
 	 * @return true if it was included successfully
 	 * @return false if type of service is null;
 	 * @throws SQLException If there was some problem during the database
 	 * 						deletion
 	 */
-	public boolean incluir(ServiceType tipoServico) throws SQLException {
-		if (tipoServico == null)
+	public boolean incluir(ServiceType serviceType) throws SQLException {
+		if (serviceType == null)
 			return false;
 		
 		this.updateQuery("INSERT INTO "
 				+ "tiposervico (nome, preco) VALUES ("
-				+ "\"" + tipoServico.getNomeTipoServico() + "\", " + "\""
-				+ tipoServico.getPreco() + "\"); ");
+				+ "\"" + serviceType.getNomeTipoServico() + "\", " + "\""
+				+ serviceType.getPreco() + "\"); ");
 
 		return true;
 	}
@@ -60,21 +60,21 @@ public class ServiceTypeDAO {
 	/**
 	 * This updates a service type on the database
 	 * 
-	 * @param nome a name to be altered.
-	 * @param tipoServico_alterado an old type of service altered
-	 * @param tipoServico a service type to be altered.
+	 * @param name a name to be altered.
+	 * @param alteredServiceType an old type of service altered
+	 * @param serviceType a service type to be altered.
 	 * @return true if it was altered successfully. 
 	 * @throws SQLException If there was some problem during the database
 	 * 						deletion.
 	 */
-	public boolean alterar(String nome,ServiceType tipoServico_alterado, ServiceType tipoServico) throws SQLException {
-		if (tipoServico_alterado == null || tipoServico == null) 
+	public boolean alterar(String name,ServiceType alteredServiceType, ServiceType serviceType) throws SQLException {
+		if (alteredServiceType == null || serviceType == null) 
 			return false;
 		
 		this.updateQuery("UPDATE tiposervico SET nome = '"
-				+ tipoServico_alterado.getNomeTipoServico() + "', " + "preco = '"
-				+ tipoServico_alterado.getPreco()  + "' WHERE"
-				+ " nome = '" + nome + "';");
+				+ alteredServiceType.getNomeTipoServico() + "', " + "preco = '"
+				+ alteredServiceType.getPreco()  + "' WHERE"
+				+ " nome = '" + name + "';");
 
 		return true;
 	}
@@ -82,18 +82,18 @@ public class ServiceTypeDAO {
 	/**
 	 * This removes a service type from the database
 	 * 
-	 * @param tipoServico a type of service to be deleted
+	 * @param serviceType a type of service to be deleted
 	 * @return true if everything went OK.
 	 * @return false if type of service is null.
 	 * @throws SQLException If there was some problem during the database
 	 * 						deletion
 	 */
-	public boolean excluir(ServiceType tipoServico) throws SQLException {
-		if (tipoServico == null)
+	public boolean excluir(ServiceType serviceType) throws SQLException {
+		if (serviceType == null)
 			return false;
 		
 		this.updateQuery("DELETE FROM tiposervico WHERE "
-				+ "tipoServico.nome = \"" + tipoServico.getNomeTipoServico() + "\";");
+				+ "tipoServico.nome = \"" + serviceType.getNomeTipoServico() + "\";");
 		return true;
 	}
 
@@ -115,12 +115,12 @@ public class ServiceTypeDAO {
 	/**
 	 * Shows registered services type
 	 * 
-	 * @param servico NOT USED
+	 * @param service NOT USED
 	 * @return rs a ResultSet with the services registered
 	 * @throws SQLException If there was some problem during the database
 	 * 						deletion.
 	 */
-	public ResultSet mostrarTipoServicoCadastrados(ServiceType servico) throws SQLException {
+	public ResultSet mostrarTipoServicoCadastrados(ServiceType service) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		ResultSet rs = connection.createStatement().executeQuery(
 				"SELECT * FROM tiposervico;");
@@ -131,15 +131,15 @@ public class ServiceTypeDAO {
 	/**
 	 * Search a service by name
 	 * 
-	 * @param servico a service to be searched
+	 * @param service a service to be searched
 	 * @return rs a ResultSet with the services found
 	 * @throws SQLException If there was some problem during the database
 	 * 						deletion.
 	 */
-	public ResultSet pesquisarPorNome(ServiceType servico) throws SQLException {
+	public ResultSet pesquisarPorNome(ServiceType service) throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		java.sql.PreparedStatement pst = connection.prepareStatement("SELECT * FROM tiposervico WHERE "
-				+ "nome = '" + servico.getNomeTipoServico() + "';");
+				+ "nome = '" + service.getNomeTipoServico() + "';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;

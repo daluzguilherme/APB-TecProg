@@ -34,6 +34,7 @@ public class Barber {
 	 *  Constructor method of the class Barbeiro. 
 	 *  Has messages that alert the users if there are blank fields.
 	 * */ 
+	
 	public Barber(String nome, String cpf, String rg, String telefone,
 			String cadeira) throws BarberException {
 		this.nome = nome;
