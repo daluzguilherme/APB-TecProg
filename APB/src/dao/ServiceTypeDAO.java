@@ -27,12 +27,17 @@ public class ServiceTypeDAO {
 	/**
 	 * Singleton implementation
 	 * 
-	 * @return instance the active AddressBookDAO instance, since it will be just one
-	 * 					at a time
+	 * @return instance the active AddressBookDAO instance, since it will be
+	 * 		just one at a time
 	 */
 	public static ServiceTypeDAO getInstance() {
-		if (instance == null)
+		
+		if (instance == null) {
 			instance = new ServiceTypeDAO();
+		} else {
+			//Nothing to do.
+		}
+		
 		return instance;
 	}
 
@@ -46,8 +51,12 @@ public class ServiceTypeDAO {
 	 * 						deletion
 	 */
 	public boolean incluir(ServiceType serviceType) throws SQLException {
-		if (serviceType == null)
+		
+		if (serviceType == null) {
 			return false;
+		} else {
+			// Nothing to do.
+		}
 		
 		this.updateQuery("INSERT INTO "
 				+ "tiposervico (nome, preco) VALUES ("
@@ -67,9 +76,15 @@ public class ServiceTypeDAO {
 	 * @throws SQLException If there was some problem during the database
 	 * 						deletion.
 	 */
-	public boolean alterar(String name,ServiceType alteredServiceType, ServiceType serviceType) throws SQLException {
-		if (alteredServiceType == null || serviceType == null) 
+	public boolean alterar(String name,ServiceType alteredServiceType,
+			ServiceType serviceType) throws SQLException {
+		
+		if (alteredServiceType == null || serviceType == null) { 
+		
 			return false;
+		} else {
+			//Nothing to do.
+		}
 		
 		this.updateQuery("UPDATE tiposervico SET nome = '"
 				+ alteredServiceType.getNomeTipoServico() + "', " + "preco = '"
@@ -89,11 +104,18 @@ public class ServiceTypeDAO {
 	 * 						deletion
 	 */
 	public boolean excluir(ServiceType serviceType) throws SQLException {
-		if (serviceType == null)
+		
+		if (serviceType == null) {
+			
 			return false;
+		} else {
+			//Nothing to do.
+		}
 		
 		this.updateQuery("DELETE FROM tiposervico WHERE "
-				+ "tipoServico.nome = \"" + serviceType.getNomeTipoServico() + "\";");
+				+ "tipoServico.nome = \"" + serviceType.getNomeTipoServico()
+				+ "\";");
+		
 		return true;
 	}
 
@@ -105,6 +127,7 @@ public class ServiceTypeDAO {
 	 * 						deletion
 	 */
 	public void updateQuery(String message) throws SQLException {
+		
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		PreparedStatement preparedStatement = connection.prepareStatement(message);
 		preparedStatement.executeUpdate();
@@ -120,7 +143,9 @@ public class ServiceTypeDAO {
 	 * @throws SQLException If there was some problem during the database
 	 * 						deletion.
 	 */
-	public ResultSet mostrarTipoServicoCadastrados(ServiceType service) throws SQLException {
+	public ResultSet mostrarTipoServicoCadastrados(ServiceType service)
+			throws SQLException {
+		
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		ResultSet rs = connection.createStatement().executeQuery(
 				"SELECT * FROM tiposervico;");
@@ -137,9 +162,11 @@ public class ServiceTypeDAO {
 	 * 						deletion.
 	 */
 	public ResultSet pesquisarPorNome(ServiceType service) throws SQLException {
+		
 		Connection connection = FactoryConnection.getInstance().getConnection();
-		java.sql.PreparedStatement pst = connection.prepareStatement("SELECT * FROM tiposervico WHERE "
-				+ "nome = '" + service.getNomeTipoServico() + "';");
+		java.sql.PreparedStatement pst = connection.prepareStatement("SELECT * "
+				+ "FROM tiposervico WHERE " + "nome = '"
+				+ service.getNomeTipoServico() + "';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;

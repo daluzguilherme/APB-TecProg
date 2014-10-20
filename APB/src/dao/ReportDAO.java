@@ -31,8 +31,10 @@ public class ReportDAO {
 	public ResultSet pesquisarPorData(Report report)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
-		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE data BETWEEN '"
-				+report.getDataInicial()+"' AND '"+report.getDataFinal()+"';");
+		PreparedStatement pst = connection.prepareStatement("SELECT * FROM "
+				+ "servicoprestado WHERE data BETWEEN '"
+				+ report.getDataInicial() + "' AND '" + report.getDataFinal()
+				+ "';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;
@@ -42,9 +44,10 @@ public class ReportDAO {
 	public ResultSet pesquisarPorDataEBarbeiro(Report report)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
-		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE data BETWEEN '"
-				+report.getDataInicial()+"' AND '"+report.getDataFinal()+"' AND barbeiro = '"
-				+report.getBarbeiro()+"';");
+		PreparedStatement pst = connection.prepareStatement("SELECT * FROM "
+				+ "servicoprestado WHERE data BETWEEN '"
+				+ report.getDataInicial() + "' AND '" + report.getDataFinal()
+				+ "' AND barbeiro = '" + report.getBarbeiro() + "';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;
@@ -54,9 +57,10 @@ public class ReportDAO {
 	public ResultSet pesquisarPorDataEServico(Report report)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
-		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE data BETWEEN '"
-				+report.getDataInicial()+"' AND '"+report.getDataFinal()+"' AND nome = '"
-				+report.getTipoServico()+"';");
+		PreparedStatement pst = connection.prepareStatement("SELECT * FROM "
+				+ "servicoprestado WHERE data BETWEEN '"
+				+ report.getDataInicial() + "' AND '" + report.getDataFinal()
+				+ "' AND nome = '" + report.getTipoServico() + "';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;
@@ -67,8 +71,9 @@ public class ReportDAO {
 	public ResultSet pesquisarPorBarbeiro(Report report)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
-		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE barbeiro = '"
-				+report.getBarbeiro()+"';");
+		PreparedStatement pst = connection.prepareStatement("SELECT * FROM "
+				+ "servicoprestado WHERE barbeiro = '" + report.getBarbeiro()
+				+ "';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;
@@ -78,8 +83,9 @@ public class ReportDAO {
 	public ResultSet pesquisarPorBarbeiroEServico(Report report)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
-		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE barbeiro = '"
-				+report.getBarbeiro()+"' AND nome = '"+report.getTipoServico()+"';");
+		PreparedStatement pst = connection.prepareStatement("SELECT * FROM "
+				+ "servicoprestado WHERE barbeiro = '" + report.getBarbeiro()
+				+ "' AND nome = '" + report.getTipoServico() + "';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;
@@ -89,8 +95,9 @@ public class ReportDAO {
 	public ResultSet pesquisarPorServico(Report report)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
-		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE nome = '"
-				+report.getTipoServico()+"';");
+		PreparedStatement pst = connection.prepareStatement("SELECT * FROM "
+				+ "servicoprestado WHERE nome = '" + report.getTipoServico()
+				+ "';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;
@@ -100,9 +107,11 @@ public class ReportDAO {
 	public ResultSet pesquisarPorDataBarbeiroEServico(Report report)
 			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
-		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE data BETWEEN '"
-				+report.getDataInicial()+"' AND '"+report.getDataFinal()+"' AND barbeiro = '"
-				+report.getBarbeiro()+"' AND nome = '"+report.getTipoServico()+"';");
+		PreparedStatement pst = connection.prepareStatement("SELECT * FROM "
+				+ "servicoprestado WHERE data BETWEEN '" + report.getDataInicial()
+				+ "' AND '" + report.getDataFinal() + "' AND barbeiro = '"
+				+ report.getBarbeiro() + "' AND nome = '"
+				+ report.getTipoServico() + "';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;

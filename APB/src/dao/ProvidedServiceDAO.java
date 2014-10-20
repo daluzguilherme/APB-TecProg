@@ -28,8 +28,13 @@ public class ProvidedServiceDAO {
 	 * 					at a time
 	 */
 	public static ProvidedServiceDAO getInstance() {
-		if (instance == null)
+		
+		if (instance == null) {
 			instance = new ProvidedServiceDAO();
+		} else {
+			// Nothing to do.
+		}
+		
 		return instance;
 	}
 
@@ -43,6 +48,7 @@ public class ProvidedServiceDAO {
 	 * 		deletion.
 	 */
 	public boolean incluir(ProvidedService service) throws SQLException {
+		
 		if (service != null) {
 			this.updateQuery("INSERT INTO "
 					+ "servicoprestado (nome, preco, barbeiro, data) VALUES ("
@@ -50,7 +56,10 @@ public class ProvidedServiceDAO {
 					+ service.getPreco() + "\", " + "\""
 					+ service.getNomeBarbeiro() + "\", " + "\""
 					+ service.getData() + "\"); ");
+			
 			return true;
+		} else {
+			// Nothing to do.
 		}
 
 		return false;
@@ -66,10 +75,13 @@ public class ProvidedServiceDAO {
 	 * 		deletion.
 	 */
 	public boolean excluir(ProvidedService service) throws SQLException {
+		
 		if (service != null) {
 			this.updateQuery("DELETE FROM servicoprestado WHERE "
 				+ "servicoprestado.idservicoprestado = \"" + pesquisar(service)+ "\";");
 			return true;
+		} else {
+			//Nothing to do.
 		}
 		
 		return false;
@@ -97,6 +109,7 @@ public class ProvidedServiceDAO {
 						+ servico.getData() + "\";");
 		ResultSet rs = preparedStatement.executeQuery();
 		rs.next();
+		
 		return rs.getString("idservicoprestado");
 	}
 
@@ -124,10 +137,12 @@ public class ProvidedServiceDAO {
 	 * @throws SQLException If there was some problem during the database
 	 * 		deletion.
 	 */
-	public ResultSet mostrarServicosPrestadosCadastrados(ProvidedService service) throws SQLException {
+	public ResultSet mostrarServicosPrestadosCadastrados(ProvidedService service) 
+			throws SQLException {
 		Connection connection = FactoryConnection.getInstance().getConnection();
 		ResultSet rs = connection.createStatement().executeQuery(
-						"SELECT nome, preco, barbeiro, data FROM servicoprestado ORDER BY data;");
+						"SELECT nome, preco, barbeiro, data FROM servicoprestado" 
+								+ " ORDER BY data;");
 		
 		return rs;
 	}

@@ -21,18 +21,24 @@ public class ReceiptDAO {
 	
 	/* Singleton implementation. */
 	public static ReceiptDAO getInstance(){
-		if(instance == null)
+		if(instance == null) {
 			instance = new ReceiptDAO();
+		} else {
+			//Nothing to do.
+		}
+		
 		return instance;
 	}
 	
 	/* Shows the services Barber*/
-	public ResultSet pesquisarServicosDoBarbeiro(String barber, String startDate, String endDate) throws SQLException{
+	public ResultSet pesquisarServicosDoBarbeiro(String barber, String startDate,
+			String endDate) throws SQLException{
 		
 		Connection connection = FactoryConnection.getInstance().getConnection();
-		PreparedStatement pst = connection.prepareStatement("SELECT * FROM servicoprestado WHERE data BETWEEN '"
-				+startDate+"' AND '"+ endDate+"' AND barbeiro = '"
-				+barber+"';");
+		PreparedStatement pst = connection.prepareStatement("SELECT * FROM "
+				+ "servicoprestado WHERE data BETWEEN '"
+				+ startDate + "' AND '" + endDate + "' AND barbeiro = '"
+				+ barber + "';");
 		ResultSet rs = pst.executeQuery();
 		
 		return rs;
