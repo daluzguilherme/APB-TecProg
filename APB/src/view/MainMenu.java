@@ -1,5 +1,5 @@
 /**
- * MenuPrincipal
+ * MainMenu
  * This class provides a GUI for the main menu of the application.
  */
 
@@ -25,7 +25,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 @SuppressWarnings("serial")
-public class MenuPrincipal extends JFrame {
+public class MainMenu extends JFrame {
 
 	private JPanel contentPane;
 
@@ -34,7 +34,7 @@ public class MenuPrincipal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuPrincipal frame = new MenuPrincipal();
+					MainMenu frame = new MainMenu();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +44,7 @@ public class MenuPrincipal extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public MenuPrincipal() {
+	public MainMenu() {
 		setTitle("APB");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 540, 200);
@@ -63,15 +63,15 @@ public class MenuPrincipal extends JFrame {
 		panel.setLayout(null);
 		
 		/*
-		 * Add an action performed event. When the Administrativo Button is clicked,
-		 * it goes to a new window, which is Administrativo, and dispose this one
+		 * Add an action performed event. When the Administrative Button is clicked,
+		 * it goes to a new window, which is Administrative, and dispose this one
 		 * that is not needed.
 		 */
-		JButton btnAdministrativo = new JButton("Administrativo");
+		JButton btnAdministrativo = new JButton("Administrative");
 		btnAdministrativo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				Administrativo frame = new Administrativo();
+				Administrative frame = new Administrative();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}
@@ -81,14 +81,14 @@ public class MenuPrincipal extends JFrame {
 		
 		/*
 		 * Add an action performed event. When the ServicosPrestados Button is clicked,
-		 * it goes to a new window, which is CadastrarServicoPrestado, and dispose this one
+		 * it goes to a new window, which is RegisterProvidedService, and dispose this one
 		 * that is not needed.
 		 */
 		JButton btnServicosPrestados = new JButton("Servi\u00E7os Prestados");
 		btnServicosPrestados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				CadastrarServicoPrestado frame = new CadastrarServicoPrestado();
+				RegisterProvidedService frame = new RegisterProvidedService();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}
@@ -98,7 +98,7 @@ public class MenuPrincipal extends JFrame {
 		
 		/*
 		 * Add a mouse clicked event. When the Relatorios Button is clicked,
-		 * it goes to a new window, which is VisualizarRelatorios, and dispose this one
+		 * it goes to a new window, which is ShowReceipt, and dispose this one
 		 * that is not needed.
 		 */
 		JButton btnRelatorios = new JButton("Relat\u00F3rios");
@@ -106,8 +106,8 @@ public class MenuPrincipal extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					PesquisarRelatorio.tipoBusca = 0;
-					VisualizarRelatorios frame = new VisualizarRelatorios();
+					SearchReceipt.tipoBusca = 0;
+					ShowReceipt frame = new ShowReceipt();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 					dispose();

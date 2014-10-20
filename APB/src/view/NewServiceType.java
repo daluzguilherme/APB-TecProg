@@ -30,7 +30,7 @@ import java.sql.SQLException;
 
 
 @SuppressWarnings("serial")
-public class NovoTipoServico extends JFrame {
+public class NewServiceType extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldServico;
@@ -41,7 +41,7 @@ public class NovoTipoServico extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					NovoTipoServico frame = new NovoTipoServico();
+					NewServiceType frame = new NewServiceType();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +51,7 @@ public class NovoTipoServico extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public NovoTipoServico() {
+	public NewServiceType() {
 		setTitle("Cadastar novo tipo de servi\u00E7o");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 320, 180);
@@ -101,7 +101,7 @@ public class NovoTipoServico extends JFrame {
 							+ " foi cadastrado com sucesso");
 
 					dispose();
-					CadastrarTipoServico frame = new CadastrarTipoServico();
+					RegisterServiceType frame = new RegisterServiceType();
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 
@@ -118,12 +118,12 @@ public class NovoTipoServico extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
-		 * returns the the previous window, which is CadastrarBarbeiro.
+		 * returns the the previous window, which is RegisterBarber.
 		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CadastrarTipoServico frame = new CadastrarTipoServico();
+				RegisterServiceType frame = new RegisterServiceType();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 				dispose();

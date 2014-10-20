@@ -1,5 +1,5 @@
 /**
- * PesquisarContato
+ * SearchContact
  * This class provides a GUI to search all the information 
  * about an entry in the address book contact.
  */
@@ -31,7 +31,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @SuppressWarnings("serial")
-public class PesquisarContato extends JFrame {
+public class SearchContact extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -41,7 +41,7 @@ public class PesquisarContato extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PesquisarContato frame = new PesquisarContato();
+					SearchContact frame = new SearchContact();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,7 +51,7 @@ public class PesquisarContato extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public PesquisarContato() {
+	public SearchContact() {
 		inicializarComponentes();
 	}
 
@@ -171,7 +171,7 @@ public class PesquisarContato extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Alterar Button is clicked, it
-		 * goes to a new window, which is AlterarContato, and dispose this one
+		 * goes to a new window, which is AlterContact, and dispose this one
 		 * that is not needed.
 		 */
 		JButton btnAlterar = new JButton("Alterar");
@@ -182,7 +182,7 @@ public class PesquisarContato extends JFrame {
 					AddressBook.setTempNome(modelo.getValueAt(
 							table.getSelectedRow(), 0).toString());
 					dispose();
-					AlterarContato frame = new AlterarContato();
+					AlterContact frame = new AlterContact();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 
@@ -221,7 +221,7 @@ public class PesquisarContato extends JFrame {
 						agendaController.excluir(agenda);
 
 						dispose();
-						PesquisarContato frame = new PesquisarContato();
+						SearchContact frame = new SearchContact();
 						frame.setVisible(true);
 						frame.setLocationRelativeTo(null);
 					}
@@ -239,14 +239,14 @@ public class PesquisarContato extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
-		 * returns the the previous window, which is CadastrarAgenda.
+		 * returns the the previous window, which is RegisterAddressBook.
 		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				CadastrarAgenda frame = new CadastrarAgenda();
+				RegisterAddressBook frame = new RegisterAddressBook();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}

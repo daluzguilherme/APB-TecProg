@@ -1,5 +1,5 @@
 /**
- * CadastrarAgenda
+ * RegisterAddressBook
  * This class provides a GUI to save a contact of a 
  * barber in the address book.
  */
@@ -26,7 +26,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 @SuppressWarnings("serial")
-public class CadastrarAgenda extends JFrame {
+public class RegisterAddressBook extends JFrame {
 
 	private JPanel contentPane;
 
@@ -35,7 +35,7 @@ public class CadastrarAgenda extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastrarAgenda frame = new CadastrarAgenda();
+					RegisterAddressBook frame = new RegisterAddressBook();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +45,7 @@ public class CadastrarAgenda extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public CadastrarAgenda() {
+	public RegisterAddressBook() {
 		setTitle("Agenda de Contatos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 575, 472);
@@ -99,16 +99,16 @@ public class CadastrarAgenda extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Novo Button is clicked, it
-		 * creates a new window, which is NovoContato.
+		 * creates a new window, which is NewContact.
 		 */
 		JButton btnNovo = new JButton("Novo");
 		btnNovo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				NovoContato frame;
+				NewContact frame;
 				try {
-					frame = new NovoContato();
+					frame = new NewContact();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 				} catch (ParseException e) {
@@ -122,14 +122,14 @@ public class CadastrarAgenda extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Pesquisar Button is clicked, it
-		 * creates a new window, which is PesquisarContato.
+		 * creates a new window, which is SearchContact.
 		 */
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				PesquisarContato frame = new PesquisarContato();
+				SearchContact frame = new SearchContact();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}
@@ -139,14 +139,14 @@ public class CadastrarAgenda extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
-		 * returns the the previous window, which is Administrativo.
+		 * returns the the previous window, which is Administrative.
 		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				Administrativo frame = new Administrativo();
+				Administrative frame = new Administrative();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}

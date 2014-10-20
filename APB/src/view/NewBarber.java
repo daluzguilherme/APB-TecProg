@@ -1,5 +1,5 @@
 /**
- * NovoBarbeiro
+ * NewBarber
  * This class provides a GUI to save a new barber in the database.
  */
 
@@ -26,7 +26,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 @SuppressWarnings("serial")
-public class NovoBarbeiro extends JFrame {
+public class NewBarber extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldNome;
@@ -44,7 +44,7 @@ public class NovoBarbeiro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					NovoBarbeiro frame = new NovoBarbeiro();
+					NewBarber frame = new NewBarber();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
@@ -55,7 +55,7 @@ public class NovoBarbeiro extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public NovoBarbeiro() throws ParseException {
+	public NewBarber() throws ParseException {
 		inicializarComponentes();
 	}
 
@@ -141,7 +141,7 @@ public class NovoBarbeiro extends JFrame {
 							+ " foi cadastrado com sucesso");
 
 					dispose();
-					CadastrarBarbeiro frame = new CadastrarBarbeiro();
+					RegisterBarber frame = new RegisterBarber();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 				} catch (BarberException e) {
@@ -180,14 +180,14 @@ public class NovoBarbeiro extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
-		 * returns the the previous window, which is CadastrarBarbeiro.
+		 * returns the the previous window, which is RegisterBarber.
 		 */
 		botaoVoltar = new JButton("Voltar");
 		botaoVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				CadastrarBarbeiro frame = new CadastrarBarbeiro();
+				RegisterBarber frame = new RegisterBarber();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}

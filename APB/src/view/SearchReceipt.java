@@ -1,5 +1,5 @@
 /**
- * PesquisarRelatorio
+ * SearchReceipt
  * This class provides a GUI to search all the information 
  * about the reports.
  */
@@ -33,7 +33,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 @SuppressWarnings("serial")
-public class PesquisarRelatorio extends JFrame {
+public class SearchReceipt extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtDataInicial;
@@ -51,7 +51,7 @@ public class PesquisarRelatorio extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PesquisarRelatorio frame = new PesquisarRelatorio();
+					SearchReceipt frame = new SearchReceipt();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					mostrarMensagemDeErro(e.getMessage());
@@ -65,7 +65,7 @@ public class PesquisarRelatorio extends JFrame {
 	 * 
 	 * @throws ParseException
 	 */
-	public PesquisarRelatorio() throws ParseException {
+	public SearchReceipt() throws ParseException {
 		setTitle("Tipo de Pesquisa do Relat\u00F3rio");
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -277,7 +277,7 @@ public class PesquisarRelatorio extends JFrame {
 				}
 				if (tipoBusca != 0) {
 					try {
-						VisualizarRelatorios frame = new VisualizarRelatorios();
+						ShowReceipt frame = new ShowReceipt();
 						frame.setVisible(true);
 						frame.setLocationRelativeTo(null);
 						dispose();
@@ -300,14 +300,14 @@ public class PesquisarRelatorio extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
-		 * returns the the previous window, which is VisualizarRelatorios.
+		 * returns the the previous window, which is ShowReceipt.
 		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					VisualizarRelatorios frame = new VisualizarRelatorios();
+					ShowReceipt frame = new ShowReceipt();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 					dispose();

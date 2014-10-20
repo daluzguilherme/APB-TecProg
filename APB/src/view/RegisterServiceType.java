@@ -1,5 +1,5 @@
 /**
- * CadastrarServicoPrestado
+ * RegisterProvidedService
  * This class provides a GUI to save informations 
  * of a service that a barber did.
  */
@@ -29,7 +29,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @SuppressWarnings("serial")
-public class CadastrarTipoServico extends JFrame {
+public class RegisterServiceType extends JFrame {
 
 	private JPanel contentPane;
 	private static String nomeTemp;
@@ -39,7 +39,7 @@ public class CadastrarTipoServico extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastrarTipoServico frame = new CadastrarTipoServico();
+					RegisterServiceType frame = new RegisterServiceType();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class CadastrarTipoServico extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public CadastrarTipoServico() {
+	public RegisterServiceType() {
 		setTitle("Tipo de Servi\u00E7o");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 300);
@@ -91,7 +91,7 @@ public class CadastrarTipoServico extends JFrame {
 		
 		/*
 		 * Add a mouse clicked event. When the Novo Button is clicked, it goes
-		 * to a new window, which is NovoTipoServico, and dispose this one
+		 * to a new window, which is NewServiceType, and dispose this one
 		 * that is not needed.
 		 */
 		JButton btnNovo = new JButton("Novo");
@@ -100,7 +100,7 @@ public class CadastrarTipoServico extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 
 				dispose();
-				NovoTipoServico frame = new NovoTipoServico();
+				NewServiceType frame = new NewServiceType();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 
@@ -111,7 +111,7 @@ public class CadastrarTipoServico extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Alterar Button is clicked, it goes
-		 * to a new window, which is AlterarTipoServico, and dispose this one
+		 * to a new window, which is AlterServiceType, and dispose this one
 		 * that is not needed. A temporary value of the TipoServico model class 
 		 * is set here to be used in the new window displayed.
 		 */
@@ -122,7 +122,7 @@ public class CadastrarTipoServico extends JFrame {
 				try {
 					ServiceType.setTempNome(modelo.getValueAt(
 							table.getSelectedRow(), 0).toString());
-					AlterarTipoServico frame = new AlterarTipoServico();
+					AlterServiceType frame = new AlterServiceType();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 					dispose();
@@ -168,7 +168,7 @@ public class CadastrarTipoServico extends JFrame {
 					}
 
 					dispose();
-					CadastrarTipoServico frame = new CadastrarTipoServico();
+					RegisterServiceType frame = new RegisterServiceType();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 				}
@@ -180,14 +180,14 @@ public class CadastrarTipoServico extends JFrame {
 		
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
-		 * returns the the previous window, which is Administrativo.
+		 * returns the the previous window, which is Administrative.
 		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setBounds(380, 228, 94, 23);
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				Administrativo frame = new Administrativo();
+				Administrative frame = new Administrative();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}

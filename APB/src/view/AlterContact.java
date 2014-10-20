@@ -1,5 +1,5 @@
 /**
- * AlterarContato
+ * AlterContact
  * This class provides a GUI to change information from the address 
  * book of possible barbers interested in working in the barber shop.
  */
@@ -26,7 +26,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @SuppressWarnings("serial")
-public class AlterarContato extends JFrame {
+public class AlterContact extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldNome;
@@ -39,7 +39,7 @@ public class AlterarContato extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AlterarContato frame = new AlterarContato();
+					AlterContact frame = new AlterContact();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class AlterarContato extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public AlterarContato() {
+	public AlterContact() {
 		setTitle("Alterar Contato");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 225);
@@ -131,7 +131,7 @@ public class AlterarContato extends JFrame {
 							+ " foi alterado com sucesso");
 
 					dispose();
-					CadastrarAgenda frame = new CadastrarAgenda();
+					RegisterAddressBook frame = new RegisterAddressBook();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 				} catch (BarberException e1) {
@@ -147,7 +147,7 @@ public class AlterarContato extends JFrame {
 
 		/*
 		 * Add an action performed event. When the Voltar Button is clicked, it
-		 * returns the the previous window, which is CadastrarAgenda.
+		 * returns the the previous window, which is RegisterAddressBook.
 		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
@@ -155,7 +155,7 @@ public class AlterarContato extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 
 				dispose();
-				CadastrarAgenda frame = new CadastrarAgenda();
+				RegisterAddressBook frame = new RegisterAddressBook();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}

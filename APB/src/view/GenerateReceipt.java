@@ -1,5 +1,5 @@
 /**
- * GerarRecibo
+ * GenerateReceipt
  * This class provides a GUI to generate a receipt of all 
  * the services done by a barber in the current day of work.
  */
@@ -36,7 +36,7 @@ import java.awt.event.MouseEvent;
 import com.javadocx.CreateDocx;
 
 @SuppressWarnings("serial")
-public class GerarRecibo extends JFrame {
+public class GenerateReceipt extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldDataInicial;
@@ -115,7 +115,7 @@ public class GerarRecibo extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GerarRecibo frame = new GerarRecibo();
+					GenerateReceipt frame = new GenerateReceipt();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -125,7 +125,7 @@ public class GerarRecibo extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public GerarRecibo() throws ParseException {
+	public GenerateReceipt() throws ParseException {
 		setTitle("Gerar Recibo");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 348, 264);
@@ -173,7 +173,7 @@ public class GerarRecibo extends JFrame {
 		contentPane.add(lblDataFinal);
 
 		/*
-		 * Add a mouse clicked event. When the GerarRecibo Button is clicked, it
+		 * Add a mouse clicked event. When the GenerateReceipt Button is clicked, it
 		 * generates a receipt with all the services informations of the day of
 		 * that one barber chosen in the combo box.
 		 */
@@ -272,7 +272,7 @@ public class GerarRecibo extends JFrame {
 								+ " - "
 								+ ConverterDataParaABNTSemBarra(dataFinalIso));
 
-						GerarRecibo frame = new GerarRecibo();
+						GenerateReceipt frame = new GenerateReceipt();
 						frame.setVisible(true);
 						frame.setLocationRelativeTo(null);
 						dispose();
@@ -294,14 +294,14 @@ public class GerarRecibo extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
-		 * returns the the previous window, which is Administrativo.
+		 * returns the the previous window, which is Administrative.
 		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				Administrativo frame = new Administrativo();
+				Administrative frame = new Administrative();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}

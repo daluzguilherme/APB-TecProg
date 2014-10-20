@@ -28,7 +28,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import view.PesquisarRelatorio;
+import view.SearchReceipt;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -42,7 +42,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import exception.ReportException;
 
 @SuppressWarnings("serial")
-public class VisualizarRelatorios extends JFrame {
+public class ShowReceipt extends JFrame {
 
 	private JPanel contentPane;
 	private double total = 0;
@@ -61,7 +61,7 @@ public class VisualizarRelatorios extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VisualizarRelatorios frame = new VisualizarRelatorios();
+					ShowReceipt frame = new ShowReceipt();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					mostrarMensagemDeErro(e.getMessage());
@@ -71,7 +71,7 @@ public class VisualizarRelatorios extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public VisualizarRelatorios() throws SQLException, ReportException,
+	public ShowReceipt() throws SQLException, ReportException,
 			NullPointerException, ParseException {
 		setTitle("Relat\u00F3rios");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -112,9 +112,9 @@ public class VisualizarRelatorios extends JFrame {
 		 */
 		Report relatorio = new Report();
 
-		if (PesquisarRelatorio.tipoBusca == 1) {
+		if (SearchReceipt.tipoBusca == 1) {
 
-			relatorio.setBarbeiro(PesquisarRelatorio.barbeiro);
+			relatorio.setBarbeiro(SearchReceipt.barbeiro);
 
 			ResultSet rs = relatorioController.pesquisarPorBarbeiro(relatorio);
 
@@ -158,10 +158,10 @@ public class VisualizarRelatorios extends JFrame {
 				valorTotalDoServico = 0;
 			}
 		}
-		if (PesquisarRelatorio.tipoBusca == 2) {
+		if (SearchReceipt.tipoBusca == 2) {
 
-			relatorio.setBarbeiro(PesquisarRelatorio.barbeiro);
-			relatorio.setTipoServico(PesquisarRelatorio.servico);
+			relatorio.setBarbeiro(SearchReceipt.barbeiro);
+			relatorio.setTipoServico(SearchReceipt.servico);
 
 			ResultSet rs = relatorioController
 					.pesquisarPorBarbeiroEServico(relatorio);
@@ -207,11 +207,11 @@ public class VisualizarRelatorios extends JFrame {
 				valorTotalDoServico = 0;
 			}
 		}
-		if (PesquisarRelatorio.tipoBusca == 3) {
+		if (SearchReceipt.tipoBusca == 3) {
 
-			relatorio.setBarbeiro(PesquisarRelatorio.barbeiro);
-			relatorio.setDataFinal(PesquisarRelatorio.dataFinal);
-			relatorio.setDataInicial(PesquisarRelatorio.dataInicial);
+			relatorio.setBarbeiro(SearchReceipt.barbeiro);
+			relatorio.setDataFinal(SearchReceipt.dataFinal);
+			relatorio.setDataInicial(SearchReceipt.dataInicial);
 
 			ResultSet rs = relatorioController
 					.pesquisarPorDataEBarbeiro(relatorio);
@@ -257,12 +257,12 @@ public class VisualizarRelatorios extends JFrame {
 				valorTotalDoServico = 0;
 			}
 		}
-		if (PesquisarRelatorio.tipoBusca == 4) {
+		if (SearchReceipt.tipoBusca == 4) {
 
-			relatorio.setBarbeiro(PesquisarRelatorio.barbeiro);
-			relatorio.setTipoServico(PesquisarRelatorio.servico);
-			relatorio.setDataFinal(PesquisarRelatorio.dataFinal);
-			relatorio.setDataInicial(PesquisarRelatorio.dataInicial);
+			relatorio.setBarbeiro(SearchReceipt.barbeiro);
+			relatorio.setTipoServico(SearchReceipt.servico);
+			relatorio.setDataFinal(SearchReceipt.dataFinal);
+			relatorio.setDataInicial(SearchReceipt.dataInicial);
 
 			ResultSet rs = relatorioController
 					.pesquisarPorDataBarbeiroEServico(relatorio);
@@ -309,9 +309,9 @@ public class VisualizarRelatorios extends JFrame {
 
 			}
 		}
-		if (PesquisarRelatorio.tipoBusca == 5) {
+		if (SearchReceipt.tipoBusca == 5) {
 
-			relatorio.setTipoServico(PesquisarRelatorio.servico);
+			relatorio.setTipoServico(SearchReceipt.servico);
 
 			ResultSet rs = relatorioController.pesquisarPorServico(relatorio);
 
@@ -356,11 +356,11 @@ public class VisualizarRelatorios extends JFrame {
 				valorTotalDoServico = 0;
 			}
 		}
-		if (PesquisarRelatorio.tipoBusca == 6) {
+		if (SearchReceipt.tipoBusca == 6) {
 
-			relatorio.setTipoServico(PesquisarRelatorio.servico);
-			relatorio.setDataFinal(PesquisarRelatorio.dataFinal);
-			relatorio.setDataInicial(PesquisarRelatorio.dataInicial);
+			relatorio.setTipoServico(SearchReceipt.servico);
+			relatorio.setDataFinal(SearchReceipt.dataFinal);
+			relatorio.setDataInicial(SearchReceipt.dataInicial);
 
 			ResultSet rs = relatorioController
 					.pesquisarPorDataEServico(relatorio);
@@ -406,10 +406,10 @@ public class VisualizarRelatorios extends JFrame {
 				valorTotalDoServico = 0;
 			}
 		}
-		if (PesquisarRelatorio.tipoBusca == 7) {
+		if (SearchReceipt.tipoBusca == 7) {
 
-			relatorio.setDataFinal(PesquisarRelatorio.dataFinal);
-			relatorio.setDataInicial(PesquisarRelatorio.dataInicial);
+			relatorio.setDataFinal(SearchReceipt.dataFinal);
+			relatorio.setDataInicial(SearchReceipt.dataInicial);
 
 			ResultSet rs = relatorioController.pesquisarPorData(relatorio);
 
@@ -457,7 +457,7 @@ public class VisualizarRelatorios extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Pesquisar Button is clicked, it
-		 * goes to a new window, which is PesquisarRelatorio, and dispose this
+		 * goes to a new window, which is SearchReceipt, and dispose this
 		 * one that is not needed.
 		 */
 		JButton btnPesquisar = new JButton("Pesquisar");
@@ -465,8 +465,8 @@ public class VisualizarRelatorios extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					PesquisarRelatorio.tipoBusca = 0;
-					PesquisarRelatorio frame = new PesquisarRelatorio();
+					SearchReceipt.tipoBusca = 0;
+					SearchReceipt frame = new SearchReceipt();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 					dispose();
@@ -480,13 +480,13 @@ public class VisualizarRelatorios extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
-		 * returns the the previous window, which is MenuPrincipal.
+		 * returns the the previous window, which is MainMenu.
 		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MenuPrincipal frame = new MenuPrincipal();
+				MainMenu frame = new MainMenu();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 				dispose();
@@ -520,7 +520,7 @@ public class VisualizarRelatorios extends JFrame {
 		/*
 		 * If any type of search is selected, it will create a graphic.
 		 */
-		if (PesquisarRelatorio.tipoBusca != 0) {
+		if (SearchReceipt.tipoBusca != 0) {
 			try {
 				CategoryDataset cds;
 				cds = createDatasetRelatorio();
@@ -558,7 +558,7 @@ public class VisualizarRelatorios extends JFrame {
 		btnGrafico.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				if (PesquisarRelatorio.tipoBusca != 0) {
+				if (SearchReceipt.tipoBusca != 0) {
 					painelGrafico.setVisible(true);
 					scrollPane.setVisible(false);
 				} else
@@ -619,54 +619,54 @@ public class VisualizarRelatorios extends JFrame {
 		Report relatorio = new Report();
 		ResultSet rs = null;
 
-		if (PesquisarRelatorio.tipoBusca != 0) {
-			if (PesquisarRelatorio.tipoBusca == 1) {
-				relatorio.setBarbeiro(PesquisarRelatorio.barbeiro);
+		if (SearchReceipt.tipoBusca != 0) {
+			if (SearchReceipt.tipoBusca == 1) {
+				relatorio.setBarbeiro(SearchReceipt.barbeiro);
 
 				rs = ReportController.getInstance().pesquisarPorBarbeiro(
 						relatorio);
 			}
-			if (PesquisarRelatorio.tipoBusca == 2) {
-				relatorio.setBarbeiro(PesquisarRelatorio.barbeiro);
-				relatorio.setTipoServico(PesquisarRelatorio.servico);
+			if (SearchReceipt.tipoBusca == 2) {
+				relatorio.setBarbeiro(SearchReceipt.barbeiro);
+				relatorio.setTipoServico(SearchReceipt.servico);
 
 				rs = ReportController.getInstance()
 						.pesquisarPorBarbeiroEServico(relatorio);
 			}
-			if (PesquisarRelatorio.tipoBusca == 3) {
-				relatorio.setBarbeiro(PesquisarRelatorio.barbeiro);
-				relatorio.setDataFinal(PesquisarRelatorio.dataFinal);
-				relatorio.setDataInicial(PesquisarRelatorio.dataInicial);
+			if (SearchReceipt.tipoBusca == 3) {
+				relatorio.setBarbeiro(SearchReceipt.barbeiro);
+				relatorio.setDataFinal(SearchReceipt.dataFinal);
+				relatorio.setDataInicial(SearchReceipt.dataInicial);
 
 				rs = ReportController.getInstance()
 						.pesquisarPorDataEBarbeiro(relatorio);
 			}
-			if (PesquisarRelatorio.tipoBusca == 4) {
-				relatorio.setBarbeiro(PesquisarRelatorio.barbeiro);
-				relatorio.setTipoServico(PesquisarRelatorio.servico);
-				relatorio.setDataFinal(PesquisarRelatorio.dataFinal);
-				relatorio.setDataInicial(PesquisarRelatorio.dataInicial);
+			if (SearchReceipt.tipoBusca == 4) {
+				relatorio.setBarbeiro(SearchReceipt.barbeiro);
+				relatorio.setTipoServico(SearchReceipt.servico);
+				relatorio.setDataFinal(SearchReceipt.dataFinal);
+				relatorio.setDataInicial(SearchReceipt.dataInicial);
 
 				rs = ReportController.getInstance()
 						.pesquisarPorDataBarbeiroEServico(relatorio);
 			}
-			if (PesquisarRelatorio.tipoBusca == 5) {
-				relatorio.setTipoServico(PesquisarRelatorio.servico);
+			if (SearchReceipt.tipoBusca == 5) {
+				relatorio.setTipoServico(SearchReceipt.servico);
 
 				rs = ReportController.getInstance().pesquisarPorServico(
 						relatorio);
 			}
-			if (PesquisarRelatorio.tipoBusca == 6) {
-				relatorio.setTipoServico(PesquisarRelatorio.servico);
-				relatorio.setDataFinal(PesquisarRelatorio.dataFinal);
-				relatorio.setDataInicial(PesquisarRelatorio.dataInicial);
+			if (SearchReceipt.tipoBusca == 6) {
+				relatorio.setTipoServico(SearchReceipt.servico);
+				relatorio.setDataFinal(SearchReceipt.dataFinal);
+				relatorio.setDataInicial(SearchReceipt.dataInicial);
 
 				rs = ReportController.getInstance()
 						.pesquisarPorDataEServico(relatorio);
 			}
-			if (PesquisarRelatorio.tipoBusca == 7) {
-				relatorio.setDataFinal(PesquisarRelatorio.dataFinal);
-				relatorio.setDataInicial(PesquisarRelatorio.dataInicial);
+			if (SearchReceipt.tipoBusca == 7) {
+				relatorio.setDataFinal(SearchReceipt.dataFinal);
+				relatorio.setDataInicial(SearchReceipt.dataInicial);
 
 				rs = ReportController.getInstance().pesquisarPorData(
 						relatorio);

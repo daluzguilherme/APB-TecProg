@@ -1,5 +1,5 @@
 /**
- * AlterarBarbeiro
+ * AlterBarber
  * This class provides a GUI to change the chosen 
  * barber information.
  */
@@ -27,7 +27,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @SuppressWarnings("serial")
-public class AlterarBarbeiro extends JFrame {
+public class AlterBarber extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldNome;
@@ -42,7 +42,7 @@ public class AlterarBarbeiro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AlterarBarbeiro frame = new AlterarBarbeiro();
+					AlterBarber frame = new AlterBarber();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +52,7 @@ public class AlterarBarbeiro extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public AlterarBarbeiro() {
+	public AlterBarber() {
 
 		setTitle("Alterar Barbeiro");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -158,7 +158,7 @@ public class AlterarBarbeiro extends JFrame {
 							+ " foi alterado com sucesso");
 
 					dispose();
-					CadastrarBarbeiro frame = new CadastrarBarbeiro();
+					RegisterBarber frame = new RegisterBarber();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 
@@ -190,13 +190,13 @@ public class AlterarBarbeiro extends JFrame {
 		
 		/*
 		 * Add an action performed event. When the Voltar Button is
-		 * clicked, it returns the the previous window, which is CadastrarBarbeiro.
+		 * clicked, it returns the the previous window, which is RegisterBarber.
 		 */
 		JButton buttonVoltar = new JButton("Voltar");
 		buttonVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				CadastrarBarbeiro frame = new CadastrarBarbeiro();
+				RegisterBarber frame = new RegisterBarber();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}

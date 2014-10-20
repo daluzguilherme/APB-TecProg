@@ -1,5 +1,5 @@
 /**
- * CadastrarBarbeiro
+ * RegisterBarber
  * This class provides a GUI to save informations 
  * of a barber that is working in the barber shop.
  */
@@ -27,7 +27,7 @@ import control.BarberController;
 import exception.BarberException;
 
 @SuppressWarnings("serial")
-public class CadastrarBarbeiro extends JFrame {
+public class RegisterBarber extends JFrame {
 
 	private JPanel contentPane;
 
@@ -36,7 +36,7 @@ public class CadastrarBarbeiro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastrarBarbeiro frame = new CadastrarBarbeiro();
+					RegisterBarber frame = new RegisterBarber();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
@@ -47,7 +47,7 @@ public class CadastrarBarbeiro extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public CadastrarBarbeiro() {
+	public RegisterBarber() {
 		inicializarComponentes();
 	}
 
@@ -101,16 +101,16 @@ public class CadastrarBarbeiro extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Novo Button is clicked, it
-		 * creates a new window, which is NovoBarbeiro.
+		 * creates a new window, which is NewBarber.
 		 */
 		JButton botaoNovo = new JButton("Novo");
 		botaoNovo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				NovoBarbeiro frame;
+				NewBarber frame;
 				try {
-					frame = new NovoBarbeiro();
+					frame = new NewBarber();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 				} catch (ParseException e1) {
@@ -134,7 +134,7 @@ public class CadastrarBarbeiro extends JFrame {
 				try {
 					Barber.setTempNome(modelo.getValueAt(
 							table.getSelectedRow(), 0).toString());
-					AlterarBarbeiro frame = new AlterarBarbeiro();
+					AlterBarber frame = new AlterBarber();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 					dispose();
@@ -170,7 +170,7 @@ public class CadastrarBarbeiro extends JFrame {
 						barbeiroController.excluir(barbeiro);
 
 						dispose();
-						CadastrarBarbeiro frame = new CadastrarBarbeiro();
+						RegisterBarber frame = new RegisterBarber();
 						frame.setVisible(true);
 						frame.setLocationRelativeTo(null);
 					}
@@ -188,13 +188,13 @@ public class CadastrarBarbeiro extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
-		 * returns the the previous window, which is Administrativo.
+		 * returns the the previous window, which is Administrative.
 		 */
 		JButton botaoVoltar = new JButton("Voltar");
 		botaoVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				Administrativo frame = new Administrativo();
+				Administrative frame = new Administrative();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 				dispose();

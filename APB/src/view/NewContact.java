@@ -1,5 +1,5 @@
 /**
- * NovoContato
+ * NewContact
  * This class provides a GUI to save a new contact 
  * information in the address book.
  */
@@ -28,7 +28,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 @SuppressWarnings("serial")
-public class NovoContato extends JFrame {
+public class NewContact extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldNome;
@@ -40,7 +40,7 @@ public class NovoContato extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					NovoContato frame = new NovoContato();
+					NewContact frame = new NewContact();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +50,7 @@ public class NovoContato extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public NovoContato() throws ParseException {
+	public NewContact() throws ParseException {
 		inicializarComponentes();
 	}
 
@@ -95,7 +95,7 @@ public class NovoContato extends JFrame {
 					textFieldDescricao.setText("");
 
 					dispose();
-					CadastrarAgenda frame = new CadastrarAgenda();
+					RegisterAddressBook frame = new RegisterAddressBook();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 
@@ -113,14 +113,14 @@ public class NovoContato extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
-		 * returns the the previous window, which is CadastrarBarbeiro.
+		 * returns the the previous window, which is RegisterBarber.
 		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				CadastrarAgenda frame = new CadastrarAgenda();
+				RegisterAddressBook frame = new RegisterAddressBook();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}

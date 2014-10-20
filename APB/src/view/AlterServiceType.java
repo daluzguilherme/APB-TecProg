@@ -1,5 +1,5 @@
 /**
- * AlterarTipoServico
+ * AlterServiceType
  * This class provides a GUI to change the chosen 
  * type of service information.
  */
@@ -26,7 +26,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @SuppressWarnings("serial")
-public class AlterarTipoServico extends JFrame {
+public class AlterServiceType extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textFieldNome;
@@ -38,7 +38,7 @@ public class AlterarTipoServico extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AlterarTipoServico frame = new AlterarTipoServico();
+					AlterServiceType frame = new AlterServiceType();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,7 +48,7 @@ public class AlterarTipoServico extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public AlterarTipoServico() {
+	public AlterServiceType() {
 		setTitle("Alterar Tipo Servico");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 436, 163);
@@ -119,7 +119,7 @@ public class AlterarTipoServico extends JFrame {
 							+ " foi alterado com sucesso");
 
 					dispose();
-					CadastrarTipoServico frame = new CadastrarTipoServico();
+					RegisterServiceType frame = new RegisterServiceType();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 				} catch (ServiceException e1) {
@@ -148,13 +148,13 @@ public class AlterarTipoServico extends JFrame {
 
 		/*
 		 * Add an action performed event. When the Voltar Button is clicked, it
-		 * returns the the previous window, which is CadastrarTipoServico.
+		 * returns the the previous window, which is RegisterServiceType.
 		 */
 		JButton buttonVoltar = new JButton("Voltar");
 		buttonVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				CadastrarTipoServico frame = new CadastrarTipoServico();
+				RegisterServiceType frame = new RegisterServiceType();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}

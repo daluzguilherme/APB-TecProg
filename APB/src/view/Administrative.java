@@ -1,5 +1,5 @@
 /**
- * Administrativo
+ * Administrative
  * This class provides a GUI to access management functions
  * of the programm.
  */
@@ -23,7 +23,7 @@ import java.text.ParseException;
 
 
 @SuppressWarnings("serial")
-public class Administrativo extends JFrame {
+public class Administrative extends JFrame {
 
 	private JPanel contentPane;
 
@@ -32,7 +32,7 @@ public class Administrativo extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Administrativo frame = new Administrativo();
+					Administrative frame = new Administrative();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
@@ -43,7 +43,7 @@ public class Administrativo extends JFrame {
 	}
 
 	/* Create the frame. */
-	public Administrativo() {
+	public Administrative() {
 		setTitle("APB");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 418, 238);
@@ -54,7 +54,7 @@ public class Administrativo extends JFrame {
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(UIManager
-				.getBorder("TitledBorder.border"), "Administrativo",
+				.getBorder("TitledBorder.border"), "Administrative",
 				TitledBorder.CENTER, TitledBorder.TOP, null, null));
 		panel.setBounds(10, 11, 379, 183);
 		contentPane.add(panel);
@@ -67,7 +67,7 @@ public class Administrativo extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				CadastrarBarbeiro frame = new CadastrarBarbeiro();
+				RegisterBarber frame = new RegisterBarber();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}
@@ -81,7 +81,7 @@ public class Administrativo extends JFrame {
 		btnTipoServico.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				CadastrarTipoServico frame = new CadastrarTipoServico();
+				RegisterServiceType frame = new RegisterServiceType();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}
@@ -96,7 +96,7 @@ public class Administrativo extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				CadastrarAgenda frame = new CadastrarAgenda();
+				RegisterAddressBook frame = new RegisterAddressBook();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}
@@ -110,7 +110,7 @@ public class Administrativo extends JFrame {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				MenuPrincipal frame = new MenuPrincipal();
+				MainMenu frame = new MainMenu();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}
@@ -125,9 +125,9 @@ public class Administrativo extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				GerarRecibo frame = null;
+				GenerateReceipt frame = null;
 				try {
-					frame = new GerarRecibo();
+					frame = new GenerateReceipt();
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

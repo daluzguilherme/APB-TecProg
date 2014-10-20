@@ -1,5 +1,5 @@
 /**
- * PesquisarServicoPrestado
+ * SearchProvidedService
  * This class provides a GUI to search all services
  *  done by a certain barber.
  */
@@ -35,7 +35,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 @SuppressWarnings("serial")
-public class PesquisarServicoPrestado extends JFrame {
+public class SearchProvidedService extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -47,7 +47,7 @@ public class PesquisarServicoPrestado extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PesquisarServicoPrestado frame = new PesquisarServicoPrestado();
+					SearchProvidedService frame = new SearchProvidedService();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,7 +57,7 @@ public class PesquisarServicoPrestado extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public PesquisarServicoPrestado() {
+	public SearchProvidedService() {
 		inicializarComponentes();
 	}
 
@@ -205,7 +205,7 @@ public class PesquisarServicoPrestado extends JFrame {
 						servicoController.excluir(servico);
 
 						dispose();
-						CadastrarServicoPrestado frame = new CadastrarServicoPrestado();
+						RegisterProvidedService frame = new RegisterProvidedService();
 						frame.setVisible(true);
 						frame.setLocationRelativeTo(null);
 					}
@@ -226,14 +226,14 @@ public class PesquisarServicoPrestado extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
-		 * returns the the previous window, which is CadastrarServicoPrestado.
+		 * returns the the previous window, which is RegisterProvidedService.
 		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				CadastrarServicoPrestado frame = new CadastrarServicoPrestado();
+				RegisterProvidedService frame = new RegisterProvidedService();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}

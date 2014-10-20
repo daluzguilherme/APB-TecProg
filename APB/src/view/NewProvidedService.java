@@ -1,5 +1,5 @@
 /**
- * NovoServicoPrestado
+ * NewProvidedService
  * This class provides a GUI to save a 
  * new service finished by a barber.
  */
@@ -38,7 +38,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 
 @SuppressWarnings("serial")
-public class NovoServicoPrestado extends JFrame {
+public class NewProvidedService extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textValor;
@@ -48,7 +48,7 @@ public class NovoServicoPrestado extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					NovoServicoPrestado frame = new NovoServicoPrestado();
+					NewProvidedService frame = new NewProvidedService();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +59,7 @@ public class NovoServicoPrestado extends JFrame {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	/* Public method to create the frame. */
-	public NovoServicoPrestado() {
+	public NewProvidedService() {
 		setTitle("Criar nova presta\u00E7\u00E3o de servi\u00E7o");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 474, 214);
@@ -238,14 +238,14 @@ public class NovoServicoPrestado extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
-		 * returns the the previous window, which is CadastrarBarbeiro.
+		 * returns the the previous window, which is RegisterBarber.
 		 */
 		JButton botaoVoltar = new JButton("Voltar");
 		botaoVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				CadastrarServicoPrestado frame = new CadastrarServicoPrestado();
+				RegisterProvidedService frame = new RegisterProvidedService();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}

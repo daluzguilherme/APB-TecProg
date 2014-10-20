@@ -1,5 +1,5 @@
 /**
- * CadastrarServicoPrestado
+ * RegisterProvidedService
  * This class provides a GUI to save informations 
  * of a service that a barber did.
  */
@@ -30,7 +30,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class CadastrarServicoPrestado extends JFrame {
+public class RegisterProvidedService extends JFrame {
 
 	private JPanel contentPane;
 
@@ -39,7 +39,7 @@ public class CadastrarServicoPrestado extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastrarServicoPrestado frame = new CadastrarServicoPrestado();
+					RegisterProvidedService frame = new RegisterProvidedService();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class CadastrarServicoPrestado extends JFrame {
 	}
 
 	/* Public method to create the frame. */
-	public CadastrarServicoPrestado() {
+	public RegisterProvidedService() {
 		setTitle("Servi\u00E7os Prestados");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 300);
@@ -97,7 +97,7 @@ public class CadastrarServicoPrestado extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Novo Button is clicked, it goes
-		 * to a new window, which is NovoServicoPrestado, and dispose this one
+		 * to a new window, which is NewProvidedService, and dispose this one
 		 * that is not needed.
 		 */
 		JButton btnNovo = new JButton("Novo");
@@ -105,7 +105,7 @@ public class CadastrarServicoPrestado extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				NovoServicoPrestado frame = new NovoServicoPrestado();
+				NewProvidedService frame = new NewProvidedService();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}
@@ -115,14 +115,14 @@ public class CadastrarServicoPrestado extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Pesquisar Button is clicked, it
-		 * goes to a new window, which is PesquisarServicoPrestado, and dispose
+		 * goes to a new window, which is SearchProvidedService, and dispose
 		 * this one that is not needed.
 		 */
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				PesquisarServicoPrestado frame = new PesquisarServicoPrestado();
+				SearchProvidedService frame = new SearchProvidedService();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 				dispose();
@@ -163,7 +163,7 @@ public class CadastrarServicoPrestado extends JFrame {
 						servicoController.excluir(servico);
 
 						dispose();
-						CadastrarServicoPrestado frame = new CadastrarServicoPrestado();
+						RegisterProvidedService frame = new RegisterProvidedService();
 						frame.setVisible(true);
 						frame.setLocationRelativeTo(null);
 					}
@@ -184,14 +184,14 @@ public class CadastrarServicoPrestado extends JFrame {
 
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
-		 * returns the the previous window, which is MenuPrincipal.
+		 * returns the the previous window, which is MainMenu.
 		 */
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				MenuPrincipal frame = new MenuPrincipal();
+				MainMenu frame = new MainMenu();
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);
 			}
