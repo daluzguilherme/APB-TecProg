@@ -39,57 +39,59 @@ import com.javadocx.CreateDocx;
 public class GenerateReceipt extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textFieldDataInicial;
-	private JTextField textFieldDataFinal;
-	private double total = 0;
-	private String numero;
+	private JTextField textFieldInitialDate;
+	private JTextField textFieldFinalDate;
+	private double totalValue = 0;
+	private String valueFromDataBase;
 
 	/* Defining some static information to be shown in the receipt. */
-	private static String RAZAO_SOCIAL = "BARBEARIA DO ONOFRE LTDA - ME";
-	private static String RECIBO_PAGAMENTO = "RECIBO PAGAMENTO ALUGUEL BENS MÓVEIS";
-	private static String LINHA = "____________________________________________________________";
-	private static String LOCAL_E_DATA = "                    Brasília - DF  ____/____/________";
+	private static final String SOCIAL_REASON = "BARBEARIA DO ONOFRE LTDA - ME";
+	private static final String PAYMENT_RECEIPT = "RECIBO PAGAMENTO ALUGUEL BENS MÓVEIS";
+	private static final String SIGNATURE_LINE = "____________________________________________________________";
+	private static final String CITY_NAME_AND_DATE = "                    Brasília - DF  ____/____/________";
 
 	/**
 	 * This method converts a date information to Brazilian ABNT format.
 	 * 
-	 * @param data
+	 * @param dateToConvert
 	 *            This variable carries a date information to be formated.
-	 * @return databr This variable returns a date information in the Brazilian
-	 *         ABNT format.
+	 * @return ABNTDateValue
+	 * 			  This variable returns a date information in the Brazilian
+	 *            ABNT format.
 	 * @throws ParseException
 	 */
-	public String ConverterDataParaABNT(String data) throws ParseException {
+	public String ConvertDateToABNTFormat(String dateToConvert) throws ParseException {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date dataISO = sdf.parse(data);
+		SimpleDateFormat ISODateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date ISODateValue = ISODateFormat.parse(dateToConvert);
 
-		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
-		String databr = sdf2.format(dataISO);
+		SimpleDateFormat ABNTDateFormart = new SimpleDateFormat("dd/MM/yyyy");
+		String ABNTDateValue = ABNTDateFormart.format(ISODateValue);
 
-		return databr;
+		return ABNTDateValue;
 	}
 
 	/**
 	 * This method converts a date information to Brazilian ABNT format without
 	 * bars.
 	 * 
-	 * @param data
+	 * @param dateToConvert
 	 *            This variable carries a date information to be formated.
-	 * @return databr This variable returns a date information in the Brazilian
-	 *         ABNT format without bars.
+	 * @return ABNTDateValueWithoutBars 
+	 *            This variable returns a date information in the Brazilian
+	 *            ABNT format without bars.
 	 * @throws ParseException
 	 */
-	public String ConverterDataParaABNTSemBarra(String data)
+	public String ConvertDateToABNTFormatWithoutBars(String dateToConvert)
 			throws ParseException {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date dataISO = sdf.parse(data);
+		SimpleDateFormat ISODateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date ISODateValue = ISODateFormat.parse(dateToConvert);
 
-		SimpleDateFormat sdf2 = new SimpleDateFormat("dd-MM-yyyy");
-		String databr = sdf2.format(dataISO);
+		SimpleDateFormat ABNTDateFormartWithoutBars = new SimpleDateFormat("dd-MM-yyyy");
+		String ABNTDateValueWithoutBars = ABNTDateFormartWithoutBars.format(ISODateValue);
 
-		return databr;
+		return ABNTDateValueWithoutBars;
 	}
 
 	/**
@@ -154,19 +156,19 @@ public class GenerateReceipt extends JFrame {
 
 		final MaskFormatter mascaraFormatoData = new MaskFormatter("##/##/####");
 
-		textFieldDataInicial = new JFormattedTextField(mascaraFormatoData);
-		textFieldDataInicial.setBounds(10, 110, 124, 20);
-		contentPane.add(textFieldDataInicial);
-		textFieldDataInicial.setColumns(10);
+		textFieldInitialDate = new JFormattedTextField(mascaraFormatoData);
+		textFieldInitialDate.setBounds(10, 110, 124, 20);
+		contentPane.add(textFieldInitialDate);
+		textFieldInitialDate.setColumns(10);
 
 		JLabel lblDataDeInicio = new JLabel("Data Inicial");
 		lblDataDeInicio.setBounds(36, 89, 86, 14);
 		contentPane.add(lblDataDeInicio);
 
-		textFieldDataFinal = new JFormattedTextField(mascaraFormatoData);
-		textFieldDataFinal.setBounds(190, 110, 124, 20);
-		contentPane.add(textFieldDataFinal);
-		textFieldDataFinal.setColumns(10);
+		textFieldFinalDate = new JFormattedTextField(mascaraFormatoData);
+		textFieldFinalDate.setBounds(190, 110, 124, 20);
+		contentPane.add(textFieldFinalDate);
+		textFieldFinalDate.setColumns(10);
 
 		JLabel lblDataFinal = new JLabel("Data Final");
 		lblDataFinal.setBounds(215, 89, 86, 14);
@@ -219,9 +221,9 @@ public class GenerateReceipt extends JFrame {
 						paramsAssinaturaBarbeiro.put("jc", "center");
 						paramsAssinaturaBarbeiro.put("b", "single");
 
-						final String dataInicialIso = ConverterDataParaISO(textFieldDataInicial
+						final String dataInicialIso = ConverterDataParaISO(textFieldInitialDate
 								.getText());
-						final String dataFinalIso = ConverterDataParaISO(textFieldDataFinal
+						final String dataFinalIso = ConverterDataParaISO(textFieldFinalDate
 								.getText());
 
 						String[] nome = comboBoxBarbeiros.getSelectedItem()
@@ -231,21 +233,21 @@ public class GenerateReceipt extends JFrame {
 								.pesquisarServicosDoBarbeiro(nome[1],
 										dataInicialIso, dataFinalIso);
 						while (rs.next()) {
-							numero = rs.getString("preco").replace(",", ".");
-							double valor = Double.parseDouble(numero);
-							total = total + (valor / 2);
+							valueFromDataBase = rs.getString("preco").replace(",", ".");
+							double valor = Double.parseDouble(valueFromDataBase);
+							totalValue = totalValue + (valor / 2);
 						}
 
 						DecimalFormat decimal = new DecimalFormat("##0.00");
 
-						String dataInic = textFieldDataInicial.getText();
-						String dataFin = textFieldDataFinal.getText();
+						String dataInic = textFieldInitialDate.getText();
+						String dataFin = textFieldFinalDate.getText();
 
-						String valor = ("VALOR R$ " + decimal.format(total));
+						String valor = ("VALOR R$ " + decimal.format(totalValue));
 
 						String texto = "                    Recebi do Sr. "
 								+ nome[1] + " a importância supra de R$ "
-								+ (decimal.format(total)) + ", "
+								+ (decimal.format(totalValue)) + ", "
 								+ "referente ao Aluguel do período de "
 								+ dataInic + " até " + dataFin
 								+ ", conforme CONTRATO de locação "
@@ -253,18 +255,18 @@ public class GenerateReceipt extends JFrame {
 						String texto2 = "                    Por ser verdade assino o presente RECIBO para"
 								+ " os fins de direitos, de acordo com a lei.";
 
-						docx.addText(RAZAO_SOCIAL, paramsCabeca);
-						docx.addText(RECIBO_PAGAMENTO, paramsTitulo);
+						docx.addText(SOCIAL_REASON, paramsCabeca);
+						docx.addText(PAYMENT_RECEIPT, paramsTitulo);
 						docx.addText(valor, paramsValor);
 						docx.addBreak("line");
 						docx.addText(texto, paramsTexto);
 						docx.addText(texto2, paramsTexto);
-						docx.addText(LOCAL_E_DATA, paramsTexto);
+						docx.addText(CITY_NAME_AND_DATE, paramsTexto);
 						docx.addBreak("line");
-						docx.addText(LINHA, paramsLinhaAssinatura);
-						docx.addText(RAZAO_SOCIAL, paramsTexto4);
+						docx.addText(SIGNATURE_LINE, paramsLinhaAssinatura);
+						docx.addText(SOCIAL_REASON, paramsTexto4);
 						docx.addBreak("line");
-						docx.addText(LINHA, paramsLinhaAssinatura);
+						docx.addText(SIGNATURE_LINE, paramsLinhaAssinatura);
 						docx.addText(nome[1], paramsAssinaturaBarbeiro);
 
 						docx.createDocx("Recibo " + nome[1] + " "
