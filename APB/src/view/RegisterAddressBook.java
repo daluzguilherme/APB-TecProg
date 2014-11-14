@@ -35,8 +35,8 @@ public class RegisterAddressBook extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegisterAddressBook frame = new RegisterAddressBook();
-					frame.setVisible(true);
+					RegisterAddressBook registerAddresBook = new RegisterAddressBook();
+					registerAddresBook.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -61,7 +61,7 @@ public class RegisterAddressBook extends JFrame {
 		/*
 		 * Creating a table to show the address book information.
 		 */
-		final DefaultTableModel modelo = new DefaultTableModel(null,
+		final DefaultTableModel tableModel = new DefaultTableModel(null,
 				new String[] { "Nome", "Telefone", "Descri\u00E7\u00E3o" }) {
 			boolean[] columnEditables = new boolean[] { false, false, false };
 
@@ -70,7 +70,7 @@ public class RegisterAddressBook extends JFrame {
 			}
 		};
 
-		final JTable table = new JTable(modelo);
+		final JTable table = new JTable(tableModel);
 		table.getColumnModel().getColumn(0).setResizable(false);
 		table.getColumnModel().getColumn(1).setResizable(false);
 		table.getColumnModel().getColumn(2).setResizable(false);
@@ -81,18 +81,18 @@ public class RegisterAddressBook extends JFrame {
 		 * address book informations.
 		 */
 		try {
-			AddressBookController agendaController = AddressBookController.getInstance();
-			AddressBook contato = new AddressBook();
-			ResultSet rs = agendaController.mostrarContatosCadastrados(contato);
-			while (rs.next()) {
-				String[] dados = new String[3];
-				dados[0] = rs.getString("nome");
-				dados[1] = rs.getString("telefone");
-				dados[2] = rs.getString("descricao");
-				modelo.addRow(dados);
+			AddressBookController addressBookController = AddressBookController.getInstance();
+			AddressBook addressBookContact = new AddressBook();
+			ResultSet addressBookResultSet = addressBookController.mostrarContatosCadastrados(addressBookContact);
+			while (addressBookResultSet.next()) {
+				String[] addressBookData = new String[3];
+				addressBookData[0] = addressBookResultSet.getString("nome");
+				addressBookData[1] = addressBookResultSet.getString("telefone");
+				addressBookData[2] = addressBookResultSet.getString("descricao");
+				tableModel.addRow(addressBookData);
 			}
 		} catch (SQLException e) {
-			mostrarMensagemDeErro(e.getMessage());
+			showErrorMessage(e.getMessage());
 		}
 
 		scrollPane.setViewportView(table);
@@ -101,69 +101,69 @@ public class RegisterAddressBook extends JFrame {
 		 * Add a mouse clicked event. When the Novo Button is clicked, it
 		 * creates a new window, which is NewContact.
 		 */
-		JButton btnNovo = new JButton("Novo");
-		btnNovo.addMouseListener(new MouseAdapter() {
+		JButton btnRegisterNewContact = new JButton("Novo");
+		btnRegisterNewContact.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				NewContact frame;
+				NewContact newContactWindow;
 				try {
-					frame = new NewContact();
-					frame.setVisible(true);
-					frame.setLocationRelativeTo(null);
+					newContactWindow = new NewContact();
+					newContactWindow.setVisible(true);
+					newContactWindow.setLocationRelativeTo(null);
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
 
 			}
 		});
-		btnNovo.setBounds(455, 24, 94, 23);
-		contentPane.add(btnNovo);
+		btnRegisterNewContact.setBounds(455, 24, 94, 23);
+		contentPane.add(btnRegisterNewContact);
 
 		/*
 		 * Add a mouse clicked event. When the Pesquisar Button is clicked, it
 		 * creates a new window, which is SearchContact.
 		 */
-		JButton btnPesquisar = new JButton("Pesquisar");
-		btnPesquisar.addMouseListener(new MouseAdapter() {
+		JButton btnSearchContact = new JButton("Pesquisar");
+		btnSearchContact.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				SearchContact frame = new SearchContact();
-				frame.setVisible(true);
-				frame.setLocationRelativeTo(null);
+				SearchContact searchContactWindow = new SearchContact();
+				searchContactWindow.setVisible(true);
+				searchContactWindow.setLocationRelativeTo(null);
 			}
 		});
-		btnPesquisar.setBounds(455, 58, 94, 23);
-		contentPane.add(btnPesquisar);
+		btnSearchContact.setBounds(455, 58, 94, 23);
+		contentPane.add(btnSearchContact);
 
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
 		 * returns the the previous window, which is Administrative.
 		 */
-		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.addMouseListener(new MouseAdapter() {
+		JButton btnReturn = new JButton("Voltar");
+		btnReturn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				Administrative frame = new Administrative();
-				frame.setVisible(true);
-				frame.setLocationRelativeTo(null);
+				Administrative administrativeWindow = new Administrative();
+				administrativeWindow.setVisible(true);
+				administrativeWindow.setLocationRelativeTo(null);
 			}
 		});
-		btnVoltar.setBounds(455, 399, 94, 23);
-		contentPane.add(btnVoltar);
+		btnReturn.setBounds(455, 399, 94, 23);
+		contentPane.add(btnReturn);
 	}
 
 	/**
 	 * This method shows an error message.
 	 * 
-	 * @param informacao
+	 * @param errorMessage
 	 *            A String type variable that contains the error message to be
 	 *            shown to the user.
 	 */
-	private void mostrarMensagemDeErro(String informacao) {
-		JOptionPane.showMessageDialog(null, informacao, "Aten��o",
+	private void showErrorMessage(String errorMessage) {
+		JOptionPane.showMessageDialog(null, errorMessage, "Aten��o",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 }
