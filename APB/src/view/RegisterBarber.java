@@ -36,9 +36,9 @@ public class RegisterBarber extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegisterBarber frame = new RegisterBarber();
-					frame.setVisible(true);
-					frame.setLocationRelativeTo(null);
+					RegisterBarber newRegisterBarberWindow = new RegisterBarber();
+					newRegisterBarberWindow.setVisible(true);
+					newRegisterBarberWindow.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -48,13 +48,13 @@ public class RegisterBarber extends JFrame {
 
 	/* Public method to create the frame. */
 	public RegisterBarber() {
-		inicializarComponentes();
+		initializeComponents();
 	}
 
 	/**
 	 * This void method starts all the components.
 	 */
-	public void inicializarComponentes() {
+	public void initializeComponents() {
 		setTitle("Barbeiro");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 678, 490);
@@ -70,31 +70,31 @@ public class RegisterBarber extends JFrame {
 		/*
 		 * Creating a table to show the barber informations.
 		 */
-		final DefaultTableModel modelo = new DefaultTableModel(null,
+		final DefaultTableModel tableModel = new DefaultTableModel(null,
 				new String[] { "Nome", "CPF", "RG", "Telefone", "Cadeira" });
-		final JTable table = new JTable(modelo);
+		final JTable table = new JTable(tableModel);
 
 		/*
 		 * Getting an instance of a barber to populate the table with the its
 		 * informations.
 		 */
 		try {
-			BarberController barbeiroController = BarberController
+			BarberController barberController = BarberController
 					.getInstance();
-			Barber barbeiro = new Barber();
-			ResultSet rs = barbeiroController
-					.mostrarBarbeirosCadastrados(barbeiro);
-			while (rs.next()) {
-				String[] dados = new String[5];
-				dados[0] = rs.getString("nome");
-				dados[1] = rs.getString("cpf");
-				dados[2] = rs.getString("rg");
-				dados[3] = rs.getString("telefone");
-				dados[4] = rs.getString("cadeira");
-				modelo.addRow(dados);
+			Barber barber = new Barber();
+			ResultSet barberResultSet = barberController
+					.mostrarBarbeirosCadastrados(barber);
+			while (barberResultSet.next()) {
+				String[] barberData = new String[5];
+				barberData[0] = barberResultSet.getString("nome");
+				barberData[1] = barberResultSet.getString("cpf");
+				barberData[2] = barberResultSet.getString("rg");
+				barberData[3] = barberResultSet.getString("telefone");
+				barberData[4] = barberResultSet.getString("cadeira");
+				tableModel.addRow(barberData);
 			}
 		} catch (SQLException e) {
-			mostrarMensagemDeErro(e.getMessage());
+			showErrorMessage(e.getMessage());
 		}
 
 		scrollPane.setViewportView(table);
@@ -103,116 +103,116 @@ public class RegisterBarber extends JFrame {
 		 * Add a mouse clicked event. When the Novo Button is clicked, it
 		 * creates a new window, which is NewBarber.
 		 */
-		JButton botaoNovo = new JButton("Novo");
-		botaoNovo.addMouseListener(new MouseAdapter() {
+		JButton btnNewBarber = new JButton("Novo");
+		btnNewBarber.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				NewBarber frame;
+				NewBarber newBarberWindow;
 				try {
-					frame = new NewBarber();
-					frame.setVisible(true);
-					frame.setLocationRelativeTo(null);
+					newBarberWindow = new NewBarber();
+					newBarberWindow.setVisible(true);
+					newBarberWindow.setLocationRelativeTo(null);
 				} catch (ParseException e1) {
 					e1.printStackTrace();
 				}
 
 			}
 		});
-		botaoNovo.setBounds(494, 11, 158, 28);
-		contentPane.add(botaoNovo);
+		btnNewBarber.setBounds(494, 11, 158, 28);
+		contentPane.add(btnNewBarber);
 
 		/*
 		 * Add a mouse clicked event. When the Alterar Button is clicked, it
 		 * goes to a new window, which is AlterarBArbeiro, and dispose this one
 		 * that is not needed.
 		 */
-		JButton botaoAlterar = new JButton("Alterar");
-		botaoAlterar.addMouseListener(new MouseAdapter() {
+		JButton btnUpdate = new JButton("Alterar");
+		btnUpdate.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					Barber.setTempNome(modelo.getValueAt(
+					Barber.setTempNome(tableModel.getValueAt(
 							table.getSelectedRow(), 0).toString());
-					AlterBarber frame = new AlterBarber();
-					frame.setVisible(true);
-					frame.setLocationRelativeTo(null);
+					AlterBarber newAlterBarberWindow = new AlterBarber();
+					newAlterBarberWindow.setVisible(true);
+					newAlterBarberWindow.setLocationRelativeTo(null);
 					dispose();
 				} catch (ArrayIndexOutOfBoundsException e1) {
-					mostrarMensagemDeErro("Selecione um Barbeiro para Alterar");
+					showErrorMessage("Selecione um Barbeiro para Alterar");
 				}
 			}
 		});
-		botaoAlterar.setBounds(494, 50, 158, 28);
-		contentPane.add(botaoAlterar);
+		btnUpdate.setBounds(494, 50, 158, 28);
+		contentPane.add(btnUpdate);
 
 		/*
 		 * Add a mouse clicked event. When the Remover Button is clicked, it
 		 * access the database and remove the barber that is selected in the
 		 * table.
 		 */
-		JButton botaoRemover = new JButton("Remover");
-		botaoRemover.addMouseListener(new MouseAdapter() {
+		JButton btnRemove = new JButton("Remover");
+		btnRemove.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
-					String nome = (String) table.getValueAt(
+					String barberName = (String) table.getValueAt(
 							table.getSelectedRow(), 0);
-					Barber barbeiro = new Barber();
-					barbeiro.setNome(nome);
+					Barber barber = new Barber();
+					barber.setNome(barberName);
 
-					int confirmacao = JOptionPane.showConfirmDialog(null,
-							"Remover " + nome + " da lista?");
+					int confirmation = JOptionPane.showConfirmDialog(null,
+							"Remover " + barberName + " da lista?");
 
-					if (confirmacao == JOptionPane.YES_OPTION) {
-						BarberController barbeiroController = BarberController
+					if (confirmation == JOptionPane.YES_OPTION) {
+						BarberController barberController = BarberController
 								.getInstance();
-						barbeiroController.excluir(barbeiro);
+						barberController.excluir(barber);
 
 						dispose();
-						RegisterBarber frame = new RegisterBarber();
-						frame.setVisible(true);
-						frame.setLocationRelativeTo(null);
+						RegisterBarber newRegisterBarberWindow = new RegisterBarber();
+						newRegisterBarberWindow.setVisible(true);
+						newRegisterBarberWindow.setLocationRelativeTo(null);
 					}
 				} catch (ArrayIndexOutOfBoundsException e) {
-					mostrarMensagemDeErro("Selecione um Barbeiro para remover");
+					showErrorMessage("Selecione um Barbeiro para remover");
 				} catch (BarberException e) {
-					mostrarMensagemDeErro(e.getMessage());
+					showErrorMessage(e.getMessage());
 				} catch (SQLException e) {
-					mostrarMensagemDeErro(e.getMessage());
+					showErrorMessage(e.getMessage());
 				}
 			}
 		});
-		botaoRemover.setBounds(494, 89, 158, 28);
-		contentPane.add(botaoRemover);
+		btnRemove.setBounds(494, 89, 158, 28);
+		contentPane.add(btnRemove);
 
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
 		 * returns the the previous window, which is Administrative.
 		 */
-		JButton botaoVoltar = new JButton("Voltar");
-		botaoVoltar.addMouseListener(new MouseAdapter() {
+		JButton btnReturn = new JButton("Voltar");
+		btnReturn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				Administrative frame = new Administrative();
-				frame.setVisible(true);
-				frame.setLocationRelativeTo(null);
+				Administrative newAdministrativeWindow = new Administrative();
+				newAdministrativeWindow.setVisible(true);
+				newAdministrativeWindow.setLocationRelativeTo(null);
 				dispose();
 			}
 		});
-		botaoVoltar.setBounds(494, 412, 158, 28);
-		contentPane.add(botaoVoltar);
+		btnReturn.setBounds(494, 412, 158, 28);
+		contentPane.add(btnReturn);
 	}
 
 	/**
 	 * This method shows an error message.
 	 * 
-	 * @param informacao
+	 * @param errorMessage
 	 *            A String type variable that contains the error message to be
 	 *            shown to the user.
 	 */
-	private void mostrarMensagemDeErro(String informacao) {
-		JOptionPane.showMessageDialog(null, informacao, "Aten��o",
+	private void showErrorMessage(String errorMessage) {
+		JOptionPane.showMessageDialog(null, errorMessage, "Aten��o",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 
