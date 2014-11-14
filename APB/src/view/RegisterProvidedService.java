@@ -39,8 +39,8 @@ public class RegisterProvidedService extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegisterProvidedService frame = new RegisterProvidedService();
-					frame.setVisible(true);
+					RegisterProvidedService newRegisterProvidedService = new RegisterProvidedService();
+					newRegisterProvidedService.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -65,32 +65,32 @@ public class RegisterProvidedService extends JFrame {
 		/*
 		 * Creating a table to show the services informations.
 		 */
-		final DefaultTableModel modelo = new DefaultTableModel(null,
+		final DefaultTableModel tableModel = new DefaultTableModel(null,
 				new String[] { "Serviço", "Realizado por", "Valor", "Data" });
-		final JTable table = new JTable(modelo);
+		final JTable table = new JTable(tableModel);
 
 		/*
 		 * Getting an instance of a finished service to populate the table with
 		 * the its informations.
 		 */
 		try {
-			ProvidedServiceController servicoController = ProvidedServiceController
+			ProvidedServiceController providedServiceController = ProvidedServiceController
 					.getInstance();
-			ProvidedService servico = new ProvidedService();
-			ResultSet rs = servicoController
-					.mostrarServicosPrestadosCadastrados(servico);
-			while (rs.next()) {
-				String[] dados = new String[4];
-				dados[0] = rs.getString("nome");
-				dados[1] = rs.getString("barbeiro");
-				dados[2] = rs.getString("preco");
-				dados[3] = servico.ConverterDataParaABNT(rs.getString("data"));
-				modelo.addRow(dados);
+			ProvidedService providedService = new ProvidedService();
+			ResultSet providedServiceResultSet = providedServiceController
+					.mostrarServicosPrestadosCadastrados(providedService);
+			while (providedServiceResultSet.next()) {
+				String[] providedServiceData = new String[4];
+				providedServiceData[0] = providedServiceResultSet.getString("nome");
+				providedServiceData[1] = providedServiceResultSet.getString("barbeiro");
+				providedServiceData[2] = providedServiceResultSet.getString("preco");
+				providedServiceData[3] = providedService.ConverterDataParaABNT(providedServiceResultSet.getString("data"));
+				tableModel.addRow(providedServiceData);
 			}
 		} catch (SQLException e) {
-			mostrarMensagemDeErro(e.getMessage());
+			showErrorMessage(e.getMessage());
 		} catch (ParseException e) {
-			mostrarMensagemDeErro(e.getMessage());
+			showErrorMessage(e.getMessage());
 		}
 
 		scrollPane.setViewportView(table);
@@ -100,115 +100,115 @@ public class RegisterProvidedService extends JFrame {
 		 * to a new window, which is NewProvidedService, and dispose this one
 		 * that is not needed.
 		 */
-		JButton btnNovo = new JButton("Novo");
-		btnNovo.addMouseListener(new MouseAdapter() {
+		JButton btnNewProvidedService = new JButton("Novo");
+		btnNewProvidedService.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				NewProvidedService frame = new NewProvidedService();
-				frame.setVisible(true);
-				frame.setLocationRelativeTo(null);
+				NewProvidedService newNewProvidedServiceWindow = new NewProvidedService();
+				newNewProvidedServiceWindow.setVisible(true);
+				newNewProvidedServiceWindow.setLocationRelativeTo(null);
 			}
 		});
-		btnNovo.setBounds(380, 24, 94, 23);
-		contentPane.add(btnNovo);
+		btnNewProvidedService.setBounds(380, 24, 94, 23);
+		contentPane.add(btnNewProvidedService);
 
 		/*
 		 * Add a mouse clicked event. When the Pesquisar Button is clicked, it
 		 * goes to a new window, which is SearchProvidedService, and dispose
 		 * this one that is not needed.
 		 */
-		JButton btnPesquisar = new JButton("Pesquisar");
-		btnPesquisar.addMouseListener(new MouseAdapter() {
+		JButton btnSearchProvidedService = new JButton("Pesquisar");
+		btnSearchProvidedService.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				SearchProvidedService frame = new SearchProvidedService();
-				frame.setVisible(true);
-				frame.setLocationRelativeTo(null);
+				SearchProvidedService newSearchProvidedServiceWindow = new SearchProvidedService();
+				newSearchProvidedServiceWindow.setVisible(true);
+				newSearchProvidedServiceWindow.setLocationRelativeTo(null);
 				dispose();
 			}
 		});
-		btnPesquisar.setBounds(380, 58, 94, 23);
-		contentPane.add(btnPesquisar);
+		btnSearchProvidedService.setBounds(380, 58, 94, 23);
+		contentPane.add(btnSearchProvidedService);
 
 		/*
 		 * Add an action performed event. When the Remover Button is clicked, it
 		 * access the database and remove the finished service that is selected
 		 * in the table.
 		 */
-		JButton btnRemover = new JButton("Remover");
-		btnRemover.addActionListener(new ActionListener() {
+		JButton btnRemoveProvidedService = new JButton("Remover");
+		btnRemoveProvidedService.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					String nome = (String) table.getValueAt(
+					String providedServiceName = (String) table.getValueAt(
 							table.getSelectedRow(), 0);
-					String barbeiro = (String) table.getValueAt(
+					String responsableBarber = (String) table.getValueAt(
 							table.getSelectedRow(), 1);
-					String valor = (String) table.getValueAt(
+					String providedServiceValue = (String) table.getValueAt(
 							table.getSelectedRow(), 2);
-					String data = (String) table.getValueAt(
+					String providedServiceDate = (String) table.getValueAt(
 							table.getSelectedRow(), 3);
 					ProvidedService servico = new ProvidedService();
-					servico.setNomeServico(nome);
-					servico.setNomeBarbeiro(barbeiro);
-					servico.setPreco(valor);
-					servico.setData(data);
+					servico.setNomeServico(providedServiceName);
+					servico.setNomeBarbeiro(responsableBarber);
+					servico.setPreco(providedServiceValue);
+					servico.setData(providedServiceDate);
 
-					int confirmacao = JOptionPane.showConfirmDialog(null,
-							"Remover " + nome + " da lista?");
+					int confirmation = JOptionPane.showConfirmDialog(null,
+							"Remover " + providedServiceName + " da lista?");
 
-					if (confirmacao == JOptionPane.YES_OPTION) {
+					if (confirmation == JOptionPane.YES_OPTION) {
 						ProvidedServiceController servicoController = ProvidedServiceController
 								.getInstance();
 						servicoController.excluir(servico);
 
 						dispose();
-						RegisterProvidedService frame = new RegisterProvidedService();
-						frame.setVisible(true);
-						frame.setLocationRelativeTo(null);
+						RegisterProvidedService newRegisterProvidedService = new RegisterProvidedService();
+						newRegisterProvidedService.setVisible(true);
+						newRegisterProvidedService.setLocationRelativeTo(null);
 					}
 				} catch (ArrayIndexOutOfBoundsException e) {
-					mostrarMensagemDeErro("Selecione um Serviço para remover");
+					showErrorMessage("Selecione um Serviço para remover");
 				} catch (ServiceException e) {
-					mostrarMensagemDeErro(e.getMessage());
+					showErrorMessage(e.getMessage());
 				} catch (SQLException e) {
-					mostrarMensagemDeErro(e.getMessage());
+					showErrorMessage(e.getMessage());
 				} catch (ParseException e) {
-					mostrarMensagemDeErro(e.getMessage());
+					showErrorMessage(e.getMessage());
 				}
 
 			}
 		});
-		btnRemover.setBounds(380, 92, 94, 23);
-		contentPane.add(btnRemover);
+		btnRemoveProvidedService.setBounds(380, 92, 94, 23);
+		contentPane.add(btnRemoveProvidedService);
 
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
 		 * returns the the previous window, which is MainMenu.
 		 */
-		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.addMouseListener(new MouseAdapter() {
+		JButton btnReturn = new JButton("Voltar");
+		btnReturn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				MainMenu frame = new MainMenu();
-				frame.setVisible(true);
-				frame.setLocationRelativeTo(null);
+				MainMenu newMainMenuWindow = new MainMenu();
+				newMainMenuWindow.setVisible(true);
+				newMainMenuWindow.setLocationRelativeTo(null);
 			}
 		});
-		btnVoltar.setBounds(380, 228, 94, 23);
-		contentPane.add(btnVoltar);
+		btnReturn.setBounds(380, 228, 94, 23);
+		contentPane.add(btnReturn);
 	}
 
 	/**
 	 * This method shows an error message.
 	 * 
-	 * @param informacao
+	 * @param errorMessage
 	 *            A String type variable that contains the error message to be
 	 *            shown to the user.
 	 */
-	private void mostrarMensagemDeErro(String informacao) {
-		JOptionPane.showMessageDialog(null, informacao, "Atenção",
+	private void showErrorMessage(String errorMessage) {
+		JOptionPane.showMessageDialog(null, errorMessage, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 }
