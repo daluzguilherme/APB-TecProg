@@ -1,9 +1,6 @@
 /**
-<<<<<<< HEAD:APB/src/view/CadastrarTipoServico.java
- * CadastrarTipoServico
-=======
  * RegisterProvidedService
->>>>>>> commenting-parameters-methods-returns:APB/src/view/RegisterServiceType.java
+ * 
  * This class provides a GUI to save informations 
  * of a type of the service.
  */
@@ -36,15 +33,15 @@ import java.sql.SQLException;
 public class RegisterServiceType extends JFrame {
 
 	private JPanel contentPane;
-	private static String nomeTemp;
+	private static String temporaryServiceTypeName;
 
 	/* Launch the application. */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegisterServiceType frame = new RegisterServiceType();
-					frame.setVisible(true);
+					RegisterServiceType newRegisterServiceType = new RegisterServiceType();
+					newRegisterServiceType.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -65,153 +62,160 @@ public class RegisterServiceType extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 360, 240);
 		contentPane.add(scrollPane);
-		
+
 		/* Creating a table to show the type of services informations. */
-		final DefaultTableModel modelo = new DefaultTableModel(null,
+		final DefaultTableModel tableModel = new DefaultTableModel(null,
 				new String[] { "Serviço", "Valor" });
-		final JTable table = new JTable(modelo);
-		
+		final JTable table = new JTable(tableModel);
+
 		/*
-		 * Getting an instance of a service type to populate the table with
-		 * the its informations.
+		 * Getting an instance of a service type to populate the table with the
+		 * its informations.
 		 */
 		try {
-			ServiceTypeController servicoController = ServiceTypeController
+			ServiceTypeController serviceTypeController = ServiceTypeController
 					.getInstance();
-			ServiceType servico = new ServiceType();
-			ResultSet rs = servicoController
-					.mostrarTipoServicoCadastrados(servico);
-			while (rs.next()) {
-				String[] dados = new String[5];
-				dados[0] = rs.getString("nome");
-				dados[1] = rs.getString("preco");
-				modelo.addRow(dados);
+			ServiceType serviceType = new ServiceType();
+			ResultSet serviceTypeResultSet = serviceTypeController
+					.mostrarTipoServicoCadastrados(serviceType);
+			while (serviceTypeResultSet.next()) {
+				String[] serviceTypeData = new String[2];
+				serviceTypeData[0] = serviceTypeResultSet.getString("nome");
+				serviceTypeData[1] = serviceTypeResultSet.getString("preco");
+				tableModel.addRow(serviceTypeData);
 			}
 		} catch (SQLException e) {
-			mostrarMensagemDeErro(e.getMessage());
+			showErrorMessage(e.getMessage());
 		}
 
 		scrollPane.setViewportView(table);
-		
+
 		/*
 		 * Add a mouse clicked event. When the Novo Button is clicked, it goes
-		 * to a new window, which is NewServiceType, and dispose this one
-		 * that is not needed.
+		 * to a new window, which is NewServiceType, and dispose this one that
+		 * is not needed.
 		 */
-		JButton btnNovo = new JButton("Novo");
-		btnNovo.addMouseListener(new MouseAdapter() {
+		JButton btnNewServiceType = new JButton("Novo");
+		btnNewServiceType.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 
 				dispose();
-				NewServiceType frame = new NewServiceType();
-				frame.setVisible(true);
-				frame.setLocationRelativeTo(null);
+				NewServiceType newNewServiceTypeWindow = new NewServiceType();
+				newNewServiceTypeWindow.setVisible(true);
+				newNewServiceTypeWindow.setLocationRelativeTo(null);
 
 			}
 		});
-		btnNovo.setBounds(380, 24, 94, 23);
-		contentPane.add(btnNovo);
+		btnNewServiceType.setBounds(380, 24, 94, 23);
+		contentPane.add(btnNewServiceType);
 
 		/*
-		 * Add a mouse clicked event. When the Alterar Button is clicked, it goes
-		 * to a new window, which is AlterServiceType, and dispose this one
-		 * that is not needed. A temporary value of the TipoServico model class 
+		 * Add a mouse clicked event. When the Alterar Button is clicked, it
+		 * goes to a new window, which is AlterServiceType, and dispose this one
+		 * that is not needed. A temporary value of the TipoServico model class
 		 * is set here to be used in the new window displayed.
 		 */
-		JButton btnAlterar = new JButton("Alterar");
-		btnAlterar.addMouseListener(new MouseAdapter() {
+		JButton btnUpdateServiceType = new JButton("Alterar");
+		btnUpdateServiceType.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					ServiceType.setTempNome(modelo.getValueAt(
+					ServiceType.setTempNome(tableModel.getValueAt(
 							table.getSelectedRow(), 0).toString());
-					AlterServiceType frame = new AlterServiceType();
-					frame.setVisible(true);
-					frame.setLocationRelativeTo(null);
+					AlterServiceType newAlterServiceTypeWindow = new AlterServiceType();
+					newAlterServiceTypeWindow.setVisible(true);
+					newAlterServiceTypeWindow.setLocationRelativeTo(null);
 					dispose();
 				} catch (ServiceException e1) {
-					mostrarMensagemDeErro(e1.getMessage());
+					showErrorMessage(e1.getMessage());
 				} catch (ArrayIndexOutOfBoundsException e1) {
-					mostrarMensagemDeErro("Selecione um Tipo de Serviço");
+					showErrorMessage("Selecione um Tipo de Serviço");
 				}
 			}
 		});
-		btnAlterar.setBounds(380, 58, 94, 23);
-		contentPane.add(btnAlterar);
-		
+		btnUpdateServiceType.setBounds(380, 58, 94, 23);
+		contentPane.add(btnUpdateServiceType);
+
 		/*
 		 * Add a mouse clicked event. When the Remover Button is clicked, it
 		 * access the database and remove the type of service that is selected
 		 * in the table.
 		 */
-		JButton btnRemover = new JButton("Remover");
-		btnRemover.addMouseListener(new MouseAdapter() {
+		JButton btnRemoveServiceType = new JButton("Remover");
+		btnRemoveServiceType.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String nome = (String) table.getValueAt(table.getSelectedRow(),
-						0);
-				ServiceType tipoServico = new ServiceType();
+				String serviceTypeName = (String) table.getValueAt(
+						table.getSelectedRow(), 0);
+				ServiceType serviceType = new ServiceType();
 
 				try {
-					tipoServico.setNomeTipoServico(nome);
+					serviceType.setNomeTipoServico(serviceTypeName);
 				} catch (ServiceException e1) {
 					e1.printStackTrace();
 				}
 
-				int confirmacao = JOptionPane.showConfirmDialog(null,
-						"Remover " + nome + " da lista?");
+				int confirmation = JOptionPane.showConfirmDialog(null,
+						"Remover " + serviceTypeName + " da lista?");
 
-				if (confirmacao == JOptionPane.YES_OPTION) {
-					ServiceTypeController tipoServicoController = ServiceTypeController
+				if (confirmation == JOptionPane.YES_OPTION) {
+					ServiceTypeController serviceTypeController = ServiceTypeController
 							.getInstance();
 					try {
-						tipoServicoController.excluir(tipoServico);
+						serviceTypeController.excluir(serviceType);
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
 
 					dispose();
-					RegisterServiceType frame = new RegisterServiceType();
-					frame.setVisible(true);
-					frame.setLocationRelativeTo(null);
+					RegisterServiceType newRegisterServiceTypeWindow = new RegisterServiceType();
+					newRegisterServiceTypeWindow.setVisible(true);
+					newRegisterServiceTypeWindow.setLocationRelativeTo(null);
 				}
 
 			}
 		});
-		btnRemover.setBounds(380, 92, 94, 23);
-		contentPane.add(btnRemover);
-		
+		btnRemoveServiceType.setBounds(380, 92, 94, 23);
+		contentPane.add(btnRemoveServiceType);
+
 		/*
 		 * Add a mouse clicked event. When the Voltar Button is clicked, it
 		 * returns the the previous window, which is Administrative.
 		 */
-		JButton btnVoltar = new JButton("Voltar");
-		btnVoltar.setBounds(380, 228, 94, 23);
-		btnVoltar.addActionListener(new ActionListener() {
+		JButton btnReturn = new JButton("Voltar");
+		btnReturn.setBounds(380, 228, 94, 23);
+		btnReturn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				Administrative frame = new Administrative();
-				frame.setVisible(true);
-				frame.setLocationRelativeTo(null);
+				Administrative newAdministrativeWindow = new Administrative();
+				newAdministrativeWindow.setVisible(true);
+				newAdministrativeWindow.setLocationRelativeTo(null);
 			}
 		});
-		contentPane.add(btnVoltar);
+		contentPane.add(btnReturn);
 	}
 
-	public static String getNomeTemp() {
-		return nomeTemp;
+	/**
+	 * This method returns the temporary name of a service type.
+	 * 
+	 * @return temporaryServiceTypeName 
+	 * 			  A String type variable that contains the
+	 *         	  temporary name of a service type.
+	 */
+	public static String getTemporaryServiceTypeName() {
+		return temporaryServiceTypeName;
 	}
 
 	/**
 	 * This method shows an error message.
 	 * 
-	 * @param informacao
+	 * @param errorMessage
 	 *            A String type variable that contains the error message to be
 	 *            shown to the user.
 	 */
-	private void mostrarMensagemDeErro(String informacao) {
-		JOptionPane.showMessageDialog(null, informacao, "Atenção",
+	private void showErrorMessage(String errorMessage) {
+		JOptionPane.showMessageDialog(null, errorMessage, "Atenção",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 }
