@@ -1,0 +1,105 @@
+/**
+ * NovoContato
+ * This class provides a GUI to save a new contact 
+ * information in the address book.
+ */
+
+public class NovoContato extends JFrame {
+	NovoContato: A better name for the class would be NewContact.
+
+	private JPanel contentPane;
+	private JTextField textFieldNome;
+	private JTextField textFieldTelefone;
+	private JTextField textFieldDescricao;
+
+	/* Launch the application. */
+					NovoContato frame = new NovoContato();
+						frame: this is the NovoContato window that will be set visible. A better name would be newNewContactWindow.
+
+	/**
+	 * This void method starts all the components.
+	 */
+	public void inicializarComponentes() throws ParseException {
+
+		contentPane = new JPanel();
+			contentPane: this is a private JPanel type object. The name is just fine.
+
+		MaskFormatter mascraFormatTel = new MaskFormatter("(##)####-####");
+			mascraFormatTel: This is a MaskFormatter object that show the format of a telephone number.
+				A better name would be telephoneMaskFormat.
+
+		/*
+		 * Add a mouse clicked event. When the Salvar Button is clicked, it
+		 * takes the strings in all fields and creates a new entry in the
+		 * database.
+		 */
+		JButton btnSalvar = new JButton("Salvar");
+			btnSalvar: this is a button to add a new contact. A better name would be buttonRegisterNewContact.
+			
+					Agenda agenda = new Agenda();
+						agenda: An Agenda type object. A better name would be contact.
+
+					AgendaController agendaController = AgendaController.getInstance();
+						agendaController: This is an AgendaController type object that gets an instance from the singleton.
+							A better name would be contactController.
+						
+					CadastrarAgenda frame = new CadastrarAgenda();
+						frame: this is the CadastrarAgenda window that will be set visible. 
+							A better name would be newRegisterContactWindow.
+						
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is CadastrarBarbeiro.
+		 */
+		JButton btnVoltar = new JButton("Voltar");
+			botaoVoltar: this is a button to return to the last window. A better name would be buttonReturn.
+				CadastrarAgenda frame = new CadastrarAgenda();
+					frame: this is the CadastrarAgenda window that will be set visible. 
+						A better name would be newRegisterContactWindow.
+
+		/*
+		 * Add a mouse clicked event. When the LimparCampos Button is clicked,
+		 * it clears all the text fields.
+		 */
+		JButton btnLimparCampos = new JButton("Limpar Campos");
+			btnLimparCampos: this is a button to add a clear all information in the fields.
+				A better name would be btnClearTextFields.
+		
+		textFieldNome = new JTextField();
+			textFieldNome: This is a JTextField object that gets the input for the Contact name.
+				A better name would be textFieldContactName.
+			
+		textFieldTelefone = new JFormattedTextField(mascraFormatTel);
+			textFieldTelefone: This is a JFormattedTextField object that gets the input for the Barber telephone and formats it.
+				A better name would be textFieldContactTelephoneNumber.
+			
+		textFieldDescricao = new JTextField();
+			textFieldDescricao: This is a JTextField object that gets the input for the Contact description.
+				A better name would be textFieldContactDescription.
+			
+		JLabel lblNome = new JLabel("Nome:");
+			lblNome: This is a JLabel object that shows the "Nome" string to the user.
+				A better name would be lblStringNome.
+		
+
+		JLabel lblTelefone = new JLabel("Telefone:");
+			lblTelefone: This is a JLabel object that shows the "Telefone" string to the user.
+				A better name would be lblStringTelephone.
+
+		JLabel lblDescricao = new JLabel("Descri\u00E7\u00E3o:");
+			lblDescricao: This is a JLabel object that shows the "Descrição" string to the user.
+				A better name would be lblStringDescricao.
+
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
+	private void mostrarMensagemDeErro(String informacao) {
+	}
+		mostrarMensagemDeErro: this method will show a message error if it occurs. A better name would be showErrorMessage.
+		informacao: This string show the error message. A better name would be errorMessage.
+	
+}
