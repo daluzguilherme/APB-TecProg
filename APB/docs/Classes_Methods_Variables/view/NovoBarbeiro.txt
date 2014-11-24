@@ -1,0 +1,119 @@
+/**
+ * NovoBarbeiro
+ * This class provides a GUI to save a new barber in the database.
+ */
+
+public class NovoBarbeiro extends JFrame {
+	NovoBarbeiro: A better name for the class would be NewBarber.
+
+	/* Launch the application. */
+					NovoBarbeiro frame = new NovoBarbeiro();
+						frame: this is the NovoBarbeiro window that will be set visible. A better name would be newNewBarbeWindow.
+						
+	/**
+	 * This void method starts all the components.
+	 */
+	public void inicializarComponentes() throws ParseException {
+		inicializarComponentes: This method contains the algorithms of the class.
+			A better name for this method would be initializeComponets.
+		
+		contentPane = new JPanel();
+			contentPane: this is a private JPanel type object. The name is just fine.	
+
+		MaskFormatter mascraFormatTel = new MaskFormatter("(##)####-####");
+			mascraFormatTel: This is a MaskFormatter object that show the format of a telephone number.
+				A better name would be telephoneMaskFormat.
+				
+		MaskFormatter mascraFormatCpf = new MaskFormatter("###.###.###-##");
+			mascraFormatCpf: This is a MaskFormatter object that show the format of a CPF number.
+				A better name would be cpfMaskFormat.
+			
+		textFieldNome = new JTextField();
+			textFieldNome: This is a JTextField object that gets the input for the Barber name.
+				A better name would be textFieldBarberName.
+				
+		JLabel lblNome = new JLabel("Nome:");
+			lblNome: This is a JLabel object that shows the "Nome" string to the user.
+				A better name would be lblStringName. 
+
+		textFieldCpf = new JFormattedTextField(mascraFormatCpf);
+			textFieldCpf: This is a JFormattedTextField object that gets the input for the Barber cpf and formats it.
+				A better name would be textFieldBarberCpfNumber.
+			
+		JLabel lblCpf = new JLabel("CPF:");
+			lblCpf: This is a JLabel object that shows the "CPF" string to the user.
+				A better name would be lblStringCpf.
+
+		textFieldRg = new JTextField();
+			textFieldRg: This is a JTextField object that gets the input for the Barber RG number.
+				A better name would be textFieldBarberRgNumber.
+			
+		JLabel lblRg = new JLabel("RG:");
+			lblRg: This is a JLabel object that shows the "RG" string to the user.
+				A better name would be lblStringRg.
+
+		textFieldTelefone = new JFormattedTextField(mascraFormatTel);
+			textFieldTelefone: This is a JFormattedTextField object that gets the input for the Barber telephone and formats it.
+				A better name would be textFieldBarberTelephoneNumber.
+			
+		JLabel lblTelefone = new JLabel("Telefone:");
+			lblTelefone: This is a JLabel object that shows the "Telefone" string to the user.
+				A better name would be lblStringTelephone.
+
+		lblCadeira = new JLabel("Cadeira:");
+			lblCadeira: This is a JLabel object that shows the "Cadeira" string to the user.
+				A better name would be lblStringChair.
+
+		/*
+		 * Add a mouse clicked event. When the Salvar Button is clicked, it
+		 * takes the strings in all fields and creates a new entry in the
+		 * database.
+		 */
+		botaoSalvar = new JButton("Salvar");
+			btnSalvar: this is a button to add a new contact. A better name would be buttonRegisterNewBarber.
+						
+					Barbeiro barbeiro = new Barbeiro();
+						barbeiro: An Barbeiro type object. A better name would be barber.
+
+					BarbeiroController barbeiroController = BarbeiroController.getInstance();
+						barbeiroController: This is an BarbeiroController type object that gets an instance from the singleton.
+							A better name would be BarberController.
+						
+					CadastrarBarbeiro frame = new CadastrarBarbeiro();
+						frame: this is the CadastrarBarbeiro window that will be set visible. 
+							A better name would be newRegisterBarberWindow.
+						
+		textFieldCadeira = new JTextField();
+			textFieldCadeira: This is a JTextField object that gets the input for the Barber chair number.
+				A better name would be textFieldBarberChairNumber.
+			
+		/*
+		 * Add a mouse clicked event. When the LimparCampos Button is clicked,
+		 * it clears all the text fields.
+		 */
+		botaoLimparCampos = new JButton("Limpar Campos");
+			botaoLimparCampos: this is a button to add a clear all information in the fields.
+				A better name would be buttonClearTextFields.
+				
+		/*
+		 * Add a mouse clicked event. When the Voltar Button is clicked, it
+		 * returns the the previous window, which is CadastrarBarbeiro.
+		 */
+		botaoVoltar = new JButton("Voltar");
+			botaoVoltar: this is a button to return to the last window. A better name would be buttonReturn.
+				CadastrarBarbeiro frame = new CadastrarBarbeiro();
+					frame: this is the CadastrarBarbeiro window that will be set visible. 
+						A better name would be newRegisterBarberWindow.
+						
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
+	private void mostrarMensagemDeErro(String informacao) {
+	}
+		mostrarMensagemDeErro: this method will show a message error if it occurs. A better name would be showErrorMessage.
+		informacao: This string show the error message. A better name would be errorMessage.
+}
