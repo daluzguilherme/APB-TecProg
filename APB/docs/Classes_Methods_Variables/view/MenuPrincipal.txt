@@ -1,0 +1,67 @@
+/**
+ * MenuPrincipal
+ * This class provides a GUI for the main menu of the application.
+ */
+
+public class MenuPrincipal extends JFrame {
+	MenuPrincipal: a better name for this class would be MainMenu.	
+
+	private JPanel contentPane;
+
+	/* Launch the application. */
+					MenuPrincipal frame = new MenuPrincipal();
+						frame: this is the MenuPrincipal window that will be set visible. 
+							A better name would be newMainMenuWindow. 
+						
+	/* Public method to create the frame. */
+	public MenuPrincipal() {
+		contentPane = new JPanel();
+			contentPane: this is a private JPanel type object. The name is just fine.
+		JPanel panel = new JPanel();
+			panel: this is a private JPanel type object. The name is just fine.
+			
+		/*
+		 * Add an action performed event. When the Administrativo Button is clicked,
+		 * it goes to a new window, which is Administrativo, and dispose this one
+		 * that is not needed.
+		 */
+		JButton btnAdministrativo = new JButton("Administrativo");
+			btnAdministrativo: this is a button to return to the last window. A better name would be btnAdministrative.
+				Administrativo frame = new Administrativo();
+					frame: this is the Administrativo window that will be set visible.
+						A better name would be newAdministrativeWindow.
+			
+		/*
+		 * Add an action performed event. When the ServicosPrestados Button is clicked,
+		 * it goes to a new window, which is CadastrarServicoPrestado, and dispose this one
+		 * that is not needed.
+		 */
+		JButton btnServicosPrestados = new JButton("Servi\u00E7os Prestados");
+			btnServicosPrestados: this is a button to return to the last window. A better name would be btnProvidedService.
+				CadastrarServicoPrestado frame = new CadastrarServicoPrestado();
+					frame: this is the CadastrarServicoPrestado window that will be set visible.
+						A better name would be newRegisterProvidedServiceWindow.
+			
+		/*
+		 * Add a mouse clicked event. When the Relatorios Button is clicked,
+		 * it goes to a new window, which is VisualizarRelatorios, and dispose this one
+		 * that is not needed.
+		 */
+		JButton btnRelatorios = new JButton("Relat\u00F3rios");
+			btnRelatorios: this is a button to return to the last window. A better name would be btnRelatories.
+					VisualizarRelatorios frame = new VisualizarRelatorios();
+						frame: this is the VisualizarRelatorios window that will be set visible.
+							A better name would be newShowRelatoriesWindow.
+			
+	/**
+	 * This method shows an error message.
+	 * 
+	 * @param informacao
+	 *            A String type variable that contains the error message to be
+	 *            shown to the user.
+	 */
+	private void mostrarMensagemDeErro(String informacao) {
+	}
+		mostrarMensagemDeErro: this method will show a message error if it occurs. A better name would be showErrorMessage.
+		informacao: This is a string that contains the error to be shown. A better name would be errorMessage
+}
