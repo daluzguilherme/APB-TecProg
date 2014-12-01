@@ -270,9 +270,9 @@ public class GenerateReceipt extends JFrame {
 						docx.addText(nome[1], paramsAssinaturaBarbeiro);
 
 						docx.createDocx("Recibo " + nome[1] + " "
-								+ ConverterDataParaABNTSemBarra(dataInicialIso)
+								+ ConvertDateToABNTFormatWithoutBars(dataInicialIso)
 								+ " - "
-								+ ConverterDataParaABNTSemBarra(dataFinalIso));
+								+ ConvertDateToABNTFormatWithoutBars(dataFinalIso));
 
 						GenerateReceipt frame = new GenerateReceipt();
 						frame.setVisible(true);
