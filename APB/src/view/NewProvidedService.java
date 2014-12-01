@@ -97,26 +97,50 @@ public class NewProvidedService extends JFrame {
 		 * view class.
 		 */
 
-		/*
-		 * Getting the price value from the database to fill a text field.
-		 */
+		// Getting the price value from the database to fill the price text field.
+		 
 		final JComboBox comboBoxTypeOfService = new JComboBox();
 		comboBoxTypeOfService.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				Connection connection;
 				if (comboBoxTypeOfService.getSelectedIndex() != 0)
 					try {
-						String[] typeOfServiceNameSplit = comboBoxTypeOfService.getSelectedItem()
-								.toString().split(" - ");
+						// Creating an Object type to hold combo box selected item information.
+						Object typeOfServiceSelectedItem;
+						typeOfServiceSelectedItem = comboBoxTypeOfService.getSelectedItem();
+						
+						// Creating a String to hold the converted index information.
+						String selectedIndexStringInformation;
+						selectedIndexStringInformation = typeOfServiceSelectedItem.toString();
+						
+						/*
+						 *  Creating array from the split information:
+						 *  	- typeOfServiceNameSplit[0] is the type of service number;
+						 *  	- typeOfServiceNameSplit[0] is the type of service name.
+						 *  Note: the type of service number is not necessary to access the database.
+						 */
+						String[] typeOfServiceNameSplit;
+						typeOfServiceNameSplit = selectedIndexStringInformation.split(" - ");
+						
+						// Creating separated string to the type of service name to avoid confusion.
+						String typeOfServiceName;
+						typeOfServiceName = typeOfServiceNameSplit[1];
+						
+						//I'm not changing this now... it's going to be erased later.
 						connection = FactoryConnection.getInstance()
 								.getConnection();
 						java.sql.PreparedStatement pst1 = connection
 								.prepareStatement("SELECT preco FROM tipoServico WHERE nome = \""
-										+ typeOfServiceNameSplit[1] + "\";");
+										+ typeOfServiceName + "\";");
 						ResultSet rs1 = pst1.executeQuery();
 						rs1.next();
 
-						textFieldServicePriceNumber.setText(rs1.getString("preco"));
+						// Creating a String to hold database retrieved information.
+						String priceOfTheSelectedService;
+						priceOfTheSelectedService = rs1.getString("preco");
+						
+						// Filling the textField with the price of the selected type of service.
+						textFieldServicePriceNumber.setText(priceOfTheSelectedService);
 					} catch (SQLException e) {
 						showErrorMessage(e.getMessage());
 					}
@@ -135,7 +159,7 @@ public class NewProvidedService extends JFrame {
 		comboBoxTypeOfService.setBounds(129, 22, 289, 20);
 		contentPane.add(comboBoxTypeOfService);
 		try {
-			int typeOfServiceCounter = 0;
+			//I'm not changing this now... it's going to be erased.
 			Connection connection = FactoryConnection.getInstance()
 					.getConnection();
 			java.sql.PreparedStatement pst = connection
@@ -145,14 +169,22 @@ public class NewProvidedService extends JFrame {
 			ResultSet rs = pst.executeQuery();
 			ResultSet rs2 = pst2.executeQuery();
 
+			// Filling the ComboBox with the name and chair of a barber
 			while (rs.next()) {
-				String barberName = rs.getString("nome");
-				String barberChair = rs.getString("cadeira");
+				String barberName;
+				barberName = rs.getString("nome");
+				String barberChair;
+				barberChair = rs.getString("cadeira");
 				comboBoxBarber.addItem(barberChair + " - " + barberName);
 			}
+			
+			// Filling the ComboBox with the type of service name and a number.
+			int typeOfServiceCounter = 0;
 			while (rs2.next()) {
-				typeOfServiceCounter++;
-				String typeOfServiceName = rs2.getString("nome");
+				// The counter is the position of a type of service in the database. 
+				typeOfServiceCounter++; 
+				String typeOfServiceName;
+				typeOfServiceName = rs2.getString("nome");
 				comboBoxTypeOfService.addItem(typeOfServiceCounter + " - " + typeOfServiceName);
 			}
 
@@ -170,31 +202,72 @@ public class NewProvidedService extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try {
+					// The type of service must be selected.
 					if (comboBoxTypeOfService.getSelectedIndex() == 0)
 						JOptionPane.showMessageDialog(null,
 								"Você deve selecionar um tipo de serviço.");
+					// the barber must also be selected.
 					else if (comboBoxBarber.getSelectedIndex() == 0)
 						JOptionPane.showMessageDialog(null,
 								"Você deve selecionar um barbeiro.");
 					else {
+						// Getting system date and formating.
 						String formatedIsoDate;
 						Date systemDateInformation = new Date();
 						SimpleDateFormat isoDateFormat = new SimpleDateFormat(
 								"yyyy-MM-dd");
 						formatedIsoDate = isoDateFormat.format(systemDateInformation);
+						
+						// Creating an Object type to hold type of service combo box selected item information.
+						Object typeOfServiceSelectedItem;
+						typeOfServiceSelectedItem = comboBoxTypeOfService.getSelectedItem();
+						
+						// Creating a String to hold the converted index type of service information.
+						String typeOfServiceSelectedIndexStringInformation;
+						typeOfServiceSelectedIndexStringInformation = typeOfServiceSelectedItem.toString();
 
-						String[] selectedTypeOfServiceInformationSplit = comboBoxTypeOfService.getSelectedItem()
-								.toString().split(" - ");
-						String[] selectedBarberInformationSplit = comboBoxBarber.getSelectedItem()
-								.toString().split(" - ");
+						/*
+						 *  Creating array from the type of service split information:
+						 *  	- typeOfServiceNameSplit[0] is the type of service number;
+						 *  	- typeOfServiceNameSplit[0] is the type of service name.
+						 *  Note: the type of service number is not necessary save the database.
+						 */
+						String[] typeOfServiceNameSplit;
+						typeOfServiceNameSplit = typeOfServiceSelectedIndexStringInformation.split(" - ");
 
+						//	Creating type of service variables for its number and its name to avoid confusion.
+						String typeOfServiceName;
+						typeOfServiceName = typeOfServiceNameSplit[1];
+						
+						// Creating an Object type to hold barber combo box selected item information.
+						Object barberSelectedItem;
+						barberSelectedItem = comboBoxBarber.getSelectedItem();
+						
+						// Creating a String to hold the converted index barber information.
+						String barberSelectedIndexStringInformation;
+						barberSelectedIndexStringInformation = barberSelectedItem.toString();
+
+						/*
+						 *  Creating array from the split barber information:
+						 *  	- barberNameSplit[0] is the type of service number;
+						 *  	- barberNameSplit[0] is the type of service name.
+						 *  Note: the barber chair number is not necessary save the database.
+						 */
+						String[] barberNameSplit;
+						barberNameSplit = barberSelectedIndexStringInformation.split(" - ");
+
+						//	Creating type of service variables for its name to avoid confusion.
+						String barberName;
+						barberName = barberNameSplit[1];
+
+						// Creating a provided service object to fill it.
 						ProvidedService providedService = new ProvidedService();
-
-						providedService.setNomeBarbeiro(selectedBarberInformationSplit[1]);
-						providedService.setNomeServico(selectedTypeOfServiceInformationSplit[1]);
+						providedService.setNomeBarbeiro(barberName);
+						providedService.setNomeServico(typeOfServiceName);
 						providedService.setPreco(textFieldServicePriceNumber.getText());
 						providedService.setData(formatedIsoDate);
 
+						//Saving information in the database.
 						ProvidedServiceController providedServiceController = ProvidedServiceController
 								.getInstance();
 						providedServiceController.inserir(providedService);
@@ -202,9 +275,9 @@ public class NewProvidedService extends JFrame {
 						JOptionPane.showMessageDialog(null,
 								"Serviço criado com sucesso");
 
+						//Setting the combo boxes to the standard index and a blank text field
 						comboBoxBarber.setSelectedIndex(0);
 						comboBoxTypeOfService.setSelectedIndex(0);
-
 						textFieldServicePriceNumber.setText("");
 					}
 				} catch (ServiceException e) {
